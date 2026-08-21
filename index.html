@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ícone que aparece na aba do navegador -->
+    <link rel="icon" type="image/png" href="FotoPerfil.jpg">
+    <title>Prof. Wadiley | Ciências Exactas</title>
+
+    <!-- FONT AWESOME PARA ÍCONES DAS REDES SOCIAIS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Biblioteca de Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- LIGAÇÃO AO FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- SCRIPT DO MATHJAX PARA RENDERIZAR LATEX -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- PRISM.JS COM TEMA CLARO PARA DESTACAR SINTAXE DE CÓDIGO -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+
+    <!-- ESTILO PARA OS SUBMENUS EM CASCATA -->
+    <style>
+        .dropdown { position: relative; }
+        .dropdown .dropdown-content { display: none; position: absolute; left: 100%; top: 0; min-width: 180px; }
+        .dropdown:hover > .dropdown-content { display: block; }
+        .nav-links > .dropdown > .dropdown-content { left: 0; top: 100%; }
+
+        /* Controlo de visibilidade das secções */
+        .conteudo-seccao { display: none; }
+        .conteudo-seccao.ativo { display: block; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- CRIANDO IDEIAS PARA SUBSCREVER -->
+    <script>
+        (function() {
+            // Substitua "SUA_PUBLIC_KEY" pela chave fornecida pelo EmailJS
+            emailjs.init("template_iaalz8i");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- NAVBAR FIXA / RESPONSIVA -->
+    <nav class="navbar">
+        <!-- 1. CABEÇALHO DA NAVBAR (Perfil + Botão Hambúrguer para Mobile) -->
+        <div class="nav-header">
+            <!-- Perfil / Logo -->
+            <a href="#" class="nav-profile">
+            <div class="nav-photo">
+                <img src="FotoPerfil.jpg" alt="Perfil">
+            </div>
+            </a>
+
+            <!-- Área da Pesquisa (Mobile) -->
+            <div class="search-container" id="searchContainer">
+            <button type="button" class="search-icon-btn" id="searchOpenBtn" aria-label="Abrir Pesquisa">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+
+            <div class="search-input-wrapper" id="searchInputWrapper">
+                <input type="text" id="searchInput" placeholder="Pesquisar..." autocomplete="off">
+                <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Fechar Pesquisa">&times;</button>
+            </div>
+            </div>
+
+            <!-- 3. Selector de Idioma Mobile (NOVO) -->
+            <div class="lang-selector-mobile notranslate">
+                <select id="select-idioma-mobile" onchange="trocarIdiomaGoogle(this.value, event)">
+                    <option value="pt">Português</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ru">Русский</option>
+                    <option value="zh-CN">中文 (S)</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="pl">Polski</option>
+                    <option value="sv">Svenska</option>
+                    <option value="el">Ελληνικά</option>
+                    <option value="he">עברית</option>
+                    <option value="ro">Română</option>
+                    <option value="uk">Українська</option>
+                </select>
+            </div>
+
+            <!-- Botão Hambúrguer -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+        </div>
+
+        
+
+        <!-- 2. CONJUNTO DE LINKS (Com id="navLinks" adicionado para o JavaScript) -->
+        <div class="nav-links" id="navLinks">
+            <a href="#sobre">Apresentação</a>
+            <a href="#areas">Especialização</a>
+
+            <!-- MENU: Programas -->
+            <div class="dropdown">
+                <a href="#Programas">Programas</a>
+                <div class="dropdown-content">
+                    <a href="#prog-estai">Estatística I</a>
+                    <a href="#prog-estaii">Estatística II</a>
+                    <a href="#prog-bioesta">BioEstatística</a>
+                </div>
+            </div>
+
+            <!-- MENU: Estatística II (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Estatística II</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Probabilidade -->
+                    <div class="dropdown">
+                        <a href="#estat-prob">Probabilidade &raquo;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-val">Variáveis Aleatórias</a>
+                            <a href="#estat-distp">Distribuição de Probabilidades</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Teoria da Amostragem &raquo;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Composição da Amostra</a>
+                            <a href="#estat-dim">Dimensão da Amostra</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Inferência Estatística -->
+                    <div class="dropdown">
+                        <a href="#estat-inf">Inferência Estatística &raquo;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-estpont">Estimação Pontual</a>
+                            <a href="#estat-estint">Estimação por Intervalo</a>
+                            <a href="#estat-hip">Teoria de Decisão</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MENU: Recursos -->
+            <div class="dropdown">
+                <a href="#recursos">Recursos</a>
+                <div class="dropdown-content">
+                    <a href="#doc-aulas">Notas de Aula</a>
+                    <a href="#doc-metodologia">Metodologia</a>
+                    <a href="#doc-bibliografia">Bibliografia</a>
+                </div>
+            </div>
+
+            <a href="#matematica">Matemática</a>
+            <a href="#programacao">Análise em R</a>
+        </div>
+        <!-- ÁREA DIREITA (Desktop): Lupa + Selector de Idioma -->
+        <div class="nav-actions-desktop">
+            <div class="search-desktop-wrapper" id="searchDesktopWrapper">
+                <button type="button" class="search-desktop-btn" id="searchDesktopBtn" aria-label="Pesquisar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <div class="search-desktop-input-container">
+                    <input type="text" id="searchInputDesktop" placeholder="Pesquisar..." autocomplete="on" />
+                    <button type="button" class="search-desktop-close" id="searchDesktopClose">&times;</button>
+                </div>
+            </div>
+
+            <div class="lang-selector-desktop">
+                <select id="langSelect">
+                    <option value="pt">Português (Portugal)</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- CARROSSEL DE DESTAQUES -->
+    <div class="carousel-container">
+        <ul id="carousel-list">
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/anova" target="_blank" rel="noopener noreferrer">
+                    <img src="ANOVA.png" alt="ANOVA"> 
+                    <span>ANOVA</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/survivalanalysis" target="_blank" rel="noopener noreferrer">
+                    <img src="Sobrevivencia.png" alt="Survival"> 
+                    <span>Survival</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/gestaorcamental" target="_blank" rel="noopener noreferrer">
+                    <img src="Gorcamental.jpg" alt="G. Orçamental"> 
+                    <span>G. Orçamental</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/estatisticai" target="_blank" rel="noopener noreferrer">
+                    <img src="EstatisticaI.jpg" alt="Estatística I"> 
+                    <span>Estatística I</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/estatisticaii" target="_blank" rel="noopener noreferrer">
+                    <img src="EstatisticaII.jpg" alt="Estatística II"> 
+                    <span>Estatística II</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+
+        <!-- Secção de Notícias (Grelha Dinâmica Visível por Defeito) -->
+        <section id="noticias" class="conteudo-seccao ativo">
+            <h2>Últimas Notícias & Avisos</h2>
+            <div class="news-container">
+                <ul id="news-list" class="news-grid">
+
+                    <!-- Notícia 1 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://rpubs.com/wadileynascimento" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia1.jpg" alt="Aulas"></div>
+                            <div class="news-content">
+                                <span class="news-date">17 Ago 2026</span>
+                                <h3>Início do Semestre Académico <span class="link-icon">↗</span></h3>
+                                <p>Publicados os horários de atendimento e calendário das aulas do 2.º Ciclo.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 2 -->
+                    <li class="news-card-wrapper">
+                        <a href="#recursos" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia2.jpg" alt="Guiões"></div>
+                            <div class="news-content">
+                                <span class="news-date">15 Ago 2026</span>
+                                <h3>Guiões de Estatística I <span class="link-icon">↓</span></h3>
+                                <p>Disponíveis as fichas práticas de Análise Exploratória na secção Recursos.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 3 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia3.jpg" alt="Workshop"></div>
+                            <div class="news-content">
+                                <span class="news-date">10 Ago 2026</span>
+                                <h3>Workshop de Linguagem R</h3>
+                                <p>Sessão prática sobre modelação e testes de hipóteses na próxima semana.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 4 -->
+                    <li class="news-card-wrapper">
+                        <a href="documento.pdf" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia4.jpg" alt="Investigação"></div>
+                            <div class="news-content">
+                                <span class="news-date">05 Ago 2026</span>
+                                <h3>Propostas de Investigação <span class="link-icon">📄</span></h3>
+                                <p>Abertura de candidaturas para acompanhamento em Ciências Naturais.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 5 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia5.jpg" alt="Bibliografia"></div>
+                            <div class="news-content">
+                                <span class="news-date">01 Ago 2026</span>
+                                <h3>Atualização da Bibliografia</h3>
+                                <p>Novos manuais de Bioestatística e Metodologia Científica no repositório.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 6 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia6.jpg" alt="YouTube"></div>
+                            <div class="news-content">
+                                <span class="news-date">28 Jul 2026</span>
+                                <h3>Vídeo-Aulas no YouTube <span class="link-icon">↗</span></h3>
+                                <p>Conteúdos demonstrativos e resolução de exercícios no canal.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 7 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia7.jpg" alt="Atendimento"></div>
+                            <div class="news-content">
+                                <span class="news-date">20 Jul 2026</span>
+                                <h3>Sessões de Dúvidas</h3>
+                                <p>Atendimento presencial e online mediante agendamento prévio.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 8 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia8.jpg" alt="Avaliação"></div>
+                            <div class="news-content">
+                                <span class="news-date">15 Jul 2026</span>
+                                <h3>Resultados da Avaliação</h3>
+                                <p>Pauta final das submissões do projeto de BioEstatística disponível.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 9 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://instagram.com" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia9.jpg" alt="Jornadas"></div>
+                            <div class="news-content">
+                                <span class="news-date">10 Jul 2026</span>
+                                <h3>Jornadas Pedagógicas <span class="link-icon">↗</span></h3>
+                                <p>Divulgação dos resumos e apresentações das conferências.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Apresentação -->
+        <section id="sobre" class="conteudo-seccao">
+            <h2>Apresentação</h2>
+            <p>Sou dedicada ao desenvolvimento educacional e à formação de jovens cidadãos. A minha candidatura e o meu trabalho centram-se na promoção de um ensino dinâmico, focado no rigor científico e na compreensão do mundo que nos rodeia, através de metodologias de ensino ativas.</p>
+        </section>
+
+        <!-- Áreas de Especialização -->
+        <section id="areas" class="conteudo-seccao">
+            <h2>Áreas de Especialização (2.º Ciclo)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Ciências Naturais</h3>
+                    <p>Exploração dos ecossistemas, sustentabilidade ambiental, corpo humano e biodiversidade.</p>
+                </div>
+                <div class="card">
+                    <h3>Ciências Sociais</h3>
+                    <p>Compreensão da geografia humana, dinâmicas demográficas, cidadania e organização da sociedade atual.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÕES DE PROGRAMAS -->
+        <section id="Programas" class="conteudo-seccao">
+            <h2>Programas Curriculares</h2>
+            <p>Visão geral das unidades curriculares lecionadas.</p>
+            <div class="bloco-container">
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="prog-estai" class="conteudo-seccao">
+            <h2>Estatística I</h2>
+            <p>Estudo descritivo de dados, medidas de tendência central e dispersão.</p>
+        </section>
+
+        <section id="prog-estaii" class="conteudo-seccao">
+            <h2>Estatística II</h2>
+            <p>Aprofundamento de inferência estatística e testes de hipóteses.</p>
+        </section>
+
+        <section id="prog-bioesta" class="conteudo-seccao">
+            <h2>BioEstatística</h2>
+            <p>Aplicação de métodos estatísticos em ciências biológicas e de saúde.</p>
+        </section>
+
+        <!-- ESTATÍSTICA II (MENU PRINCIPAL) -->
+        <section id="estatistica-ii" class="conteudo-seccao" data-grupo="estat2">
+            <h2>Estatística II (Rpubs)</h2>
+            <p>Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SUBMENU 1: PROBABILIDADE -->
+        <section id="estat-prob" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Probabilidade</h2>
+            <p>Conceitos fundamentais de probabilidade aplicados à análise estatística.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-val" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Variáveis Aleatórias</h2>
+            <p>Estudo de variáveis aleatórias discretas e contínuas.</p>
+        </section>
+
+        <section id="estat-distp" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Distribuição de Probabilidades</h2>
+            <p>Análise de modelos de distribuição teóricos e empíricos.</p>
+        </section>
+
+        <!-- SUBMENU 2: AMOSTRAGEM -->
+        <section id="estat-amost" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Teoria da Amostragem</h2>
+            <p>Métodos de seleção e recolha de dados representativos.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-comp" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Composição da Amostra</h2>
+            <p>Estruturação e caracterização de amostras populacionais.</p>
+        </section>
+
+        <section id="estat-dim" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Dimensão da Amostra</h2>
+            <p>Critérios estatísticos para o cálculo do tamanho ideal da amostra.</p>
+        </section>
+
+        <!-- SUBMENU 3: INFERÊNCIA -->
+        <section id="estat-inf" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Inferência Estatística</h2>
+            <p>Generalização de resultados obtidos a partir de amostras para a população.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-estpont" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Estimação Pontual</h2>
+            <p>Métodos para obtenção de estimadores pontuais de parâmetros.</p>
+        </section>
+
+        <section id="estat-estint" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Estimação por Intervalo</h2>
+            <p>Construção de intervalos de confiança para parâmetros populacionais.</p>
+        </section>
+
+        <section id="estat-hip" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Teoria de Decisão</h2>
+            <p>Testes de hipóteses e tomada de decisão estatística.</p>
+        </section>
+
+        <!-- SECÇÃO PRINCIPAL: RECURSOS -->
+        <section id="recursos" class="conteudo-seccao">
+            <h2>Recursos Académicos</h2>
+            <p>Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="doc-aulas" class="conteudo-seccao">
+            <h2>Notas de Aula</h2>
+            <p>Sumários detalhados das matérias lecionadas.</p>
+        </section>
+
+        <section id="doc-metodologia" class="conteudo-seccao">
+            <h2>Metodologia de Ensino</h2>
+            <p>Abordagens pedagógicas centradas no aluno.</p>
+        </section>
+
+        <section id="doc-bibliografia" class="conteudo-seccao">
+            <h2>Bibliografia Recomendada</h2>
+            <p>Lista de compilações científicas e manuais.</p>
+        </section>
+
+        <!-- Matemática e Funções -->
+        <section id="matematica" class="conteudo-seccao">
+            <h2>Matemática e Funções</h2>
+            <p>Exemplo de uma função polinomial: \( f(x) = x^3 - 4x^2 + 5x - 2 \).</p>
+            <p>$$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
+        </section>
+
+        <!-- Análise de Dados com R -->
+        <section id="programacao" class="conteudo-seccao">
+            <h2>Análise de Dados com R</h2>
+            <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contato" class="conteudo-seccao">
+            <h2>Contacto</h2>
+            <p>Para propostas de funções docentes ou assuntos administrativos, entre em contacto:</p>
+            <div class="social-links">
+                <a href="mailto:wadmiguel547@yahoo.com"><img src="Yahoo.png" alt="Yahoo"></a>
+                <a href="https://rpubs.com/wadileynascimento" target="_blank"><img src="ProjetoR.png" alt="RPubs"></a>
+                <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank"><img src="YouTubeB.png" alt="YouTube"></a>
+                <a href="https://www.instagram.com/wadileyn" target="_blank"><img src="Instagram.png" alt="Instagram"></a>
+                <a href="https://x.com/WadileyNas" target="_blank"><img src="Twitter.png" alt="Twitter"></a>
+                <a href="https://www.facebook.com/wadileynasciment" target="_blank"><img src="PFacebook.png" alt="Página"></a>
+            </div>
+        </section>
+
+        <!-- SECÇÃO NEWSLETTER -->
+        <section id="newsletter" class="newsletter-section conteudo-seccao">
+            <h2>Newsletter</h2>
+            <p>Inscreva-se para receber as últimas notícias e atualizações da USTP.</p>
+            
+            <form id="newsletter-form" class="newsletter-form" onsubmit="subscreverNewsletter(event)">
+                <input 
+                    type="email" 
+                    id="newsletter-email" 
+                    placeholder="O seu email" 
+                    required 
+                    aria-label="O seu email"
+                />
+                <button type="submit" class="newsletter-btn">Subscrever</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Wadiley Nascimento. || "Sem dados, você é apenas mais uma pessoa com uma opinião.” — W. Edwards Deming.</p>
+    </footer>
+
+    <!-- SCRIPT DE SUBSCRIÇÃO DA NEWSLETTER -->
+    <script>
+    function subscreverNewsletter(event) {
+    event.preventDefault();
+
+    const emailInput = document.getElementById('newsletter-email');
+    const email = emailInput.value;
+
+    // Dados que serão enviados para o modelo de e-mail
+    const templateParams = {
+        user_email: email
+    };
+
+    // Envia o e-mail usando o EmailJS
+    emailjs.send('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            alert(`Obrigado por se inscrever! Enviamos uma confirmação para: ${email}`);
+            emailInput.value = '';
+        }, function(error) {
+            alert('Ocorreu um erro ao subscrever. Por favor, tente novamente.');
+            console.error('Erro EmailJS:', error);
+        });
+    }
+    </script>
+    
+
+    <!-- SCRIPT DE NAVEGAÇÃO, ANIMAÇÕES E SUBMENUS DINÂMICOS -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".nav-links a, .dropdown-content a");
+        const seccoes = document.querySelectorAll(".conteudo-seccao");
+        const carousel = document.querySelector(".carousel-container");
+        const navProfile = document.querySelector(".nav-profile");
+
+        const seccaoNoticias = document.getElementById("noticias");
+        const seccaoContacto = document.getElementById("contato");
+        const carouselList = document.getElementById('carousel-list');
+        const newsList = document.getElementById('news-list');
+
+        // ==========================================
+        // 1. AJUSTE E COMPORTAMENTO DOS SUBMENUS (WEB + MOBILE)
+        // ==========================================
+        const dropdowns = document.querySelectorAll('.dropdown');
+        let ultimoMenuClicado = null;
+
+        // Oculta/fecha temporariamente todos os dropdowns no Web e Mobile
+        function fecharTodosDropdowns() {
+            const conteudosDropdown = document.querySelectorAll('.dropdown-content');
+            conteudosDropdown.forEach(content => {
+                content.style.pointerEvents = 'none';
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+            });
+
+            // Restaura a visibilidade original após a animação de saída/transição
+            setTimeout(() => {
+                conteudosDropdown.forEach(content => {
+                    content.style.removeProperty('pointer-events');
+                    content.style.removeProperty('opacity');
+                    content.style.removeProperty('visibility');
+                });
+            }, 300);
+        }
+
+        dropdowns.forEach(dropdown => {
+            // Ajuste automático para abertura à esquerda caso saia do ecrã (Desktop)
+            dropdown.addEventListener('mouseenter', function () {
+                const submenu = this.querySelector(':scope > .dropdown-content');
+                if (!submenu) return;
+
+                submenu.classList.remove('abrir-esquerda');
+                const rect = submenu.getBoundingClientRect();
+
+                const espacoDisponivelDireita = window.innerWidth - rect.right;
+                if (espacoDisponivelDireita < 10) { 
+                    submenu.classList.add('abrir-esquerda');
+                }
+            });
+
+            // Lógica para fechar ao clicar 2 vezes no mesmo nível (Web e Mobile)
+            const linkPrincipal = dropdown.querySelector(':scope > a');
+            if (linkPrincipal) {
+                linkPrincipal.addEventListener('click', (e) => {
+                    if (ultimoMenuClicado === dropdown) {
+                        fecharTodosDropdowns();
+                        ultimoMenuClicado = null;
+                    } else {
+                        ultimoMenuClicado = dropdown;
+                    }
+                });
+            }
+        });
+
+        // Oculta ao clicar nos links do último nível (itens sem submenus abaixo)
+        const linksFinais = document.querySelectorAll('.dropdown-content a:not(.dropdown > a)');
+        linksFinais.forEach(link => {
+            link.addEventListener('click', () => {
+                fecharTodosDropdowns();
+                ultimoMenuClicado = null;
+            });
+        });
+
+
+        // ==========================================
+        // 2. ROTAÇÃO DO CARROSSEL PRINCIPAL
+        // ==========================================
+        if (carouselList) {
+            setInterval(() => {
+                const itemWidth = carouselList.firstElementChild ? carouselList.firstElementChild.offsetWidth : 0;
+                if (!itemWidth) return;
+
+                const maxScroll = carouselList.scrollWidth - carouselList.clientWidth;
+
+                if (carouselList.scrollLeft >= maxScroll - 5) {
+                    carouselList.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    carouselList.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                }
+            }, 4000);
+        }
+
+
+        // ==========================================
+        // 3. ROTAÇÃO DA GRELHA DE NOTÍCIAS
+        // ==========================================
+        if (newsList) {
+            setInterval(() => {
+                const emPrimeiro = newsList.firstElementChild;
+                if (!emPrimeiro) return;
+
+                emPrimeiro.classList.add('saindo');
+
+                setTimeout(() => {
+                    emPrimeiro.classList.remove('saindo');
+                    newsList.appendChild(emPrimeiro);
+
+                    const novoSexto = newsList.children[5];
+                    if (novoSexto) {
+                        novoSexto.classList.add('entrando');
+                        setTimeout(() => novoSexto.classList.remove('entrando'), 600);
+                    }
+                }, 600);
+            }, 8000);
+        }
+
+
+        // ==========================================
+        // 4. NAVEGAÇÃO E VISIBILIDADE DE SECÇÕES
+        // ==========================================
+        function mostrarPaginaInicial() {
+            seccoes.forEach(seccao => seccao.classList.remove("ativo"));
+            if (carousel) carousel.classList.remove("escondido");
+            if (seccaoNoticias) seccaoNoticias.classList.add("ativo");
+            if (seccaoContacto) seccaoContacto.classList.add("ativo");
+            history.pushState(null, null, window.location.pathname);
+        }
+
+        function navegarParaSecao(targetId) {
+            if (!targetId || !targetId.startsWith("#")) return;
+
+            // 1. Esconde o carrossel se existir
+            if (carousel) carousel.classList.add("escondido");
+
+            // 2. ESCONDE TUDO (Pai e Filhos)
+            seccoes.forEach(seccao => seccao.classList.remove("ativo"));
+
+            // 3. MOSTRA E ROLA APENAS PARA O MENU CLICADO
+            const seccaoAlvo = document.querySelector(targetId);
+            if (seccaoAlvo) {
+                seccaoAlvo.classList.add("ativo"); // Ativa APENAS esta secção
+                seccaoAlvo.scrollIntoView({ behavior: 'smooth' }); // Rola suavemente
+            }
+
+            // 4. Atualiza o link no navegador
+            if (window.location.hash !== targetId) {
+                history.pushState(null, null, targetId);
+            }
+        }
+
+        links.forEach(link => {
+            link.addEventListener("click", function (e) {
+                const targetId = this.getAttribute("href");
+                if (targetId && targetId.startsWith("#")) {
+                    e.preventDefault();
+                    navegarParaSecao(targetId);
+                }
+            });
+        });
+
+        if (navProfile) {
+            navProfile.addEventListener("click", function (e) {
+                e.preventDefault();
+                mostrarPaginaInicial();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        function carregarEstadoInicialOuHash() {
+            const hash = window.location.hash;
+            if (hash && document.querySelector(hash)) {
+                navegarParaSecao(hash);
+            } else {
+                mostrarPaginaInicial();
+            }
+        }
+
+        carregarEstadoInicialOuHash();
+        window.addEventListener("popstate", carregarEstadoInicialOuHash);
+    });
+    </script>
+
+    <!-- SCRIPT DE NAVEGAÇÃO, ANIMAÇÕES E SUBMENUS DINÂMICOS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isMobile = () => window.innerWidth <= 768;
+
+            // ==========================================
+            // DATA: LISTA DOS 20 IDIOMAS SUPORTADOS PELO GOOGLE TRANSLATE
+            // ==========================================
+            const idiomasMaisFalados = [
+                { code: "pt", name: "Português" },
+                { code: "en", name: "English" },
+                { code: "zh-CN", name: "中文 (Mandarim)" },
+                { code: "hi", name: "Hindi" },
+                { code: "es", name: "Español" },
+                { code: "fr", name: "Français" },
+                { code: "ar", name: "العربية" },
+                { code: "bn", name: "Bengali" },
+                { code: "ru", name: "Русский" },
+                { code: "ur", name: "Urdu" },
+                { code: "id", name: "Bahasa Indonesia" },
+                { code: "de", name: "Deutsch" },
+                { code: "ja", name: "日本語" },
+                { code: "mr", name: "Marathi" },
+                { code: "te", name: "Telugu" },
+                { code: "tr", name: "Türkçe" },
+                { code: "ta", name: "Tamil" },
+                { code: "it", name: "Italiano" },
+                { code: "vi", name: "Tiếng Việt" },
+                { code: "tl", name: "Tagalog" }
+            ];
+
+            function popularSelectoresIdioma() {
+                // Seleciona APENAS os seus selects (ignora o combo oculto do Google)
+                const selectores = document.querySelectorAll('select:not(.goog-te-combo)');
+                
+                selectores.forEach(select => {
+                    if (!select) return;
+                    
+                    select.options.length = 0;
+
+                    idiomasMaisFalados.forEach(idioma => {
+                        const option = new Option(idioma.name, idioma.code);
+                        if (idioma.code === 'pt') {
+                            option.selected = true;
+                        }
+                        select.add(option);
+                    });
+
+                    // Adiciona o listener uma única vez para evitar loops
+                    select.onchange = (e) => {
+                        trocarIdioma(e.target.value);
+                    };
+                });
+            }
+
+            window.trocarIdioma = function(codigoIdioma) {
+                console.log("Idioma selecionado:", codigoIdioma);
+
+                // Atualiza o valor visual de todos os selects customizados sem disparar o evento onchange novamente
+                const selectores = document.querySelectorAll('select:not(.goog-te-combo)');
+                selectores.forEach(select => {
+                    select.value = codigoIdioma;
+                });
+
+                document.documentElement.lang = codigoIdioma;
+
+                // Envia a ordem para o elemento oculto do Google Translate
+                const selectGoogle = document.querySelector('.goog-te-combo');
+                if (selectGoogle) {
+                    selectGoogle.value = codigoIdioma;
+                    selectGoogle.dispatchEvent(new Event('change'));
+                } else {
+                    // Tenta novamente caso o script do Google ainda esteja a carregar
+                    setTimeout(() => trocarIdioma(codigoIdioma), 500);
+                }
+            };
+
+            popularSelectoresIdioma();
+            
+            // ==========================================
+            // 0. MENU HAMBÚRGUER (MOBILE)
+            // ==========================================
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            function fecharMenuMobileCompleto() {
+                if (hamburgerBtn) hamburgerBtn.classList.remove('ativo');
+                if (navLinks) navLinks.classList.remove('menu-aberto');
+                document.querySelectorAll('.dropdown-content').forEach(sub => {
+                    sub.classList.remove('submenu-visivel');
+                    sub.style.display = 'none';
+                    setTimeout(() => sub.style.display = '', 200);
+                });
+            }
+
+            if (hamburgerBtn && navLinks) {
+                hamburgerBtn.addEventListener('click', () => {
+                    hamburgerBtn.classList.toggle('ativo');
+                    navLinks.classList.toggle('menu-aberto');
+                });
+            }
+
+            // ==========================================
+            // ELEMENTOS PRINCIPAIS DA PÁGINA
+            // ==========================================
+            const links = document.querySelectorAll(".nav-links a, .dropdown-content a");
+            const seccoes = document.querySelectorAll(".conteudo-seccao");
+            const carousel = document.querySelector(".carousel-container");
+            const navProfile = document.querySelector(".nav-profile");
+
+            const seccaoNoticias = document.getElementById("noticias");
+            const seccaoContacto = document.getElementById("contato");
+            const carouselList = document.getElementById('carousel-list');
+            const newsList = document.getElementById('news-list');
+
+            // ==========================================
+            // 1. GESTÃO DINÂMICA DE SUBMENUS (WEB + MOBILE)
+            // ==========================================
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            function fecharSubmenusDescendentes(elemento) {
+                if (!elemento) return;
+                
+                const linkAtivo = elemento.querySelector('a:focus');
+                if (linkAtivo) linkAtivo.blur();
+
+                const submenus = elemento.querySelectorAll('.dropdown-content');
+                submenus.forEach(content => {
+                    content.style.pointerEvents = 'none';
+                    content.style.opacity = '0';
+                    content.style.visibility = 'hidden';
+                    content.style.display = 'none';
+                });
+
+                setTimeout(() => {
+                    submenus.forEach(content => {
+                        content.style.removeProperty('pointer-events');
+                        content.style.removeProperty('opacity');
+                        content.style.removeProperty('visibility');
+                        content.style.removeProperty('display');
+                    });
+                }, 150);
+            }
+
+            function fecharTodosDropdowns() {
+                fecharSubmenusDescendentes(document);
+            }
+
+            let cliqueTimer = null;
+            let contadorCliques = 0;
+            let ultimoMenuClicado = null;
+            const JANELA_TEMPO_DUPLO_CLIQUE = 1000;
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function (e) {
+                    if (!isMobile()) {
+                        e.stopPropagation();
+
+                        const pai = this.parentElement;
+                        if (pai) {
+                            const irmaos = pai.querySelectorAll(':scope > .dropdown');
+                            irmaos.forEach(irmao => {
+                                if (irmao !== this) {
+                                    fecharSubmenusDescendentes(irmao);
+                                }
+                            });
+                        }
+
+                        const submenuAtual = this.querySelector(':scope > .dropdown-content');
+                        if (submenuAtual) {
+                            submenuAtual.style.removeProperty('display');
+                            submenuAtual.style.removeProperty('opacity');
+                            submenuAtual.style.removeProperty('visibility');
+                            submenuAtual.style.removeProperty('pointer-events');
+
+                            submenuAtual.classList.remove('abrir-esquerda');
+                            const rect = submenuAtual.getBoundingClientRect();
+                            const espacoDisponivelDireita = window.innerWidth - rect.right;
+                            if (espacoDisponivelDireita < 10) { 
+                                submenuAtual.classList.add('abrir-esquerda');
+                            }
+                        }
+                    }
+                });
+
+                const linkPrincipal = dropdown.querySelector(':scope > a');
+                if (linkPrincipal) {
+                    linkPrincipal.addEventListener('click', (e) => {
+                        const submenuAtual = dropdown.querySelector(':scope > .dropdown-content');
+
+                        if (submenuAtual) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            if (ultimoMenuClicado !== dropdown) {
+                                clearTimeout(cliqueTimer);
+                                contadorCliques = 0;
+                                ultimoMenuClicado = dropdown;
+                            }
+
+                            contadorCliques++;
+
+                            if (contadorCliques === 1) {
+                                if (isMobile()) {
+                                    const pai = dropdown.parentElement;
+                                    if (pai) {
+                                        const irmaos = pai.querySelectorAll(':scope > .dropdown');
+                                        irmaos.forEach(irmao => {
+                                            if (irmao !== dropdown) {
+                                                const submenusIrmao = irmao.querySelectorAll('.dropdown-content');
+                                                submenusIrmao.forEach(sub => sub.classList.remove('submenu-visivel'));
+                                            }
+                                        });
+                                    }
+                                    submenuAtual.classList.toggle('submenu-visivel');
+                                }
+
+                                cliqueTimer = setTimeout(() => {
+                                    contadorCliques = 0;
+                                }, JANELA_TEMPO_DUPLO_CLIQUE);
+
+                            } else if (contadorCliques === 2) {
+                                clearTimeout(cliqueTimer);
+                                contadorCliques = 0;
+
+                                const targetId = linkPrincipal.getAttribute("href");
+                                if (targetId && targetId.startsWith("#")) {
+                                    navegarParaSecao(targetId);
+                                }
+
+                                if (isMobile()) {
+                                    fecharMenuMobileCompleto();
+                                } else {
+                                    fecharTodosDropdowns();
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+            const todosLinks = document.querySelectorAll('.nav-links a');
+            todosLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const temFilhos = link.parentElement.querySelector(':scope > .dropdown-content');
+                    if (!temFilhos) {
+                        if (isMobile()) {
+                            fecharMenuMobileCompleto();
+                        } else {
+                            fecharTodosDropdowns();
+                        }
+                    }
+                });
+            });
+
+            // ==========================================
+            // 2. ROTAÇÃO DO CARROSSEL
+            // ==========================================
+            if (carouselList) {
+                let animando = false;
+
+                setInterval(() => {
+                    if (animando) return;
+
+                    const primeiroItem = carouselList.firstElementChild;
+                    if (!primeiroItem) return;
+
+                    const larguraItem = primeiroItem.offsetWidth;
+                    animando = true;
+
+                    carouselList.style.transition = 'transform 0.8s ease-in-out';
+                    carouselList.style.transform = `translateX(-${larguraItem}px)`;
+
+                    setTimeout(() => {
+                        carouselList.style.transition = 'none';
+                        carouselList.appendChild(primeiroItem);
+                        carouselList.style.transform = 'translateX(0)';
+                        animando = false;
+                    }, 800);
+
+                }, 4000);
+            }
+
+            // ==========================================
+            // 3. ROTAÇÃO DA GRELHA DE NOTÍCIAS
+            // ==========================================
+            if (newsList) {
+                setInterval(() => {
+                    const emPrimeiro = newsList.firstElementChild;
+                    if (!emPrimeiro) return;
+
+                    emPrimeiro.classList.add('saindo');
+
+                    setTimeout(() => {
+                        emPrimeiro.classList.remove('saindo');
+                        newsList.appendChild(emPrimeiro);
+
+                        const novoSexto = newsList.children[5];
+                        if (novoSexto) {
+                            novoSexto.classList.add('entrando');
+                            setTimeout(() => novoSexto.classList.remove('entrando'), 600);
+                        }
+                    }, 600);
+                }, 8000);
+            }
+
+            // ==========================================
+            // 4. NAVEGAÇÃO E VISIBILIDADE DE SECÇÕES
+            // ==========================================
+            function mostrarPaginaInicial() {
+                seccoes.forEach(seccao => seccao.classList.remove("ativo"));
+                if (carousel) carousel.classList.remove("escondido");
+                if (seccaoNoticias) seccaoNoticias.classList.add("ativo");
+                if (seccaoContacto) seccaoContacto.classList.add("ativo");
+                history.pushState(null, null, window.location.pathname);
+            }
+
+            function navegarParaSecao(targetId) {
+                if (!targetId || !targetId.startsWith("#")) return;
+
+                if (carousel) carousel.classList.add("escondido");
+                
+                // 1. Oculta todas as secções (incluindo os filhos)
+                seccoes.forEach(seccao => seccao.classList.remove("ativo"));
+
+                // 2. Procura e ativa APENAS a secção exata do menu clicado
+                const seccaoAlvo = document.querySelector(targetId);
+                if (seccaoAlvo) {
+                    seccaoAlvo.classList.add("ativo"); // Ativa somente esta secção
+                    seccaoAlvo.scrollIntoView({ behavior: 'smooth' }); // Rola suavemente até ela
+                }
+
+                if (window.location.hash !== targetId) {
+                    history.pushState(null, null, targetId);
+                }
+            }
+
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const targetId = this.getAttribute("href");
+                    if (targetId && targetId.startsWith("#")) {
+                        e.preventDefault();
+                        navegarParaSecao(targetId);
+                    }
+                });
+            });
+
+            if (navProfile) {
+                navProfile.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    mostrarPaginaInicial();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            function carregarEstadoInicialOuHash() {
+                const hash = window.location.hash;
+                if (hash && document.querySelector(hash)) {
+                    navegarParaSecao(hash);
+                } else {
+                    mostrarPaginaInicial();
+                }
+            }
+
+            carregarEstadoInicialOuHash();
+            window.addEventListener("popstate", carregarEstadoInicialOuHash);
+
+            // ==========================================
+            // 5. CONTROLO E LÓGICA DE PESQUISA
+            // ==========================================
+            function executarPesquisa(termo) {
+                const termoFormatado = termo.trim().toLowerCase();
+
+                if (termoFormatado === "") {
+                    carregarEstadoInicialOuHash();
+                    return;
+                }
+
+                if (carousel) carousel.classList.add("escondido");
+
+                let encontrouResultados = false;
+
+                seccoes.forEach(seccao => {
+                    const textoSecao = seccao.textContent.toLowerCase();
+                    
+                    if (textoSecao.includes(termoFormatado)) {
+                        seccao.classList.add("ativo");
+                        encontrouResultados = true;
+                    } else {
+                        seccao.classList.remove("ativo");
+                    }
+                });
+
+                if (!encontrouResultados) {
+                    console.log("Nenhum resultado encontrado para: " + termo);
+                }
+            }
+
+            const searchContainer = document.getElementById('searchContainer');
+            const searchOpenBtn = document.getElementById('searchOpenBtn');
+            const searchCloseBtn = document.getElementById('searchCloseBtn');
+            const searchInput = document.getElementById('searchInput');
+            const navHeader = document.querySelector('.nav-header');
+
+            if (searchOpenBtn && searchContainer) {
+                searchOpenBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    searchContainer.classList.add('ativo');
+                    if (navHeader) navHeader.classList.add('search-active');
+                    if (searchInput) searchInput.focus();
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!searchContainer.contains(e.target)) {
+                        searchContainer.classList.remove('ativo');
+                        if (navHeader) navHeader.classList.remove('search-active');
+                    }
+                });
+
+                if (searchCloseBtn) {
+                    searchCloseBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        searchContainer.classList.remove('ativo');
+                        if (navHeader) navHeader.classList.remove('search-active');
+                    });
+                }
+
+                searchContainer.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    executarPesquisa(e.target.value);
+                });
+            }
+
+            const searchDesktopWrapper = document.getElementById('searchDesktopWrapper');
+            const searchDesktopBtn = document.getElementById('searchDesktopBtn');
+            const searchDesktopClose = document.getElementById('searchDesktopClose');
+            const searchInputDesktop = document.getElementById('searchInputDesktop');
+
+            if (searchDesktopBtn && searchDesktopWrapper) {
+                searchDesktopBtn.addEventListener('click', (e) => {
+                    if (!isMobile()) {
+                        e.stopPropagation();
+                        searchDesktopWrapper.classList.add('ativo');
+                        if (searchInputDesktop) searchInputDesktop.focus();
+                    }
+                });
+
+                if (searchDesktopClose) {
+                    searchDesktopClose.addEventListener('click', (e) => {
+                        if (!isMobile()) {
+                            e.stopPropagation();
+                            searchDesktopWrapper.classList.remove('ativo');
+                        }
+                    });
+                }
+
+                document.addEventListener('click', (e) => {
+                    if (!isMobile() && searchDesktopWrapper && !searchDesktopWrapper.contains(e.target)) {
+                        searchDesktopWrapper.classList.remove('ativo');
+                    }
+                });
+
+                searchDesktopWrapper.addEventListener('click', (e) => {
+                    if (!isMobile()) {
+                        e.stopPropagation();
+                    }
+                });
+            }
+
+            if (searchInputDesktop) {
+                searchInputDesktop.addEventListener('input', (e) => {
+                    if (!isMobile()) {
+                        executarPesquisa(e.target.value);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- ========================================================== -->
+    <!-- MOTOR GOOGLE TRANSLATE (PÁGINA BASE CONFIGURADA PARA 'pt') -->
+    <!-- ========================================================== -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+</body>
+</html>

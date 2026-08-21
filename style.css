@@ -1,0 +1,1299 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #27ae60;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --navbar-height: 80px; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: var(--navbar-height); 
+}
+
+/* --- NAVBAR FIXA --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 2rem;
+    box-sizing: border-box; 
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    color: #ffffff;
+    text-decoration: none; 
+}
+
+.nav-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ecf0f1;
+    border: 2px solid var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    overflow: hidden; 
+    flex-shrink: 0;
+}
+
+.nav-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.nav-role {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #bdc3c7;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem; /* Espaçamento uniforme entre os menus */
+    align-items: center;
+    list-style: none;
+    margin: 0 auto; /* Centra a lista no espaço restante */
+    padding: 0;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--secondary-color);
+    outline: none;
+}
+
+/* --- SISTEMA DE MENUS EM CASCATA (FUNDO E CORES PADRONIZADAS) --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a::after {
+    content: " ▼";
+    font-size: 0.6rem;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+/* --- ADAPTAÇÃO AUTOMÁTICA PARA TELEMÓVEL --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 0.8rem 1rem;
+        gap: 0.8rem;
+    }
+    
+    .nav-profile {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem; /* Espaçamento ajustado para ecrãs pequenos */
+        margin: 0;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+}
+
+/* Regra unificada para TODOS os níveis de dropdown-content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff !important;
+    min-width: 180px;
+    width: max-content;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    z-index: 1001;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* 1. Menu Principal (Abre diretamente para baixo do item pai) */
+.nav-links > .dropdown > .dropdown-content {
+    top: 100%; 
+    left: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+/* 2. Subníveis (2.º nível, 3.º nível, etc. - Abrem para a esquerda) */
+.dropdown-content .dropdown > .dropdown-content {
+    top: 0;
+    right: 100%; 
+    left: auto;
+}
+
+/* Estilo unificado para os links de TODOS os subníveis */
+.dropdown-content a {
+    color: var(--primary-color) !important;
+    background-color: #ffffff !important;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700; /* Alterado para negrito destacado */
+    border-bottom: 1px solid #f1f1f1;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+/* Hover unificado para todos os níveis */
+.dropdown-content a:hover,
+.dropdown-content a:focus-visible {
+    background-color: #f8f9fa !important;
+    color: var(--secondary-color) !important;
+}
+
+/* Revela o dropdown ao passar o rato ou focar */
+.dropdown:hover > .dropdown-content,
+.dropdown:focus-within > .dropdown-content {
+    display: block;
+}
+
+/* --- CONTROLO DE VISIBILIDADE DAS SECÇÕES --- */
+.conteudo-seccao {
+    display: none;
+}
+
+.conteudo-seccao.ativo {
+    display: block;
+}
+
+header {
+    background-color: #34495e;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6rem 1rem; 
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    scroll-margin-top: calc(var(--navbar-height) + 20px); 
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* --- GRELHA DE NOTÍCIAS --- */
+.news-container {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-card-wrapper {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.news-card-wrapper:nth-child(n+7) {
+    display: none;
+}
+
+.news-card {
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-img {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 0.8rem;
+}
+
+.news-date {
+    font-size: 0.72rem;
+    color: #7f8c8d;
+    font-weight: bold;
+}
+
+.news-card h3 {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    color: var(--primary-color);
+}
+
+.news-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+    color: #444444;
+}
+
+.news-card-wrapper.saindo {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.news-card-wrapper.entrando {
+    animation: fadeInNews 0.6s ease forwards;
+}
+
+@keyframes fadeInNews {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a.news-card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: block;
+}
+
+a.news-card-link:hover,
+a.news-card-link:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+a.news-card-link:hover h3 {
+    color: var(--secondary-color);
+}
+
+.link-icon {
+    font-size: 0.75rem;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+/* --- BLOCOS DE CÓDIGO (PRISM / HIGHLIGHT) --- */
+pre[class*="language-"] {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: none;
+    padding: 8px 12px !important; 
+    margin: 10px 0 !important;
+    line-height: 1.3 !important;
+    font-size: 0.95rem;
+    color: #333333;
+    display: block;
+    overflow-x: auto;
+}
+
+code[class*="language-"] {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block;
+}
+
+.token.comment { color: #7fb881 !important; font-style: italic; } 
+.token.function { color: #d35400 !important; font-weight: bold; } 
+.token.string { color: #2e7d32 !important; } 
+.token.number { color: #c0392b !important; } 
+.token.operator, .token.punctuation { color: #2c3e50 !important; }
+.token.keyword { color: #8e44ad !important; }
+
+/* --- REDES SOCIAIS --- */
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.social-links a {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.social-links img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover img,
+.social-links a:focus-visible img {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+}
+
+/* --- CARROSSEL --- */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 20px 0;
+}
+
+#carousel-list {
+    display: flex !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* DESKTOP: 4 Itens fixos (25% cada) */
+#carousel-list li {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    min-width: 25% !important;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#carousel-list img { 
+    width: 100px; 
+    height: 100px; 
+    object-fit: contain;
+    display: block; 
+    margin: 0 auto 9px;
+}
+
+#carousel-list a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+.carousel-container.escondido {
+    display: none !important;
+}
+
+/* MOBILE: 3 Itens fixos (33.333% cada) */
+@media (max-width: 768px) {
+    #carousel-list li {
+        flex: 0 0 33.333% !important;
+        max-width: 33.333% !important;
+        min-width: 33.333% !important;
+    }
+}
+
+/* Animação contínua */
+@keyframes rolarInfinito {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 0.8rem 0;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px !important;
+    }
+
+    .grid { 
+        grid-template-columns: 1fr; 
+    }
+
+    /* Notícias: 2 lado a lado e esconde as restantes */
+    .news-grid { 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem;
+    }
+
+    .news-grid > *:nth-child(n+3) {
+        display: none !important;
+    }
+    
+    /* Navbar topo */
+    .navbar {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        border-radius: 10px;
+        flex-direction: column;
+        padding: 0.8rem 1rem;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        background: #ffffff;
+        border: 1px solid #e1e6eb;
+    }
+
+    .nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .hamburger-btn span {
+        width: 100%;
+        height: 3px;
+        background-color: #1e293b;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-btn.ativo span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    .hamburger-btn.ativo span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-btn.ativo span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    /* NÍVEL 1 - CONTAINER PRINCIPAL */
+    .nav-links {
+        display: none;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+        max-height: 75vh;
+        overflow-y: auto;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #0f172a !important; /* Fundo Base */
+        border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .nav-links.menu-aberto {
+        display: flex !important;
+    }
+
+    .nav-links > a, 
+    .nav-links > .dropdown {
+        display: inline-flex !important;
+        width: auto !important;
+        margin: 0;
+        position: relative;
+    }
+
+    /* ESTILO PADRÃO DOS BOTÕES (TODOS OS NÍVEIS) */
+    .nav-links a, 
+    .nav-links .dropdown-toggle,
+    .dropdown-content a,
+    .dropdown-content .dropdown-toggle {
+        color: #f8fafc !important;
+        background-color: #1e293b !important;
+        padding: 7px 12px;
+        text-decoration: none;
+        display: inline-block !important;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        border: 1px solid #334155 !important;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    /* ESTILO DE CLIQUE E HOVER (AZUL DO NÍVEL 1 PARA TODOS OS BOTÕES) */
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus,
+    .nav-links .dropdown-toggle:hover,
+    .nav-links .dropdown-toggle:active,
+    .nav-links .dropdown-toggle:focus,
+    .dropdown-content a:hover,
+    .dropdown-content a:active,
+    .dropdown-content a:focus,
+    .dropdown-content .dropdown-toggle:hover,
+    .dropdown-content .dropdown-toggle:active,
+    .dropdown-content .dropdown-toggle:focus {
+        background-color: #2563eb !important; /* Azul do Nível 1 */
+        color: #ffffff !important;
+    }
+
+    /* CONTAINERS DE SUBMENUS (NÍVEL 2 E 3) */
+    .dropdown-content,
+    .dropdown-content .dropdown-content {
+        display: none !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.4rem;
+        box-shadow: none !important;
+        border: 1px solid #1e293b !important;
+        background-color: #0f172a !important;
+        border-radius: 6px;
+        margin-top: 6px;
+        padding: 8px;
+        flex-basis: 100%;
+    }
+
+    .dropdown-content.submenu-visivel {
+        display: flex !important;
+    }
+
+    /* CARROSSEL */
+    .carousel-container {
+        margin-top: 15px !important;
+    }
+
+    #carousel-list li {
+        flex: 0 0 33.333% !important;
+        max-width: 33.333% !important;
+        min-width: 33.333% !important;
+        box-sizing: border-box;
+    }
+
+    section {
+        scroll-margin-top: 90px;
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger-btn {
+        display: none;
+    }
+}
+
+/* =========================================================
+   NOVO: MÓDULO DE PESQUISA MOBILE (IMAGEM 1 E 2)
+   (Adicionado exclusivamente para mobile, sem alterar o resto)
+   ========================================================= */
+.search-container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Animação para deslocar a imagem/foto quando a pesquisa ativa */
+    .nav-profile {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-header.search-active .nav-profile {
+        transform: translateX(-12px);
+    }
+
+    /* Container do botão/input de pesquisa */
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 12px;
+    }
+
+    /* Botão da Lupa (Icone da Imagem 1) */
+    .search-icon-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+    }
+
+    /* Caixa do Input (Estilo da Imagem 2) */
+    .search-input-wrapper {
+        display: none;
+        align-items: center;
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 12px;
+        padding: 4px 10px;
+        width: 170px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    /* Alterna os estados ativo/inativo */
+    .search-container.ativo .search-icon-btn {
+        display: none;
+    }
+
+    .search-container.ativo .search-input-wrapper {
+        display: flex;
+    }
+
+    .search-input-wrapper input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.85rem;
+        padding-right: 18px;
+        color: #333333;
+    }
+
+    .search-close-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        color: #000000;
+        padding: 0 2px;
+        line-height: 1;
+    }
+}
+
+/* =========================================================
+   ADICIONAL: MÓDULO DE PESQUISA E IDIOMAS DESKTOP (SOBREPOSIÇÃO)
+   ========================================================= */
+@media (min-width: 769px) {
+    .nav-actions-desktop {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: auto;
+        position: relative;
+    }
+
+    /* Selector de Idioma */
+    .lang-selector-desktop select {
+        background-color: #ffffff;
+        color: #333333;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;       /* Reduzido de 8px para proporcionalidade */
+        padding: 3px 6px;         /* Reduzido de 6px 12px para diminuir a altura e largura */
+        font-size: 0.75rem;       /* Reduzido de 0.85rem */
+        font-weight: 500;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+        max-width: 100px;         /* Limita a largura máxima da caixa */
+    }
+
+    .lang-selector-desktop select:hover,
+    .lang-selector-desktop select:focus {
+        border-color: var(--secondary-color);
+    }
+
+    /* Botão da Lupa */
+    .search-desktop-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-desktop-btn {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+    }
+
+    .search-desktop-btn:hover {
+        color: var(--secondary-color);
+    }
+
+    /* Container de Input em Overlay sobre os Menus */
+    .search-desktop-input-container {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 320px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 4px 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1005; /* Sobrepõe os menus */
+        align-items: center;
+    }
+
+    .search-desktop-wrapper.ativo .search-desktop-input-container {
+        display: flex;
+    }
+
+    .search-desktop-input-container input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.9rem;
+        color: #333333;
+        padding: 4px 8px;
+    }
+
+    .search-desktop-close {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0 4px;
+        line-height: 1;
+    }
+
+    .search-desktop-close:hover {
+        color: #000000;
+    }
+}
+
+/* Esconde a barra de topo do Google Translate */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+/* Impede que o Google empurre o topo do site para baixo */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+/* Esconde tooltips e popups automáticos da Google */
+.goog-tooltip,
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/* --- COMPLEMENTO DESKTOP: LUPA + SELECTOR SOBREPOSTO --- */
+@media (min-width: 769px) {
+    /* Ajuste no container de ações para alinhamento à direita */
+    .nav-actions-desktop {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+        position: relative;
+    }
+
+    /* Input suspenso que se sobrepõe aos menus */
+    .search-desktop-input-container {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 280px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 4px 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        z-index: 1010; /* Garante que fica por cima dos menus (.navbar z-index é 1000) */
+        align-items: center;
+    }
+
+    .search-desktop-wrapper.ativo .search-desktop-input-container {
+        display: flex;
+    }
+}
+/* 1. Esconde completamente o bloco em qualquer ecrã por padrão (Mobile first) */
+.nav-actions-desktop {
+    display: none !important;
+}
+
+/* 2. Ativa o bloco APENAS em telas de Desktop (a partir de 769px) */
+@media (min-width: 769px) {
+    .nav-actions-desktop {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+        position: relative;
+    }
+}
+
+/* Oculta o iframe e todas as variações do topo do Google Translate */
+iframe.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+div.skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+/* Força a página a permanecer no topo absoluto */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+/* Remove caixas de destaque ou pop-ups de texto ao passar o rato */
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight {
+    display: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+/* =========================================================
+   AJUSTE MOBILE: IDIOMA ENTRE A PESQUISA E O HAMBÚRGUER
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 1. Ativa e estiliza o selector de idioma exclusivamente no mobile */
+    .lang-selector-mobile {
+        display: flex !important;
+        align-items: center;
+        order: 2; /* Posiciona entre a pesquisa e o hambúrguer */
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .lang-selector-mobile select {
+        background-color: #ffffff;
+        color: #333333;
+        border: 1.5px solid var(--secondary-color, #27ae60);
+        border-radius: 6px;
+        padding: 0 2px !important;    /* Remove recuos internos que empurram a caixa */
+        font-size: 0.6rem;
+        font-weight: 600;
+        outline: none;
+        cursor: pointer;
+        height: 24px;
+        max-width: 36px; /* Controla a largura máxima da caixa */
+        max-width: 50px;    /* Limite máximo bem justo */
+        text-overflow: ellipsis;   /* Mantém as reticências ("Fr...", "Po...") */
+        white-space: nowrap;
+        flex-shrink: 0;
+        max-width: 50px !important;
+        min-width: 70px !important;    /* Impede o navegador de expandir */
+        flex-shrink: 0;
+        text-align: center;
+        
+        /* O pulo do gato: remove a seta nativa para a caixa conseguir encolher */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    /* 2. Define a ordem dos elementos no topo (nav-header) */
+    .nav-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .nav-profile {
+        order: 1;
+    }
+
+    .search-container {
+        order: 2;
+        margin-right: 6px !important;
+        margin-left: auto !important;
+    }
+
+    .hamburger-btn {
+        order: 4;
+    }
+}
+
+/* Oculta o seletor mobile por padrão em telas grandes */
+@media (min-width: 769px) {
+    .lang-selector-mobile {
+        display: none !important;
+    }
+}
+
+/* --- SECÇÃO NEWSLETTER (NOVO) --- */
+.newsletter-section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.newsletter-section p {
+    color: #444444;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+    max-width: 650px;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    background-color: #1e293b; /* Fundo escuro conforme o layout */
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #94a3b8;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--secondary-color);
+}
+
+.newsletter-btn {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    border-radius: 25px; /* Formato arredondado/pílula igual à Imagem 3 */
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.newsletter-btn:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+.newsletter-btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   CORREÇÃO GLOBAL DE OVERFLOW (MARGENS)
+   ========================================== */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   1. CORREÇÃO DA NEWSLETTER (MOBILE E WEB)
+   ========================================== */
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.newsletter-form input[type="email"] {
+    min-width: 0; /* Impede o input de esticar além do container */
+    flex: 1;
+}
+
+/* No ecrã pequeno, empilha o input e o botão */
+@media (max-width: 600px) {
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .newsletter-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   2. CORREÇÃO DO HEADER E SECTOR DE IDIOMA (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    .nav-actions-desktop,
+    .nav-header,
+    .search-desktop-wrapper {
+        max-width: 100%;
+    }
+
+    /* Reduz o tamanho do select de idiomas no telemóvel para não sair da margem */
+    select:not(.goog-te-combo) {
+        max-width: 90px;
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+}
+
+/* ==========================================
+   3. CORREÇÃO DO MENU DENSAS (DESKTOP / IMAGEM 3)
+   ========================================== */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap; /* Permite ajustar caso haja muitos itens */
+    align-items: center;
+    gap: 15px;
+    max-width: 100%;
+}
+/* ==========================================
+   CORREÇÃO DO MENU MOBILE (OCULTO POR DEFEITO)
+   ========================================== */
+
+/* Em ecrãs pequenos (Mobile): Oculto até ser ativado */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none !important; /* Força o menu a ficar escondido */
+    }
+
+    /* Mostra o menu APENAS quando tem a classe 'menu-aberto' */
+    .nav-links.menu-aberto {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/* Em ecrãs grandes (Desktop): Sempre visível em linha */
+@media (min-width: 769px) {
+    /* Centraliza exclusivamente a lista do menu */
+    .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px 18px !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        flex: 1 !important;
+    }
+
+    /* Mantém cada item do menu alinhado internamente */
+    .nav-links > a,
+    .nav-links > .dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* 1. Esconde a newsletter por padrão e em todas as abas internas */
+.newsletter-section.conteudo-seccao {
+    display: none !important;
+}
+
+/* 2. Mostra a newsletter APENAS quando a secção de notícias/home estiver ativa */
+#noticias.ativo ~ #newsletter,
+#noticias.ativo ~ .newsletter-section {
+    display: block !important;
+}
+
+/* ESTILIZAÇÃO DOS BLOCOS / SUBMENUS APARECEM EM BLOCOS DENTRO DO MENU */
+.bloco-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.bloco-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bloco-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.bloco-icone {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #a3d900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.bloco-topo h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+
+.bloco-card p {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bloco-btn {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(90deg, #48bb78, #ecc94b);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+}
