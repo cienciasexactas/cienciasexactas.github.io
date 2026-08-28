@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="FotoPerfil.jpg">
+    <title>Prof. Wadiley | Ciências Exactas</title>
+
+    <!-- FONT AWESOME PARA ÍCONES DAS REDES SOCIAIS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- LIGAÇÃO AO FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 1. Chama o seu script externo PRIMEIRO (sem defer e sem async) -->
+    <script src="script.js"></script>
+
+    <!-- 2. Chama o MathJax LOGO EM SEGUIDA (ele vai ler a configuração criada no script.js) -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- PRISM.JS PARA DESTACAR SINTAXE DE CÓDIGO -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+
+    <!-- EMAILJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- ESTILO PARA OS SUBMENUS EM CASCATA -->
+    <style>
+        .dropdown { position: relative; }
+        .dropdown .dropdown-content { display: none; position: absolute; left: 100%; top: 0; min-width: 180px; }
+        .dropdown:hover > .dropdown-content { display: block; }
+        .nav-links > .dropdown > .dropdown-content { left: 0; top: 100%; }
+
+        /* Controlo de visibilidade das secções */
+        .conteudo-seccao { display: none; }
+        .conteudo-seccao.ativo { display: block; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR FIXA / RESPONSIVA -->
+    <nav class="navbar">
+        <!-- 1. CABEÇALHO DA NAVBAR (Perfil + Botão Hambúrguer para Mobile) -->
+        <div class="nav-header">
+            <!-- Perfil / Logo -->
+            <a href="#" class="nav-profile">
+            <div class="nav-photo">
+                <img src="FotoPerfil.jpg" alt="Perfil">
+            </div>
+            </a>
+
+            <!-- Área da Pesquisa (Mobile) -->
+            <div class="search-container" id="searchContainer">
+            <button type="button" class="search-icon-btn" id="searchOpenBtn" aria-label="Abrir Pesquisa">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+
+            <div class="search-input-wrapper" id="searchInputWrapper">
+                <input type="text" id="searchInput" placeholder="Pesquisar..." autocomplete="off">
+                <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Fechar Pesquisa">&times;</button>
+            </div>
+            </div>
+
+            <!-- 3. Selector de Idioma Mobile (NOVO) -->
+            <div class="lang-selector-mobile notranslate">
+                <select id="select-idioma-mobile" onchange="trocarIdiomaGoogle(this.value, event)">
+                    <option value="pt">Português</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ru">Русский</option>
+                    <option value="zh-CN">中文 (S)</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="pl">Polski</option>
+                    <option value="sv">Svenska</option>
+                    <option value="el">Ελληνικά</option>
+                    <option value="he">עברית</option>
+                    <option value="ro">Română</option>
+                    <option value="uk">Українська</option>
+                </select>
+            </div>
+
+            <!-- Botão Hambúrguer -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+        </div>
+
+        <!-- 2. CONJUNTO DE LINKS (Com id="navLinks" adicionado para o JavaScript) -->
+        <div class="nav-links" id="navLinks">
+            <a href="#areas">Especialização</a>
+
+            <!-- MENU: Estatística I (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-i">Estatística Descritiva</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Exploração de Dados Univariados -->
+                    <div class="dropdown">
+                        <a href="#estat-univariados">Exploração de Dados Uni-Variada</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-nocoes">Noções Gerais</a>
+                            <a href="#estat-freq">Distribuição de Frequências</a>
+                            <a href="#estat-graficos">Gráficos</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Medidas Resumo -->
+                    <div class="dropdown">
+                        <a href="#estat-medidas">Medidas Resumo</a>
+                        <div class="dropdown-content">
+                            
+                            <!-- Nível 2.1: Medidas de Tendência Central -->
+                            <div class="dropdown">
+                                <a href="#estat-posicao">M. de Tendência Central</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-media">Média</a>
+                                    <a href="#estat-moda">Moda</a>
+                                    <a href="#estat-mediana">Mediana</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 2.2: Medidas de Tendência Não Central -->
+                            <div class="dropdown">
+                                <a href="#estat-separatrizes">M. de Tendência Não Central</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-quartis">Quartis e Decéis</a>
+                                    <a href="#estat-percentis">Percentis</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 2.3: Medidas de Dispersão -->
+                            <div class="dropdown">
+                                <a href="#estat-dispersao">M. de Dispersão</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-variancia">Variância e Desvio-Padrão</a>
+                                    <a href="#estat-cv">Coeficiente de Variação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 2.4: Medidas de Assimetria -->
+                            <div class="dropdown">
+                                <a href="#estat-assimetria">M. de Assimetria</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-pearson">Índice de Pearson</a>
+                                    <a href="#estat-bowley">Medida de Bowley</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 2.5: Medidas de Forma -->
+                            <div class="dropdown">
+                                <a href="#estat-forma">M. de Forma</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-assimetria-coef">Coeficientes de Assimetria</a>
+                                    <a href="#estat-curtose">Curtose</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Exploração de Dados Bi-Variádos -->
+                    <div class="dropdown">
+                        <a href="#estat-bivariados">Exploração de Dados Bi-Variádos</a>
+                        <div class="dropdown-content">
+
+                            <!-- Nível 3.1: Associação entre Variáveis -->
+                            <div class="dropdown">
+                                <a href="#estat-associacao">Associação entre Variáveis</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-ass-distribuicaoconjunta">Distribuição Conjunta</a>
+                                    <a href="#estat-estpont-metodos">Medidas de Assiciação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.2: Correlação entre Variáveis -->
+                            <div class="dropdown">
+                                <a href="#estat-correlacao">Correlação entre Variáveis</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-cor-distribuicaoconjunta">Distribuição Conjunta</a>
+                                    <a href="#estat-representacaografica">Representação Gráfica</a>
+                                    <a href="#estat-medidasdecorrelacao">Medidas de Correlação</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- MENU: Estatística II (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Teoria de Probabilidade</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Probabilidade -->
+                    <div class="dropdown">
+                        <a href="#estat-prob">Probabilidade;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-val">Variáveis Aleatórias</a>
+                            <a href="#estat-distp">Distribuição de Probabilidades</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Teoria da Amostragem</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Composição da Amostra</a>
+                            <a href="#estat-dim">Dimensão da Amostra</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Inferência Estatística -->
+                    <div class="dropdown">
+                        <a href="#estat-inf">Inferência Estatística</a>
+                        <div class="dropdown-content">
+
+                            <!-- Nível 3.1: Estimação Pontual -->
+                            <div class="dropdown">
+                                <a href="#estat-estpont">Estimação Pontual</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-estpont-detalhe">Conceitos e Propriedades</a>
+                                    <a href="#estat-estpont-metodos">Métodos de Estimação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.2: Estimação por Intervalo -->
+                            <div class="dropdown">
+                                <a href="#estat-estint">Estimação por Intervalo</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-ic-media">IC para a Média</a>
+                                    <a href="#estat-ic-proporcao">IC para Proporção</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.3: Teoria de Decisão -->
+                            <div class="dropdown">
+                                <a href="#estat-hip">Teoria de Decisão</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-erros-tipo">Erros Tipo I e II</a>
+                                    <a href="#estat-testes-hipotese">Testes de Hipótese</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+                        <!-- MENU: Estatística Inferencial (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Inferência Estatística</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Teoria da Amostragem</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Composição da Amostra</a>
+                            <a href="#estat-dim">Dimensão da Amostra</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Teoria de Estimação -->
+                    <div class="dropdown">
+                        <a href="#estat-inf">Teoria de Estimação</a>
+                        <div class="dropdown-content">
+
+                            <!-- Nível 3.1: Estimação Pontual -->
+                            <div class="dropdown">
+                                <a href="#estat-estpont">Estimação Pontual</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-estpont-detalhe">Conceitos e Propriedades</a>
+                                    <a href="#estat-estpont-metodos">Métodos de Estimação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.2: Estimação por Intervalo -->
+                            <div class="dropdown">
+                                <a href="#estat-estint">Estimação por Intervalo</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-ic-media">IC para a Média</a>
+                                    <a href="#estat-ic-proporcao">IC para Proporção</a>
+                                    <a href="#estat-ic-despadrao">IC para Desvio Padrão</a>
+                                    <a href="#estat-ic-razvarianca">IC para Razão de Variâncias</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Teoria de Decisão -->
+                    <div class="dropdown">
+                        <a href="#estat-hip">Teoria de Decisão</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-erros-tipo">Erros Tipo I e II</a>
+                            <a href="#estat-testes-hipotese">Testes de Hipótese</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- MENU: Estatística II (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Análise de Regressão</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Probabilidade -->
+                    <div class="dropdown">
+                        <a href="#estat-prob">Probabilidade;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-val">Variáveis Aleatórias</a>
+                            <a href="#estat-distp">Distribuição de Probabilidades</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Teoria da Amostragem</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Composição da Amostra</a>
+                            <a href="#estat-dim">Dimensão da Amostra</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Inferência Estatística -->
+                    <div class="dropdown">
+                        <a href="#estat-inf">Inferência Estatística</a>
+                        <div class="dropdown-content">
+
+                            <!-- Nível 3.1: Estimação Pontual -->
+                            <div class="dropdown">
+                                <a href="#estat-estpont">Estimação Pontual</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-estpont-detalhe">Conceitos e Propriedades</a>
+                                    <a href="#estat-estpont-metodos">Métodos de Estimação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.2: Estimação por Intervalo -->
+                            <div class="dropdown">
+                                <a href="#estat-estint">Estimação por Intervalo</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-ic-media">IC para a Média</a>
+                                    <a href="#estat-ic-proporcao">IC para Proporção</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.3: Teoria de Decisão -->
+                            <div class="dropdown">
+                                <a href="#estat-hip">Teoria de Decisão</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-erros-tipo">Erros Tipo I e II</a>
+                                    <a href="#estat-testes-hipotese">Testes de Hipótese</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- MENU: NÚMEROS ÍNDICES (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Números Índices</a>
+                <div class="dropdown-content">
+                    <!-- Submenu 1: Probabilidade -->
+                    <a href="#estat-prob">Índice de Gini</a>
+ 
+                    <!-- Submenu 2: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Índide Composto</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Índe de Laspeyres</a>
+                            <a href="#estat-dim">Índice de Paasches</a>
+                            <a href="#estat-dim">Índice de Valor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MENU: Estatística II (Com Submenus em Cascata) -->
+            <div class="dropdown">
+                <a href="#estatistica-ii">Análise de Variância</a>
+                <div class="dropdown-content">
+                    
+                    <!-- Submenu 1: Probabilidade -->
+                    <div class="dropdown">
+                        <a href="#estat-prob">Probabilidade;</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-val">Variáveis Aleatórias</a>
+                            <a href="#estat-distp">Distribuição de Probabilidades</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 2: Teoria da Amostragem -->
+                    <div class="dropdown">
+                        <a href="#estat-amost">Teoria da Amostragem</a>
+                        <div class="dropdown-content">
+                            <a href="#estat-comp">Composição da Amostra</a>
+                            <a href="#estat-dim">Dimensão da Amostra</a>
+                        </div>
+                    </div>
+
+                    <!-- Submenu 3: Inferência Estatística -->
+                    <div class="dropdown">
+                        <a href="#estat-inf">Inferência Estatística</a>
+                        <div class="dropdown-content">
+
+                            <!-- Nível 3.1: Estimação Pontual -->
+                            <div class="dropdown">
+                                <a href="#estat-estpont">Estimação Pontual</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-estpont-detalhe">Conceitos e Propriedades</a>
+                                    <a href="#estat-estpont-metodos">Métodos de Estimação</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.2: Estimação por Intervalo -->
+                            <div class="dropdown">
+                                <a href="#estat-estint">Estimação por Intervalo</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-ic-media">IC para a Média</a>
+                                    <a href="#estat-ic-proporcao">IC para Proporção</a>
+                                </div>
+                            </div>
+
+                            <!-- Nível 3.3: Teoria de Decisão -->
+                            <div class="dropdown">
+                                <a href="#estat-hip">Teoria de Decisão</a>
+                                <div class="dropdown-content">
+                                    <a href="#estat-erros-tipo">Erros Tipo I e II</a>
+                                    <a href="#estat-testes-hipotese">Testes de Hipótese</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MENU: Recursos -->
+            <div class="dropdown">
+                <a href="#recursos">Recursos</a>
+                <div class="dropdown-content">
+                    <a href="#doc-aulas">Notas de Aula (Slides)</a>
+                    <a href="#doc-metodologia">Metodologia (Syllabus)</a>
+                    <a href="#doc-bibliografia">Bibliografia</a>
+                </div>
+            </div>
+
+            <a href="#areas">Testes & Exames</a>
+
+        </div>
+        <!-- ÁREA DIREITA (Desktop): Lupa + Selector de Idioma -->
+        <div class="nav-actions-desktop">
+            <div class="search-desktop-wrapper" id="searchDesktopWrapper">
+                <button type="button" class="search-desktop-btn" id="searchDesktopBtn" aria-label="Pesquisar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <div class="search-desktop-input-container">
+                    <input type="text" id="searchInputDesktop" placeholder="Pesquisar..." autocomplete="on" />
+                    <button type="button" class="search-desktop-close" id="searchDesktopClose">&times;</button>
+                </div>
+            </div>
+
+            <div class="lang-selector-desktop">
+                <select id="langSelect">
+                    <option value="pt">Português (Portugal)</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- CARROSSEL DE DESTAQUES -->
+    <div class="carousel-container">
+        <ul id="carousel-list">
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/anova" target="_blank" rel="noopener noreferrer">
+                    <img src="ANOVA.png" alt="ANOVA"> 
+                    <span>ANOVA</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/survivalanalysis" target="_blank" rel="noopener noreferrer">
+                    <img src="Sobrevivencia.png" alt="Survival"> 
+                    <span>Survival</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/gestaorcamental" target="_blank" rel="noopener noreferrer">
+                    <img src="Gorcamental.jpg" alt="G. Orçamental"> 
+                    <span>G. Orçamental</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/estatisticai" target="_blank" rel="noopener noreferrer">
+                    <img src="EstatisticaI.jpg" alt="Estatística I"> 
+                    <span>Estatística I</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://rpubs.com/WadileyNascimento/estatisticaii" target="_blank" rel="noopener noreferrer">
+                    <img src="EstatisticaII.jpg" alt="Estatística II"> 
+                    <span>Estatística II</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+
+        <!-- Secção de Notícias (Grelha Dinâmica Visível por Defeito) -->
+        <section id="noticias" class="conteudo-seccao ativo">
+            <h2>Últimas Notícias & Avisos</h2>
+            <div class="news-container">
+                <ul id="news-list" class="news-grid">
+
+                    <!-- Notícia 1 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://rpubs.com/wadileynascimento" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia1.jpg" alt="Aulas"></div>
+                            <div class="news-content">
+                                <span class="news-date">17 Ago 2026</span>
+                                <h3>Início do Semestre Académico <span class="link-icon">↗</span></h3>
+                                <p>Publicados os horários de atendimento e calendário das aulas do 2.º Ciclo.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 2 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://www.facebook.com/photo?fbid=1688107906655350&set=pb.100063684715351.-2207520000" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="OFomativa.jpg" alt="Guiões"></div>
+                            <div class="news-content">
+                                <span class="news-date">14 Ago 2026</span>
+                                <h3>Ofertas Formativas 2026/2027 <span class="link-icon">↓</span></h3>
+                                <p>As Inscrições decorrem até ao dia 28 de Agosto.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 3 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia3.jpg" alt="Workshop"></div>
+                            <div class="news-content">
+                                <span class="news-date">10 Ago 2026</span>
+                                <h3>Workshop de Linguagem R</h3>
+                                <p>Sessão prática sobre modelação e testes de hipóteses na próxima semana.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 4 -->
+                    <li class="news-card-wrapper">
+                        <a href="documento.pdf" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia4.jpg" alt="Investigação"></div>
+                            <div class="news-content">
+                                <span class="news-date">05 Ago 2026</span>
+                                <h3>Propostas de Investigação <span class="link-icon">📄</span></h3>
+                                <p>Abertura de candidaturas para acompanhamento em Ciências Naturais.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 5 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia5.jpg" alt="Bibliografia"></div>
+                            <div class="news-content">
+                                <span class="news-date">01 Ago 2026</span>
+                                <h3>Atualização da Bibliografia</h3>
+                                <p>Novos manuais de Bioestatística e Metodologia Científica no repositório.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 6 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia6.jpg" alt="YouTube"></div>
+                            <div class="news-content">
+                                <span class="news-date">28 Jul 2026</span>
+                                <h3>Vídeo-Aulas no YouTube <span class="link-icon">↗</span></h3>
+                                <p>Conteúdos demonstrativos e resolução de exercícios no canal.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                    <!-- Notícia 7 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia7.jpg" alt="Atendimento"></div>
+                            <div class="news-content">
+                                <span class="news-date">20 Jul 2026</span>
+                                <h3>Sessões de Dúvidas</h3>
+                                <p>Atendimento presencial e online mediante agendamento prévio.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 8 -->
+                    <li class="news-card-wrapper">
+                        <article class="news-card">
+                            <div class="news-img"><img src="noticia8.jpg" alt="Avaliação"></div>
+                            <div class="news-content">
+                                <span class="news-date">15 Jul 2026</span>
+                                <h3>Resultados da Avaliação</h3>
+                                <p>Pauta final das submissões do projeto de BioEstatística disponível.</p>
+                            </div>
+                        </article>
+                    </li>
+
+                    <!-- Notícia 9 -->
+                    <li class="news-card-wrapper">
+                        <a href="https://instagram.com" target="_blank" class="news-card news-card-link">
+                            <div class="news-img"><img src="noticia9.jpg" alt="Jornadas"></div>
+                            <div class="news-content">
+                                <span class="news-date">10 Jul 2026</span>
+                                <h3>Jornadas Pedagógicas <span class="link-icon">↗</span></h3>
+                                <p>Divulgação dos resumos e apresentações das conferências.</p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Áreas de Especialização -->
+        <section id="areas" class="conteudo-seccao">
+            <h2>Áreas de Especialização (2.º Ciclo)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Ciências Naturais</h3>
+                    <p>Exploração dos ecossistemas, sustentabilidade ambiental, corpo humano e biodiversidade.</p>
+                </div>
+                <div class="card">
+                    <h3>Ciências Sociais</h3>
+                    <p>Compreensão da geografia humana, dinâmicas demográficas, cidadania e organização da sociedade atual.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÕES DE PROGRAMAS -->
+        <section id="Programas" class="conteudo-seccao">
+            <h2>Programas Curriculares</h2>
+            <p>Visão geral das unidades curriculares lecionadas.</p>
+            <div class="bloco-container">
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="prog-estai" class="conteudo-seccao">
+            <h2>Estatística I</h2>
+            <p>Estudo descritivo de dados, medidas de tendência central e dispersão.</p>
+        </section>
+
+        <section id="prog-estaii" class="conteudo-seccao">
+            <h2>Estatística II</h2>
+            <p>Aprofundamento de inferência estatística e testes de hipóteses.</p>
+        </section>
+
+        <section id="prog-bioesta" class="conteudo-seccao">
+            <h2>BioEstatística</h2>
+            <p>Aplicação de métodos estatísticos em ciências biológicas e de saúde.</p>
+        </section>
+
+            <!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
+<section id="estatistica-i" class="conteudo-seccao" data-grupo="estat1"> <h2>ESTATÍSTICA DESCRITIVA</h2> <div class="texto-livreAuto">
+
+A origem da estatística remonta a tempos antigos, em que vários povos já coletavam e registravam dados cen sitários para eventual tomada de decisão. Também eram realizadas estimativas das riquezas individuais e familiares, e cálculos de arrecadação de impostos eram feitos com base nas informações obtidas.
+
+A própria Bíblia traz informações estatísticas sobre a evolução ou involução territorial de diversos povos. A palavra estatística vem de status, que significa Estado em latim. O termo era utilizado para descrever e designar um conjunto de dados relativos aos Estados, tornando a estatística um meio de administração para os governantes com a finalidade de controle fiscal e segurança nacional.
+
+No século XIX, ela começou a ganhar im portância em outras áreas do conhecimento humano. Já a partir do século XX, passou a ser utilizada, nas grandes empresas e organizações, com o enfoque da quantidade total, tornando-se um atributo de diferencial competitivo.
+
+Nesse contexto, a estatística desenvolveu-se, ao longo dos séculos, alicerçada em conjuntos de métodos e proces sos destinados a estudar e medir os fenômenos coletivos.
+
+Neste sentido, a estatística pode ser definida como a ciência que tem por objetivo a coleta, análise e interpretação de dados qualitativos e quantitativos. Ou ainda, como um conjunto de métodos para coleta, organização, resumo, análise e interpretação de dados para tomada de decisões.
+
+<div class="texto-livreAuto"> <h3> Objetivo Fundamental da Estatística </h3> </div>
+
+A Estatística fornece aos gestores instrumentos para que possam responder as preocupações e tomar decisões com alguma confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são de elevada incerteza.
+
+O objectivo fundamental da Estatística é extrair informações confiáveis a partir dos dados recolhidos para a tomada de decisão.
+
+A estatística está dividida em três grandes partes: estatística descritiva ou dedutiva, estatística probabilística e estatística inferencial ou indutiva. Alguns autores, porém, consideram a estatística probabilística como parte da estatística inferencial.
+
+</div> 
+           <div class="bloco-container">
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Exploração de Dados Uni-Variados</h3>
+                    </div>
+                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos seus dados de forma isolada.</p>
+                    <a href="estat-univariados" class="bloco-btn">Explorar Variável</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Medidas Resumo</h3>
+                    </div>
+                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância, desvio-padrão e amplitude).</p>
+                    <a href="estat-medidas" class="bloco-btn">Ver Medidas</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Exploração de Dados Bi-Variados</h3>
+                    </div>
+                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões, correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com precisão.</p>
+                    <a href="estat-bivariados" class="bloco-btn">Analisar Relações</a>
+                </div>
+            </div>
+</section>
+
+<section id="estat-univariados" class="conteudo-seccao" data-grupo="estat1"> <h2>EXPLORAÇÃO DE DADOS UNI-VARIADOS </h2> <div class="texto-livreAuto">
+
+A Estatística é um conjunto de técnicas que permite, de forma sistemática, organizar, descrever, analisar e interpretar dados provenientes de estudos ou experimentos realizados em qualquer área do conhecimento.
+
+A Estatística Descritiva constitui a etapa inicial da análise de dados, sendo utilizada para descrever e resumir informações. Com o avanço dos métodos computacionais e a crescente disponibilidade de dados, essa área ganhou ainda mais relevância. Ela permite sintetizar as principais características de um conjunto de dados por meio de: i) tabelas; ii) gráficos e iii) medidas-resumo (como média, mediana, etc.). Essas ferramentas ajudam o pesquisador a compreender melhor o comportamento dos dados.
+
+A análise descritiva é feita apenas com base na amostra estudada, sem realizar generalizações ou inferências sobre a população. Dependendo do número de variáveis analisadas, a estatística descritiva pode ser: i) Univariada: análise de uma única variável; ii) Bivariada: análise de duas variáveis ou iii) Multivariada: análise de três ou mais variáveis
+
+A Inferência Estatística envolve um conjunto de técnicas que permite generalizar ou extrapolar para uma população maior as conclusões obtidas a partir de uma amostra. Ou seja, enquanto a estatística descritiva apenas descreve os dados, a inferência estatística vai além, permitindo tirar conclusões e apoiar a tomada de decisões com base em evidências.
+
+A Estatística fornece aos gestores instrumentos que lhes permitem responder às suas preocupações e tomar decisões com algum grau de confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são marcadas por elevada incerteza.
+
+Dentre os elementos básicos da estatística, podemos citar população (ou universo), amostra, censo, variável, dados e parâmetros. As definições de cada termo estão a seguir.
+
+População ou Universo é o conjunto que contém todos os indivíduos, objectos ou elementos a serem estudados, que apresentam uma ou mais características em comum.
+
+Exemplo: O conjunto de idades de todos os alunos da USTP, o conjunto de rendas de todos os habitantes de Água Grande, o conjunto de pesos de todas as crianças nascidas em Mé-Zochi, etc.
+
+Amostra é o subconjunto extraído da população para análise, devendo ser representativo daquele grupo. A partir das informações colhidas na amostra, os resultados obtidos poderão ser utilizados para generalizar, inferir ou tirar conclusões acerca dessa população (inferência estatística). O processo de escolha de uma amostra da população é denominado amostragem.
+
+Como exemplo, podemos citar o caso em que a população é representada por todos os eleitores brasileiros e a amostra é extraída de municípios representativos, onde os eleitores são escolhidos de acordo com a proporcio nalidade de gênero, idade, grau de instrução e classe social.
+
+Censo ou recenseamento, é o estudo dos dados relativos a todos os elementos da população. ONU define censo como o conjunto das operações que consiste em recolher, agrupar e publicar dados demográficos, económicos e sociais relativos a determinado momento ou em certos períodos, a todos os habitantes de um país ou território.
+
+Um censo pode custar muito caro e demandar um tempo considerável, de forma que um estudo consideran do parte dessa população pode ser uma alternativa mais simples, rápida e menos custosa.
+
+Dados: podem ser considerados a matéria-prima de qualquer análise estatística e de qualquer modelagem exploratória ou confirmatória. A partir deles, podem ser obtidas informações de interesse correspondentes a uma ou mais variáveis.
+
+Rol: o arranjo dos dados em ordem crescente ou decrescente.
+
+Parâmetro: medidas estatísticas numéricas que precisam ser estimadas a partir de critérios ou métodos definidos pelo pesquisador para representar determinadas características da população geralmente desconhecidas.
+
+Variável é uma característica ou atributo que se deseja observar, medir ou contar, a fim de se obter algum tipo de conclusão. Como exemplos, podemos citar o sector de actuação, o facturamento ou a quantidade de funcionários de empresas listadas na Bolsa de Valores.
+
+
+<div class="texto-livreAuto"> <h2> Etapas do Método Estatístico </h2> </div>
+
+Os resultados válidos só é possível seguindo os passos que definem o método estatístico de resolução do problemas:
+
+Identificação do problema: Esta é a fase inicial e uma das mais importantes. O problema deve ser definido de forma clara e objetiva, pois disso dependem todas as etapas seguintes. Nesta fase, determina-se o que se pretende estudar e quais decisões poderão ser tomadas com base nos resultados. Pode-se recorrer a informação já existente para ajudar a formular melhor o problema.
+
+Recolha de dados: Depois de definido o problema, procede-se à recolha de dados adequados, relevantes e tão completos quanto possível. Os dados podem ser: i) Primários: obtidos diretamente pelo investigador (inquéritos, entrevistas, observação), ou ii) Secundários: já existentes (publicações, estatísticas oficiais, relatórios). As fontes podem ser: i) Internas (dentro de uma organização) ou ii) Externas (instituições públicas, empresas, etc.). A recolha pode ser: i) Contínua, ii) periódica ou iii) ocasional
+
+Caso a informação disponível seja insuficiente ou desatualizada, pode ser necessário recolher novos dados, o que aumenta a precisão, mas também os custos e o tempo do estudo.
+
+Crítica dos dados: Após a recolha, os dados devem ser analisados criticamente. Esta etapa consiste em: i) detetar erros; ii) eliminar valores incoerentes ou extremos e iii) verificar a qualidade e fiabilidade dos dados
+
+É essencial para garantir que os resultados finais não sejam distorcidos ou incorretos.
+
+Apresentação dos dados: Os dados devem ser organizados de forma clara e lógica para facilitar a sua compreensão. Utilizam-se: i) tabelas; ii) gráficos; iii) medidas estatísticas (média, mediana, etc.)
+
+Esta etapa está ligada à estatística descritiva e tem como objetivo tornar a informação mais acessível e interpretável.
+
+Análise e interpretação dos resultados: Nesta fase, os dados são analisados e interpretados com o objetivo de tirar conclusões. Os resultados devem ser avaliados com cuidado, tendo em atenção possíveis erros ou enviesamentos, que podem surgir devido a: i) dados inadequados; ii) métodos mal escolhidos ou iii) comparações incorretas.
+
+As conclusões obtidas permitem compreender o fenómeno estudado e apoiar a tomada de decisões.
+
+<div class="texto-livreAuto"> <h2> TIPOS DE VARIÁVEIS </h2> </div>
+
+O tipo de variável recolhida é crucial no cálculo de estatísticas descritivas e na representação gráfica de resultados, bem como na escolha de métodos estatísticos a serem utilizados para analisar os dados.
+
+Métricas ou quantitativas representam características de um indivíduo, objecto ou elemento resultantes de uma contagem (conjunto finito de valores) ou de uma mensuração (conjunto infinito de valores).
+
+As variáveis quantitativas podem ser representadas de forma gráfica (gráfico de linhas, dispersão, histograma, ramo-e-folhas e boxplot), por meio de medidas de posição ou localização (média, mediana, moda, quartis, decis e percentis), medidas de dispersão ou variabilidade (amplitude, desvio-médio, variância, desvio-padrão, erro-padrão e coeficiente de variação) ou ainda por meio das medidas de forma como assimetria e curtose.
+
+Não métricas ou qualitativas representam características de um indivíduo, objecto ou elemento que não podem ser medidas ou quantificadas. As respostas são dadas em categorias.
+
+A representação das características da variável não métrica ou qualitativa pode ser feita por meio de tabelas de distribuição de frequências ou de forma gráfica, sem o cálculo de medidas de posição, dispersão e de formato. A única exceção é em relação à moda, medida que fornece o valor mais fre quente de uma variável, podendo também ser aplicada para variáveis não métricas.
+
+<div class="texto-livreAuto"> <h2> Escala de Mensuração </h2> </div>
+
+As variáveis ainda podem ser classificadas de acordo com o nível ou escala de mensuração. Mensuração é o processo de atribuir números ou rótulos a objetos, pessoas, estados ou eventos de acordo com as regras específicas para representar quantidades ou qualidades dos atributos. Escala é um conjunto de símbolos ou números, construído com base em uma regra, e aplica-se a indivíduos ou a seus comportamentos ou atitudes. A posição de um indivíduo na escala é baseada na posse dele do atributo que a escala deve medir.
+
+Segundo Stevens (1946), as escalas de mensuração das variáveis não métricas, categóricas ou qualitativas po dem ser classificadas como nominal e ordinal, enquanto as variáveis métricas ou quantitativas se classificam em escala intervalar e de razão (ou proporcional).
+
+A escala nominal classifica as unidades em classes ou categorias em relação à característica representada, não estabelecendo qualquer relação de grandeza ou de ordem. É denominada nominal porque as categorias se diferenciam apenas pelo nome. Ex: Profissão, religião, cor, estado civil, localização geográfica ou país de origem.
+
+A escala ordinal é uma escala de ordenação, designando uma posição relativa das classes segundo uma direcção. Ex: Opinião e escalas de preferência de consumidores, grau de escolaridade, classe social, faixa etária, etc.
+
+A escala intervalar, além de ordenar as unidades quanto à característica mensurada, possui uma unidade de medida constante. A origem ou o ponto zero dessa escala de medida é arbitrário e não expressa ausência de quantidade. Ex: Temperatura, Altura, Velocidade.
+
+A escala de razão ordena as unidades em relação à característica mensurada e possui uma unidade de medida constante. Por outro lado, a origem é única e o valor zero expressa ausência de quantidade. Ex: Renda, idade, quantidade produzida de determinado produto e distância percorrida.
+
+<div class="texto-livreAuto"> <h2> Escala de Precisão </h2> </div>
+
+As variáveis qualitativas ou categóricas também podem ser classificadas em função do número de categorias: a) dicotômicas ou binárias (dummies), quando assumem apenas duas categorias; b) policotômicas, quando assu mem mais de duas categorias. Já as variáveis métricas ou quantitativas também podem ser classificadas em função da escala de precisão: dis cretas ou contínuas.
+
+A variável dicotómica ou binária (dummy) pode assumir apenas duas categorias, sendo que os valores 0 ou 1 são atribuídos a essas categorias. O valor 1 é atribuído quando a característica de interesse está presente na variável e o valor 0, ou caso contrário. Ex: Fumantes (1) e não fumantes ( 0 ), país desenvolvido (1) e subdesenvolvido (0), pacientes vacinados (1) e não vacinados (0).
+
+Uma variável qualitativa pode assumir mais do que duas categorias e nesse caso é chamada policotômica. Ex: Classe social (baixa, média e alta) e o grau de escolaridade (ensino fundamental, ensino médio, ensino superior e pós-graduado).
+
+As variáveis quantitativas discretas podem assumir um conjunto finito ou enumerável de valores que são provenientes, frequentemente, de uma contagem. Ex: A quantidade de número de filhos (0, 1, 2, ... ), a quantidade de senadores eleitos ou a quantidade de carros fabricados em determinada fábrica.
+
+As variáveis quantitativas contínuas, por sua vez, são aquelas cujos possíveis valores pertencem a um intervalo de números reais e que resultam de uma mensuração métrica. Ex: Peso, altura ou o salário de um indivíduo.
+
+Um banco de dados pode apresentar tanto variáveis em escalas métricas como não métricas, não precisando se restringir a apenas um tipo de escala. Essa combinação pode propiciar pesquisas interessantes e, juntamente com as modelagens adequadas, podem gerar informações voltadas à tomada de decisão.
+
+O tipo de variável recolhida é crucial no cálculo de estatísticas descritivas e na representação gráfica de resul tados, bem como na escolha de métodos estatísticos a serem utilizados para analisar os dados.
+
+A estatística descritiva univariada contempla os seguintes tópicos:
+
+<div class="texto-livre">
+  <ol style="list-style-type: lower-roman;">
+    <li>a frequência de ocorrência de um conjunto de observações por meio de tabelas de distribuições de frequências;</li>
+    <li>a representação da distribuição de uma variável por meio de gráficos; e</li>
+    <li>medidas representativas de uma série de dados, como medidas de posição ou localização ou tendência central, medidas de dispersão ou variabilidade e medidas de forma (assimetria e curtose).</li>
+  </ol>
+</div>
+YUH6H6b 
+</div>
+            
+                    </section>
+
+                                <!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
+<section id="estat-posicao" class="conteudo-seccao" data-grupo="estat1"> <h2>Medidas de Posição ou Localização</h2> <div class="texto-livreAuto">
+
+Essas medidas fornecem valores que caracterizam o comportamento de uma série de dados, indicando a posi ção ou localização dos dados em relação ao eixo dos valores assumidos pela variável ou característica em estudo. As medidas de posição ou localização são subdivididas em medidas de tendência central (média, mediana e moda) e medidas separatrizes (quartis, decis e percentis).
+
+As medidas de tendência central mais utilizadas referem-se à média aritmética, à mediana e à moda.
+
+<b><mark style="text-decoration: #2ecc71;">Média Aritmética</mark></b>: A média aritmética pode ser a medida representativa de uma população com $N$ elementos, representada pela letra grega $\mu$, ou a medida representativa de uma amostra com $n$ elementos, representada por $\overline X$.
+
+<div class="texto-livreAuto"> <h4> <mark style="background-color: #3498db; color: white;">Cenário 1</mark>: Dados discretos e contínuos não agrupados </h4> </div>
+
+A média aritmética simples, ou simplesmente média, é a soma do total de valores de determinada variável (discreta ou contínuo) dividida pelo número total de observações. Assim, a média aritmética amostral de deter minada variável X ($\overline X$) é:
+
+$$
+\overline X = \frac{\sum_{i=1}^n X_i}{n}
+\tag{3.1}
+$$
+
+em que $n$ é o número total de observações no conjunto de dados e $X_i$, para $i= 1,\,\, \ldots,\,\, n$, representa cada um dos valores da variável X.
+
+<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.1</mark></strong>: Calcule a média aritmética simples para os dados referentes às notas dos alunos de pós-graduação na disciplina de Métodos Quantitativos.
+
+<div class="tabela-container">
+    <table border="1" style="border-collapse: collapse; text-align: center; width: 100%;">
+    <tbody> <tr> <td>5,7</td> <td>6,5</td> <td>6,9</td> <td>8,3</td> <td>8,0</td>
+    <td>4,2</td> <td>6,3</td> <td>7,4</td> <td>5,8</td> <td>6,9</td> </tr> </tbody> </table>
+</div>
+
+<div class="texto-livreAuto"> <h4> <mark style="background-color: #3498db; color: white;">Cenário 2</mark>: Dados discretos (agrupados ou não) e contínuos não agrupados </h4> </div>
+
+No cálculo da média aritmética simples, todas as ocorrências têm a mesma importância ou peso. Quando se deseja atribuir diferentes pesos ($p_i$) para cada valor $i$ da variável X, utiliza-se a média aritmética ponderada:
+
+<div class="equacao-container">
+$$
+\overline X = \underbrace{\frac{\sum_{i=1}^n X_i \cdot p_i}{\sum_{i=1}^n p_i}}_{\text{Discreto/Contínuo Desagrupado}} =  \underbrace{\frac{\sum_{i=1}^n X_i \cdot F_i}{\sum_{i=1}^n F_i}}_{\text{Discreto Agrupado}}
+\tag{3.2}
+$$
+</div>
+
+Se os pesos estiverem expressos em termos percentuais (peso relativo - $pr_i$), a expressão (3.2) resume-se a:
+
+<div class="equacao-container">
+$$
+\overline X = \underbrace{\sum_{i=1}^n X_i \cdot pr_i}_{\text{Discreto/Contínuo Desagrupado}} =  \underbrace{\sum_{i=1}^n X_i \cdot Fr_i}_{\text{Discreto Agrupado}}
+\tag{3.3}
+$$
+</div>
+
+Nota: Quando os valores discretos de $X_i$ se repetem, os dados são agrupados em uma tabela de frequência. Para o cálculo da média aritmética, utilizaremos o mesmo critério da média ponderada, porém, os pesos para cada $X_i$ passam a ser representados por frequências absolutas ($F_i$) e, ao invés de $n$ observações com $n$ diferentes valores, teremos $n$ observações com $m$ diferentes valores (dados agrupados)
+
+<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.2</mark></strong>: Na escola da Vanessa, a média anual de cada matéria é calculada a partir das notas obtidas ao longo dos quatro bimestres, com os respectivos pesos: 1, 2, 3 e 4. A Tabela 3.2 apresenta as notas de matemática da aluna em cada bimestre. Calcule a média anual de Vanessa na matéria.
+
+<div class="tabela-container">
+  <h3>Tabela 3.2 - Notas de matemática da aluna Vanessa</h3>
+  <table class="tabela-frequencias">
+    <thead>
+      <tr>
+        <th>Período</th>
+        <th>Nota</th>
+        <th>Peso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1º Bimestre</td><td>4.5</td><td>1</td></tr>
+      <tr><td>2º Bimestre</td><td>7.0</td><td>2</td></tr>
+      <tr><td>3º Bimestre</td><td>5.5</td><td>3</td></tr>
+      <tr><td>4º Bimestre</td><td>6.5</td><td>4</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.3</mark></strong>: Uma carteira de ações é composta por cinco ativos.A Tabela 3.3 apresenta o retorno médio de cada ativo no último mês, assim como a respectiva porcentagem investida. Determine o retorno médio da carteira.
+
+<div class="tabela-container">
+  <h3>Tabela 3.3 - Retorno de cada ação e porcentagem investida</h3>
+  <table class="tabela-frequencias">
+    <thead>
+      <tr>
+        <th>Ativo</th>
+        <th>Retorno (%)</th>
+        <th>% Investimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Banco do Brasil ON</td><td>1.05</td><td>10</td></tr>
+      <tr><td>Bradesco PN</td><td>0.56</td><td>25</td></tr>
+      <tr><td>Eletrobrás PNB</td><td>0.08</td><td>15</td></tr>
+      <tr><td>Gerdau PN</td><td>0.24</td><td>20</td></tr>
+      <tr><td>Vale PN</td><td>0.75</td><td>30</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.4</mark></strong>: : Uma pesquisa de satisfação com 120 entrevistados avaliou o desempenho de uma seguradora de saúde, por meio das notas atribuídas que variam de 1 a 10. Os resultados da pesquisa são apresentados na Tabela 3.4. Calcule a média aritmética.
+
+<div class="tabela-container">
+  <h3>Tabela 3.4 - Tabela de frequência absoluta</h3>
+  <table class="tabela-frequencias">
+    <tbody>
+      <tr>
+        <th>Notas</th>
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+      </tr>
+      <tr>
+        <th>N.º Entrevistados</th>
+        <td>9</td><td>12</td><td>15</td><td>18</td><td>24</td><td>26</td><td>5</td><td>7</td><td>3</td><td>1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="texto-livreAuto"> <h3> Objetivo Fundamental da Estatística </h3> </div>
+
+A Estatística fornece aos gestores instrumentos para que possam responder as preocupações e tomar decisões com alguma confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são de elevada incerteza.
+
+O objectivo fundamental da Estatística é extrair informações confiáveis a partir dos dados recolhidos para a tomada de decisão.
+
+A estatística está dividida em três grandes partes: estatística descritiva ou dedutiva, estatística probabilística e estatística inferencial ou indutiva. Alguns autores, porém, consideram a estatística probabilística como parte da estatística inferencial.
+
+</div> 
+
+
+        </section>
+
+        <!-- ESTATÍSTICA II (MENU PRINCIPAL) -->
+        <section id="estatistica-ii" class="conteudo-seccao" data-grupo="estat2">
+            <h2>Estatística II (Rpubs)</h2>
+            <p>Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SUBMENU 1: PROBABILIDADE -->
+        <section id="estat-prob" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Probabilidade</h2>
+            <p>Conceitos fundamentais de probabilidade aplicados à análise estatística.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-val" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Variáveis Aleatórias</h2>
+            <p>Estudo de variáveis aleatórias discretas e contínuas.</p>
+        </section>
+
+        <section id="estat-distp" class="conteudo-seccao" data-grupo="estat-prob">
+            <h2>Distribuição de Probabilidades</h2>
+            <p>Análise de modelos de distribuição teóricos e empíricos.</p>
+        </section>
+
+        <!-- SUBMENU 2: AMOSTRAGEM -->
+        <section id="estat-amost" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Teoria da Amostragem</h2>
+            <p>Métodos de seleção e recolha de dados representativos.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-comp" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Composição da Amostra</h2>
+            <p>Estruturação e caracterização de amostras populacionais.</p>
+        </section>
+
+        <section id="estat-dim" class="conteudo-seccao" data-grupo="estat-amost">
+            <h2>Dimensão da Amostra</h2>
+            <p>Critérios estatísticos para o cálculo do tamanho ideal da amostra.</p>
+        </section>
+
+        <!-- SUBMENU 3: INFERÊNCIA -->
+        <section id="estat-inf" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Inferência Estatística</h2>
+            <p>Generalização de resultados obtidos a partir de amostras para a população.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="estat-estpont" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Estimação Pontual</h2>
+            <p>Métodos para obtenção de estimadores pontuais de parâmetros.</p>
+
+<div class="tabela-imagem-container">
+  <img src="grafico_e_tabela.png" alt="Tabela de Distribuição de Frequências">
+</div>
+
+gqgGwgawe
+
+<div class="tabela-container">
+  <table class="tabela-frequencias">
+    <thead>
+      <tr><th>Tipo Sanguíneo</th><th>Doadores ($F_i$)</th><th>$Fri$ (%)</th><th>$Fi_{ac}$</th><th>$Fri_{ac}$ (%)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A+</td><td>15</td><td>25</td><td>15</td><td>25</td></tr>
+      <tr><td>A-</td><td>2</td><td>3.33</td><td>17</td><td>28.33</td></tr>
+      <tr><td>B+</td><td>6</td><td>10</td><td>23</td><td>38.33</td></tr>
+      <tr><td>B-</td><td>1</td><td>1.67</td><td>24</td><td>40</td></tr>
+      <tr><td>AB+</td><td>1</td><td>1.67</td><td>25</td><td>41.67</td></tr>
+      <tr><td>AB-</td><td>1</td><td>1.67</td><td>26</td><td>43.33</td></tr>
+      <tr><td>O+</td><td>32</td><td>53.33</td><td>58</td><td>96.67</td></tr>
+      <tr><td>O-</td><td>2</td><td>3.33</td><td>60</td><td>100</td></tr>
+      <tr class="linha-total"><td><strong>Total</strong></td><td><strong>60</strong></td><td><strong>100</strong></td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+wqgqg
+
+        </section>
+
+        <section id="estat-estint" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Estimação por Intervalo</h2>
+            <div class="texto-livreAuto">
+A inferência estatística tem como objetivo tirar conclusões sobre parâmetros populacionais com base em informações amostrais. Nesse contexto, os intervalos de confiança constituem uma ferramenta fundamental.
+
+<blockquote> Em repetições repetidas do processo de amostragem, aproximadamente $100(1 - \alpha)$% dos intervalos construídos conterão o verdadeiro valor de $p$.</blockquote>
+
+Diferentemente da estimação pontual — que fornece apenas um único valor como estimativa — a estimação por intervalo fornece um conjunto de valores plausíveis para o parâmetro de interesse, permitindo quantificar a incerteza associada à estimativa.
+
+Seja $\theta$ um parâmetro populacional e $\hat{\theta}$ um estimador de $\theta$. Com base na distribuição de probabilidade de $\hat{\theta}$, é possível construir um intervalo da forma: $$
+\hat{\theta}_1 \leq \theta \leq \hat{\theta}_2,
+$$ tal que a probabilidade de o intervalo conter o verdadeiro valor do parâmetro seja $(1 - \alpha)$, denominado nível de confiança.
+
+O valor $\alpha \in (0,1)$ representa o nível de significância, isto é, a probabilidade de o intervalo não conter o parâmetro. Então $ 1 - \alpha = \text{nível de confiança}.
+$
+
+Um intervalo de confiança (IC) é, portanto, um intervalo aleatório que, em repetidas amostragens, contém o verdadeiro valor do parâmetro em aproximadamente $100(1 - \alpha)\%$ dos casos.
+
+Formalmente, se $U$ e $V$ são estatísticas tais que $$
+P\left[(U < \theta < V )\mid \theta\right] = 1 - \alpha,
+$$ então $(U, V)$ é um intervalo de confiança para $\theta$ com nível $100(1 - \alpha)\%$.
+
+A amplitude do intervalo está diretamente relacionada à incerteza da estimação: intervalos mais largos indicam maior incerteza, enquanto intervalos mais estreitos indicam maior precisão.
+
+<div class="texto-livreAuto"> <h2> Interpretação </h2> </div>
+
+É importante destacar que o parâmetro $\theta$ é fixo, enquanto o intervalo é aleatório. Assim, não se diz que há probabilidade de $\theta$ estar no intervalo após sua construção; em vez disso, afirma-se que o método utilizado produz intervalos que contêm $\theta$ em uma proporção $(1 - \alpha)$ das amostras possíveis.
+
+<mark style="background-color: #e74c3c; color: white;"><b>Exemplo</b>:</mark> Considere uma amostra de 500 indivíduos cuja média das alturas é $\bar{x} = 1{,}66$ m. Essa é uma estimativa pontual da média populacional $\mu$. Um intervalo de confiança de 95% poderia ser, por exemplo: $[1,58;\quad 1,68]$.
+
+Isso significa que, ao repetir o procedimento de amostragem diversas vezes, cerca de 95% dos intervalos construídos dessa forma conteriam o verdadeiro valor de $\mu$.
+
+Suponha que $X_1, X_2, \ldots, X_n$ sejam independentes e identicamente distribuídos segundo uma normal com média $\mu$ desconhecida e variância $\sigma^2$ conhecida.
+
+A média amostral $\bar{X}$ é um estimador de $\mu$ e satisfaz: $$
+\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right).
+$$
+
+Padronizando a variável: $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
+
+Assim, $$
+P(-1{,}96 < Z < 1{,}96) = 0{,}95,
+$$ o que implica: $$
+P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right) = 0{,}95.
+$$
+
+Reorganizando, $$
+P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + 1{,}96\frac{\sigma}{\sqrt{n}}\right) = 0{,}95.
+$$
+
+Esse é o intervalo de confiança de 95% para a média populacional.
+
+Os intervalos de confiança fornecem não apenas uma estimativa para o parâmetro, mas também uma medida explícita da incerteza associada. Por isso, são amplamente utilizados para avaliar a precisão e a fiabilidade de resultados obtidos a partir de amostras.
+            </div>
+
+        </section>
+
+                <section id="estat-ic-media" class="conteudo-seccao" data-grupo="estat-ic-media">
+            <h2>IC para a Média</h2>
+            <div class="texto-livreAuto">
+
+Quando queremos estimar a média de uma população através de uma amostra temos dois casos distintos a considerar: quando a variância da população é conhecida e quando ela é desconhecida. A seguir, temos os dois casos.
+
+<div class="texto-livreAuto"> <h3> <b><mark style="background-color: #e74c3c; color: white;">Cenário 1</mark></b>: Variância Populacional Conhecida </h3> </div>
+
+Considere uma amostra aleatória simples $X_1, X_2, \ldots, X_n$ proveniente de uma população com distribuição normal, com média $\mu$ e variância $\sigma^2$ conhecida. Nesse caso, a média amostral $\bar{X}$ também possui distribuição normal, dada por:
+
+$$
+\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
+$$
+
+Padronizando, obtemos a variável: 
+$$
+T = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)
+$$, isto é, $T$ segue a distribuição normal padrão.
+
+Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ e $z_{\alpha/2}$ tais que: $P(-z_{\alpha/2} \leq Z \leq z_{\alpha/2}) = 1 - \alpha$
+            </div>
+        </section>
+
+
+        <section id="estat-hip" class="conteudo-seccao" data-grupo="estat-inf">
+            <h2>Teoria de Decisão</h2>
+            <p>Testes de hipóteses e tomada de decisão estatística.</p>
+        </section>
+
+        <!-- SECÇÃO PRINCIPAL: RECURSOS -->
+        <section id="recursos" class="conteudo-seccao">
+            <h2>Recursos Académicos</h2>
+            <p>Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas.</p>
+            <div class="bloco-container">
+
+                <!-- BLOCO 1 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <h3>Ofertas Formativas</h3>
+                    </div>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                </div>
+
+                <!-- BLOCO 2 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <h3>Estudantes USTP</h3>
+                    </div>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                </div>
+
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+                
+                <!-- BLOCO 3 -->
+                <div class="bloco-card">
+                    <div class="bloco-topo">
+                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Bolsas</h3>
+                    </div>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="doc-aulas" class="conteudo-seccao">
+            <h2>Notas de Aula</h2>
+            <p>Sumários detalhados das matérias lecionadas.</p>
+            <div class="container">
+                <!-- Título Estilo Servidor -->
+                <h1>Index of /~giolo/Livro/Mat_Apoio/</h1>
+                <hr>
+
+                <!-- Lista de Ficheiros com Wrapper Responsivo -->
+                <div class="table-wrapper">
+                    <table class="file-list">
+                        <thead>
+                            <tr>
+                                <th>Nome do Ficheiro</th>
+                                <th>Data de Modificação</th>
+                                <th>Tamanho</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="../">../</a></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- Ficheiro HTML normal -->
+                                    <a href="Apendice_B.html">Apendice_B.html</a>
+                                </td>
+                                <td>15-Feb-2018 00:40</td>
+                                <td>992307</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- Ficheiro PDF que abre embutido na página -->
+                                    <a href="TabelaTStudent.pdf" class="embed-link" data-doc="TabelaTStudent.pdf">Tabela t-Student.pdf</a>
+                                </td>
+                                <td>15-Feb-2018 00:41</td>
+                                <td>980182</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="ComandosR_ASA.html" class="embed-link" data-doc="ComandosR_ASA.html">ComandosR_ASA.html</a>
+                                </td>
+                                <td>06-Mar-2018 18:44</td>
+                                <td>1022208</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+            </div>
+
+        <!-- Texto explicativo com link embutido inline (Igual à Imagem 2) -->
+        <p class="conteudo-texto">
+            Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. 
+            Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
+        </p>
+
+    </div>
+
+
+        </section>
+
+        <section id="doc-metodologia" class="conteudo-seccao">
+            <h2>Metodologia de Ensino</h2>
+            <p>Abordagens pedagógicas centradas no aluno.</p>
+        </section>
+
+        <section id="doc-bibliografia" class="conteudo-seccao">
+            <h2>Bibliografia Recomendada</h2>
+            <p>Lista de compilações científicas e manuais.</p>
+        </section>
+
+        <!-- Matemática e Funções -->
+        <section id="matematica" class="conteudo-seccao">
+            <h2>Matemática e Funções</h2>
+            <p>Exemplo de uma função polinomial: \( f(x) = x^3 - 4x^2 + 5x - 2 \).</p>
+            <p>$$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
+        </section>
+
+        <!-- Análise de Dados com R -->
+        <section id="programacao" class="conteudo-seccao">
+            <h2>Análise de Dados com R</h2>
+            <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contato" class="conteudo-seccao">
+            <h2>Contacto</h2>
+            <p>Para propostas de funções docentes ou assuntos administrativos, entre em contacto:</p>
+            <div class="social-links">
+                <a href="mailto:wadmiguel547@yahoo.com"><img src="Yahoo.png" alt="Yahoo"></a>
+                <a href="https://rpubs.com/wadileynascimento" target="_blank"><img src="ProjetoR.png" alt="RPubs"></a>
+                <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank"><img src="YouTubeB.png" alt="YouTube"></a>
+                <a href="https://www.instagram.com/wadileyn" target="_blank"><img src="Instagram.png" alt="Instagram"></a>
+                <a href="https://x.com/WadileyNas" target="_blank"><img src="Twitter.png" alt="Twitter"></a>
+                <a href="https://www.facebook.com/wadileynasciment" target="_blank"><img src="PFacebook.png" alt="Página"></a>
+            </div>
+        </section>
+
+        <!-- SECÇÃO NEWSLETTER -->
+        <section id="newsletter" class="newsletter-section conteudo-seccao">
+            <h2>Newsletter</h2>
+            <p>Inscreva-se para receber as últimas notícias e atualizações do site.</p>
+            
+            <form id="newsletter-form" class="newsletter-form" onsubmit="subscreverNewsletter(event)">
+                <input 
+                    type="email" 
+                    id="newsletter-email" 
+                    placeholder="O seu email" 
+                    required 
+                    aria-label="O seu email"
+                />
+                <button type="submit" class="newsletter-btn">Subscrever</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Wadiley Nascimento. || "Sem dados, você é apenas mais uma pessoa com uma opinião.” — W. Edwards Deming.</p>
+    </footer>
+
+    <div class="rodape-impressao">
+    <span>Prof. Wadiley Nascimento  ||  Mestre em Estatística (Estatística Computacional)  ||  (+239) 980 10 45</span>
+    </div>
+
+    <!-- Contentor invisível para a API do Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- 1. Biblioteca Externa do Google Translate -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

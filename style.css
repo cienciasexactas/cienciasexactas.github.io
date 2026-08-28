@@ -1,0 +1,1681 @@
+/* =========================================================
+   1. VARIÁVEIS, RESET E BASE GLOBAL
+   ========================================================= */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #27ae60;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --navbar-height: 80px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 20px;
+    padding-top: var(--navbar-height);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.86;
+    text-align: justify;
+    text-justify: inter-word;
+    top: 0px !important;
+    position: static !important;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+a {
+    color: #0000ee;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #551a8b;
+}
+
+.link-destaque {
+    color: red;
+    font-weight: bold;
+}
+
+blockquote {
+    margin-top: -40px !important;
+    margin-bottom: -22px !important;
+    padding: 0 0 0 15px !important;
+    border-left: 4px solid #cc0000 !important;
+    display: block !important;
+    line-height: 1.86 !important;
+    text-align: justify !important;
+}
+
+blockquote + p,
+blockquote + div {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+blockquote > *:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 3. Reduz a folga especificamente no parágrafo do Exemplo (opcional) */
+.texto-livreAuto p:has(mark) {
+  margin-top: -3pt !important;
+  line-height: 1.86 !important;
+}
+
+/* 2. Remove as margens de parágrafos e elementos de texto dentro dessa classe */
+.texto-livreAuto div,
+.tabela-container {
+    margin-top: 2px !important;    /* Ajuste de distância mínima (ex: 2px a 4px) */
+    margin-bottom: 2px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* =========================================================
+   2. CONFIGURAÇÃO DE IMPRESSÃO NA WEB
+   ========================================================= */
+@media print {
+  /* Configuração do tamanho da página e margens ABNT */
+  @page {
+    size: A4 portrait;
+    margin: 1cm 2cm 2cm 3cm; /* Topo | Direita | Baixo | Esquerda */
+  }
+
+  /* 1. Cancela a repetição em páginas seguintes para qualquer elemento fixo/sticky */
+  header,
+  nav,
+  [class*="header"],
+  [class*="profile"],
+  [class*="topo"],
+  [class*="navbar"] {
+    position: static !important;
+    transform: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 0 auto !important;
+    width: 100% !important;
+  }
+
+  /* 2. Garante que o corpo do documento não empilhe páginas como fixas */
+  body, html {
+    position: static !important;
+    overflow: visible !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-top: -30pt !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* =========================================================
+   2. ESTRUTURA DE TEXTOS LIVRES
+   ========================================================= */
+/* 1. Formatação de Impressão (PDF) */
+@page {
+  margin: 3cm 2cm 2cm 3cm; /* Topo: 3cm, Direita: 2cm, Baixo: 3cm, Esquerda: 3cm */
+}
+
+/* Zera margens do cabeçalho */
+h1, h2, h3,
+header, .header, #header,
+.page-header, #page-header,
+.navbar, .page-title, .header-content {
+  margin-bottom: 12pt !important;
+  padding-bottom: 0.2rem !important;
+}
+
+/* Layout do Bloco de Texto */
+.texto-livreAuto p {
+  width: 100%;
+  padding: 0 !important;
+  box-sizing: border-box;
+  
+  margin-top: 0;
+  margin-bottom: 12pt;
+  text-align: justify;
+  line-height: 1.86;
+  font-family: Arial, "Times New Roman", sans-serif;
+  font-size: 12pt;
+  text-align: justify;
+
+  /* Hifenização e Quebras */
+  white-space: pre-line;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* 2. Remove as margens de parágrafos e elementos de texto dentro dessa classe */
+.texto-livreAuto div,
+.tabela-container {
+    margin-top: -50px !important;    /* Ajuste de distância mínima (ex: 2px a 4px) */
+    margin-bottom: -12px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Força parágrafos vazios (gerados por Enters extras) a ocuparem espaço */
+.texto-livreAuto p:empty::before {
+  content: "\00a0"; /* Insere um espaço invisível automático */
+}
+
+/* Formatação de Listas (Neutraliza o pre-line sem precisar de margem negativa exagerada) */
+.texto-livreAuto ul,
+.texto-livreAuto ol {
+  white-space: normal;
+  padding-left: 2.5rem;
+  font-family: Arial, "Times New Roman", sans-serif;
+  font-size: 12pt;
+  line-height: 1.86; /* Ajuste para 1.5 usando PONTO */
+  margin-top: -35pt !important;
+  margin-bottom: -2pt;
+
+}
+
+.texto-livreAuto li {
+  margin-bottom: 6pt;
+}
+
+/* Configurações Gerais para Todos os Títulos */
+.texto-livreAuto h1,
+.texto-livreAuto h2,
+.texto-livreAuto h3,
+.texto-livreAuto h4 {
+  color: #004080; /* Azul institucional/acadêmico */
+  font-family: Arial, "Times New Roman", sans-serif;
+  font-weight: bold;
+  margin-bottom: 6pt; /* Distância em relação ao texto seguinte */
+  margin-top: 3pt;
+}
+
+/* Evita margem no topo caso o título seja o primeiro elemento da página */
+.texto-livreAuto > h1:first-child,
+.texto-livreAuto > h2:first-child,
+.texto-livreAuto > h3:first-child,
+.texto-livreAuto > h4:first-child {
+  margin-top: -35pt !important;
+  margin-bottom: -25pt !important;
+}
+
+/* --------------------------------------------------
+   Hierarquia de Tamanhos e Detalhes Visuais
+-------------------------------------------------- */
+
+/* Título Principal (Nível 1) */
+.texto-livreAuto h1 {
+  font-size: 18pt;
+  padding-bottom: 4pt;
+  border-bottom: 2px solid #004080; /* Linha azul acompanhando a cor do texto */
+}
+
+/* Subtítulo (Nível 2) */
+.texto-livreAuto h2 {
+  font-size: 15pt;
+  padding-bottom: 3pt;
+  border-bottom: 1px solid #004080; /* Linha mais fina */
+  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
+  /*width: 500px;                Defina o comprimento desejado da linha */
+}
+
+/* Subseção (Nível 3) */
+.texto-livreAuto h3 {
+  font-size: 12pt;
+  padding-bottom: 3pt;
+  border-top: 1px solid #df0000; /* Linha mais fina */
+  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
+  /*width: 500px;                Defina o comprimento desejado da linha */
+
+}
+
+/* Tópico Menor (Nível 4) */
+.texto-livreAuto h4 {
+  font-size: 12pt;
+  font-style: italic;
+  padding-bottom: 3pt;
+  border-bottom: 1px solid #004080; /* Linha mais fina */
+  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
+  /*width: 500px;                Defina o comprimento desejado da linha */
+}
+
+
+/* =========================================================
+   3. ESTRUTURA DE LAYOUT E CONTAINERES
+   ========================================================= */
+header {
+    background-color: #34495e;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6rem 1rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: calc(var(--navbar-height) + 20px);
+}
+
+.conteudo-seccao {
+    display: none;
+}
+
+.conteudo-seccao.ativo {
+    display: block;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 0.8rem 0;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   4. Impressão de Rodapé
+   ========================================================= */
+
+/* Oculta o rodapé da visualização em tela (web/mobile) */
+.rodape-impressao {
+    display: none;
+}
+
+/* Estilização exclusiva para a Impressão / Gerador de PDF */
+@media print {
+    .rodape-impressao {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        color: #555555;
+        border-top: 1px solid #cccccc;
+        padding-top: 5pt;
+    }
+}
+/* =========================================================
+   4. NAVBAR E NAVEGAÇÃO ESTRUTURAL
+   ========================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ecf0f1;
+    border: 2px solid var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.nav-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.nav-role {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #bdc3c7;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: center;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--secondary-color);
+    outline: none;
+}
+
+/* Submenus e Dropdowns */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a::after {
+    content: " ▼";
+    font-size: 0.6rem;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff !important;
+    min-width: 180px;
+    width: max-content;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.nav-links > .dropdown > .dropdown-content {
+    top: 100%;
+    left: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.dropdown-content .dropdown-content.abrir-esquerda {
+    top: 0;
+    right: 100% !important;
+    left: auto !important;
+}
+
+.dropdown-content .dropdown-content.abrir-direita {
+    top: 0;
+    left: 100% !important;
+    right: auto !important;
+}
+
+.dropdown-content a {
+    color: var(--primary-color) !important;
+    background-color: #ffffff !important;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom: 1px solid #f1f1f1;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover,
+.dropdown-content a:focus-visible {
+    background-color: #f8f9fa !important;
+    color: var(--secondary-color) !important;
+}
+
+.dropdown:hover > .dropdown-content,
+.dropdown:focus-within > .dropdown-content {
+    display: block;
+}
+
+/* Oculta elementos desktop no estado padrão */
+.nav-actions-desktop,
+.search-container {
+    display: none;
+}
+
+/* Controle de Interação JS e Botões da Navbar */
+.search-icon-btn *, 
+.search-close-btn *, 
+.hamburger-btn * {
+    pointer-events: none;
+}
+
+.search-icon-btn,
+.search-close-btn,
+.hamburger-btn {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* =========================================================
+   5. GRELHA DE NOTÍCIAS E CARTÕES
+   ========================================================= */
+.news-container {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-card-wrapper {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.news-card-wrapper:nth-child(n+7) {
+    display: none;
+}
+
+.news-card {
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-img {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 0.8rem;
+}
+
+.news-date {
+    font-size: 0.72rem;
+    color: #7f8c8d;
+    font-weight: bold;
+}
+
+.news-card h3 {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    color: var(--primary-color);
+}
+
+.news-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+    color: #444444;
+}
+
+.news-card-wrapper.saindo {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.news-card-wrapper.entrando {
+    animation: fadeInNews 0.6s ease forwards;
+}
+
+@keyframes fadeInNews {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a.news-card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: block;
+}
+
+a.news-card-link:hover,
+a.news-card-link:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+a.news-card-link:hover h3 {
+    color: var(--secondary-color);
+}
+
+.link-icon {
+    font-size: 0.75rem;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+/* =========================================================
+   7. BLOCOS DE CÓDIGO (PRISM / HIGHLIGHT)
+   ========================================================= */
+pre[class*="language-"] {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: none;
+    padding: 8px 12px !important;
+    margin: 10px 0 !important;
+    line-height: 1.3 !important;
+    font-size: 0.95rem;
+    color: #333333;
+    display: block;
+    overflow-x: auto;
+}
+
+code[class*="language-"] {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block;
+}
+
+.token.comment { color: #7fb881 !important; font-style: italic; }
+.token.function { color: #d35400 !important; font-weight: bold; }
+.token.string { color: #2e7d32 !important; }
+.token.number { color: #c0392b !important; }
+.token.operator, .token.punctuation { color: #2c3e50 !important; }
+.token.keyword { color: #8e44ad !important; }
+
+/* =========================================================
+   6. CARROSSEL E REDES SOCIAIS
+   ========================================================= */
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.social-links a {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.social-links img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover img,
+.social-links a:focus-visible img {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 20px 0;
+}
+
+#carousel-list {
+    display: flex !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#carousel-list li {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    min-width: 25% !important;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#carousel-list img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 9px;
+}
+
+#carousel-list a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+.carousel-container.escondido {
+    display: none !important;
+}
+
+@keyframes rolarInfinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   8. NEWSLETTER E CARDS INTERNOS
+   ========================================================= */
+.newsletter-section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.newsletter-section.conteudo-seccao {
+    display: none !important;
+}
+
+.newsletter-section.conteudo-seccao.ativo {
+    display: block !important;
+}
+
+.newsletter-section p {
+    color: #444444;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #94a3b8;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--secondary-color);
+}
+
+.newsletter-btn {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    border-radius: 25px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.newsletter-btn:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+.newsletter-btn:active {
+    transform: translateY(0);
+}
+
+.bloco-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.bloco-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bloco-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.bloco-icone {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #a3d900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.bloco-topo h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+
+.bloco-card p {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bloco-btn {
+    display: block;
+    text-align: center;
+    padding: 7px 18px;     /* Ajusta a altura e largura interna */
+    font-size: 1rem;        /* Define explicitamente o tamanho do texto */
+    max-width: 200px;       /* OPCIONAL: limita a largura máxima se não quiser 100% */
+    margin: 0 auto;         /* OPCIONAL: centraliza o botão se usar max-width */
+    background: linear-gradient(90deg, #48bb78, #ecc94b);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+}
+
+/* =========================================================
+   9. EQUAÇÕES MATEMÁTICAS (MATHJAX / KATEX)
+   ========================================================= */
+mjx-container[jax="CHTML"][display="true"],
+.MathJax_Display,
+.katex-display {
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+    text-align: center;
+    margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] > mjx-math,
+.MathJax_Display > .MathJax,
+.katex-display > .katex {
+    display: inline-block !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+    transform-origin: center center;
+}
+/* 1. Libera o MathJax para expandir na vertical e horizontal sem criar caixas */
+.texto-livreAuto .MathJax_Display,
+.texto-livreAuto .MathJax_CHTML,
+.texto-livreAuto .mjx-chtml,
+.texto-livreAuto .katex-display,
+.texto-livreAuto .MathJax {
+    overflow: visible !important;
+    width: max-content !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* 2. Container isolado da equação: reduz 12% no mobile e ativa scroll apenas horizontal */
+.texto-livreAuto .equacao-container {
+    font-size: 88%;                      /* Redução de 12% no tamanho */
+    overflow-x: auto !important;        /* Scroll horizontal quando necessário */
+    overflow-y: visible !important;     /* Garante expansão vertical sem cortar texto */
+    -webkit-overflow-scrolling: touch;
+    margin-top: -38pt !important;
+    margin-bottom: -33pt !important;
+}
+/* =========================================================
+   10. TABELAS DE FREQUÊNCIA E IMAGENS
+   ========================================================= */
+.tabela-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabela-container h3 {
+    color: #a0a0a0;
+    font-weight: normal;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.tabela-frequencias {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    white-space: normal !important;
+}
+
+.tabela-frequencias thead tr { background-color: #f2f2f2; }
+.tabela-frequencias th { padding: 3px; font-weight: bold; color: #222; border-bottom: 1px solid #e0e0e0; /* Linha horizontal sutil */}
+.tabela-frequencias td { padding: 3px; color: #111; border-bottom: 1px solid #eee; /* Divisória horizontal sutil entre as linhas */}
+.tabela-frequencias tr.linha-total td { padding-top: 3px; background-color: #f2f2f2; }
+
+.tabela-imagem-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.tabela-imagem-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto !important;
+}
+
+/* =========================================================
+   11. LISTAGEM DE FICHEIROS E VISUALIZADOR EMBUTIDO
+   ========================================================= */
+.file-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.file-list th, .file-list td {
+    padding: 4px 10px;
+}
+
+.viewer-container {
+    margin-top: 15px;
+    border: 2px solid #333;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.viewer-container.hidden {
+    display: none;
+}
+
+.viewer-header {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+}
+
+.viewer-header button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#pdf-frame {
+    width: 100%;
+    height: 600px;
+    background-color: #525659;
+}
+
+#pdf-preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    height: 85vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #64748b;
+    line-height: 1;
+}
+
+.modal-body {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-body iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================================
+   12. RESETS DO GOOGLE TRANSLATE
+   ========================================================= */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate,
+div.skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight {
+    display: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+select:not(.goog-te-combo) {
+    max-width: 100px;
+    font-size: 0.8rem;
+    padding: 4px 6px;
+}
+
+/* =========================================================
+   13. MEDIA QUERIES - DESKTOP (Min 769px)
+   ========================================================= */
+@media (min-width: 769px) {
+    .hamburger-btn,
+    .lang-selector-mobile {
+        display: none !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px 18px !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        flex: 1 !important;
+    }
+
+    .nav-links > a,
+    .nav-links > .dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+    }
+
+    .dropdown:hover > .dropdown-content {
+        display: block !important;
+    }
+
+    .nav-actions-desktop {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+        position: relative;
+    }
+
+    .lang-selector-desktop select {
+        background-color: #ffffff;
+        color: #333333;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 3px 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+        max-width: 100px;
+    }
+
+    .lang-selector-desktop select:hover,
+    .lang-selector-desktop select:focus {
+        border-color: var(--secondary-color);
+    }
+
+    .search-desktop-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-desktop-btn {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+    }
+
+    .search-desktop-btn:hover {
+        color: var(--secondary-color);
+    }
+
+    .search-desktop-input-container {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 280px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 4px 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 1010;
+        align-items: center;
+    }
+
+    .search-desktop-wrapper.ativo .search-desktop-input-container {
+        display: flex;
+    }
+
+    .search-desktop-input-container input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.9rem;
+        color: #333333;
+        padding: 4px 8px;
+    }
+
+    .search-desktop-close {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0 4px;
+        line-height: 1;
+    }
+
+    .search-desktop-close:hover {
+        color: #000000;
+    }
+}
+
+/* =========================================================
+   14. MEDIA QUERIES - MOBILE (Max 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px !important;
+    }
+
+    section {
+        scroll-margin-top: 90px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem;
+    }
+
+    .news-grid > *:nth-child(n+3) {
+        display: none !important;
+    }
+
+    /* Redução da tabela para mobile */
+    .tabela-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela-frequencias {
+        zoom: 0.85; 
+        width: 100%;
+    }
+
+    .tabela-frequencias th { padding: 8px 5px; }
+    .tabela-frequencias td { padding: 6px 4px; }
+
+    /* Navbar Flutuante Mobile */
+    .navbar {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        flex-direction: column;
+        padding: 0.8rem 1rem;
+        box-sizing: border-box;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+        border: 1px solid #e1e6eb;
+    }
+
+    .nav-header {
+        position: relative;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        height: 40px;
+    }
+
+    /* Foto de Perfil */
+    .nav-profile {
+        position: absolute;
+        left: 30%;
+        transform: translateX(-50%);
+        transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
+        z-index: 1;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-header.search-active .nav-profile {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    /* Pesquisa Mobile */
+    .search-container {
+        display: flex;
+        align-items: center;
+        order: 2;
+        margin-left: auto !important;
+        margin-right: 2px !important;
+        z-index: 2;
+    }
+
+    .search-icon-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        font-size: 1.1rem;
+    }
+
+    .search-input-wrapper {
+        display: none;
+        align-items: center;
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 14px;
+        padding: 3px 10px;
+        width: 170px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: width 0.3s ease;
+    }
+
+    .search-container.ativo .search-icon-btn { 
+        display: none; 
+    }
+    
+    .search-container.ativo .search-input-wrapper { 
+        display: flex; 
+    }
+
+    .search-input-wrapper input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.85rem;
+        padding-right: 16px;
+        color: #333333;
+    }
+
+    .search-close-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        color: #000000;
+        padding: 0 2px;
+        line-height: 1;
+    }
+
+    /* Seletor de Idioma Mobile */
+    .lang-selector-mobile {
+        display: flex !important;
+        align-items: center;
+        order: 3;
+        margin-right: 8px;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .lang-selector-mobile select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #ffffff;
+        color: #333333;
+        border: 1.5px solid var(--secondary-color, #22c55e);
+        border-radius: 8px;
+        padding: 1px 4px !important;
+        font-size: 0.75rem;
+        font-weight: 550;
+        outline: none;
+        cursor: pointer;
+        height: 24px;
+        width: 70px;
+        max-width: 90px;
+        text-align: left;
+    }
+
+    .lang-selector-mobile select::-ms-expand {
+        display: none;
+    }
+
+    /* Botão Hambúrguer */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 15px;
+        height: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        order: 4;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .hamburger-btn span {
+        width: 100%;
+        height: 2px;
+        background-color: #0f172a;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-btn.ativo span:nth-child(1) { transform: translateY(6.75px) rotate(45deg); }
+    .hamburger-btn.ativo span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.ativo span:nth-child(3) { transform: translateY(-6.75px) rotate(-45deg); }
+
+    /* Menu Colapsável Mobile */
+    .nav-links {
+        display: none !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+        max-height: 75vh;
+        overflow-y: auto;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links.menu-aberto {
+        display: flex !important;
+    }
+
+    .nav-links > a,
+    .nav-links > .dropdown {
+        display: inline-flex !important;
+        width: auto !important;
+        margin: 0;
+        position: relative;
+    }
+
+    .nav-links a,
+    .nav-links .dropdown-toggle,
+    .dropdown-content a,
+    .dropdown-content .dropdown-toggle {
+        color: #f8fafc !important;
+        background-color: #1e293b !important;
+        padding: 7px 12px;
+        text-decoration: none;
+        display: inline-block !important;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        border: 1px solid #334155 !important;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .nav-links a:hover, .nav-links a:active, .nav-links a:focus,
+    .nav-links .dropdown-toggle:hover, .nav-links .dropdown-toggle:active, .nav-links .dropdown-toggle:focus,
+    .dropdown-content a:hover, .dropdown-content a:active, .dropdown-content a:focus,
+    .dropdown-content .dropdown-toggle:hover, .dropdown-content .dropdown-toggle:active, .dropdown-content .dropdown-toggle:focus {
+        background-color: #2563eb !important;
+        color: #ffffff !important;
+    }
+
+    .dropdown-content,
+    .dropdown-content .dropdown-content {
+        display: none !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.4rem;
+        box-shadow: none !important;
+        border: 1px solid #1e293b !important;
+        background-color: #0f172a !important;
+        border-radius: 6px;
+        margin-top: 6px;
+        padding: 8px;
+        flex-basis: 100%;
+    }
+
+    .dropdown-content.submenu-visivel {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    /* Carrossel Mobile */
+    .carousel-container {
+        margin-top: 15px !important;
+    }
+
+    #carousel-list li {
+        flex: 0 0 33.333% !important;
+        max-width: 33.333% !important;
+        min-width: 33.333% !important;
+        box-sizing: border-box;
+    }
+
+    /* Fórmulas Matemáticas Mobile */
+    mjx-container, .MathJax_Display, .katex-display {
+        font-size: 65% !important;
+    }
+}
+
+/* =========================================================
+   15. PROBLEMAS DE QUADROS OU TABELAS EM FORMA DE LINKS
+   ========================================================= */
+
+/* Limita o container e impede quebras estranhas na tela */
+.container {
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Força a quebra de links e textos muito longos */
+h1 {
+    word-break: break-word;
+    font-size: 1.5rem;
+}
+
+/* Torna a tabela responsiva com barra de rolagem se necessário */
+.file-list {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+/* Garante que o texto dos links da tabela também dobre se necessário */
+.file-list td, .file-list th {
+    word-break: break-word;
+    padding: 8px 4px;
+    text-align: left;
+}
+
+/* Torna o container da tabela rolável em telas muito pequenas */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* =========================================================
+   16. MARCA DAS LISTA
+   ========================================================= */
+
+/* Bolinha preta cheia (Padrão) */
+.texto-livre ul {
+  list-style-type: disc;
+}
+
+/* Círculo vazado */
+.texto-livre ul.circulo {
+  list-style-type: circle;
+}
+
+/* Quadrado cheio */
+.texto-livre ul.quadrado {
+  list-style-type: square;
+}
+
+/* Sem nenhum símbolo/marcador */
+.texto-livre ul.sem-estilo {
+  list-style-type: none;
+}
+
+/* Números normais: 1, 2, 3... (Padrão) */
+.texto-livre ol {
+  list-style-type: decimal;
+}
+
+/* Números com zero à esquerda: 01, 02, 03... */
+.texto-livre ol.zero {
+  list-style-type: decimal-leading-zero;
+}
+
+/* Letras minúsculas: a, b, c... */
+.texto-livre ol.letras-minusculas {
+  list-style-type: lower-alpha; /* ou lower-latin */
+}
+
+/* Letras maiúsculas: A, B, C... */
+.texto-livre ol.letras-maiusculas {
+  list-style-type: upper-alpha; /* ou upper-latin */
+}
+
+/* Números romanos minúsculos: i, ii, iii... */
+.texto-livre ol.romano-minusculo {
+  list-style-type: lower-roman;
+}
+
+/* Números romanos maiúsculos: I, II, III... */
+.texto-livre ol.romano-maiusculo {
+  list-style-type: upper-roman;
+}

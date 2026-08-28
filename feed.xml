@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Notícias USTP</title>
+    <link>https://cienciasexactas.github.io/</link>
+    <description>Últimas notícias do site: Ciências Exactas</description>
+    
+    <!-- Cada notícia nova entra como um <item> -->
+    <item>
+      <title>Título da Nova Notícia ou Comunicado</title>
+      <link>https://cienciasexactas.github.io/#noticias</link>
+      <description>Resumo breve sobre o que trata esta notícia da USTP.</description>
+      <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
+    </item>
+
+  </channel>
+</rss>
