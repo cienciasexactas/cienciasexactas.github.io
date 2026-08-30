@@ -344,38 +344,39 @@ footer p {
 /* =========================================================
    4. Impressão de Rodapé
    ========================================================= */
-/* Oculta o rodapé da visualização em tela (web/mobile) */
+/* Oculta o rodapé na visualização normal da tela (Web/Mobile) */
 .rodape-impressao {
     display: none;
 }
 
-/* Estilização exclusiva para a Impressão / Gerador de PDF */
 @media print {
     @page {
         size: A4 portrait;
         margin-top: 2cm;
         margin-left: 1.5cm;
         margin-right: 1.5cm;
-        margin-bottom: 2cm; /* Define o espaço físico exato onde o texto PARA */
-
-        /* Coloca o texto nativamente dentro da margem inferior (Suportado no Chrome/Firefox/Edge modernos) */
-        @bottom-center {
-            content: "Prof. Wadiley Nascimento || Mestre em Estatística (Estatística Computacional) || (+239) 980 10 45";
-            font-family: Arial, sans-serif;
-            font-size: 8.5pt;
-            color: #555555;
-            border-top: 1px solid #cccccc;
-            padding-top: 0;
-            margin-top: 3px !important;
-            width: 100%;
-            vertical-align: 5px !important;
-            padding-top: 18px !important;
-        }
+        margin-bottom: 2.5cm; /* Garante que o conteúdo da página não cubra o rodapé */
     }
 
     body {
         margin: 0;
         padding: 0;
+    }
+
+    /* Exibe e posiciona o rodapé fixo em todas as páginas no Mobile e Web */
+    .rodape-impressao {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 8.5pt;
+        color: #555555;
+        border-top: 1px solid #cccccc;
+        padding-top: 5px;
+        background-color: #ffffff;
     }
 }
 
