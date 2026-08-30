@@ -9,7 +9,9 @@
     --navbar-height: 80px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -17,7 +19,8 @@ html {
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
     max-width: 100% !important;
     overflow-x: hidden !important;
 }
@@ -67,27 +70,28 @@ blockquote {
     text-align: justify !important;
 }
 
-blockquote + p,
-blockquote + div {
+blockquote+p,
+blockquote+div {
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
 
-blockquote > *:last-child {
+blockquote>*:last-child {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
 
 /* 3. Reduz a folga especificamente no parágrafo do Exemplo (opcional) */
 .texto-livreAuto p:has(mark) {
-  margin-top: -3pt !important;
-  line-height: 1.86 !important;
+    margin-top: -3pt !important;
+    line-height: 1.86 !important;
 }
 
 /* 2. Remove as margens de parágrafos e elementos de texto dentro dessa classe */
 .texto-livreAuto div,
 .tabela-container {
-    margin-top: 2px !important;    /* Ajuste de distância mínima (ex: 2px a 4px) */
+    margin-top: 2px !important;
+    /* Ajuste de distância mínima (ex: 2px a 4px) */
     margin-bottom: 2px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -97,37 +101,40 @@ blockquote > *:last-child {
    2. CONFIGURAÇÃO DE IMPRESSÃO NA WEB
    ========================================================= */
 @media print {
-  /* Configuração do tamanho da página e margens ABNT */
-  @page {
-    size: A4 portrait;
-    margin: 1cm 2cm 2cm 3cm; /* Topo | Direita | Baixo | Esquerda */
-  }
 
-  /* 1. Cancela a repetição em páginas seguintes para qualquer elemento fixo/sticky */
-  header,
-  nav,
-  [class*="header"],
-  [class*="profile"],
-  [class*="topo"],
-  [class*="navbar"] {
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 auto 0 auto !important;
-    width: 100% !important;
-  }
+    /* Configuração do tamanho da página e margens ABNT */
+    @page {
+        size: A4 portrait;
+        margin: 1cm 2cm 2cm 3cm;
+        /* Topo | Direita | Baixo | Esquerda */
+    }
 
-  /* 2. Garante que o corpo do documento não empilhe páginas como fixas */
-  body, html {
-    position: static !important;
-    overflow: visible !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin-top: -30pt !important;
-    padding-top: 0 !important;
-  }
+    /* 1. Cancela a repetição em páginas seguintes para qualquer elemento fixo/sticky */
+    header,
+    nav,
+    [class*="header"],
+    [class*="profile"],
+    [class*="topo"],
+    [class*="navbar"] {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto 0 auto !important;
+        width: 100% !important;
+    }
+
+    /* 2. Garante que o corpo do documento não empilhe páginas como fixas */
+    body,
+    html {
+        position: static !important;
+        overflow: visible !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: -30pt !important;
+        padding-top: 0 !important;
+    }
 }
 
 /* =========================================================
@@ -135,44 +142,53 @@ blockquote > *:last-child {
    ========================================================= */
 /* 1. Formatação de Impressão (PDF) */
 @page {
-  margin: 3cm 2cm 2cm 3cm; /* Topo: 3cm, Direita: 2cm, Baixo: 3cm, Esquerda: 3cm */
+    margin: 3cm 2cm 2cm 3cm;
+    /* Topo: 3cm, Direita: 2cm, Baixo: 3cm, Esquerda: 3cm */
 }
 
 /* Zera margens do cabeçalho */
-h1, h2, h3,
-header, .header, #header,
-.page-header, #page-header,
-.navbar, .page-title, .header-content {
-  margin-bottom: 12pt !important;
-  padding-bottom: 0.2rem !important;
+h1,
+h2,
+h3,
+header,
+.header,
+#header,
+.page-header,
+#page-header,
+.navbar,
+.page-title,
+.header-content {
+    margin-bottom: 12pt !important;
+    padding-bottom: 0.2rem !important;
 }
 
 /* Layout do Bloco de Texto */
 .texto-livreAuto p {
-  width: 100%;
-  padding: 0 !important;
-  box-sizing: border-box;
-  
-  margin-top: 0;
-  margin-bottom: 12pt;
-  text-align: justify;
-  line-height: 1.86;
-  font-family: Arial, "Times New Roman", sans-serif;
-  font-size: 12pt;
-  text-align: justify;
+    width: 100%;
+    padding: 0 !important;
+    box-sizing: border-box;
 
-  /* Hifenização e Quebras */
-  white-space: pre-line;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  overflow-wrap: break-word;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    text-align: justify;
+    line-height: 1.86;
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+    text-align: justify;
+
+    /* Hifenização e Quebras */
+    white-space: pre-line;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 /* 2. Remove as margens de parágrafos e elementos de texto dentro dessa classe */
 .texto-livreAuto div,
 .tabela-container {
-    margin-top: -50px !important;    /* Ajuste de distância mínima (ex: 2px a 4px) */
+    margin-top: -50px !important;
+    /* Ajuste de distância mínima (ex: 2px a 4px) */
     margin-bottom: -12px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -180,48 +196,52 @@ header, .header, #header,
 
 /* Força parágrafos vazios (gerados por Enters extras) a ocuparem espaço */
 .texto-livreAuto p:empty::before {
-  content: "\00a0"; /* Insere um espaço invisível automático */
+    content: "\00a0";
+    /* Insere um espaço invisível automático */
 }
 
 /* Formatação de Listas (Neutraliza o pre-line sem precisar de margem negativa exagerada) */
 .texto-livreAuto ul,
 .texto-livreAuto ol {
-  white-space: normal;
-  padding-left: 2.5rem;
-  font-family: Arial, "Times New Roman", sans-serif;
-  font-size: 12pt;
-  line-height: 1.86; /* Ajuste para 1.5 usando PONTO */
-  margin-top: -35pt !important;
-  margin-bottom: -2pt;
+    white-space: normal;
+    padding-left: 2.5rem;
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+    line-height: 1.86;
+    /* Ajuste para 1.5 usando PONTO */
+    margin-top: -35pt !important;
+    margin-bottom: -2pt;
 
 }
 
 .texto-livreAuto li {
-  margin-bottom: 6pt;
+    margin-bottom: 6pt;
 }
 
 /* Configurações Gerais para Todos os Títulos */
 .texto-livreAuto h1,
 .texto-livreAuto h3,
 .texto-livreAuto h4 {
-  color: #004080; /* Azul institucional/acadêmico */
-  font-family: Arial, "Times New Roman", sans-serif;
-  font-weight: bold;
-  margin-bottom: 6pt; /* Distância em relação ao texto seguinte */
-  margin-top: 3pt;
+    color: #004080;
+    /* Azul institucional/acadêmico */
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-weight: bold;
+    margin-bottom: 6pt;
+    /* Distância em relação ao texto seguinte */
+    margin-top: 3pt;
 }
 
 /* Evita margem no topo caso o título seja o primeiro elemento da página */
-.texto-livreAuto > h1:first-child,
-.texto-livreAuto > h3:first-child,
-.texto-livreAuto > h4:first-child {
-  margin-top: -35pt !important;
-  margin-bottom: -25pt !important;
+.texto-livreAuto>h1:first-child,
+.texto-livreAuto>h3:first-child,
+.texto-livreAuto>h4:first-child {
+    margin-top: -35pt !important;
+    margin-bottom: -25pt !important;
 }
 
-.texto-livreAuto > h2:first-child {
-  margin-top: 35pt !important;
-  margin-bottom: -25pt !important;
+.texto-livreAuto>h2:first-child {
+    margin-top: 35pt !important;
+    margin-bottom: -25pt !important;
 }
 
 /* --------------------------------------------------
@@ -230,41 +250,49 @@ header, .header, #header,
 
 /* Título Principal (Nível 1) */
 .texto-livreAuto h1 {
-  font-size: 18pt;
-  padding-bottom: 4pt;
-  border-bottom: 2px solid #004080; /* Linha azul acompanhando a cor do texto */
+    font-size: 18pt;
+    padding-bottom: 4pt;
+    border-bottom: 2px solid #004080;
+    /* Linha azul acompanhando a cor do texto */
 }
 
 /* Subtítulo (Nível 2) */
 .texto-livreAuto h2 {
-  font-size: 14pt;
-  padding-bottom: 3pt;
-  border-bottom: 1px solid #004080; /* Linha mais fina */
-  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
-  /*width: 500px;                Defina o comprimento desejado da linha */
-  color: #004080; /* Azul institucional/acadêmico */
-  font-family: Arial, "Times New Roman", sans-serif;
-  font-weight: bold;
+    font-size: 14pt;
+    padding-bottom: 3pt;
+    border-bottom: 1px solid #004080;
+    /* Linha mais fina */
+    width: fit-content;
+    /* Faz a linha acompanhar apenas o texto */
+    /*width: 500px;                Defina o comprimento desejado da linha */
+    color: #004080;
+    /* Azul institucional/acadêmico */
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-weight: bold;
 }
 
 /* Subseção (Nível 3) */
 .texto-livreAuto h3 {
-  font-size: 12pt;
-  padding-bottom: 3pt;
-  border-top: 1px solid #df0000; /* Linha mais fina */
-  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
-  /*width: 500px;                Defina o comprimento desejado da linha */
+    font-size: 12pt;
+    padding-bottom: 3pt;
+    border-top: 1px solid #df0000;
+    /* Linha mais fina */
+    width: fit-content;
+    /* Faz a linha acompanhar apenas o texto */
+    /*width: 500px;                Defina o comprimento desejado da linha */
 
 }
 
 /* Tópico Menor (Nível 4) */
 .texto-livreAuto h4 {
-  font-size: 12pt;
-  font-style: italic;
-  padding-bottom: 3pt;
-  border-bottom: 1px solid #004080; /* Linha mais fina */
-  width: fit-content;               /* Faz a linha acompanhar apenas o texto */
-  /*width: 500px;                Defina o comprimento desejado da linha */
+    font-size: 12pt;
+    font-style: italic;
+    padding-bottom: 3pt;
+    border-bottom: 1px solid #004080;
+    /* Linha mais fina */
+    width: fit-content;
+    /* Faz a linha acompanhar apenas o texto */
+    /*width: 500px;                Defina o comprimento desejado da linha */
 }
 
 
@@ -344,39 +372,39 @@ footer p {
 /* =========================================================
    4. Impressão de Rodapé
    ========================================================= */
-/* Oculta o rodapé na visualização normal da tela (Web/Mobile) */
+/* Oculta o rodapé da visualização em tela (web/mobile) */
 .rodape-impressao {
     display: none;
 }
 
+/* Estilização exclusiva para a Impressão / Gerador de PDF */
 @media print {
     @page {
         size: A4 portrait;
         margin-top: 2cm;
         margin-left: 1.5cm;
         margin-right: 1.5cm;
-        margin-bottom: 2.5cm; /* Garante que o conteúdo da página não cubra o rodapé */
+        margin-bottom: 2cm;
+        /* Define o espaço físico exato onde o texto PARA */
+
+        /* Coloca o texto nativamente dentro da margem inferior (Suportado no Chrome/Firefox/Edge modernos) */
+        @bottom-center {
+            content: "Prof. Wadiley Nascimento || Mestre em Estatística (Estatística Computacional) || (+239) 980 10 45";
+            font-family: Arial, sans-serif;
+            font-size: 8.5pt;
+            color: #555555;
+            border-top: 1px solid #cccccc;
+            padding-top: 0;
+            margin-top: 3px !important;
+            width: 100%;
+            vertical-align: 5px !important;
+            padding-top: 18px !important;
+        }
     }
 
     body {
         margin: 0;
         padding: 0;
-    }
-
-    /* Exibe e posiciona o rodapé fixo em todas as páginas no Mobile e Web */
-    .rodape-impressao {
-        display: block !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 8.5pt;
-        color: #555555;
-        border-top: 1px solid #cccccc;
-        padding-top: 5px;
-        background-color: #ffffff;
     }
 }
 
@@ -477,7 +505,7 @@ footer p {
     position: relative;
 }
 
-.dropdown > a::after {
+.dropdown>a::after {
     content: " ▼";
     font-size: 0.6rem;
     display: inline-block;
@@ -498,7 +526,7 @@ footer p {
     list-style: none;
 }
 
-.nav-links > .dropdown > .dropdown-content {
+.nav-links>.dropdown>.dropdown-content {
     top: 100%;
     left: 0;
     border-radius: 0 0 4px 4px;
@@ -539,8 +567,8 @@ footer p {
     color: var(--secondary-color) !important;
 }
 
-.dropdown:hover > .dropdown-content,
-.dropdown:focus-within > .dropdown-content {
+.dropdown:hover>.dropdown-content,
+.dropdown:focus-within>.dropdown-content {
     display: block;
 }
 
@@ -551,8 +579,8 @@ footer p {
 }
 
 /* Controle de Interação JS e Botões da Navbar */
-.search-icon-btn *, 
-.search-close-btn *, 
+.search-icon-btn *,
+.search-close-btn *,
 .hamburger-btn * {
     pointer-events: none;
 }
@@ -650,6 +678,7 @@ footer p {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -704,12 +733,32 @@ code[class*="language-"] {
     display: block;
 }
 
-.token.comment { color: #7fb881 !important; font-style: italic; }
-.token.function { color: #d35400 !important; font-weight: bold; }
-.token.string { color: #2e7d32 !important; }
-.token.number { color: #c0392b !important; }
-.token.operator, .token.punctuation { color: #2c3e50 !important; }
-.token.keyword { color: #8e44ad !important; }
+.token.comment {
+    color: #7fb881 !important;
+    font-style: italic;
+}
+
+.token.function {
+    color: #d35400 !important;
+    font-weight: bold;
+}
+
+.token.string {
+    color: #2e7d32 !important;
+}
+
+.token.number {
+    color: #c0392b !important;
+}
+
+.token.operator,
+.token.punctuation {
+    color: #2c3e50 !important;
+}
+
+.token.keyword {
+    color: #8e44ad !important;
+}
 
 /* =========================================================
    6. CARROSSEL E REDES SOCIAIS
@@ -785,8 +834,13 @@ code[class*="language-"] {
 }
 
 @keyframes rolarInfinito {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* =========================================================
@@ -918,10 +972,14 @@ code[class*="language-"] {
 .bloco-btn {
     display: block;
     text-align: center;
-    padding: 7px 18px;     /* Ajusta a altura e largura interna */
-    font-size: 1rem;        /* Define explicitamente o tamanho do texto */
-    max-width: 200px;       /* OPCIONAL: limita a largura máxima se não quiser 100% */
-    margin: 0 auto;         /* OPCIONAL: centraliza o botão se usar max-width */
+    padding: 7px 18px;
+    /* Ajusta a altura e largura interna */
+    font-size: 1rem;
+    /* Define explicitamente o tamanho do texto */
+    max-width: 200px;
+    /* OPCIONAL: limita a largura máxima se não quiser 100% */
+    margin: 0 auto;
+    /* OPCIONAL: centraliza o botão se usar max-width */
     background: linear-gradient(90deg, #48bb78, #ecc94b);
     color: #ffffff;
     text-decoration: none;
@@ -944,14 +1002,15 @@ mjx-container[jax="CHTML"][display="true"],
     margin: 1em 0;
 }
 
-mjx-container[jax="CHTML"][display="true"] > mjx-math,
-.MathJax_Display > .MathJax,
-.katex-display > .katex {
+mjx-container[jax="CHTML"][display="true"]>mjx-math,
+.MathJax_Display>.MathJax,
+.katex-display>.katex {
     display: inline-block !important;
     max-width: 100% !important;
     white-space: nowrap !important;
     transform-origin: center center;
 }
+
 /* 1. Libera o MathJax para expandir na vertical e horizontal sem criar caixas */
 .texto-livreAuto .MathJax_Display,
 .texto-livreAuto .MathJax_CHTML,
@@ -967,14 +1026,18 @@ mjx-container[jax="CHTML"][display="true"] > mjx-math,
 
 /* 2. Container isolado da equação: reduz 12% no mobile e ativa scroll apenas horizontal */
 .texto-livreAuto .equacao-container {
-    font-size: 88%;                      /* Redução de 12% no tamanho */
+    font-size: 88%;
+    /* Redução de 12% no tamanho */
     /* overflow: visible !important; /* Libera o conteúdo sem gerar barras de rolagem */
-    overflow-x: auto !important;        /* Scroll horizontal quando necessário */
-    overflow-y: hidden !important;     /* Garante expansão vertical sem cortar texto */
+    overflow-x: auto !important;
+    /* Scroll horizontal quando necessário */
+    overflow-y: hidden !important;
+    /* Garante expansão vertical sem cortar texto */
     -webkit-overflow-scrolling: touch;
     margin-top: -38pt !important;
     margin-bottom: -33pt !important;
 }
+
 /* =========================================================
    10. TABELAS DE FREQUÊNCIA E IMAGENS
    ========================================================= */
@@ -1001,10 +1064,29 @@ mjx-container[jax="CHTML"][display="true"] > mjx-math,
     white-space: normal !important;
 }
 
-.tabela-frequencias thead tr { background-color: #f2f2f2; }
-.tabela-frequencias th { padding: 3px; font-weight: bold; color: #222; border-bottom: 1px solid #e0e0e0; /* Linha horizontal sutil */}
-.tabela-frequencias td { padding: 3px; color: #111; border-bottom: 1px solid #eee; /* Divisória horizontal sutil entre as linhas */}
-.tabela-frequencias tr.linha-total td { padding-top: 3px; background-color: #f2f2f2; }
+.tabela-frequencias thead tr {
+    background-color: #f2f2f2;
+}
+
+.tabela-frequencias th {
+    padding: 3px;
+    font-weight: bold;
+    color: #222;
+    border-bottom: 1px solid #e0e0e0;
+    /* Linha horizontal sutil */
+}
+
+.tabela-frequencias td {
+    padding: 3px;
+    color: #111;
+    border-bottom: 1px solid #eee;
+    /* Divisória horizontal sutil entre as linhas */
+}
+
+.tabela-frequencias tr.linha-total td {
+    padding-top: 3px;
+    background-color: #f2f2f2;
+}
 
 .tabela-imagem-container {
     width: 100%;
@@ -1034,7 +1116,8 @@ mjx-container[jax="CHTML"][display="true"] > mjx-math,
     text-align: left;
 }
 
-.file-list th, .file-list td {
+.file-list th,
+.file-list td {
     padding: 4px 10px;
 }
 
@@ -1178,6 +1261,7 @@ select:not(.goog-te-combo) {
    13. MEDIA QUERIES - DESKTOP (Min 769px)
    ========================================================= */
 @media (min-width: 769px) {
+
     .hamburger-btn,
     .lang-selector-mobile {
         display: none !important;
@@ -1194,14 +1278,14 @@ select:not(.goog-te-combo) {
         flex: 1 !important;
     }
 
-    .nav-links > a,
-    .nav-links > .dropdown {
+    .nav-links>a,
+    .nav-links>.dropdown {
         display: inline-flex !important;
         align-items: center !important;
         white-space: nowrap !important;
     }
 
-    .dropdown:hover > .dropdown-content {
+    .dropdown:hover>.dropdown-content {
         display: block !important;
     }
 
@@ -1321,7 +1405,7 @@ select:not(.goog-te-combo) {
         gap: 0.8rem;
     }
 
-    .news-grid > *:nth-child(n+3) {
+    .news-grid>*:nth-child(n+3) {
         display: none !important;
     }
 
@@ -1332,12 +1416,17 @@ select:not(.goog-te-combo) {
     }
 
     .tabela-frequencias {
-        zoom: 0.85; 
+        zoom: 0.85;
         width: 100%;
     }
 
-    .tabela-frequencias th { padding: 8px 5px; }
-    .tabela-frequencias td { padding: 6px 4px; }
+    .tabela-frequencias th {
+        padding: 8px 5px;
+    }
+
+    .tabela-frequencias td {
+        padding: 6px 4px;
+    }
 
     /* Navbar Flutuante Mobile */
     .navbar {
@@ -1419,12 +1508,12 @@ select:not(.goog-te-combo) {
         transition: width 0.3s ease;
     }
 
-    .search-container.ativo .search-icon-btn { 
-        display: none; 
+    .search-container.ativo .search-icon-btn {
+        display: none;
     }
-    
-    .search-container.ativo .search-input-wrapper { 
-        display: flex; 
+
+    .search-container.ativo .search-input-wrapper {
+        display: flex;
     }
 
     .search-input-wrapper input {
@@ -1504,9 +1593,17 @@ select:not(.goog-te-combo) {
         transition: all 0.3s ease;
     }
 
-    .hamburger-btn.ativo span:nth-child(1) { transform: translateY(6.75px) rotate(45deg); }
-    .hamburger-btn.ativo span:nth-child(2) { opacity: 0; }
-    .hamburger-btn.ativo span:nth-child(3) { transform: translateY(-6.75px) rotate(-45deg); }
+    .hamburger-btn.ativo span:nth-child(1) {
+        transform: translateY(6.75px) rotate(45deg);
+    }
+
+    .hamburger-btn.ativo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-btn.ativo span:nth-child(3) {
+        transform: translateY(-6.75px) rotate(-45deg);
+    }
 
     /* Menu Colapsável Mobile */
     .nav-links {
@@ -1531,8 +1628,8 @@ select:not(.goog-te-combo) {
         display: flex !important;
     }
 
-    .nav-links > a,
-    .nav-links > .dropdown {
+    .nav-links>a,
+    .nav-links>.dropdown {
         display: inline-flex !important;
         width: auto !important;
         margin: 0;
@@ -1556,10 +1653,18 @@ select:not(.goog-te-combo) {
         cursor: pointer;
     }
 
-    .nav-links a:hover, .nav-links a:active, .nav-links a:focus,
-    .nav-links .dropdown-toggle:hover, .nav-links .dropdown-toggle:active, .nav-links .dropdown-toggle:focus,
-    .dropdown-content a:hover, .dropdown-content a:active, .dropdown-content a:focus,
-    .dropdown-content .dropdown-toggle:hover, .dropdown-content .dropdown-toggle:active, .dropdown-content .dropdown-toggle:focus {
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus,
+    .nav-links .dropdown-toggle:hover,
+    .nav-links .dropdown-toggle:active,
+    .nav-links .dropdown-toggle:focus,
+    .dropdown-content a:hover,
+    .dropdown-content a:active,
+    .dropdown-content a:focus,
+    .dropdown-content .dropdown-toggle:hover,
+    .dropdown-content .dropdown-toggle:active,
+    .dropdown-content .dropdown-toggle:focus {
         background-color: #2563eb !important;
         color: #ffffff !important;
     }
@@ -1604,7 +1709,9 @@ select:not(.goog-te-combo) {
     }
 
     /* Fórmulas Matemáticas Mobile */
-    mjx-container, .MathJax_Display, .katex-display {
+    mjx-container,
+    .MathJax_Display,
+    .katex-display {
         font-size: 65% !important;
     }
 }
@@ -1634,7 +1741,8 @@ h1 {
 }
 
 /* Garante que o texto dos links da tabela também dobre se necessário */
-.file-list td, .file-list th {
+.file-list td,
+.file-list th {
     word-break: break-word;
     padding: 8px 4px;
     text-align: left;
@@ -1651,50 +1759,52 @@ h1 {
 
 /* Bolinha preta cheia (Padrão) */
 .texto-livre ul {
-  list-style-type: disc;
+    list-style-type: disc;
 }
 
 /* Círculo vazado */
 .texto-livre ul.circulo {
-  list-style-type: circle;
+    list-style-type: circle;
 }
 
 /* Quadrado cheio */
 .texto-livre ul.quadrado {
-  list-style-type: square;
+    list-style-type: square;
 }
 
 /* Sem nenhum símbolo/marcador */
 .texto-livre ul.sem-estilo {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 /* Números normais: 1, 2, 3... (Padrão) */
 .texto-livre ol {
-  list-style-type: decimal;
+    list-style-type: decimal;
 }
 
 /* Números com zero à esquerda: 01, 02, 03... */
 .texto-livre ol.zero {
-  list-style-type: decimal-leading-zero;
+    list-style-type: decimal-leading-zero;
 }
 
 /* Letras minúsculas: a, b, c... */
 .texto-livre ol.letras-minusculas {
-  list-style-type: lower-alpha; /* ou lower-latin */
+    list-style-type: lower-alpha;
+    /* ou lower-latin */
 }
 
 /* Letras maiúsculas: A, B, C... */
 .texto-livre ol.letras-maiusculas {
-  list-style-type: upper-alpha; /* ou upper-latin */
+    list-style-type: upper-alpha;
+    /* ou upper-latin */
 }
 
 /* Números romanos minúsculos: i, ii, iii... */
 .texto-livre ol.romano-minusculo {
-  list-style-type: lower-roman;
+    list-style-type: lower-roman;
 }
 
 /* Números romanos maiúsculos: I, II, III... */
 .texto-livre ol.romano-maiusculo {
-  list-style-type: upper-roman;
+    list-style-type: upper-roman;
 }
