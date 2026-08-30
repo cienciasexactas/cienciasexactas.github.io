@@ -335,11 +335,9 @@ footer p {
     font-size: 0.9rem;
 }
 
-
 /* =========================================================
    4. Impressão de Rodapé
    ========================================================= */
-
 /* Oculta o rodapé da visualização em tela (web/mobile) */
 .rodape-impressao {
     display: none;
@@ -347,21 +345,34 @@ footer p {
 
 /* Estilização exclusiva para a Impressão / Gerador de PDF */
 @media print {
-    .rodape-impressao {
-        display: block !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 9pt;
-        color: #555555;
-        border-top: 1px solid #cccccc;
-        padding-top: 5pt;
+    @page {
+        size: A4 portrait;
+        margin-top: 2cm;
+        margin-left: 1.5cm;
+        margin-right: 1.5cm;
+        margin-bottom: 2cm; /* Define o espaço físico exato onde o texto PARA */
+
+        /* Coloca o texto nativamente dentro da margem inferior (Suportado no Chrome/Firefox/Edge modernos) */
+        @bottom-center {
+            content: "Prof. Wadiley Nascimento || Mestre em Estatística (Estatística Computacional) || (+239) 980 10 45";
+            font-family: Arial, sans-serif;
+            font-size: 8.5pt;
+            color: #555555;
+            border-top: 1px solid #cccccc;
+            padding-top: 0;
+            margin-top: 3px !important;
+            width: 100%;
+            vertical-align: 5px !important;
+            padding-top: 18px !important;
+        }
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
     }
 }
+
 /* =========================================================
    4. NAVBAR E NAVEGAÇÃO ESTRUTURAL
    ========================================================= */
