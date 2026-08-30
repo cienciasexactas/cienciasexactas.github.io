@@ -961,8 +961,9 @@ mjx-container[jax="CHTML"][display="true"] > mjx-math,
 /* 2. Container isolado da equação: reduz 12% no mobile e ativa scroll apenas horizontal */
 .texto-livreAuto .equacao-container {
     font-size: 88%;                      /* Redução de 12% no tamanho */
+    /* overflow: visible !important; /* Libera o conteúdo sem gerar barras de rolagem */
     overflow-x: auto !important;        /* Scroll horizontal quando necessário */
-    overflow-y: visible !important;     /* Garante expansão vertical sem cortar texto */
+    overflow-y: hidden !important;     /* Garante expansão vertical sem cortar texto */
     -webkit-overflow-scrolling: touch;
     margin-top: -38pt !important;
     margin-bottom: -33pt !important;
