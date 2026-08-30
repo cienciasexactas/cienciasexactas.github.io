@@ -202,7 +202,6 @@ header, .header, #header,
 
 /* Configurações Gerais para Todos os Títulos */
 .texto-livreAuto h1,
-.texto-livreAuto h2,
 .texto-livreAuto h3,
 .texto-livreAuto h4 {
   color: #004080; /* Azul institucional/acadêmico */
@@ -214,10 +213,14 @@ header, .header, #header,
 
 /* Evita margem no topo caso o título seja o primeiro elemento da página */
 .texto-livreAuto > h1:first-child,
-.texto-livreAuto > h2:first-child,
 .texto-livreAuto > h3:first-child,
 .texto-livreAuto > h4:first-child {
   margin-top: -35pt !important;
+  margin-bottom: -25pt !important;
+}
+
+.texto-livreAuto > h2:first-child {
+  margin-top: 35pt !important;
   margin-bottom: -25pt !important;
 }
 
@@ -239,6 +242,9 @@ header, .header, #header,
   border-bottom: 1px solid #004080; /* Linha mais fina */
   width: fit-content;               /* Faz a linha acompanhar apenas o texto */
   /*width: 500px;                Defina o comprimento desejado da linha */
+  color: #004080; /* Azul institucional/acadêmico */
+  font-family: Arial, "Times New Roman", sans-serif;
+  font-weight: bold;
 }
 
 /* Subseção (Nível 3) */
