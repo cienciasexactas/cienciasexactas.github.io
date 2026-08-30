@@ -1020,6 +1020,60 @@ O objectivo fundamental da Estatística é extrair informações confiáveis a p
 
 A estatística está dividida em três grandes partes: estatística descritiva ou dedutiva, estatística probabilística e estatística inferencial ou indutiva. Alguns autores, porém, consideram a estatística probabilística como parte da estatística inferencial.
 
+<div class="texto-livreAuto"> <h2> Medidas de Tendência Não Central ou Separatrizes </h2> </div>
+
+Segundo Bussab e Morettin (2011), a utilização apenas de medidas de tendência central pode não ser adequada para representar um conjunto de dados, uma vez que esses também são afetados por valores extremos e, apenas com o uso destas medidas, não é possível que o pesquisador tenha uma ideia clara de como a dispersão e a simetria dos dados se comportam.
+
+Como alternativa, podem ser utilizadas medidas separatrizes, como quartis, decis e percentis. O 2° quartil (Q2), 5° decil (D5) ou 50° percentil (P50) correspondem à mediana, sendo, portanto, medidas de tendência central.
+
+Quartis: Os quartis ($Q_i,\; i=1,\;2,\;3$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em quatro partes com dimensões iguais.
+
+Assim, o $1\text{º}$ Quartil ($Q_1$ ou $25\text{º}$ percentil) indica que 25% dos dados são inferiores a $Q_1$ ou que 75% dos dados são superiores a $Q_1$ .
+
+O $2\text{º}$ Quartil ($Q_2$ ou $5\text{º}$ decil ou $50\text{º}$ percentil) corresponde à mediana, indicando que 50% dos dados são inferiores ou superiores a $Q_2$.
+
+Já o $3\text{º}$ Quartil ($Q_3$ ou $75\text{º}$ percentil) indica que 75% dos dados são inferiores a $Q_3$ ou que 25% dos dados são superiores a $Q_3$.
+
+Decis: Os decis ($D_i,\; i=1,\;2,\; \cdots,\;9$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em dez partes com iguais.
+
+Desta forma, o $1\text{º}$ Decil ($D_1$ ou $10\text{º}$ percentil) indica que 10% dos dados são inferiores a $D_1$ ou que 90% dos dados são superiores a $D_1$.
+
+O $2\text{º}$ Decil ($D_2$ ou $20\text{º}$ percentil) indica que 20% dos dados são inferiores a $D_2$ ou que 80% dos dados são superiores a $D_2$.
+
+E assim sucessivamente, até o $9\text{º}$ decil ($D_9$ ou $90\text{º}$ percentil), que indica que 90% dos dados são inferiores a $D_9$ ou que 10% dos dados são superiores a $D_9$.
+
+Percentis: Os percentis ($P_i,\; i=1,\; 2,\; 3,\; \cdots,\; 99$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em cem partes com iguais.
+
+Desta maneira, o $1\text{º}$ percentil ($P_1$) indica que 1 % dos dados é inferior a $P_1$ ou que 99% dos dados são superiores a $P_1$.
+
+O $2\text{º}$ percentil ($P_2$) indica que 2% dos dados são inferiores a $P_2$ ou que 98% dos dados são superiores a $P_2$.
+
+E assim sucessivamente, até o $99\text{º}$ percentil ($P_{99}$), que indica que 99% dos dados são inferiores a $P_{99}$ ou que 1% dos dados é superior a $P_{99}$ .
+
+Cenário 1: Quartis, Decis e Percentis para dados discretos e contínuos não agrupados
+
+Se a posição do quartil, decil ou percentil desejado for um número inteiro ou estiver exatamente entre duas posições, o cálculo do respectivo quartil, decil ou percentil é facilitado. Porém, isso nem sempre acontece (imagine uma amostra com 33 elementos cujo objetivo é calcular o 67º percentil), de modo que existem vários mé todos propostos para esse cálculo que levam a resultados próximos, mas não idênticos.
+
+Apresentaremos um método simples e genérico que pode ser aplicado para o cálculo de qualquer quartil, decil ou percentil de ordem $i$, considerando dados discretos e contínuos não agrupados:
+
+Passo 1: Ordenar as observações em forma crescente.
+
+Passo 2: Determinar a posição do quartil, decil ou percentil desejado de ordem i:
+
+<div class="equacao-container"> $$ \begin{aligned}
+\text{Quartil} \;\rightarrow\; \text{Pos}(Q_i) &= \left\lfloor \frac{n}{4} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,3 \\[16pt]
+\text{Decil} \;\rightarrow\; \text{Pos}(D_i) &= \left\lfloor \frac{n}{10} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,\ldots,9 \\[16pt]
+\text{Percentil} \;\rightarrow\; \text{Pos}(P_i) &= \left\lfloor \frac{n}{100} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,\ldots,99
+\end{aligned}
+\tag {3.4}
+$$ </div>
+
+Passo 3: Calcular o valor do quartil, decil ou percentil correspondente à respectiva posição.
+
+Suponha que $\text{Pos}(Q_1)=3{,}75$, isto é, o valor de $Q_1$ está entre a 3ª e 4ª posição (75% mais próximo da 4ª posição e 25%, da 3ª posição). Desta forma, o cálculo de $Q_1$ será a soma do valor correspondente à 3ª posição multiplicado por 0,25 com o valor correspondente à 4ª posição multiplicado por 0,75.
+
+Exemplo 3.13: Considere os dados do Exemplo 3.9 referentes ao tempo médio de processamento da cenoura na fase de aca bamento, conforme especificado na Tabela 3.13. Determine $Q_1$ (1º quartil), $Q_3$ (3º quartil), $D_2$ (2º decil) e $P_{64}$ (64º percentil).
+
 </div> 
 
 
@@ -1318,15 +1372,18 @@ $$
 
 Padronizando a variável: $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
 
-Assim, $$
-P(-1{,}96 < Z < 1{,}96) = 0{,}95,
-$$ o que implica: $$
-P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right) = 0{,}95.
-$$
+Assim, $$ P(-1{,}96 < Z < 1{,}96) = 0{,}95, $$ 
+o que implica:
 
-Reorganizando, $$
+<div class="equacao-container"> $$ P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right) = 0{,}95.
+$$ </div>
+
+Reorganizando,
+
+<div class="equacao-container"> $$
 P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + 1{,}96\frac{\sigma}{\sqrt{n}}\right) = 0{,}95.
 $$
+</div>
 
 Esse é o intervalo de confiança de 95% para a média populacional.
 

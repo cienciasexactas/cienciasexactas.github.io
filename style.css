@@ -234,7 +234,7 @@ header, .header, #header,
 
 /* Subtítulo (Nível 2) */
 .texto-livreAuto h2 {
-  font-size: 15pt;
+  font-size: 14pt;
   padding-bottom: 3pt;
   border-bottom: 1px solid #004080; /* Linha mais fina */
   width: fit-content;               /* Faz a linha acompanhar apenas o texto */
@@ -962,7 +962,7 @@ mjx-container[jax="CHTML"][display="true"] > mjx-math,
 .texto-livreAuto .equacao-container {
     font-size: 88%;                      /* Redução de 12% no tamanho */
     overflow-x: auto !important;        /* Scroll horizontal quando necessário */
-    overflow-y: visible !important;     /* Garante expansão vertical sem cortar texto */
+    overflow-y: hidden !important;     /* Garante expansão vertical sem cortar texto */
     -webkit-overflow-scrolling: touch;
     margin-top: -38pt !important;
     margin-bottom: -33pt !important;
