@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +29,35 @@
 
     <!-- ESTILO PARA OS SUBMENUS EM CASCATA -->
     <style>
-        .dropdown { position: relative; }
-        .dropdown .dropdown-content { display: none; position: absolute; left: 100%; top: 0; min-width: 180px; }
-        .dropdown:hover > .dropdown-content { display: block; }
-        .nav-links > .dropdown > .dropdown-content { left: 0; top: 100%; }
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            min-width: 180px;
+        }
+
+        .dropdown:hover>.dropdown-content {
+            display: block;
+        }
+
+        .nav-links>.dropdown>.dropdown-content {
+            left: 0;
+            top: 100%;
+        }
 
         /* Controlo de visibilidade das secções */
-        .conteudo-seccao { display: none; }
-        .conteudo-seccao.ativo { display: block; }
+        .conteudo-seccao {
+            display: none;
+        }
+
+        .conteudo-seccao.ativo {
+            display: block;
+        }
     </style>
 </head>
 
@@ -47,24 +69,25 @@
         <div class="nav-header">
             <!-- Perfil / Logo -->
             <a href="#" class="nav-profile">
-            <div class="nav-photo">
-                <img src="FotoPerfil.jpg" alt="Perfil">
-            </div>
+                <div class="nav-photo">
+                    <img src="FotoPerfil.jpg" alt="Perfil">
+                </div>
             </a>
 
             <!-- Área da Pesquisa (Mobile) -->
             <div class="search-container" id="searchContainer">
-            <button type="button" class="search-icon-btn" id="searchOpenBtn" aria-label="Abrir Pesquisa">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </button>
+                <button type="button" class="search-icon-btn" id="searchOpenBtn" aria-label="Abrir Pesquisa">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
 
-            <div class="search-input-wrapper" id="searchInputWrapper">
-                <input type="text" id="searchInput" placeholder="Pesquisar..." autocomplete="off">
-                <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Fechar Pesquisa">&times;</button>
-            </div>
+                <div class="search-input-wrapper" id="searchInputWrapper">
+                    <input type="text" id="searchInput" placeholder="Pesquisar..." autocomplete="off">
+                    <button type="button" class="search-close-btn" id="searchCloseBtn"
+                        aria-label="Fechar Pesquisa">&times;</button>
+                </div>
             </div>
 
             <!-- 3. Selector de Idioma Mobile (NOVO) -->
@@ -95,9 +118,9 @@
 
             <!-- Botão Hambúrguer -->
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
 
@@ -108,7 +131,7 @@
             <!-- MENU: Estatística I (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#estatistica-descritiva">Estatística Descritiva</a>
-                <div class="dropdown-content">                 
+                <div class="dropdown-content">
                     <!-- Submenu 1: Exploração de Dados Univariados -->
                     <div class="dropdown">
                         <a href="#exploracao-de-dados-univariados">Exploração de Dados Uni-Variada</a>
@@ -138,7 +161,7 @@
                 </div>
             </div>
 
-<!-- MENU: TEORIA DE PROBABILIDADE (Com Submenus em Cascata) -->
+            <!-- MENU: TEORIA DE PROBABILIDADE (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#teoria-de-probabilidade">Teoria de Probabilidade</a>
                 <div class="dropdown-content">
@@ -158,7 +181,7 @@
                 </div>
             </div>
 
-<!-- MENU: INFERÊNCIA ESTATÍSTICA (Com Submenus em Cascata) -->
+            <!-- MENU: INFERÊNCIA ESTATÍSTICA (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#estatistica-inferencial">Inferência Estatística</a>
                 <div class="dropdown-content">
@@ -177,11 +200,11 @@
                 </div>
             </div>
 
-<!-- MENU: MODELOS DE REGRESSÃO (Com Submenus em Cascata) -->
+            <!-- MENU: MODELOS DE REGRESSÃO (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#modelos-de-regressão">Modelos de Regressão</a>
                 <div class="dropdown-content">
-                    
+
                     <!-- Submenu 1: Probabilidade -->
                     <div class="dropdown">
                         <a href="#estat-prob">Probabilidade;</a>
@@ -237,8 +260,8 @@
 
                 </div>
             </div>
-            
-<!-- MENU: NÚMEROS ÍNDICES (Com Submenus em Cascata) -->
+
+            <!-- MENU: NÚMEROS ÍNDICES (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#estatistica-ii">Números Índices</a>
                 <div class="dropdown-content">
@@ -247,11 +270,11 @@
                 </div>
             </div>
 
-<!-- MENU: Estatística II (Com Submenus em Cascata) -->
+            <!-- MENU: Estatística II (Com Submenus em Cascata) -->
             <div class="dropdown">
                 <a href="#estatistica-ii">Análise de Variância</a>
                 <div class="dropdown-content">
-                    
+
                     <!-- Submenu 1: Probabilidade -->
                     <div class="dropdown">
                         <a href="#estat-prob">Probabilidade;</a>
@@ -308,7 +331,7 @@
                 </div>
             </div>
 
-<!-- MENU: Recursos -->
+            <!-- MENU: Recursos -->
             <div class="dropdown">
                 <a href="#recursos">Recursos</a>
                 <div class="dropdown-content">
@@ -318,16 +341,17 @@
                 </div>
             </div>
 
-<!-- MENU: Recursos -->
+            <!-- MENU: Recursos -->
             <a href="#testes-e-exames">Testes & Exames</a>
 
         </div>
 
-<!-- ÁREA DIREITA (Desktop): Lupa + Selector de Idioma -->
+        <!-- ÁREA DIREITA (Desktop): Lupa + Selector de Idioma -->
         <div class="nav-actions-desktop">
             <div class="search-desktop-wrapper" id="searchDesktopWrapper">
                 <button type="button" class="search-desktop-btn" id="searchDesktopBtn" aria-label="Pesquisar">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
@@ -355,31 +379,32 @@
         <ul id="carousel-list">
             <li>
                 <a href="https://rpubs.com/WadileyNascimento/anova" target="_blank" rel="noopener noreferrer">
-                    <img src="ANOVA.png" alt="ANOVA"> 
+                    <img src="ANOVA.png" alt="ANOVA">
                     <span>ANOVA</span>
                 </a>
             </li>
             <li>
-                <a href="https://rpubs.com/WadileyNascimento/survivalanalysis" target="_blank" rel="noopener noreferrer">
-                    <img src="Sobrevivencia.png" alt="Survival"> 
+                <a href="https://rpubs.com/WadileyNascimento/survivalanalysis" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="Sobrevivencia.png" alt="Survival">
                     <span>Survival</span>
                 </a>
             </li>
             <li>
                 <a href="https://rpubs.com/WadileyNascimento/gestaorcamental" target="_blank" rel="noopener noreferrer">
-                    <img src="Gorcamental.jpg" alt="G. Orçamental"> 
+                    <img src="Gorcamental.jpg" alt="G. Orçamental">
                     <span>G. Orçamental</span>
                 </a>
             </li>
             <li>
                 <a href="https://rpubs.com/WadileyNascimento/estatisticai" target="_blank" rel="noopener noreferrer">
-                    <img src="EstatisticaI.jpg" alt="Estatística I"> 
+                    <img src="EstatisticaI.jpg" alt="Estatística I">
                     <span>Estatística I</span>
                 </a>
             </li>
             <li>
                 <a href="https://rpubs.com/WadileyNascimento/estatisticaii" target="_blank" rel="noopener noreferrer">
-                    <img src="EstatisticaII.jpg" alt="Estatística II"> 
+                    <img src="EstatisticaII.jpg" alt="Estatística II">
                     <span>Estatística II</span>
                 </a>
             </li>
@@ -408,7 +433,8 @@
 
                     <!-- Notícia 2 -->
                     <li class="news-card-wrapper">
-                        <a href="https://www.facebook.com/photo?fbid=1688107906655350&set=pb.100063684715351.-2207520000" target="_blank" class="news-card news-card-link">
+                        <a href="https://www.facebook.com/photo?fbid=1688107906655350&set=pb.100063684715351.-2207520000"
+                            target="_blank" class="news-card news-card-link">
                             <div class="news-img"><img src="OFomativa.jpg" alt="Guiões"></div>
                             <div class="news-content">
                                 <span class="news-date">14 Ago 2026</span>
@@ -456,7 +482,8 @@
 
                     <!-- Notícia 6 -->
                     <li class="news-card-wrapper">
-                        <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank" class="news-card news-card-link">
+                        <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank"
+                            class="news-card news-card-link">
                             <div class="news-img"><img src="noticia6.jpg" alt="YouTube"></div>
                             <div class="news-content">
                                 <span class="news-date">28 Jul 2026</span>
@@ -492,185 +519,197 @@
                 </div>
                 <div class="card">
                     <h3>Ciências Sociais</h3>
-                    <p>Compreensão da geografia humana, dinâmicas demográficas, cidadania e organização da sociedade atual.</p>
+                    <p>Compreensão da geografia humana, dinâmicas demográficas, cidadania e organização da sociedade
+                        atual.</p>
                 </div>
             </div>
         </section>
 
-<!-- ESTATÍSTICA DESCRITIVA (MENU PRINCIPAL) -->
-<section id="estatistica-descritiva" class="conteudo-seccao" data-grupo="estat1"> <h2>ESTATÍSTICA DESCRITIVA</h2> <div class="texto-livreAuto">
+        <!-- ESTATÍSTICA DESCRITIVA (MENU PRINCIPAL) -->
+        <section id="estatistica-descritiva" class="conteudo-seccao" data-grupo="estat1">
+            <h2>ESTATÍSTICA DESCRITIVA</h2>
+            <div class="texto-livreAuto">
+                
+                A origem da <azul><b>Estatística</b></azul> remonta à Antiguidade, período em que diversas civilizações já procediam à recolha e ao registo de dados censitários para fundamentar a tomada de decisões administrativas. Esses levantamentos primitivos permitiam estimar a riqueza individual e familiar, servindo de base para o cálculo e a arrecadação de impostos.
+                
+                Registos de natureza estatística sobre censos populacionais e transformações territoriais de diversos povos encontram-se descritos em textos clássicos e na própria Bíblia. 
+                
+                A palavra <ver>Estatística deriva do latim status (Estado)</ver>. Inicialmente, o termo designava o acervo de dados demográficos e económicos relativos aos Estados, constituindo um instrumento de gestão pública voltado para o controlo fiscal, a defesa e a segurança nacional.
+                
+                A Estatística transcendeu a esfera estritamente governamental e passou a ser incorporada por diversas áreas do conhecimento humano (como a Biologia, a Medicina e as Ciências Sociais), impulsionada pelo formalismo do cálculo das probabilidades.
+                
+                Com o avanço da computação e do volume de dados, a Estatística tornou-se um ativo central nas grandes empresas e instituições. A análise quantitativa de dados consolida-se, assim, como um elemento de inteligência estratégica e diferencial competitivo.
+                
+                A Estatística define-se como a ciência que estuda os fenómenos coletivos por meio do desenvolvimento e aplicação de métodos para a recolha, organização, sumarização, análise e interpretação de dados (qualitativos e quantitativos).
+                
+                A literatura estatística divide esta disciplina habitualmente em três grandes ramos interligados: <azul>Estatística Descritiva (ou Dedutiva)</azul>: Dedica-se à organização, sumarização e representação dos dados recolhidos (através de tabelas, gráficos e medidas-resumo) para descrever as características do grupo observado, sem realizar generalizações. <azul>Teoria das Probabilidades:</azul> Fornece o modelo matemático rigoroso para lidar com o acaso e a incerteza, servindo de elo de ligação entre a descrição amostral e a inferência. <azul>Estatística Inferencial (ou Indutiva)</azul>: Utiliza os resultados obtidos numa amostra representativa para extrapolar, estimar parâmetros e testar hipóteses relativas à população de origem. (Nota: Diversos autores integram a Teoria das Probabilidades no âmbito da própria Estatística Inferencial).
 
-A origem da estatística remonta a tempos antigos, em que vários povos já coletavam e registravam dados cen sitários para eventual tomada de decisão. Também eram realizadas estimativas das riquezas individuais e familiares, e cálculos de arrecadação de impostos eram feitos com base nas informações obtidas.
+                <div class="texto-livreAuto">
+                    <h3> Objetivo Fundamental da Estatística </h3>
+                </div>
 
-A própria Bíblia traz informações estatísticas sobre a evolução ou involução territorial de diversos povos. A palavra estatística vem de status, que significa Estado em latim. O termo era utilizado para descrever e designar um conjunto de dados relativos aos Estados, tornando a estatística um meio de administração para os governantes com a finalidade de controle fiscal e segurança nacional.
+                O seu objetivo fundamental consiste em extrair conhecimento útil e evidências confiáveis a partir dos dados observados. 
+                
+                Na prática de gestão, fornece ferramentas quantitativas que permitem aos decisores responder às suas preocupações e fundamentar escolhas estratégicas com níveis mensuráveis de confiança, mesmo em cenários caracterizados pela escassez de informação e por elevada incerteza.
 
-No século XIX, ela começou a ganhar im portância em outras áreas do conhecimento humano. Já a partir do século XX, passou a ser utilizada, nas grandes empresas e organizações, com o enfoque da quantidade total, tornando-se um atributo de diferencial competitivo.
+            </div>
 
-Nesse contexto, a estatística desenvolveu-se, ao longo dos séculos, alicerçada em conjuntos de métodos e proces sos destinados a estudar e medir os fenômenos coletivos.
-
-Neste sentido, a estatística pode ser definida como a ciência que tem por objetivo a coleta, análise e interpretação de dados qualitativos e quantitativos. Ou ainda, como um conjunto de métodos para coleta, organização, resumo, análise e interpretação de dados para tomada de decisões.
-
-<div class="texto-livreAuto"> <h3> Objetivo Fundamental da Estatística </h3> </div>
-
-A Estatística fornece aos gestores instrumentos para que possam responder as preocupações e tomar decisões com alguma confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são de elevada incerteza.
-
-O objectivo fundamental da Estatística é extrair informações confiáveis a partir dos dados recolhidos para a tomada de decisão.
-
-A estatística está dividida em três grandes partes: estatística descritiva ou dedutiva, estatística probabilística e estatística inferencial ou indutiva. Alguns autores, porém, consideram a estatística probabilística como parte da estatística inferencial.
-
-</div> 
-           <div class="bloco-container">
+            <div class="bloco-container">
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-chart-bar"></i></span>
                         <h3>Exploração de Dados Uni-Variados</h3>
                     </div>
-                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos seus dados de forma isolada.</p>
+                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições
+                        de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos
+                        seus dados de forma isolada.</p>
                     <a href="exploracao-de-dados-univariados" class="bloco-btn">Explorar Variável</a>
                 </div>
 
                 <!-- BLOCO 2 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-calculator"></i></span>
                         <h3>Medidas Resumo</h3>
                     </div>
-                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância, desvio-padrão e amplitude).</p>
+                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com
+                        facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância,
+                        desvio-padrão e amplitude).</p>
                     <a href="estatistica-medidas-resumo" class="bloco-btn">Ver Medidas</a>
                 </div>
 
                 <!-- BLOCO 3 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-chart-line"></i></span>
                         <h3>Exploração de Dados Bi-Variados</h3>
                     </div>
-                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões, correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com precisão.</p>
+                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões,
+                        correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com
+                        precisão.</p>
                     <a href="exploracao-de-dados-bivariados" class="bloco-btn">Analisar Relações</a>
                 </div>
             </div>
-</section>
+        </section>
 
-<section id="exploracao-de-dados-univariados" class="conteudo-seccao" data-grupo="estat1"> <h2>EXPLORAÇÃO DE DADOS UNI-VARIADOS </h2> <div class="texto-livreAuto">
+        <section id="exploracao-de-dados-univariados" class="conteudo-seccao" data-grupo="estat1">
+            <h2>EXPLORAÇÃO DE DADOS UNI-VARIADOS </h2>
+            <div class="texto-livreAuto">
+                
+                A <b><ver>Estatística</ver></b> compreende um conjunto de métodos e técnicas que permite, de forma sistemática, recolher, organizar, descrever, analisar e interpretar dados oriundos de estudos ou experimentações em qualquer área do conhecimento.
+                
+                <b>Estatística Descritiva:</b> Constitui a fase inicial da análise de dados, destinada a sintetizar e apresentar as características fundamentais de um conjunto de observações. A <u>exploração dos dados</u> é efetuada mediante <i>tabelas de frequência, representações gráficas e medidas-resumo (como média, mediana e desvio-padrão)</i>. As suas conclusões aplicam-se exclusivamente ao grupo analisado, sem generalizações populacionais. 
+                
+                Conforme o número de atributos observados em simultâneo, classifica-se em: <b><azul>Univariada</azul></b>: Análise isolada de uma única variável; <b><azul>Bivariada</azul></b>: Análise simultânea e relacional de duas variáveis; <b><azul>Multivariada</azul></b>: Análise conjunta de três ou mais variáveis.
+                
+                <b>Inferência Estatística:</b> Engloba um conjunto de técnicas fundamentadas no cálculo de probabilidades que possibilita <ver>extrapolar (generalizar)</ver> para uma população as conclusões obtidas a partir do estudo de uma amostra representativa. Permite estimar parâmetros, testar hipóteses e fundamentar a tomada de decisão sob condições de incerteza.
 
-A Estatística é um conjunto de técnicas que permite, de forma sistemática, organizar, descrever, analisar e interpretar dados provenientes de estudos ou experimentos realizados em qualquer área do conhecimento.
+                <blockquote> <b>Aplicações Práticas</b>: A Estatística fornece aos decisores ferramentas quantitativas para fundamentar opções estratégicas com níveis de confiança mensuráveis, reduzindo a subjetividade mesmo em cenários de elevada incerteza ou de escassez de dados.</blockquote>
 
-A Estatística Descritiva constitui a etapa inicial da análise de dados, sendo utilizada para descrever e resumir informações. Com o avanço dos métodos computacionais e a crescente disponibilidade de dados, essa área ganhou ainda mais relevância. Ela permite sintetizar as principais características de um conjunto de dados por meio de: i) tabelas; ii) gráficos e iii) medidas-resumo (como média, mediana, etc.). Essas ferramentas ajudam o pesquisador a compreender melhor o comportamento dos dados.
+                
+                <b>População (ou Universo)</b>: Conjunto de todos os elementos (indivíduos, objetos ou eventos) que partilham pelo menos uma característica comum e que constituem o objeto de estudo. <ver>Exemplos</ver>: As idades dos estudantes matriculados na Universidade de São Tomé e Príncipe (USTP); o rendimento mensal dos agregados familiares no distrito de Água Grande; ou o peso dos recém-nascidos na região de Mé-Zochi.
+                
+                <b>Amostra</b>: Subconjunto representativo extraído de uma população. Os dados recolhidos na amostra servem de base para a inferência estatística. O processo de seleção rigoroso desse subconjunto designa-se amostragem. <ver>Exemplo</ver>: Em sondagens eleitorais, em vez de auscultar a totalidade dos eleitores, seleciona-se uma amostra proporcional distribuída por distritos, faixas etárias, género e nível socioeconómico.
+                
+                <b>Censo (ou Recenseamento)</b>: Estudo exaustivo que recolhe dados de todos os elementos da população. Segundo a ONU, o censo demográfico consiste no conjunto de operações de recolha, compilação e publicação de dados demográficos, económicos e sociais de um determinado território num momento específico. Embora proporcione dados exatos, envolve elevados custos e prazos extensos, tornando a amostragem a alternativa mais eficiente na maioria das pesquisas.
+                
+                <b>Variável</b>: Atributo ou característica mensurável de interesse em cada unidade de análise. <ver>Exemplos</ver>: Setor de atividade, faturação anual ou número de colaboradores de uma empresa.
+                
+                <b>Dados</b>: Matéria-prima empírica da análise estatística, correspondendo aos valores assumidos pelas variáveis nas unidades observadas.
+                
+                <b>Rol</b>: Arranjo ordenado dos dados numéricos em sequência crescente ou decrescente, facilitando a identificação de amplitudes e valores extremos.
+                
+                <b>Parâmetro</b>: Medida numérica que descreve uma característica da população inteira (<ver><i>ex.</i></ver>: média populacional $\mu$ ou proporção populacional $p$). Como os parâmetros são frequentemente desconhecidos e de difícil acesso direto, são estimados a partir de estatísticas calculadas na amostra (estimadores).
 
-A análise descritiva é feita apenas com base na amostra estudada, sem realizar generalizações ou inferências sobre a população. Dependendo do número de variáveis analisadas, a estatística descritiva pode ser: i) Univariada: análise de uma única variável; ii) Bivariada: análise de duas variáveis ou iii) Multivariada: análise de três ou mais variáveis
+                <div class="texto-livreAuto">
+                    <h2> Etapas do Método Estatístico </h2>
+                </div>
 
-A Inferência Estatística envolve um conjunto de técnicas que permite generalizar ou extrapolar para uma população maior as conclusões obtidas a partir de uma amostra. Ou seja, enquanto a estatística descritiva apenas descreve os dados, a inferência estatística vai além, permitindo tirar conclusões e apoiar a tomada de decisões com base em evidências.
+                A obtenção de resultados estatísticos válidos e rigorosos só é possível mediante o cumprimento sistemático das etapas que constituem o método estatístico:
+                
+                <b>1. Definição e Identificação do Problema:</b> Constitui a etapa basilar da investigação. O problema de pesquisa deve ser delimitado de forma clara e objetiva, uma vez que dessa definição dependem as escolhas metodológicas subsequentes. Nesta fase, estabelecem-se as hipóteses de estudo, definem-se as variáveis de interesse e identificam-se as decisões operacionais ou estratégicas que serão fundamentadas pelos resultados. A revisão da literatura e a consulta de dados pré-existentes são essenciais para uma formulação concetual sólida.
+                
+                <b>2. Recolha de Dados:</b> Consiste no levantamento empírico da informação necessária ao estudo. Os dados recolhidos podem ser classificados segundo:
+                
+                <i>Natureza da Fonte:</i><azul> Dados Primários</azul>: Obtidos diretamente pelo investigador para os fins específicos da pesquisa (ex.: inquéritos por questionário, entrevistas, experimentação ou observação direta). <azul>Dados Secundários</azul>: Provenientes de fontes pré-existentes (ex.: bases de dados governamentais, estatísticas oficiais, relatórios organizacionais e publicações científicas).
+                
+                <i>Origem da Informação:</i> <azul>Interna</azul> (registos da própria instituição) ou <azul>Externa</azul> (instituições públicas, institutos de estatística, mercado).
+                
+                <i>Periodicidade da Recolha:</i> <azul>Contínua</azul> (registos permanentes), <azul>Periódica</azul> (intervalos regulares de tempo) ou <azul>Ocasional</azul> (pesquisas pontuais).
+                
+                <ver><i>Nota:</i></ver> A recolha de dados primários é indicada quando a informação secundária é escassa ou obsoleta, embora envolva maior afetação de recursos financeiros e temporais.
+                
+                <b>3. Crítica e Tratamento dos Dados:</b> Fase dedicada ao controlo de qualidade e à triagem da informação recolhida. Tem por finalidade:Detetar e corrigir erros de codificação, transcrição ou omissão.I dentificar e tratar valores discrepantes (outliers) ou registos incoerentes. Avaliar a fiabilidade, a consistência e a representatividade do conjunto de dados. Esta etapa é indispensável para evitar que incorreções na recolha distorçam as estimativas e enviesem as conclusões finais.
+                
+                <b>4. Apresentação e Sumarização dos Dados:</b> Consiste no tratamento descritivo dos dados com o intuito de estruturar a informação e facilitar a sua leitura e interpretação. Envolve a construção de: <i>Tabelas de frequência e matrizes de dados; Gráficos estatísticos adequados à natureza das variáveis; Medidas estatísticas resumo (de posição, dispersão e forma)</i>.
+                
+                <b>5. Análise e Interpretação dos Resultados:</b> Etapa final em que se extrai o significado analítico dos dados organizados, confrontando-os com as hipóteses iniciais. O processo exige rigor para mitigar enviesamentos decorrentes de amostragens inadequadas, técnicas estatísticas incorretas ou extrapolações indevidas. Os resultados fundamentam as conclusões do estudo e fornecem o suporte empírico para a tomada de decisões.
 
-A Estatística fornece aos gestores instrumentos que lhes permitem responder às suas preocupações e tomar decisões com algum grau de confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são marcadas por elevada incerteza.
+                <div class="texto-livreAuto">
+                    <h2> TIPOS DE VARIÁVEIS </h2>
+                </div>
 
-Dentre os elementos básicos da estatística, podemos citar população (ou universo), amostra, censo, variável, dados e parâmetros. As definições de cada termo estão a seguir.
+                A identificação correta do tipo de variável é fundamental para a seleção das medidas estatísticas descritivas, para a elaboração das representações gráficas e para a escolha adequada dos métodos de inferência estatística.
+                
+                <b>Variáveis Quantitativas (ou Métricas)</b>: Representam características mensuráveis ou enumeráveis de um indivíduo, objeto ou evento. Classificam-se em discretas, quando resultam de contagens (assumindo um conjunto finito ou infinito enumerável de valores), ou contínuas, quando resultam de medições (assumindo um conjunto infinito não enumerável contido em um intervalo de números reais).
+                
+                <b>Técnicas de Análise e Visualização</b>: <azul>Representação Gráfica</azul>: Histogramas, gráficos de dispersão, gráficos de linhas, diagramas de ramos-e-folhas (stem-and-leaf) e diagramas de caixa (boxplots). Medidas de Posição ou Localização: Média aritmética, mediana, moda, quartis, decis e percentis. <azul>Medidas de Dispersão ou Variabilidade</azul>: Amplitude total, desvio médio, variância, desvio-padrão, erro-padrão e coeficiente de variação. <azul>Medidas de Forma</azul>: Coeficientes de assimetria e de curtose.
+                
+                <b>Variáveis Qualitativas (ou Categóricas/Não Métricas)</b>: Representam atributos, qualidades ou categorias que não podem ser diretamente quantificados por meio de escalas numéricas de medição.
+                
+                <b>Técnicas de Análise e Visualização:</b> <azul>Representação Gráfica e Tabular</azul>: Tabelas de distribuição de frequências (absolutas e relativas), gráficos de barras, colunas ou setores ("tarte"). <azul>Medidas Resumo Permitidas</azul>: A moda é a única medida de tendência central aplicável a qualquer variável qualitativa (nominal ou ordinal). 
+                
+                Nas variáveis qualitativas ordinais, a mediana e os percentis/quartis também podem ser legitimamente calculados, já que existe uma ordenação hierárquica implícita entre as suas categorias.
 
-População ou Universo é o conjunto que contém todos os indivíduos, objectos ou elementos a serem estudados, que apresentam uma ou mais características em comum.
+                <div class="texto-livreAuto">
+                    <h2> Escala de Mensuração </h2>
+                </div>
 
-Exemplo: O conjunto de idades de todos os alunos da USTP, o conjunto de rendas de todos os habitantes de Água Grande, o conjunto de pesos de todas as crianças nascidas em Mé-Zochi, etc.
+                As variáveis também podem ser classificadas segundo o seu nível ou escala de mensuração. A <b>mensuração</b> consiste no processo de atribuir números ou rótulos a objetos, pessoas ou eventos, com base em regras formais que expressam quantidades ou qualidades dos seus atributos. Por sua vez, a escala constitui um sistema estruturado de símbolos ou números que se aplica aos indivíduos ou aos seus comportamentos, sendo a posição de cada observação determinada pelo grau de presença do atributo mensurado.
 
-Amostra é o subconjunto extraído da população para análise, devendo ser representativo daquele grupo. A partir das informações colhidas na amostra, os resultados obtidos poderão ser utilizados para generalizar, inferir ou tirar conclusões acerca dessa população (inferência estatística). O processo de escolha de uma amostra da população é denominado amostragem.
+                Conforme a taxonomia de Stevens (1946), as escalas de mensuração para variáveis qualitativas (não métricas ou categóricas) dividem-se em nominal e ordinal, enquanto as variáveis quantitativas (métricas) são mensuradas em escalas intervalares e de razão (ou proporcionais).
+                
+                <div class="tabela-imagem-container">
+                    <img src="TipodeEscala.png" alt="Tabela de Distribuição de Frequências">
+                </div>
 
-Como exemplo, podemos citar o caso em que a população é representada por todos os eleitores brasileiros e a amostra é extraída de municípios representativos, onde os eleitores são escolhidos de acordo com a proporcio nalidade de gênero, idade, grau de instrução e classe social.
+                <b>Escala Nominal</b>: Agrupa as observações em categorias mutuamente exclusivas com base em atributos qualitativos, sem estabelecer qualquer hierarquia, ordem ou relação de grandeza. <ver>Exemplos</ver>: Profissão, religião, estado civil, país de origem e área de estudo.
+                
+                <b>Escala Ordinal</b>: Ordena as observações segundo uma hierarquia ou posição relativa em uma determinada direção, embora os intervalos entre as categorias não sejam necessariamente iguais ou mensuráveis. <ver>Exemplos</ver>: Grau de escolaridade, nível socioeconômico, faixa etária categorizada e escalas de satisfação ou preferência.
+                
+                <b>Escala Intervalar</b>: Além de ordenar os elementos, apresenta intervalos constantes e uniformes entre os pontos da escala. A sua origem (ponto zero) é arbitrária, não indicando a ausência total do atributo mensurado. <ver>Exemplos</ver>: Temperatura em graus Celsius ou Fahrenheit, horário do dia e pontuações em testes padronizados (como QI).
+                
+                <b>Escala de Razão (ou Proporcional)</b>: Reúne as propriedades de ordenação e intervalos constantes, mas diferencia-se por possuir um zero absoluto (único e não arbitrário), no qual o valor zero representa a ausência completa da característica. <ver>Exemplos</ver>: Renda, idade em anos, altura, velocidade, distância percorrida e volume produzido.
 
-Censo ou recenseamento, é o estudo dos dados relativos a todos os elementos da população. ONU define censo como o conjunto das operações que consiste em recolher, agrupar e publicar dados demográficos, económicos e sociais relativos a determinado momento ou em certos períodos, a todos os habitantes de um país ou território.
+                <div class="texto-livreAuto">
+                    <h2> Escala de Precisão </h2>
+                </div>
 
-Um censo pode custar muito caro e demandar um tempo considerável, de forma que um estudo consideran do parte dessa população pode ser uma alternativa mais simples, rápida e menos custosa.
+                As <azul>variáveis qualitativas (ou categóricas)</azul> podem ser classificadas quanto ao número de categorias em: <b>dicotómicas (ou binárias)</b>, quando assumem apenas duas categorias; e <b>policotómicas</b>, quando possuem mais de duas categorias. Por outro lado, as <azul>variáveis quantitativas (ou métricas)</azul> dividem-se, quanto à sua natureza de mensuração, em <b>discretas</b> e <b>contínuas</b>.
+                
+                <b>Variáveis Dicotómicas ou Binárias (Dummy)</b>: Assumem estritamente duas categorias mutuamente exclusivas, às quais costumam ser atribuídos os códigos numéricos $1$ e $0$. O valor $1$ sinaliza a presença da característica de interesse, enquanto o valor $0$ indica a sua ausência (ou a categoria de referência). <ver>Exemplos</ver>: Condição de fumador (1 = Sim, 0 = Não); estado de vacinação (1 = Vacinado, 0 = Não vacinado); ou classificação do país (1 = Desenvolvido, 0 = Em desenvolvimento).
+                
+                <b>Variáveis Policotómicas</b>: Compreendem mais de duas categorias qualitativas, podendo apresentar ordenação interna (ordinais) ou não (nominais). <ver>Exemplos</ver>: Classe socioeconómica (baixa, média, alta) e grau de escolaridade (ensino básico, ensino secundário, licenciatura, pós-graduação).
+                
+                <b>Variáveis Quantitativas Discretas</b>: Assumem valores numéricos pertencentes a um conjunto finito ou infinito enumerável (geralmente números inteiros), sendo habitualmente resultantes de processos de contagem. <ver>Exemplos</ver>: Número de filhos por família ($0, 1, 2, \dots$), quantidade de veículos produzidos por uma fábrica ou número de congressistas eleitos.
+                
+                <b>Variáveis Quantitativas Contínuas</b>: Podem assumir qualquer valor dentro de um intervalo de números reais, derivando tipicamente de medições e mensurações que dependem da precisão do instrumento de medição. <ver>Exemplos</ver>: Peso (massa corporal), altura, rendimento pecuniário (salário) ou tempo de execução de uma tarefa.
 
-Dados: podem ser considerados a matéria-prima de qualquer análise estatística e de qualquer modelagem exploratória ou confirmatória. A partir deles, podem ser obtidas informações de interesse correspondentes a uma ou mais variáveis.
+                <blockquote> <b>Aplicações Práticas</b>: Um conjunto de dados (dataset) raramente é composto por um único tipo de escala, integrando habitualmente variáveis métricas e não métricas. A articulação entre diferentes níveis de mensuração enriquecem as análises empíricas e possibilita a aplicação de modelos estatísticos avançados voltados à tomada de decisão fundamentada.</blockquote>
 
-Rol: o arranjo dos dados em ordem crescente ou decrescente.
-
-Parâmetro: medidas estatísticas numéricas que precisam ser estimadas a partir de critérios ou métodos definidos pelo pesquisador para representar determinadas características da população geralmente desconhecidas.
-
-Variável é uma característica ou atributo que se deseja observar, medir ou contar, a fim de se obter algum tipo de conclusão. Como exemplos, podemos citar o sector de actuação, o facturamento ou a quantidade de funcionários de empresas listadas na Bolsa de Valores.
-
-
-<div class="texto-livreAuto"> <h2> Etapas do Método Estatístico </h2> </div>
-
-Os resultados válidos só é possível seguindo os passos que definem o método estatístico de resolução do problemas:
-
-Identificação do problema: Esta é a fase inicial e uma das mais importantes. O problema deve ser definido de forma clara e objetiva, pois disso dependem todas as etapas seguintes. Nesta fase, determina-se o que se pretende estudar e quais decisões poderão ser tomadas com base nos resultados. Pode-se recorrer a informação já existente para ajudar a formular melhor o problema.
-
-Recolha de dados: Depois de definido o problema, procede-se à recolha de dados adequados, relevantes e tão completos quanto possível. Os dados podem ser: i) Primários: obtidos diretamente pelo investigador (inquéritos, entrevistas, observação), ou ii) Secundários: já existentes (publicações, estatísticas oficiais, relatórios). As fontes podem ser: i) Internas (dentro de uma organização) ou ii) Externas (instituições públicas, empresas, etc.). A recolha pode ser: i) Contínua, ii) periódica ou iii) ocasional
-
-Caso a informação disponível seja insuficiente ou desatualizada, pode ser necessário recolher novos dados, o que aumenta a precisão, mas também os custos e o tempo do estudo.
-
-Crítica dos dados: Após a recolha, os dados devem ser analisados criticamente. Esta etapa consiste em: i) detetar erros; ii) eliminar valores incoerentes ou extremos e iii) verificar a qualidade e fiabilidade dos dados
-
-É essencial para garantir que os resultados finais não sejam distorcidos ou incorretos.
-
-Apresentação dos dados: Os dados devem ser organizados de forma clara e lógica para facilitar a sua compreensão. Utilizam-se: i) tabelas; ii) gráficos; iii) medidas estatísticas (média, mediana, etc.)
-
-Esta etapa está ligada à estatística descritiva e tem como objetivo tornar a informação mais acessível e interpretável.
-
-Análise e interpretação dos resultados: Nesta fase, os dados são analisados e interpretados com o objetivo de tirar conclusões. Os resultados devem ser avaliados com cuidado, tendo em atenção possíveis erros ou enviesamentos, que podem surgir devido a: i) dados inadequados; ii) métodos mal escolhidos ou iii) comparações incorretas.
-
-As conclusões obtidas permitem compreender o fenómeno estudado e apoiar a tomada de decisões.
-
-<div class="texto-livreAuto"> <h2> TIPOS DE VARIÁVEIS </h2> </div>
-
-O tipo de variável recolhida é crucial no cálculo de estatísticas descritivas e na representação gráfica de resultados, bem como na escolha de métodos estatísticos a serem utilizados para analisar os dados.
-
-Métricas ou quantitativas representam características de um indivíduo, objecto ou elemento resultantes de uma contagem (conjunto finito de valores) ou de uma mensuração (conjunto infinito de valores).
-
-As variáveis quantitativas podem ser representadas de forma gráfica (gráfico de linhas, dispersão, histograma, ramo-e-folhas e boxplot), por meio de medidas de posição ou localização (média, mediana, moda, quartis, decis e percentis), medidas de dispersão ou variabilidade (amplitude, desvio-médio, variância, desvio-padrão, erro-padrão e coeficiente de variação) ou ainda por meio das medidas de forma como assimetria e curtose.
-
-Não métricas ou qualitativas representam características de um indivíduo, objecto ou elemento que não podem ser medidas ou quantificadas. As respostas são dadas em categorias.
-
-A representação das características da variável não métrica ou qualitativa pode ser feita por meio de tabelas de distribuição de frequências ou de forma gráfica, sem o cálculo de medidas de posição, dispersão e de formato. A única exceção é em relação à moda, medida que fornece o valor mais fre quente de uma variável, podendo também ser aplicada para variáveis não métricas.
-
-<div class="texto-livreAuto"> <h2> Escala de Mensuração </h2> </div>
-
-As variáveis ainda podem ser classificadas de acordo com o nível ou escala de mensuração. Mensuração é o processo de atribuir números ou rótulos a objetos, pessoas, estados ou eventos de acordo com as regras específicas para representar quantidades ou qualidades dos atributos. Escala é um conjunto de símbolos ou números, construído com base em uma regra, e aplica-se a indivíduos ou a seus comportamentos ou atitudes. A posição de um indivíduo na escala é baseada na posse dele do atributo que a escala deve medir.
-
-Segundo Stevens (1946), as escalas de mensuração das variáveis não métricas, categóricas ou qualitativas po dem ser classificadas como nominal e ordinal, enquanto as variáveis métricas ou quantitativas se classificam em escala intervalar e de razão (ou proporcional).
-
-A escala nominal classifica as unidades em classes ou categorias em relação à característica representada, não estabelecendo qualquer relação de grandeza ou de ordem. É denominada nominal porque as categorias se diferenciam apenas pelo nome. Ex: Profissão, religião, cor, estado civil, localização geográfica ou país de origem.
-
-A escala ordinal é uma escala de ordenação, designando uma posição relativa das classes segundo uma direcção. Ex: Opinião e escalas de preferência de consumidores, grau de escolaridade, classe social, faixa etária, etc.
-
-A escala intervalar, além de ordenar as unidades quanto à característica mensurada, possui uma unidade de medida constante. A origem ou o ponto zero dessa escala de medida é arbitrário e não expressa ausência de quantidade. Ex: Temperatura, Altura, Velocidade.
-
-A escala de razão ordena as unidades em relação à característica mensurada e possui uma unidade de medida constante. Por outro lado, a origem é única e o valor zero expressa ausência de quantidade. Ex: Renda, idade, quantidade produzida de determinado produto e distância percorrida.
-
-<div class="texto-livreAuto"> <h2> Escala de Precisão </h2> </div>
-
-As variáveis qualitativas ou categóricas também podem ser classificadas em função do número de categorias: a) dicotômicas ou binárias (dummies), quando assumem apenas duas categorias; b) policotômicas, quando assu mem mais de duas categorias. Já as variáveis métricas ou quantitativas também podem ser classificadas em função da escala de precisão: dis cretas ou contínuas.
-
-A variável dicotómica ou binária (dummy) pode assumir apenas duas categorias, sendo que os valores 0 ou 1 são atribuídos a essas categorias. O valor 1 é atribuído quando a característica de interesse está presente na variável e o valor 0, ou caso contrário. Ex: Fumantes (1) e não fumantes ( 0 ), país desenvolvido (1) e subdesenvolvido (0), pacientes vacinados (1) e não vacinados (0).
-
-Uma variável qualitativa pode assumir mais do que duas categorias e nesse caso é chamada policotômica. Ex: Classe social (baixa, média e alta) e o grau de escolaridade (ensino fundamental, ensino médio, ensino superior e pós-graduado).
-
-As variáveis quantitativas discretas podem assumir um conjunto finito ou enumerável de valores que são provenientes, frequentemente, de uma contagem. Ex: A quantidade de número de filhos (0, 1, 2, ... ), a quantidade de senadores eleitos ou a quantidade de carros fabricados em determinada fábrica.
-
-As variáveis quantitativas contínuas, por sua vez, são aquelas cujos possíveis valores pertencem a um intervalo de números reais e que resultam de uma mensuração métrica. Ex: Peso, altura ou o salário de um indivíduo.
-
-Um banco de dados pode apresentar tanto variáveis em escalas métricas como não métricas, não precisando se restringir a apenas um tipo de escala. Essa combinação pode propiciar pesquisas interessantes e, juntamente com as modelagens adequadas, podem gerar informações voltadas à tomada de decisão.
-
-O tipo de variável recolhida é crucial no cálculo de estatísticas descritivas e na representação gráfica de resul tados, bem como na escolha de métodos estatísticos a serem utilizados para analisar os dados.
-
-A estatística descritiva univariada contempla os seguintes tópicos:
-
-<div class="texto-livre">
-  <ol style="list-style-type: lower-roman;">
-    <li>a frequência de ocorrência de um conjunto de observações por meio de tabelas de distribuições de frequências;</li>
-    <li>a representação da distribuição de uma variável por meio de gráficos; e</li>
-    <li>medidas representativas de uma série de dados, como medidas de posição ou localização ou tendência central, medidas de dispersão ou variabilidade e medidas de forma (assimetria e curtose).</li>
-  </ol>
-</div>
-
-</div>
-           <div class="bloco-container">
+            </div>
+            <div class="bloco-container">
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Distribuição de Frequências</h3>
                     </div>
-                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos seus dados de forma isolada.</p>
-                    <a href="exploracao-de-dados-univariados" class="bloco-btn">Explorar Variável</a>
+                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições
+                        de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos
+                        seus dados de forma isolada.</p>
+                    <a href="distribuicao-de-frequencias" class="bloco-btn">Explorar Variável</a>
                 </div>
 
                 <!-- BLOCO 2 -->
@@ -679,32 +718,61 @@ A estatística descritiva univariada contempla os seguintes tópicos:
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Representação Gráfica</h3>
                     </div>
-                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância, desvio-padrão e amplitude).</p>
-                    <a href="estat-medidas" class="bloco-btn">Ver Medidas</a>
+                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com
+                        facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância,
+                        desvio-padrão e amplitude).</p>
+                    <a href="representacao-grafica" class="bloco-btn">Ver Medidas</a>
                 </div>
             </div>
-                    </section>
+        </section>
 
-<!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
-<section id="estatistica-medidas-resumo" class="conteudo-seccao" data-grupo="estat1"> <h2>MEDIDAS RESUMO</h2> <div class="texto-livreAuto">
 
-As informações contidas em um conjunto de dados podem ser resumidas por meio de medidas numéricas adequadas, chamadas medidas-resumo.
+        <!-- DISTRIBUIÇÕES DE FREQUÊNCIAS (SUB-MENU) -->
+        <section id="distribuicao-de-frequencias" class="conteudo-seccao" data-grupo="estat2">
+            <h2>DISTRIBUIÇÕES DE FREQUÊNCIAS</h2>
+            <div class="texto-livreAuto">
 
-As medidas-resumo mais utilizadas em estatística descritiva univariada têm como objetivo principal a repre sentação do comportamento da variável em estudo por meio de seus valores centrais e não centrais, suas disper sões ou formas de distribuição dos seus valores em torno da média.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-As medidas-resumo que serão estudadas neste capítulo são: medidas de posição ou localização (medidas de tendência central e medidas separatrizes ou tendência não central), medidas de dispersão ou variabilidade e medidas de forma. Essas medidas são calculadas para variáveis métricas, ou quantitativas.
+            </div>
+        </section>
 
-A única exceção é em relação à moda, que é uma medida de tendência central que fornece o valor mais frequente de determinada variável, podendo assim também ser calculada para variáveis não métricas ou qualitativas.
 
-</div> 
-           <div class="bloco-container">
+        <!-- REPRESENTAÇÃO GRÁFICA (SUB-MENU) -->
+        <section id="representacao-grafica" class="conteudo-seccao" data-grupo="estat2">
+            <h2>REPRESENTAÇÃO GRÁFICA</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+            </div>
+        </section>
+
+
+
+        <!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
+        <section id="estatistica-medidas-resumo" class="conteudo-seccao" data-grupo="estat1">
+            <h2>MEDIDAS RESUMO</h2>
+            <div class="texto-livreAuto">
+                As informações contidas em um conjunto de dados podem ser sintetizadas por meio de estatísticas numéricas denominadas medidas-resumo.
+                
+                Na estatística descritiva univariada, essas medidas têm como objetivo caracterizar o comportamento de uma variável, descrevendo a sua centralidade, a dispersão e a forma da sua distribuição.
+                
+                As medidas-resumo abordadas neste capítulo compreendem: medidas de posição (de tendência central e separatrizes), medidas de dispersão (ou variabilidade) e medidas de forma. Em regra, esses parâmetros são calculados para variáveis quantitativas (métricas). A única exceção é a moda que, por representar o valor com maior frequência absoluta, também pode ser aplicada a variáveis qualitativas (não métricas).
+
+            </div>
+            <div class="bloco-container">
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Medidas de Localização</h3>
                     </div>
-                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos seus dados de forma isolada.</p>
+                    <p>Descubra como analisar e resumir as características de uma única variável. Explore distribuições
+                        de frequência, gráficos explicativos e tabelas organizadas para compreender o comportamento dos
+                        seus dados de forma isolada.</p>
                     <a href="medidas-de-posicao" class="bloco-btn">Explorar Variável</a>
                 </div>
 
@@ -714,7 +782,9 @@ A única exceção é em relação à moda, que é uma medida de tendência cent
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Medidas de Dispersão</h3>
                     </div>
-                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância, desvio-padrão e amplitude).</p>
+                    <p>Acesse as principais métricas para sintetizar seus conjuntos de dados. Calcule e interprete com
+                        facilidade medidas de tendência central (média, mediana e moda) e de dispersão (variância,
+                        desvio-padrão e amplitude).</p>
                     <a href="medidas-de-dispersao" class="bloco-btn">Ver Medidas</a>
                 </div>
 
@@ -724,7 +794,9 @@ A única exceção é em relação à moda, que é uma medida de tendência cent
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Medidas de Assimetria</h3>
                     </div>
-                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões, correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com precisão.</p>
+                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões,
+                        correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com
+                        precisão.</p>
                     <a href="medidas-de-assimetria" class="bloco-btn">Analisar Relações</a>
                 </div>
 
@@ -734,196 +806,238 @@ A única exceção é em relação à moda, que é uma medida de tendência cent
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Medidas de Forma</h3>
                     </div>
-                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões, correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com precisão.</p>
+                    <p>Analise a relação e a dependência entre duas variáveis distintas. Identifique padrões,
+                        correlações, diagramas de dispersão e tabelas de contingência para cruzar informações com
+                        precisão.</p>
                     <a href="medidas-de-forma" class="bloco-btn">Analisar Relações</a>
                 </div>
             </div>
-</section>
+        </section>
 
 
-<!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
-<section id="medidas-de-posicao" class="conteudo-seccao" data-grupo="estat1"> <h2>Meedidas de Posição ou Localização</h2> <div class="texto-livreAuto">
+        <!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
+        <section id="medidas-de-posicao" class="conteudo-seccao" data-grupo="estat1">
+            <h2>Medidas de Posição ou Localização</h2>
+            <div class="texto-livreAuto">
 
-Essas medidas fornecem valores que caracterizam o comportamento de uma série de dados, indicando a posi ção ou localização dos dados em relação ao eixo dos valores assumidos pela variável ou característica em estudo. As medidas de posição ou localização são subdivididas em medidas de tendência central (média, mediana e moda) e medidas separatrizes (quartis, decis e percentis).
+                As <b>medidas de posição</b> (ou de localização) caracterizam o comportamento de um conjunto de dados, indicando a localização dos valores ao longo do eixo da variável em estudo. 
+                
+                Essas estatísticas subdividem-se em: <azul>Medidas de Tendência Central</azul>: Sintetizam o conjunto de dados em torno de um valor central representativo, destacando-se a média aritmética, a mediana e a moda e, <azul>Medidas Separatrizes (ou Não Centrais)</azul>: Dividem a distribuição ordenada em partes proporcionais, compreendendo os quartis, decis e percentis.
+                
+                <div class="texto-livreAuto">
+                    <h2> Medidas de Tendência Central </h2>
+                </div>
 
-As medidas de tendência central mais utilizadas referem-se à média aritmética, à mediana e à moda.
+                A <azul><b><u>Média Aritmética</u></b></azul> calcula-se dividindo o somatório de todos os valores observados pelo número total de observações.
+                
+                Dependendo da amplitude do estudo, distingue-se em: <azul>Média Populacional ($\mu$)</azul>: Representa o valor médio de uma população finita de tamanho $N$. <azul>Média Amostral ($\overline{X}$)</azul>: Representa a estimativa do valor médio obtida a partir de uma amostra de tamanho $n$:
 
-<b><mark style="text-decoration: #2ecc71;">Média Aritmética</mark></b>: A média aritmética pode ser a medida representativa de uma população com $N$ elementos, representada pela letra grega $\mu$, ou a medida representativa de uma amostra com $n$ elementos, representada por $\overline X$.
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 1</b></ver>: Dados discretos e contínuos não agrupados</h4>
+                </div>
 
-<div class="texto-livreAuto"> <h4> <mark style="background-color: #3498db; color: white;">Cenário 1</mark>: Dados discretos e contínuos não agrupados </h4> </div>
+                A <b>média aritmética simples</b> (ou simplesmente média) é obtida pelo quociente entre a soma de todos os valores observados de uma variável quantitativa (discreta ou contínua) e o número total de observações.
+                
+                Para uma variável quantitativa $X$, a média aritmética amostral ($\bar{X}$) é expressa por:
+                
+                $$\overline{X} = \frac{\sum_{i=1}^{n} X_i}{n} \tag{3.1}$$
+                
+                Em que: $n$ representa o número total de elementos da amostra (tamanho amostral); $X_i$ representa o valor assumido pela variável $X$ na $i$-ésima observação; $\sum_{i=1}^{n}$ é o somatório de todos os valores de $X_i$ no intervalo, para $i = 1, 2, \dots, n$.
+                
+                <b><ver>Exemplo 3.1</ver></b>: Calcule a média aritmética simples dos dados referentes às notas obtidas pelos estudantes do curso de pós-graduação na unidade curricular de Métodos Quantitativos.
 
-A média aritmética simples, ou simplesmente média, é a soma do total de valores de determinada variável (discreta ou contínuo) dividida pelo número total de observações. Assim, a média aritmética amostral de deter minada variável X ($\overline X$) é:
+                <div class="tabela-container">
+                    <table border="1" style="border-collapse: collapse; text-align: center; width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td>5,7</td> <td>6,5</td> <td>6,9</td> <td>8,3</td> <td>8,0</td> <td>4,2</td> <td>6,3</td> <td>7,4</td> <td>5,8</td> <td>6,9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-$$
-\overline X = \frac{\sum_{i=1}^n X_i}{n}
-\tag{3.1}
-$$
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 2</b></ver>: Dados discretos (agrupados ou não) e contínuos não agrupados</h4>
+                </div>
 
-em que $n$ é o número total de observações no conjunto de dados e $X_i$, para $i= 1,\,\, \ldots,\,\, n$, representa cada um dos valores da variável X.
+                No cálculo da média aritmética simples, todas as observações possuem o mesmo peso ou importância relativa. No entanto, quando se pretende atribuir ponderações distintas ($w_i$ ou $p_i$) a cada valor $X_i$ da variável, utiliza-se a média aritmética ponderada.
+                
+                A média ponderada para dados não agrupados (com pesos ponderadores $p_i$) ou para dados discretos agrupados por frequências absolutas ($f_i$ ou $F_i$) é dada por:
+                
+                <div class="equacao-container">
+                    $$\overline{X} = \underbrace{\frac{\sum_{i=1}^{n} X_i \cdot p_i}{\sum_{i=1}^{n} p_i}}_{\text{Ponderada (Dados Desagrupados)}} = \underbrace{\frac{\sum_{i=1}^{k} X_i \cdot f_i}{\sum_{i=1}^{k} f_i}}_{\text{Agrupados por Frequências}} \tag{3.2}$$
+                </div>
 
-<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.1</mark></strong>: Calcule a média aritmética simples para os dados referentes às notas dos alunos de pós-graduação na disciplina de Métodos Quantitativos.
+                Quando os pesos ou as frequências são expressos em termos relativos ou percentuais ($pr_i$ ou $f_{r,i}$, em que $\sum pr_i = 1$ ou $100\%$), a expressão (3.2) simplifica-se para:
+                
+                <div class="equacao-container">
+                    $$\overline{X} = \underbrace{\sum_{i=1}^{n} X_i \cdot pr_i}_{\text{Ponderada (Dados Desagrupados)}} = \underbrace{\sum_{i=1}^{k} X_i \cdot f_{r,i}}_{\text{Agrupados por Frequências}} \tag{3.3}$$
+                </div>
 
-<div class="tabela-container">
-    <table border="1" style="border-collapse: collapse; text-align: center; width: 100%;">
-    <tbody> <tr> <td>5,7</td> <td>6,5</td> <td>6,9</td> <td>8,3</td> <td>8,0</td>
-    <td>4,2</td> <td>6,3</td> <td>7,4</td> <td>5,8</td> <td>6,9</td> </tr> </tbody> </table>
-</div>
-
-<div class="texto-livreAuto"> <h4> <mark style="background-color: #3498db; color: white;">Cenário 2</mark>: Dados discretos (agrupados ou não) e contínuos não agrupados </h4> </div>
-
-No cálculo da média aritmética simples, todas as ocorrências têm a mesma importância ou peso. Quando se deseja atribuir diferentes pesos ($p_i$) para cada valor $i$ da variável X, utiliza-se a média aritmética ponderada:
-
-<div class="equacao-container">
-$$
-\overline X = \underbrace{\frac{\sum_{i=1}^n X_i \cdot p_i}{\sum_{i=1}^n p_i}}_{\text{Discreto/Contínuo Desagrupado}} =  \underbrace{\frac{\sum_{i=1}^n X_i \cdot F_i}{\sum_{i=1}^n F_i}}_{\text{Discreto Agrupado}}
-\tag{3.2}
-$$
-</div>
-
-Se os pesos estiverem expressos em termos percentuais (peso relativo - $pr_i$), a expressão (3.2) resume-se a:
-
-<div class="equacao-container">
-$$
-\overline X = \underbrace{\sum_{i=1}^n X_i \cdot pr_i}_{\text{Discreto/Contínuo Desagrupado}} =  \underbrace{\sum_{i=1}^n X_i \cdot Fr_i}_{\text{Discreto Agrupado}}
-\tag{3.3}
-$$
-</div>
-
-Nota: Quando os valores discretos de $X_i$ se repetem, os dados são agrupados em uma tabela de frequência. Para o cálculo da média aritmética, utilizaremos o mesmo critério da média ponderada, porém, os pesos para cada $X_i$ passam a ser representados por frequências absolutas ($F_i$) e, ao invés de $n$ observações com $n$ diferentes valores, teremos $n$ observações com $m$ diferentes valores (dados agrupados)
-
-<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.2</mark></strong>: Na escola da Vanessa, a média anual de cada matéria é calculada a partir das notas obtidas ao longo dos quatro bimestres, com os respectivos pesos: 1, 2, 3 e 4. A Tabela 3.2 apresenta as notas de matemática da aluna em cada bimestre. Calcule a média anual de Vanessa na matéria.
-
-<div class="tabela-container">
-  <h3>Tabela 3.2 - Notas de matemática da aluna Vanessa</h3>
-  <table class="tabela-frequencias">
-    <thead>
-      <tr>
-        <th>Período</th>
-        <th>Nota</th>
-        <th>Peso</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1º Bimestre</td><td>4.5</td><td>1</td></tr>
-      <tr><td>2º Bimestre</td><td>7.0</td><td>2</td></tr>
-      <tr><td>3º Bimestre</td><td>5.5</td><td>3</td></tr>
-      <tr><td>4º Bimestre</td><td>6.5</td><td>4</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.3</mark></strong>: Uma carteira de ações é composta por cinco ativos.A Tabela 3.3 apresenta o retorno médio de cada ativo no último mês, assim como a respectiva porcentagem investida. Determine o retorno médio da carteira.
-
-<div class="tabela-container">
-  <h3>Tabela 3.3 - Retorno de cada ação e porcentagem investida</h3>
-  <table class="tabela-frequencias">
-    <thead>
-      <tr>
-        <th>Ativo</th>
-        <th>Retorno (%)</th>
-        <th>% Investimento</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Banco do Brasil ON</td><td>1.05</td><td>10</td></tr>
-      <tr><td>Bradesco PN</td><td>0.56</td><td>25</td></tr>
-      <tr><td>Eletrobrás PNB</td><td>0.08</td><td>15</td></tr>
-      <tr><td>Gerdau PN</td><td>0.24</td><td>20</td></tr>
-      <tr><td>Vale PN</td><td>0.75</td><td>30</td></tr>
-    </tbody>
-  </table>
-</div>
+                <blockquote> <b>Nota</b>: Quando uma variável discreta apresenta valores repetidos, os dados são habitualmente organizados numa tabela de distribuição de frequências. Nesse cenário, o cálculo da média segue a mesma lógica da média ponderada, em que o "peso" de cada valor distinto $X_i$ corresponde à sua frequência absoluta ($f_i$). Adicionalmente, o somatório passa a ser efetuado sobre as $k$ categorias ou valores distintos ($i = 1, 2, \dots, k$), e não sobre o total de $n$ observações individuais..</blockquote>
 
 
-<strong><mark style="background-color: #e74c3c; color: white;">Exemplo 3.4</mark></strong>: : Uma pesquisa de satisfação com 120 entrevistados avaliou o desempenho de uma seguradora de saúde, por meio das notas atribuídas que variam de 1 a 10. Os resultados da pesquisa são apresentados na Tabela 3.4. Calcule a média aritmética.
+                <b><ver>Exemplo 3.2</ver></b>: Na instituição de ensino da Vanessa, a classificação final anual em cada disciplina é obtida pela média ponderada das notas alcançadas nos quatro bimestres, cujos pesos atribuídos são, respetivamente, 1, 2, 3 e 4. A Tabela 3.2 apresenta as pontuações obtidas pela estudante na unidade curricular de Matemática em cada período. Determine a média anual ponderada da aluna.
 
-<div class="tabela-container">
-  <h3>Tabela 3.4 - Tabela de frequência absoluta</h3>
-  <table class="tabela-frequencias">
-    <tbody>
-      <tr>
-        <th>Notas</th>
-        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-      </tr>
-      <tr>
-        <th>N.º Entrevistados</th>
-        <td>9</td><td>12</td><td>15</td><td>18</td><td>24</td><td>26</td><td>5</td><td>7</td><td>3</td><td>1</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+                <div class="tabela-container">
+                    <h3>Tabela 3.2 - Notas de matemática da aluna Vanessa</h3>
+                    <table class="tabela-frequencias">
+                        <thead>
+                            <tr>
+                                <th>Período</th> <th>Nota</th> <th>Peso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1º Bimestre</td> <td>4.5</td> <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>2º Bimestre</td> <td>7.0</td> <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>3º Bimestre</td> <td>5.5</td> <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>4º Bimestre</td> <td>6.5</td> <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <b><ver>Exemplo 3.3</ver></b>: Uma carteira de investimentos é constituída por cinco ativos financeiros. A Tabela 3.3 apresenta o retorno médio mensal de cada ativo no último período, bem como a respetiva proporção do capital total investido (peso na carteira). Determine o retorno médio ponderado da carteira.
+
+                <div class="tabela-container">
+                    <h3>Tabela 3.3 - Retorno de cada ação e porcentagem investida</h3>
+                    <table class="tabela-frequencias">
+                        <thead>
+                            <tr>
+                                <th>Ativo</th> <th>Retorno (%)</th> <th>% Investimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Banco do Brasil ON</td> <td>1.05</td> <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Bradesco PN</td> <td>0.56</td> <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>Eletrobrás PNB</td> <td>0.08</td> <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>Gerdau PN</td> <td>0.24</td> <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>Vale PN</td> <td>0.75</td> <td>30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <b><ver>Exemplo 3.4</ver></b>: Um estudo de satisfação realizado junto de $120$ clientes avaliou o desempenho de uma seguradora de saúde através de notas numa escala discreta de $1$ a $10$. Os resultados obtidos encontram-se resumidos na Tabela 3.4. Determine a média aritmética das notas atribuídas.
+
+                <div class="tabela-container">
+                    <h3>Tabela 3.4 - Tabela de frequência absoluta</h3>
+                    <table class="tabela-frequencias">
+                        <tbody>
+                            <tr>
+                                <th>Notas</th> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> <td>7</td> <td>8</td> <td>9</td> <td>10</td>
+                            </tr>
+                            <tr>
+                                <th>N.º Entrevistados</th> <td>9</td> <td>12</td> <td>15</td> <td>18</td> <td>24</td> <td>26</td> <td>5</td> <td>7</td> <td>3</td> <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
 
-<div class="texto-livreAuto"> <h3> Objetivo Fundamental da Estatística </h3> </div>
+                <div class="texto-livreAuto">
+                    <h2> Medidas de Tendência Não Central ou Separatrizes </h2>
+                </div>
 
-A Estatística fornece aos gestores instrumentos para que possam responder as preocupações e tomar decisões com alguma confiança, mesmo quando a quantidade de informação disponível é pequena e as situações futuras são de elevada incerteza.
+                Segundo Bussab e Morettin (2011), a utilização exclusiva de medidas de tendência central pode revelar-se insuficiente para caracterizar adequadamente um conjunto de dados. Por um lado, tais estatísticas são sensíveis a valores discrepantes (outliers); por outro, não fornecem informação suficiente sobre o grau de dispersão e o perfil de assimetria da distribuição.
+                
+                Como alternativa ou complemento, utilizam-se as medidas separatrizes (quartis, decis e percentis). Cabe notar que o 2.º quartil ($Q_2$), o 5.º decil ($D_5$) e o 50.º percentil ($P_{50}$) coincidem com a mediana, constituindo, por isso, a ponte entre as estatísticas de tendência central e as separatrizes.
+                
+                <azul><b>Quartis</b> ($Q_i,\; i=1, 2, 3$)</azul>: Divisores que particionam um conjunto de dados ordenados de forma crescente em quatro partes iguais (cada uma contendo 25% das observações):
 
-O objectivo fundamental da Estatística é extrair informações confiáveis a partir dos dados recolhidos para a tomada de decisão.
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>1.º Quartil</b> ($Q_1$ ou $P_{25}$): Delimita os 25% inferiores dos dados (isto é, 25% dos valores são menores ou iguais a $Q_1$ e 75% são superiores).
+                        </li>
+                        <li>
+                            <b>2.º Quartil</b> ($Q_2$ ou $D_5$ ou $P_{50}$): Corresponde à mediana (50% dos dados são inferiores e 50% são superiores).
+                        </li>
+                        <li>
+                            <b>3.º Quartil</b> ($Q_3$ ou $P_{75}$): Delimita os 75% inferiores dos dados (75% dos valores são menores ou iguais a $Q_3$ e 25% são superiores).
+                        </li>
+                    </ul>
+                </div>
+                
+                <azul><b>Decis</b> ($D_i,\; i=1, 2, \dots, 9$):</azul> Divisores que particionam os dados ordenados em dez partes iguais (cada uma com 10% das observações).
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>1.º Decil</b> ($D_1$ ou $P_{10}$): 10% dos dados são inferiores a $D_1$ e 90% são superiores.
+                        </li>
+                        <li>
+                            <b>9.º Decil</b> ($D_9$ ou $P_{90}$): 90% dos dados são inferiores a $D9$ e 10% são superiores.
+                        </li>
+                    </ul>
+                </div>
 
-A estatística está dividida em três grandes partes: estatística descritiva ou dedutiva, estatística probabilística e estatística inferencial ou indutiva. Alguns autores, porém, consideram a estatística probabilística como parte da estatística inferencial.
+                <azul><b>Percentis</b> ($P_i,\; i=1, 2, \dots, 99$):</azul> Divisores que particionam os dados ordenados em cem partes iguais (cada uma com 1% das observações).1.º Percentil ($P_1$): 1% dos dados é inferior a $P_1$ e 99% são superiores.99.º Percentil ($P_{99}$): 99% dos dados são inferiores a $P_{99}$ e 1% é superior.
 
-<div class="texto-livreAuto"> <h2> Medidas de Tendência Não Central ou Separatrizes </h2> </div>
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>1.º Percentil</b> ($P_1$): 1% dos dados é inferior a $P_1$ e 99% são superiores.
+                        </li>
+                        <li>
+                            <b>99.º Percentil</b> ($P_{99}$): 99% dos dados são inferiores a $P_{99}$ e 1% é superior.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 1</b></ver>: Dados Não Agrupados (Discretos e Contínuos)</h4>
+                </div>
 
-Segundo Bussab e Morettin (2011), a utilização apenas de medidas de tendência central pode não ser adequada para representar um conjunto de dados, uma vez que esses também são afetados por valores extremos e, apenas com o uso destas medidas, não é possível que o pesquisador tenha uma ideia clara de como a dispersão e a simetria dos dados se comportam.
+                Quando a posição calculada para uma medida separatriz não resulta num número inteiro exato, recorre-se a métodos de interpolação. Apresenta-se a seguir um método prático e genérico:
+                
+                <b>Passo 1:</b> Ordenar o conjunto de dados por ordem crescente ($X_{(1)} \le X_{(2)} \le \dots \le X_{(n)}$).
 
-Como alternativa, podem ser utilizadas medidas separatrizes, como quartis, decis e percentis. O 2° quartil (Q2), 5° decil (D5) ou 50° percentil (P50) correspondem à mediana, sendo, portanto, medidas de tendência central.
+                <b>Passo 2:</b> Determinar a posição ordinal da medida pretendida de ordem $i$:
 
-Quartis: Os quartis ($Q_i,\; i=1,\;2,\;3$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em quatro partes com dimensões iguais.
+                <div class="equacao-container">
+                    $$\begin{aligned} \text{Quartil:} \quad &\text{Pos}(Q_i) = \left\lfloor \frac{n}{4} \times i \right\rfloor + 0{,}5, \quad i = 1, 2, 3 \\[16pt]
+                    \text{Decil:} \quad &\text{Pos}(D_i) = \left\lfloor \frac{n}{10} \times i \right\rfloor + 0{,}5, \quad i = 1, 2, \dots, 9 \\[16pt]
+                    \text{Percentil:} \quad &\text{Pos}(P_i) = \left\lfloor \frac{n}{100} \times i \right\rfloor + 0{,}5, \quad i = 1, 2, \dots, 99 \end{aligned} \tag{3.4}$$ 
+                </div>
+                
+                (em que $\lfloor \cdot \rfloor$ representa a função parte inteira).
+                
+                <b>Passo 3:</b> Obter o valor por interpolação ponderada.Se a posição $\text{Pos}$ tiver parte fracionária, o valor da medida é determinado ponderando as posições inteiras adjacentes.
+                
+                <blockquote> <g><b>Importante</b></g>: Se $\text{Pos}(Q_1) = 3{,}75$, o valor encontra-se entre a 3.ª e a 4.ª posição ordenada ($X_{(3)}$ e $X_{(4)}$), estando 75% mais próximo da 4.ª posição:
+                    $$Q_1 = 0{,}25 \cdot X_{(3)} + 0{,}75 \cdot X_{(4)}$$.</blockquote>
 
-Assim, o $1\text{º}$ Quartil ($Q_1$ ou $25\text{º}$ percentil) indica que 25% dos dados são inferiores a $Q_1$ ou que 75% dos dados são superiores a $Q_1$ .
+                <b><ver>Exemplo 3.4</ver></b>: Considere os dados do tempo médio de processamento de cenoura na fase de acabamento (apresentados na Tabela 3.13 do Exemplo 3.9). Determine o: 1.º Quartil ($Q_1$), 3.º Quartil ($Q_3$), 2.º Decil ($D_2$), 64.º Percentil ($P_{64}$).
 
-O $2\text{º}$ Quartil ($Q_2$ ou $5\text{º}$ decil ou $50\text{º}$ percentil) corresponde à mediana, indicando que 50% dos dados são inferiores ou superiores a $Q_2$.
+            </div>
+        </section>
 
-Já o $3\text{º}$ Quartil ($Q_3$ ou $75\text{º}$ percentil) indica que 75% dos dados são inferiores a $Q_3$ ou que 25% dos dados são superiores a $Q_3$.
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1">
+            <h2>EXPLORAÇÃO DE DADOS BI-VARIADOS </h2>
+            <div class="texto-livreAuto">
 
-Decis: Os decis ($D_i,\; i=1,\;2,\; \cdots,\;9$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em dez partes com iguais.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-Desta forma, o $1\text{º}$ Decil ($D_1$ ou $10\text{º}$ percentil) indica que 10% dos dados são inferiores a $D_1$ ou que 90% dos dados são superiores a $D_1$.
-
-O $2\text{º}$ Decil ($D_2$ ou $20\text{º}$ percentil) indica que 20% dos dados são inferiores a $D_2$ ou que 80% dos dados são superiores a $D_2$.
-
-E assim sucessivamente, até o $9\text{º}$ decil ($D_9$ ou $90\text{º}$ percentil), que indica que 90% dos dados são inferiores a $D_9$ ou que 10% dos dados são superiores a $D_9$.
-
-Percentis: Os percentis ($P_i,\; i=1,\; 2,\; 3,\; \cdots,\; 99$) são medidas de posição que dividem um conjunto de dados, ordenados em forma crescente, em cem partes com iguais.
-
-Desta maneira, o $1\text{º}$ percentil ($P_1$) indica que 1 % dos dados é inferior a $P_1$ ou que 99% dos dados são superiores a $P_1$.
-
-O $2\text{º}$ percentil ($P_2$) indica que 2% dos dados são inferiores a $P_2$ ou que 98% dos dados são superiores a $P_2$.
-
-E assim sucessivamente, até o $99\text{º}$ percentil ($P_{99}$), que indica que 99% dos dados são inferiores a $P_{99}$ ou que 1% dos dados é superior a $P_{99}$ .
-
-Cenário 1: Quartis, Decis e Percentis para dados discretos e contínuos não agrupados
-
-Se a posição do quartil, decil ou percentil desejado for um número inteiro ou estiver exatamente entre duas posições, o cálculo do respectivo quartil, decil ou percentil é facilitado. Porém, isso nem sempre acontece (imagine uma amostra com 33 elementos cujo objetivo é calcular o 67º percentil), de modo que existem vários mé todos propostos para esse cálculo que levam a resultados próximos, mas não idênticos.
-
-Apresentaremos um método simples e genérico que pode ser aplicado para o cálculo de qualquer quartil, decil ou percentil de ordem $i$, considerando dados discretos e contínuos não agrupados:
-
-Passo 1: Ordenar as observações em forma crescente.
-
-Passo 2: Determinar a posição do quartil, decil ou percentil desejado de ordem i:
-
-<div class="equacao-container"> $$ \begin{aligned}
-\text{Quartil} \;\rightarrow\; \text{Pos}(Q_i) &= \left\lfloor \frac{n}{4} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,3 \\[16pt]
-\text{Decil} \;\rightarrow\; \text{Pos}(D_i) &= \left\lfloor \frac{n}{10} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,\ldots,9 \\[16pt]
-\text{Percentil} \;\rightarrow\; \text{Pos}(P_i) &= \left\lfloor \frac{n}{100} \times i \right\rfloor + \frac{1}{2}, \quad i = 1,2,\ldots,99
-\end{aligned}
-\tag {3.4}
-$$ </div>
-
-Passo 3: Calcular o valor do quartil, decil ou percentil correspondente à respectiva posição.
-
-Suponha que $\text{Pos}(Q_1)=3{,}75$, isto é, o valor de $Q_1$ está entre a 3ª e 4ª posição (75% mais próximo da 4ª posição e 25%, da 3ª posição). Desta forma, o cálculo de $Q_1$ será a soma do valor correspondente à 3ª posição multiplicado por 0,25 com o valor correspondente à 4ª posição multiplicado por 0,75.
-
-Exemplo 3.13: Considere os dados do Exemplo 3.9 referentes ao tempo médio de processamento da cenoura na fase de aca bamento, conforme especificado na Tabela 3.13. Determine $Q_1$ (1º quartil), $Q_3$ (3º quartil), $D_2$ (2º decil) e $P_{64}$ (64º percentil).
-
-</div> </section>
-
-<!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-<section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1"> <h2>EXPLORAÇÃO DE DADOS BI-VARIADOS </h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div>
+            </div>
             <div class="bloco-container">
 
                 <!-- BLOCO 1 -->
@@ -932,7 +1046,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Associação entre Variáveis</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#medidas-de-associacao" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -942,34 +1057,46 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Correlação entre Variáveis</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#medidas-de-correlacao" class="bloco-btn">Área do Estudante</a>
                 </div>
             </div>
-</section>
+        </section>
 
-<!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (SUB-MENU) -->
-<section id="medidas-de-associacao" class="conteudo-seccao" data-grupo="estat2"> <h2>ASSOCIAÇÃO ENTRE VARIÁVEIS</h2> <div class="texto-livreAuto">
+        <!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (SUB-MENU) -->
+        <section id="medidas-de-associacao" class="conteudo-seccao" data-grupo="estat2">
+            <h2>ASSOCIAÇÃO ENTRE VARIÁVEIS</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div> </section>
-
-
-<!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (MENU PRINCIPAL) -->
-<section id="medidas-de-correlacao" class="conteudo-seccao" data-grupo="estat2"> <h2>CORRELAÇÃO ENTRE VARIÁVEIS</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
+            </div>
+        </section>
 
 
-<!-- TEORIA DE PROBABILIDADE (MENU PRINCIPAL) -->
-<section id="teoria-de-probabilidade" class="conteudo-seccao" data-grupo="estat2"> <h2>TEORIA DE PROBABILIDADE</h2> <div class="texto-livreAuto">
+        <!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (MENU PRINCIPAL) -->
+        <section id="medidas-de-correlacao" class="conteudo-seccao" data-grupo="estat2">
+            <h2>CORRELAÇÃO ENTRE VARIÁVEIS</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div>
+            </div>
+        </section>
+
+
+        <!-- TEORIA DE PROBABILIDADE (MENU PRINCIPAL) -->
+        <section id="teoria-de-probabilidade" class="conteudo-seccao" data-grupo="estat2">
+            <h2>TEORIA DE PROBABILIDADE</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+            </div>
             <div class="bloco-container">
 
                 <!-- BLOCO 1 -->
@@ -978,7 +1105,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Teorema de Bayes</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#teorema-de-bayes" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -988,7 +1116,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Variáveis Aleatórias</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#variaveis-aleatorias" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -998,34 +1127,46 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Distribuições de Probabilidades</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#distribuicao-de-probabilidade" class="bloco-btn">Área do Estudante</a>
                 </div>
             </div>
-</section>
+        </section>
 
-<!-- TEOREMA DE BAYES (SUB-MENU) -->
-<section id="teorema-de-bayes" class="conteudo-seccao" data-grupo="estat2"> <h2>TEOREMA DE BAYES</h2> <div class="texto-livreAuto">
+        <!-- TEOREMA DE BAYES (SUB-MENU) -->
+        <section id="teorema-de-bayes" class="conteudo-seccao" data-grupo="estat2">
+            <h2>TEOREMA DE BAYES</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div> </section>
-
-
-<!-- VARIÁVEIS ALEATÓRIAS (MENU PRINCIPAL) -->
-<section id="variaveis-aleatorias" class="conteudo-seccao" data-grupo="estat2"> <h2>VARIÁVEIS ALEATÓRIAS</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
+            </div>
+        </section>
 
 
-<!-- DISTRIBUIÇÕES DE PROBABILIDADES (MENU PRINCIPAL) -->
-<section id="distribuicao-de-probabilidade" class="conteudo-seccao" data-grupo="estat2"> <h2>DISTRIBUIÇÕES DE PROBABILIDADES</h2> <div class="texto-livreAuto">
+        <!-- VARIÁVEIS ALEATÓRIAS (MENU PRINCIPAL) -->
+        <section id="variaveis-aleatorias" class="conteudo-seccao" data-grupo="estat2">
+            <h2>VARIÁVEIS ALEATÓRIAS</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div>
+            </div>
+        </section>
+
+
+        <!-- DISTRIBUIÇÕES DE PROBABILIDADES (MENU PRINCIPAL) -->
+        <section id="distribuicao-de-probabilidade" class="conteudo-seccao" data-grupo="estat2">
+            <h2>DISTRIBUIÇÕES DE PROBABILIDADES</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+            </div>
             <div class="bloco-container">
 
                 <!-- BLOCO 1 -->
@@ -1034,7 +1175,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Distribuições Discretas</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#distribuicao-discretas" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -1044,35 +1186,47 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Distribuições Contínuas</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#distribuicao-continuas" class="bloco-btn">Área do Estudante</a>
                 </div>
             </div>
-</section>
+        </section>
 
 
-<!-- DISTRIBUIÇÕES DISCRETAS (SUB-MENU) -->
-<section id="distribuicao-discretas" class="conteudo-seccao" data-grupo="estat2"> <h2>DISTRIBUIÇÕES DISCRETAS DE PROBABILIDADES</h2> <div class="texto-livreAuto">
+        <!-- DISTRIBUIÇÕES DISCRETAS (SUB-MENU) -->
+        <section id="distribuicao-discretas" class="conteudo-seccao" data-grupo="estat2">
+            <h2>DISTRIBUIÇÕES DISCRETAS DE PROBABILIDADES</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div> </section>
-
-
-<!-- DISTRIBUIÇÕES CONTÍNUAS (MENU PRINCIPAL) -->
-<section id="distribuicao-continuas" class="conteudo-seccao" data-grupo="estat2"> <h2>DISTRIBUIÇÕES CONTÍNUAS DE PROBABILIDADES</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
+            </div>
+        </section>
 
 
-<!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-<section id="estatistica-inferencial" class="conteudo-seccao" data-grupo="estat2"> <h2>ESTATÍSTICA INFERENCIAL</h2> <div class="texto-livreAuto">
+        <!-- DISTRIBUIÇÕES CONTÍNUAS (MENU PRINCIPAL) -->
+        <section id="distribuicao-continuas" class="conteudo-seccao" data-grupo="estat2">
+            <h2>DISTRIBUIÇÕES CONTÍNUAS DE PROBABILIDADES</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-        </div>
+            </div>
+        </section>
+
+
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="estatistica-inferencial" class="conteudo-seccao" data-grupo="estat2">
+            <h2>ESTATÍSTICA INFERENCIAL</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+            </div>
 
             <div class="bloco-container">
 
@@ -1082,7 +1236,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Teoria de Amostragem</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#inferencia-teoria-de-amostragem" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -1092,7 +1247,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Teoria de Estimação</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#inferencia-teoria-de-estimacao" class="bloco-btn">Área do Estudante</a>
                 </div>
 
@@ -1102,27 +1258,34 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Teoria de Decisão</h3>
                     </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
+                        estudo e outras ajudas.</p>
                     <a href="#inferencia-teoria-de-decisao" class="bloco-btn">Ver Bolsas</a>
                 </div>
             </div>
 
-</section>
+        </section>
 
-<!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-<section id="inferencia-teoria-de-amostragem" class="conteudo-seccao" data-grupo="estat2"> <h2>TEORIA DE AMOSTRAGEM</h2> <div class="texto-livreAuto">
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="inferencia-teoria-de-amostragem" class="conteudo-seccao" data-grupo="estat2">
+            <h2>TEORIA DE AMOSTRAGEM</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div>
-</section>
+            </div>
+        </section>
 
-<!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-<section id="inferencia-teoria-de-estimacao" class="conteudo-seccao" data-grupo="estat2"> <h2>TEORIA DE ESTIMAÇÃO</h2> <div class="texto-livreAuto">
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="inferencia-teoria-de-estimacao" class="conteudo-seccao" data-grupo="estat2">
+            <h2>TEORIA DE ESTIMAÇÃO</h2>
+            <div class="texto-livreAuto">
 
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
-</div>
+            </div>
             <div class="bloco-container">
 
                 <!-- BLOCO 1 -->
@@ -1131,7 +1294,8 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Estimação por Ponto</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#estimacao-por-ponto" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -1141,272 +1305,233 @@ Espaço dedicado aos conteúdos computacionais, inferência estatística e model
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Estimação por Intervalo</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#estimacao-por-intervalo" class="bloco-btn">Área do Estudante</a>
                 </div>
             </div>
-</section>
-
-<!-- ESTIMAÇÃO POR PONTO (SUB-MENU) -->
-<section id="estimacao-por-ponto" class="conteudo-seccao" data-grupo="estat2"> <h2>ESTIMAÇÃO POR PONTO</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
-
-
-<!-- ESTIMAÇÃO POR INTERVALO (SUB-MENU) -->
-<section id="estimacao-por-intervalo" class="conteudo-seccao" data-grupo="estat2"> <h2>ESTIMAÇÃO POR INTERVALO</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
-
-
-<!-- TESTE DE HIPÓTESES (SUB-MENU) -->
-<section id="inferencia-testes-de-hipoteses" class="conteudo-seccao" data-grupo="estat2"> <h2>TESTE DE HIPÓTESES</h2> <div class="texto-livreAuto">
-
-Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à investigação científica e académica.
-
-</div> </section>
-
-    <!-- SUBMENU 1: Teoria de Amostragem -->
-        <section id="estat-val" class="conteudo-seccao" data-grupo="estat-prob">
-            <h2>Teoria de Amostragem</h2>
-            <p>Estudo de variáveis aleatórias discretas e contínuas.</p>
         </section>
 
-        <section id="estat-distp" class="conteudo-seccao" data-grupo="estat-prob">
-            <h2>Distribuição de Probabilidades</h2>
-            <p>Análise de modelos de distribuição teóricos e empíricos.</p>
-        </section>
+        <!-- ESTIMAÇÃO POR PONTO (SUB-MENU) -->
+        <section id="estimacao-por-ponto" class="conteudo-seccao" data-grupo="estat2">
+            <h2>ESTIMAÇÃO POR PONTO</h2>
+            <div class="texto-livreAuto">
 
-        <!-- SUBMENU 2: AMOSTRAGEM -->
-        <section id="estat-amost" class="conteudo-seccao" data-grupo="estat-amost">
-            <h2>Teoria da Amostragem</h2>
-            <p>Métodos de seleção e recolha de dados representativos.</p>
-            <div class="bloco-container">
-
-                <!-- BLOCO 1 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
-                        <h3>Ofertas Formativas</h3>
-                    </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
-                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
-                </div>
-
-                <!-- BLOCO 2 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
-                        <h3>Estudantes USTP</h3>
-                    </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
-                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
-                </div>
-
-                <!-- BLOCO 3 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
-                        <h3>Bolsas</h3>
-                    </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
-                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
-                </div>
-                
-                <!-- BLOCO 3 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
-                        <h3>Bolsas</h3>
-                    </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
-                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
-                </div>
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
 
             </div>
-
         </section>
 
-        <section id="estat-comp" class="conteudo-seccao" data-grupo="estat-amost">
-            <h2>Composição da Amostra</h2>
-            <p>Estruturação e caracterização de amostras populacionais.</p>
-        </section>
 
-        <section id="estat-dim" class="conteudo-seccao" data-grupo="estat-amost">
-            <h2>Dimensão da Amostra</h2>
-            <p>Critérios estatísticos para o cálculo do tamanho ideal da amostra.</p>
-        </section>
+        <!-- ESTIMAÇÃO POR INTERVALO (SUB-MENU) -->
+        <section id="estimacao-por-intervalo" class="conteudo-seccao" data-grupo="estat2">
+            <h2>ESTIMAÇÃO POR INTERVALO</h2>
+            <div class="texto-livreAuto">
 
-        <!-- SUBMENU 3: INFERÊNCIA -->
-        <section id="estat-inf" class="conteudo-seccao" data-grupo="estat-inf">
-            <h2>Inferência Estatística</h2>
-            <p>Generalização de resultados obtidos a partir de amostras para a população.</p>
-            <div class="bloco-container">
+                A inferência estatística tem como objetivo tirar conclusões sobre parâmetros populacionais com base em
+                informações amostrais. Nesse contexto, os intervalos de confiança constituem uma ferramenta fundamental.
 
-                <!-- BLOCO 1 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
-                        <h3>Ofertas Formativas</h3>
-                    </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
-                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
-                </div>
+                <blockquote> Em repetições repetidas do processo de amostragem, aproximadamente $100(1 - \alpha)$% dos
+                    intervalos construídos conterão o verdadeiro valor de $p$.</blockquote>
 
-                <!-- BLOCO 2 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
-                        <h3>Estudantes USTP</h3>
-                    </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
-                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
-                </div>
+                Diferentemente da estimação pontual — que fornece apenas um único valor como estimativa — a estimação
+                por intervalo fornece um conjunto de valores plausíveis para o parâmetro de interesse, permitindo
+                quantificar a incerteza associada à estimativa.
 
-                <!-- BLOCO 3 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
-                        <h3>Bolsas</h3>
-                    </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
-                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
-                </div>
-                
-                <!-- BLOCO 3 -->
-                <div class="bloco-card">
-                    <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
-                        <h3>Bolsas</h3>
-                    </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
-                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
-                </div>
+                Seja $\theta$ um parâmetro populacional e $\hat{\theta}$ um estimador de $\theta$. Com base na
+                distribuição de probabilidade de $\hat{\theta}$, é possível construir um intervalo da forma: $$
+                \hat{\theta}_1 \leq \theta \leq \hat{\theta}_2,
+                $$ tal que a probabilidade de o intervalo conter o verdadeiro valor do parâmetro seja $(1 - \alpha)$,
+                denominado nível de confiança.
 
+                O valor $\alpha \in (0,1)$ representa o nível de significância, isto é, a probabilidade de o intervalo
+                não conter o parâmetro. Então $ 1 - \alpha = \text{nível de confiança}.
+                $
+
+                Um intervalo de confiança (IC) é, portanto, um intervalo aleatório que, em repetidas amostragens, contém
+                o verdadeiro valor do parâmetro em aproximadamente $100(1 - \alpha)\%$ dos casos.
+
+                Formalmente, se $U$ e $V$ são estatísticas tais que $$
+                P\left[(U < \theta < V )\mid \theta\right]=1 - \alpha, $$ então $(U, V)$ é um intervalo de confiança
+                    para $\theta$ com nível $100(1 - \alpha)\%$. A amplitude do intervalo está diretamente relacionada à
+                    incerteza da estimação: intervalos mais largos indicam maior incerteza, enquanto intervalos mais
+                    estreitos indicam maior precisão. <div class="texto-livreAuto">
+                    <h2> Interpretação </h2>
             </div>
 
+            É importante destacar que o parâmetro $\theta$ é fixo, enquanto o intervalo é aleatório. Assim, não se diz
+            que há probabilidade de $\theta$ estar no intervalo após sua construção; em vez disso, afirma-se que o
+            método utilizado produz intervalos que contêm $\theta$ em uma proporção $(1 - \alpha)$ das amostras
+            possíveis.
+
+            <mark style="background-color: #e74c3c; color: white;"><b>Exemplo</b>:</mark> Considere uma amostra de 500
+            indivíduos cuja média das alturas é $\bar{x} = 1{,}66$ m. Essa é uma estimativa pontual da média
+            populacional $\mu$. Um intervalo de confiança de 95% poderia ser, por exemplo: $[1,58;\quad 1,68]$.
+
+            Isso significa que, ao repetir o procedimento de amostragem diversas vezes, cerca de 95% dos intervalos
+            construídos dessa forma conteriam o verdadeiro valor de $\mu$.
+
+            Suponha que $X_1, X_2, \ldots, X_n$ sejam independentes e identicamente distribuídos segundo uma normal com
+            média $\mu$ desconhecida e variância $\sigma^2$ conhecida.
+
+            A média amostral $\bar{X}$ é um estimador de $\mu$ e satisfaz: $$
+            \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right).
+            $$
+
+            Padronizando a variável: $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
+
+            Assim, $$ P(-1{,}96 < Z < 1{,}96)=0{,}95, $$ o que implica: <div class="equacao-container"> $$
+                P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right)=0{,}95. $$ </div>
+
+                    Reorganizando,
+
+                    <div class="equacao-container"> $$
+                        P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} +
+                            1{,}96\frac{\sigma}{\sqrt{n}}\right)=0{,}95. $$ </div>
+
+                            Esse é o intervalo de confiança de 95% para a média populacional.
+
+                            Os intervalos de confiança fornecem não apenas uma estimativa para o parâmetro, mas também
+                            uma medida explícita da incerteza associada. Por isso, são amplamente utilizados para
+                            avaliar a precisão e a fiabilidade de resultados obtidos a partir de amostras.
+
+                            <div class="texto-livreAuto">
+                                <h2> Intervalo de Confiança para a Média </h2>
+                            </div>
+
+                            Quando queremos estimar a média de uma população através de uma amostra temos dois casos
+                            distintos a considerar: quando a variância da população é conhecida e quando ela é
+                            desconhecida. A seguir, temos os dois casos.
+
+                            <div class="texto-livreAuto">
+                                <h3> <b><mark style="background-color: #e74c3c; color: white;">Cenário 1</mark></b>:
+                                    Variância Populacional Conhecida </h3>
+                            </div>
+
+                            Considere uma amostra aleatória simples $X_1, X_2, \ldots, X_n$ proveniente de uma população
+                            com distribuição normal, com média $\mu$ e variância $\sigma^2$ conhecida. Nesse caso, a
+                            média amostral $\bar{X}$ também possui distribuição normal, dada por:
+
+                            $$
+                            \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
+                            $$
+
+                            Padronizando, obtemos a variável:
+                            $$
+                            T = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)
+                            $$, isto é, $T$ segue a distribuição normal padrão.
+
+                            Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ e
+                            $z_{\alpha/2}$ tais que: $P(-z_{\alpha/2} \leq Z \leq z_{\alpha/2}) = 1 - \alpha$
+
+                    </div>
+        </section>
+
+
+        <!-- TESTE DE HIPÓTESES (SUB-MENU) -->
+        <section id="inferencia-testes-de-hipoteses" class="conteudo-seccao" data-grupo="estat2">
+            <h2>TESTE DE HIPÓTESES</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+            </div>
         </section>
 
         <section id="estat-estpont" class="conteudo-seccao" data-grupo="estat-inf">
             <h2>Estimação Pontual</h2>
             <p>Métodos para obtenção de estimadores pontuais de parâmetros.</p>
 
-<div class="tabela-imagem-container">
-  <img src="grafico_e_tabela.png" alt="Tabela de Distribuição de Frequências">
-</div>
-
-gqgGwgawe
-
-<div class="tabela-container">
-  <table class="tabela-frequencias">
-    <thead>
-      <tr><th>Tipo Sanguíneo</th><th>Doadores ($F_i$)</th><th>$Fri$ (%)</th><th>$Fi_{ac}$</th><th>$Fri_{ac}$ (%)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>A+</td><td>15</td><td>25</td><td>15</td><td>25</td></tr>
-      <tr><td>A-</td><td>2</td><td>3.33</td><td>17</td><td>28.33</td></tr>
-      <tr><td>B+</td><td>6</td><td>10</td><td>23</td><td>38.33</td></tr>
-      <tr><td>B-</td><td>1</td><td>1.67</td><td>24</td><td>40</td></tr>
-      <tr><td>AB+</td><td>1</td><td>1.67</td><td>25</td><td>41.67</td></tr>
-      <tr><td>AB-</td><td>1</td><td>1.67</td><td>26</td><td>43.33</td></tr>
-      <tr><td>O+</td><td>32</td><td>53.33</td><td>58</td><td>96.67</td></tr>
-      <tr><td>O-</td><td>2</td><td>3.33</td><td>60</td><td>100</td></tr>
-      <tr class="linha-total"><td><strong>Total</strong></td><td><strong>60</strong></td><td><strong>100</strong></td><td>—</td><td>—</td></tr>
-    </tbody>
-  </table>
-</div>
-
-wqgqg
-
-        </section>
-
-        <section id="estat-estint" class="conteudo-seccao" data-grupo="estat-inf">
-            <h2>Estimação por Intervalo</h2>
-            <div class="texto-livreAuto">
-A inferência estatística tem como objetivo tirar conclusões sobre parâmetros populacionais com base em informações amostrais. Nesse contexto, os intervalos de confiança constituem uma ferramenta fundamental.
-
-<blockquote> Em repetições repetidas do processo de amostragem, aproximadamente $100(1 - \alpha)$% dos intervalos construídos conterão o verdadeiro valor de $p$.</blockquote>
-
-Diferentemente da estimação pontual — que fornece apenas um único valor como estimativa — a estimação por intervalo fornece um conjunto de valores plausíveis para o parâmetro de interesse, permitindo quantificar a incerteza associada à estimativa.
-
-Seja $\theta$ um parâmetro populacional e $\hat{\theta}$ um estimador de $\theta$. Com base na distribuição de probabilidade de $\hat{\theta}$, é possível construir um intervalo da forma: $$
-\hat{\theta}_1 \leq \theta \leq \hat{\theta}_2,
-$$ tal que a probabilidade de o intervalo conter o verdadeiro valor do parâmetro seja $(1 - \alpha)$, denominado nível de confiança.
-
-O valor $\alpha \in (0,1)$ representa o nível de significância, isto é, a probabilidade de o intervalo não conter o parâmetro. Então $ 1 - \alpha = \text{nível de confiança}.
-$
-
-Um intervalo de confiança (IC) é, portanto, um intervalo aleatório que, em repetidas amostragens, contém o verdadeiro valor do parâmetro em aproximadamente $100(1 - \alpha)\%$ dos casos.
-
-Formalmente, se $U$ e $V$ são estatísticas tais que $$
-P\left[(U < \theta < V )\mid \theta\right] = 1 - \alpha,
-$$ então $(U, V)$ é um intervalo de confiança para $\theta$ com nível $100(1 - \alpha)\%$.
-
-A amplitude do intervalo está diretamente relacionada à incerteza da estimação: intervalos mais largos indicam maior incerteza, enquanto intervalos mais estreitos indicam maior precisão.
-
-<div class="texto-livreAuto"> <h2> Interpretação </h2> </div>
-
-É importante destacar que o parâmetro $\theta$ é fixo, enquanto o intervalo é aleatório. Assim, não se diz que há probabilidade de $\theta$ estar no intervalo após sua construção; em vez disso, afirma-se que o método utilizado produz intervalos que contêm $\theta$ em uma proporção $(1 - \alpha)$ das amostras possíveis.
-
-<mark style="background-color: #e74c3c; color: white;"><b>Exemplo</b>:</mark> Considere uma amostra de 500 indivíduos cuja média das alturas é $\bar{x} = 1{,}66$ m. Essa é uma estimativa pontual da média populacional $\mu$. Um intervalo de confiança de 95% poderia ser, por exemplo: $[1,58;\quad 1,68]$.
-
-Isso significa que, ao repetir o procedimento de amostragem diversas vezes, cerca de 95% dos intervalos construídos dessa forma conteriam o verdadeiro valor de $\mu$.
-
-Suponha que $X_1, X_2, \ldots, X_n$ sejam independentes e identicamente distribuídos segundo uma normal com média $\mu$ desconhecida e variância $\sigma^2$ conhecida.
-
-A média amostral $\bar{X}$ é um estimador de $\mu$ e satisfaz: $$
-\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right).
-$$
-
-Padronizando a variável: $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
-
-Assim, $$ P(-1{,}96 < Z < 1{,}96) = 0{,}95, $$ 
-o que implica:
-
-<div class="equacao-container"> $$ P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right) = 0{,}95.
-$$ </div>
-
-Reorganizando,
-
-<div class="equacao-container"> $$
-P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + 1{,}96\frac{\sigma}{\sqrt{n}}\right) = 0{,}95.
-$$
-</div>
-
-Esse é o intervalo de confiança de 95% para a média populacional.
-
-Os intervalos de confiança fornecem não apenas uma estimativa para o parâmetro, mas também uma medida explícita da incerteza associada. Por isso, são amplamente utilizados para avaliar a precisão e a fiabilidade de resultados obtidos a partir de amostras.
+            <div class="tabela-imagem-container">
+                <img src="grafico_e_tabela.png" alt="Tabela de Distribuição de Frequências">
             </div>
 
-        </section>
+            gqgGwgawe
 
-                <section id="estat-ic-media" class="conteudo-seccao" data-grupo="estat-ic-media">
-            <h2>IC para a Média</h2>
-            <div class="texto-livreAuto">
-
-Quando queremos estimar a média de uma população através de uma amostra temos dois casos distintos a considerar: quando a variância da população é conhecida e quando ela é desconhecida. A seguir, temos os dois casos.
-
-<div class="texto-livreAuto"> <h3> <b><mark style="background-color: #e74c3c; color: white;">Cenário 1</mark></b>: Variância Populacional Conhecida </h3> </div>
-
-Considere uma amostra aleatória simples $X_1, X_2, \ldots, X_n$ proveniente de uma população com distribuição normal, com média $\mu$ e variância $\sigma^2$ conhecida. Nesse caso, a média amostral $\bar{X}$ também possui distribuição normal, dada por:
-
-$$
-\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
-$$
-
-Padronizando, obtemos a variável: 
-$$
-T = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)
-$$, isto é, $T$ segue a distribuição normal padrão.
-
-Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ e $z_{\alpha/2}$ tais que: $P(-z_{\alpha/2} \leq Z \leq z_{\alpha/2}) = 1 - \alpha$
+            <div class="tabela-container">
+                <table class="tabela-frequencias">
+                    <thead>
+                        <tr>
+                            <th>Tipo Sanguíneo</th>
+                            <th>Doadores ($F_i$)</th>
+                            <th>$Fri$ (%)</th>
+                            <th>$Fi_{ac}$</th>
+                            <th>$Fri_{ac}$ (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A+</td>
+                            <td>15</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>A-</td>
+                            <td>2</td>
+                            <td>3.33</td>
+                            <td>17</td>
+                            <td>28.33</td>
+                        </tr>
+                        <tr>
+                            <td>B+</td>
+                            <td>6</td>
+                            <td>10</td>
+                            <td>23</td>
+                            <td>38.33</td>
+                        </tr>
+                        <tr>
+                            <td>B-</td>
+                            <td>1</td>
+                            <td>1.67</td>
+                            <td>24</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>AB+</td>
+                            <td>1</td>
+                            <td>1.67</td>
+                            <td>25</td>
+                            <td>41.67</td>
+                        </tr>
+                        <tr>
+                            <td>AB-</td>
+                            <td>1</td>
+                            <td>1.67</td>
+                            <td>26</td>
+                            <td>43.33</td>
+                        </tr>
+                        <tr>
+                            <td>O+</td>
+                            <td>32</td>
+                            <td>53.33</td>
+                            <td>58</td>
+                            <td>96.67</td>
+                        </tr>
+                        <tr>
+                            <td>O-</td>
+                            <td>2</td>
+                            <td>3.33</td>
+                            <td>60</td>
+                            <td>100</td>
+                        </tr>
+                        <tr class="linha-total">
+                            <td><strong>Total</strong></td>
+                            <td><strong>60</strong></td>
+                            <td><strong>100</strong></td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
 
+            wqgqg
+
+        </section>
 
         <!-- SECÇÃO PRINCIPAL: RECURSOS -->
         <section id="recursos" class="conteudo-seccao">
@@ -1420,7 +1545,8 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Ofertas Formativas</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.</p>
+                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
+                        áreas do saber.</p>
                     <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -1430,7 +1556,8 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Estudantes USTP</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.</p>
+                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
+                        oportunidades disponíveis.</p>
                     <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
                 </div>
 
@@ -1440,17 +1567,19 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Bolsas</h3>
                     </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
+                        estudo e outras ajudas.</p>
                     <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
                 </div>
-                
+
                 <!-- BLOCO 3 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Bolsas</h3>
                     </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.</p>
+                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
+                        estudo e outras ajudas.</p>
                     <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
                 </div>
 
@@ -1478,7 +1607,7 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                         </thead>
                         <tbody>
                             <tr>
-                               <td>
+                                <td>
                                     <!-- Ficheiro HTML normal -->
                                     <a href="Apendice_B.html">Apendice_B.html</a>
                                 </td>
@@ -1488,7 +1617,8 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                             <tr>
                                 <td>
                                     <!-- Ficheiro PDF que abre embutido na página -->
-                                    <a href="TabelaTStudent.pdf" class="embed-link" data-doc="TabelaTStudent.pdf">Tabela t-Student.pdf</a>
+                                    <a href="TabelaTStudent.pdf" class="embed-link" data-doc="TabelaTStudent.pdf">Tabela
+                                        t-Student.pdf</a>
                                 </td>
                                 <td>15-Feb-2018 00:41</td>
                                 <td>980182</td>
@@ -1499,55 +1629,53 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
                 <hr>
             </div>
 
-        <!-- Texto explicativo com link embutido inline (Igual à Imagem 2) -->
-        <p class="conteudo-texto">
-            Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. 
-            Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
-        </p>
+            <!-- Texto explicativo com link embutido inline (Igual à Imagem 2) -->
+            <p class="conteudo-texto">
+                Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade.
+                Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf"
+                    data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
+            </p>
 
     </div>
 
 
-        </section>
+    </section>
 
-        <!-- Contacto -->
-        <section id="contato" class="conteudo-seccao">
-            <h2>Contacto</h2>
-            <p>Para propostas de funções docentes ou assuntos administrativos, entre em contacto:</p>
-            <div class="social-links">
-                <a href="mailto:wadmiguel547@yahoo.com"><img src="Yahoo.png" alt="Yahoo"></a>
-                <a href="https://rpubs.com/wadileynascimento" target="_blank"><img src="ProjetoR.png" alt="RPubs"></a>
-                <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank"><img src="YouTubeB.png" alt="YouTube"></a>
-                <a href="https://www.instagram.com/wadileyn" target="_blank"><img src="Instagram.png" alt="Instagram"></a>
-                <a href="https://x.com/WadileyNas" target="_blank"><img src="Twitter.png" alt="Twitter"></a>
-                <a href="https://www.facebook.com/wadileynasciment" target="_blank"><img src="PFacebook.png" alt="Página"></a>
-            </div>
-        </section>
+    <!-- Contacto -->
+    <section id="contato" class="conteudo-seccao">
+        <h2>Contacto</h2>
+        <p>Para propostas de funções docentes ou assuntos administrativos, entre em contacto:</p>
+        <div class="social-links">
+            <a href="mailto:wadmiguel547@yahoo.com"><img src="Yahoo.png" alt="Yahoo"></a>
+            <a href="https://rpubs.com/wadileynascimento" target="_blank"><img src="ProjetoR.png" alt="RPubs"></a>
+            <a href="https://www.youtube.com/@factosmatematicos4485" target="_blank"><img src="YouTubeB.png"
+                    alt="YouTube"></a>
+            <a href="https://www.instagram.com/wadileyn" target="_blank"><img src="Instagram.png" alt="Instagram"></a>
+            <a href="https://x.com/WadileyNas" target="_blank"><img src="Twitter.png" alt="Twitter"></a>
+            <a href="https://www.facebook.com/wadileynasciment" target="_blank"><img src="PFacebook.png"
+                    alt="Página"></a>
+        </div>
+    </section>
 
-        <!-- SECÇÃO NEWSLETTER -->
-        <section id="newsletter" class="newsletter-section conteudo-seccao">
-            <h2>Newsletter</h2>
-            <p>Inscreva-se para receber as últimas notícias e atualizações do site.</p>
-            
-            <form id="newsletter-form" class="newsletter-form" onsubmit="subscreverNewsletter(event)">
-                <input 
-                    type="email" 
-                    id="newsletter-email" 
-                    placeholder="O seu email" 
-                    required 
-                    aria-label="O seu email"
-                />
-                <button type="submit" class="newsletter-btn">Subscrever</button>
-            </form>
-        </section>
+    <!-- SECÇÃO NEWSLETTER -->
+    <section id="newsletter" class="newsletter-section conteudo-seccao">
+        <h2>Newsletter</h2>
+        <p>Inscreva-se para receber as últimas notícias e atualizações do site.</p>
+
+        <form id="newsletter-form" class="newsletter-form" onsubmit="subscreverNewsletter(event)">
+            <input type="email" id="newsletter-email" placeholder="O seu email" required aria-label="O seu email" />
+            <button type="submit" class="newsletter-btn">Subscrever</button>
+        </form>
+    </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Wadiley Nascimento. || "Sem dados, você é apenas mais uma pessoa com uma opinião.” — W. Edwards Deming.</p>
+        <p>&copy; 2026 Wadiley Nascimento. || "Sem dados, você é apenas mais uma pessoa com uma opinião.” — W. Edwards
+            Deming.</p>
     </footer>
 
     <div class="rodape-impressao">
-    <span>Prof. Wadiley Nascimento  ||  Mestre em Estatística (Estatística Computacional)  ||  (+239) 980 10 45</span>
+        <span>Prof. Wadiley Nascimento || Mestre em Estatística (Estatística Computacional) || (+239) 980 10 45</span>
     </div>
 
     <!-- Contentor invisível para a API do Google Translate -->
@@ -1557,4 +1685,5 @@ Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
+
 </html>
