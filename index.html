@@ -732,8 +732,208 @@
             <h2>DISTRIBUIÇÕES DE FREQUÊNCIAS</h2>
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                As <b><azul>Tabelas de Distribuição de Frequências</azul></b> são utilizadas para organizar e sintetizar o número de ocorrências observadas num conjunto de dados, aplicando-se tanto a variáveis qualitativas como quantitativas. <i>i)</i> Para <b>variáveis qualitativas</b>, a frequência é contabilizada para cada categoria distinta. <i>ii)</i> Para <b>variáveis quantitativas discretas</b>, a frequência é contabilizada para cada valor discreto individual. <i>iii)</i> Para <b>variáveis quantitativas contínuas</b>, os dados são previamente agrupados em intervalos de classe, calculando-se as frequências para cada intervalo. 
+                               
+                Uma tabela de distribuição de frequências completa é constituída pelas seguintes métricas:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b><ver>Frequência Absoluta</ver></b> ($f_i$ ou $F_i$): Número exato de observações/ocorrências associadas à categoria ou valor $i$.
+                        </li>
+                        <li>
+                            <b><ver>Frequência Relativa</ver></b> ($f_{r,i}$ ou $Fr_i$): Proporção ou percentagem da frequência absoluta em relação ao total de observações ($n$):
+
+                            <div class="equacao-container"> 
+                                $$f_{r,i} = \frac{f_i}{n} \quad \text{ou} \quad f_{r,i}(\%) = \left(\frac{f_i}{n}\right) \times 100$$.
+                            </div>
+                        </li>
+                        <li>
+                            <b><ver>Frequência Absoluta Acumulada</ver></b> ($F_{ac,i}$): Somatório das frequências absolutas desde a primeira categoria até à categoria $i$:
+
+                            <div class="equacao-container"> 
+                                $$F_{ac,i} = \sum_{j=1}^{i} f_j$$.
+                            </div>
+                        </li>
+                        <li>
+                            <b><ver>Frequência Relativa Acumulada</ver></b> ($F_{r,ac,i}$ ou $Fr_{ac,i}$): Somatório das frequências relativas acumuladas até à categoria $i$:
+
+                            <div class="equacao-container">
+                                $$F_{r,ac,i} = \sum_{j=1}^{i} f_{r,j}$$.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2> Tabela para Variável Qualitativa </h2>
+                </div>
+                
+                <b><ver>Exemplo 1.1</ver></b>: O Hospital Santo Augusto de Anjo realiza mensalmente 3.000 transfusões de sangue em pacientes internados. Para garantir a manutenção dos seus stocks, são necessárias, em média, 60 doações diárias.A tabela seguinte apresenta a contagem de doadores por tipo sanguíneo registada num determinado dia ($n = 60$). Construa a tabela de distribuição de frequências completa para os dados apresentados.
+
+                <div class="tabela-container">
+                    <table class="tabela-frequencias">
+                        <tbody>
+                            <tr>
+                                <th>Tipo sanguíneo</th> <td>A+</td> <td>A-</td> <td>B+</td> <td>B-</td> <td>AB+</td> <td>AB-</td> <td>O+</td> <td>O-</td>
+                            </tr>
+                            <tr>
+                                <th>Doadores</th> <td>15</td> <td>2</td>
+                                <td>6</td> <td>1</td> <td>1</td> <td>1</td> <td>32</td> <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="tabela-container">
+                    <h3>Tabela 1.1 - Tipo Sanguíneo do pacientes internados</h3>
+                    <table class="tabela-frequencias">
+                        <thead>
+                            <tr>
+                                <th>Tipo Sanguíneo</th> <th>Doadores ($F_i$)</th> <th>$Fri$ (%)</th> <th>$Fi_{ac}$</th> <th>$Fri_{ac}$ (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A+</td> <td>15</td> <td>25</td> <td>15</td> <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>A-</td> <td>2</td> <td>3.33</td> <td>17</td> <td>28.33</td>
+                            </tr>
+                            <tr>
+                                <td>B+</td> <td>6</td> <td>10</td> <td>23</td> <td>38.33</td>
+                            </tr>
+                            <tr>
+                                <td>B-</td> <td>1</td> <td>1.67</td> <td>24</td> <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>AB+</td> <td>1</td> <td>1.67</td> <td>25</td> <td>41.67</td>
+                            </tr>
+                            <tr>
+                                <td>AB-</td> <td>1</td> <td>1.67</td> <td>26</td> <td>43.33</td>
+                            </tr>
+                            <tr>
+                                <td>O+</td> <td>32</td> <td>53.33</td> <td>58</td> <td>96.67</td>
+                            </tr>
+                            <tr>
+                                <td>O-</td> <td>2</td> <td>3.33</td> <td>60</td> <td>100</td>
+                            </tr>
+                            <tr class="linha-total">
+                                <td><b>Total</b></td> <td><b>60</b></td> <td><b>100</b></td> <td>—</td> <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h2> Tabela para Variável Quantitativa Discreta </h2>
+                </div>
+                
+                <b><ver>Exemplo 1.2</ver></b>: Um restaurante japonês está a redimensionar o layout do seu espaço. Para o efeito, realizou um levantamento relativamente ao número de clientes acomodados por mesa ao longo de uma semana. Os 40 primeiros registos obtidos encontram-se apresentados na tabela abaixo. Construa a tabela de distribuição de frequências completa (frequências absolutas, relativas, acumuladas e relativas acumuladas).
+
+                <div class="equacao-container"> 
+                    $$\begin{array}{|c|c|}\hline
+                    2 & 4 & 4 & 2 & 5 & 12 & 7 & 10 & 4 & 8 & 2 & 6 & 7 & 6 & 5 & 4 & 4 & 4 & 6 & 3 \\ \hline1 & 5 & 4 & 4 & 6 & 2 & 1 & 6 & 2 & 8 & 5 & 3 & 2 & 2 & 10 & 8 & 5 & 6 & 2 & 4 \\ \hline \end{array}$$
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2> Tabela para Variável Quantitativa Contínuas </h2>
+                </div>
+
+                As <ver>variáveis quantitativas contínuas</ver> podem assumir qualquer valor dentro de um intervalo de números reais. Por essa razão, a contagem de frequências para valores individuais torna-se inviável, dado que as observações raramente coincidem de forma exata.
+                
+                Para sintetizar a informação, os dados são agrupados em intervalos de classe. A escolha do número de classes deve ser criteriosa: um número excessivamente reduzido provoca perda substancial de informação, enquanto um número muito elevado compromete a capacidade de síntese e padronização dos dados (Bussab & Morettin, 2011).
+                
+                Etapas para Construção da Tabela de Frequências (Dados Agrupados)
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b><ver>Passo 1</ver> - Ordenação</b>: Organizar os dados amostrais por ordem crescente (rol de dados: $X_{(1)} \le X_{(2)} \le \dots \le X_{(n)}$).
+                        </li>
+                        <li>
+                            <b><ver>Passo 2</ver> - Determinação do Número de Classes</b> ($k$): O valor de $k$ deve ser um número inteiro, obtido comummente por um dos seguintes critérios:(em que $n$ representa o tamanho total da amostra):
+                            
+                            <div class="equacao-container"> 
+                                $$\text{Regra de Sturges} \quad k = 1 + 3{,}322 \cdot \log_{10}(n)  \quad \text{ou} \quad \text{Regra da Raiz Quadrada} \quad k = \sqrt{n}$$.
+                            </div>
+                        </li>
+                        <li>
+                            <b><ver>Passo 3</ver> - Cálculo da Amplitude da Classe</b> ($h$): Calcula-se dividindo a amplitude total da amostra ($A = X_{\max} - X_{\min}$) pelo número de classes ($k$):
+
+                            <div class="equacao-container"> 
+                                $$h = \frac{A}{k} = \frac{X_{\max} - X_{\min}}{k}$$.
+                            </div>
+                        </li>
+                        <li>
+                            <b><ver>Passo 4</ver> - Definição dos Limites e Construção da Tabela</b>: O limite inferior da primeira classe ($l_1$) corresponde ao valor mínimo ($X_{\min}$). O limite superior da classe é $u_i = l_i + h$. Utiliza-se a notação de intervalo fechado à esquerda e aberto à direita (ex.: $[l_i, u_i[$ ou $l_i \vdash u_i$), garantindo que cada ponto pertença a exatamente uma classe. Para cada classe, calculam-se as frequências absolutas ($f_i$), relativas ($f_{r,i}$), acumuladas ($F_{ac}$) e o ponto médio da classe ($x_i$):
+                            
+                            <div class="equacao-container"> 
+                                $$x_i = \frac{l_i + u_i}{2}$$.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <b><ver>Exemplo 1.3</ver></b>: Considere as notas de $30$ estudantes ($n = 30$) matriculados na unidade curricular de Mercado Financeiro, apresentadas na tabela abaixo. Construa a tabela de distribuição de frequências com dados agrupados em classes.
+
+                <div class="equacao-container"> 
+                    $$\begin{array}{\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|} \hline 4{,}2 & 6{,}0 & 6{,}0 & 3{,}9 & 4{,}5 & 7{,}4 & 5{,}7 & 5{,}0 & 8{,}8 & 6{,}5 & 7{,}2 & 3{,}8 & 4{,}6 & 6{,}4 & 5{,}5 \\ \hline 6{,}3 & 7{,}2 & 5{,}0 & 8{,}0 & 5{,}0 & 6{,}6 & 4{,}4 & 6{,}8 & 7{,}1 & 5{,}0 & 4{,}7 & 5{,}3 & 5{,}5 & 3{,}5 & 4{,}7 \\ \hline \end{array}$$
+                </div>
+
+                <b>Passo 1</b> - Ordenação dos dados em ordem crescente (Rol)
+                
+                <div class="equacao-container"> 
+                    $$\begin{array}{\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|c\|} \hline 3{,}5 & 3{,}8 & 3{,}9 & 4{,}2 & 4{,}4 & 4{,}5 & 4{,}6 & 4{,}7 & 4{,}7 & 5{,}0 & 5{,}0 & 5{,}0 & 5{,}0 & 5{,}3 & 5{,}5 \\ \hline 5{,}5 & 5{,}7 & 6{,}0 & 6{,}0 & 6{,}3 & 6{,}4 & 6{,}5 & 6{,}6 & 6{,}8 & 7{,}1 & 7{,}2 & 7{,}2 & 7{,}4 & 8{,}0 & 8{,}8 \\ \hline \end{array}$$
+                </div>
+
+                <b>Passo 2</b> - Determinação do número de classes ($k$): Utilizando a Regra de Sturges para uma amostra de tamanho $n = 30$:
+
+                <div class="equacao-container">
+                    $$k = 1 + 3{,}3 \cdot \log_{10}(30) \approx 5{,}87 \approx 6 $$
+                </div>
+                
+                <b>Passo 3</b> - Amplitude ou intervalo entre as classes ($h$): A amplitude de cada classe é dada por:
+                
+                <div class="equacao-container">
+                    $$h = \frac{A}{k} = \frac{8{,}8 - 3{,}5}{6} = \frac{5{,}3}{6} = 0{,}88 \approx 1$$
+                </div>
+
+                <b>Passo 4</b> - Construção da Tabela de Distribuição de Frequências: O limite inferior da primeira classe corresponde ao valor mínimo observado ($3{,}5$). Somando a amplitude $h = 1$, obtém-se o limite superior da primeira classe ($4{,}5$). As classes subsequentes são formadas analogamente, mantendo os intervalos do tipo $[l_i, u_i[$ (fechado à esquerda e aberto à direita, à exceção da última classe que é fechada em ambos os limites para incluir o valor máximo).
+
+                <div class="tabela-container">
+                    <h3>Tabela - Distribuição de frequências das notas dos alunos</h3>
+                    <table class="tabela-frequencias">
+                        <thead>
+                            <tr>
+                                <th>Classes</th> <th>$F_i$</th> <th>$Fri$ (%)</th> <th>$Fi_{ac}$</th> <th>$Fri_{ac}$ (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3.5 ⊢ 4.5</td> <td>5</td> <td>16.67</td> <td>5</td> <td>16.67</td>
+                            </tr>
+                            <tr>
+                                <td>4.5 ⊢ 5.5</td> <td>9</td> <td>30</td> <td>14</td> <td>46.67</td>
+                            </tr>
+                            <tr>
+                                <td>5.5 ⊢ 6.5</td> <td>7</td> <td>23.33</td> <td>21</td> <td>70</td>
+                            </tr>
+                            <tr>
+                                <td>6.5 ⊢ 7.5</td> <td>7</td> <td>23.33</td> <td>28</td> <td>93.33</td>
+                            </tr>
+                            <tr>
+                                <td>7.5 ⊢ 8.5</td> <td>1</td> <td>3.33</td> <td>29</td> <td>96.67</td>
+                            </tr>
+                            <tr>
+                                <td>8.5 ⊢ 9.5</td> <td>1</td> <td>3.33</td> <td>30</td> <td>100</td>
+                            </tr>
+                            <tr class="linha-total">
+                                <td><b>Total</b></td> <td><b>30</b></td> <td><b>100</b></td> <td>-----</td> <td>-----</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
 
             </div>
         </section>
@@ -1447,89 +1647,6 @@
             <div class="tabela-imagem-container">
                 <img src="grafico_e_tabela.png" alt="Tabela de Distribuição de Frequências">
             </div>
-
-            gqgGwgawe
-
-            <div class="tabela-container">
-                <table class="tabela-frequencias">
-                    <thead>
-                        <tr>
-                            <th>Tipo Sanguíneo</th>
-                            <th>Doadores ($F_i$)</th>
-                            <th>$Fri$ (%)</th>
-                            <th>$Fi_{ac}$</th>
-                            <th>$Fri_{ac}$ (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A+</td>
-                            <td>15</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>A-</td>
-                            <td>2</td>
-                            <td>3.33</td>
-                            <td>17</td>
-                            <td>28.33</td>
-                        </tr>
-                        <tr>
-                            <td>B+</td>
-                            <td>6</td>
-                            <td>10</td>
-                            <td>23</td>
-                            <td>38.33</td>
-                        </tr>
-                        <tr>
-                            <td>B-</td>
-                            <td>1</td>
-                            <td>1.67</td>
-                            <td>24</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>AB+</td>
-                            <td>1</td>
-                            <td>1.67</td>
-                            <td>25</td>
-                            <td>41.67</td>
-                        </tr>
-                        <tr>
-                            <td>AB-</td>
-                            <td>1</td>
-                            <td>1.67</td>
-                            <td>26</td>
-                            <td>43.33</td>
-                        </tr>
-                        <tr>
-                            <td>O+</td>
-                            <td>32</td>
-                            <td>53.33</td>
-                            <td>58</td>
-                            <td>96.67</td>
-                        </tr>
-                        <tr>
-                            <td>O-</td>
-                            <td>2</td>
-                            <td>3.33</td>
-                            <td>60</td>
-                            <td>100</td>
-                        </tr>
-                        <tr class="linha-total">
-                            <td><strong>Total</strong></td>
-                            <td><strong>60</strong></td>
-                            <td><strong>100</strong></td>
-                            <td>—</td>
-                            <td>—</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            wqgqg
 
         </section>
 
