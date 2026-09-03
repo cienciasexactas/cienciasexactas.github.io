@@ -514,14 +514,27 @@
             <div class="grid">
                 <div class="card">
                     <h3>Ciências Naturais</h3>
-                    <p>Exploração dos ecossistemas, sustentabilidade ambiental, corpo humano e biodiversidade.</p>
-                    <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
-                </div>
+                    
+                    <div class="conteudo-bloco">
+                        <div class="texto-livreAuto">
+                            <b>Gráfico de Barras Verticais</b><ver> (Gráfico de Colunas)</ver>: Eixo das Abscissas ($X$): Representa as categorias ou valores da variável. Eixo das Ordenadas ($Y$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$). A altura de cada coluna é proporcional à frequência da respetiva categoria.
+                        </div>
+
+                        <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+                    </div> <!-- FECHA conteudo-bloco -->
+                </div> <!-- FECHA primeiro card -->
+
                 <div class="card">
                     <h3>Ciências Sociais</h3>
-                    <p>Compreensão da geografia humana, dinâmicas demográficas, cidadania e organização da sociedade
-                        atual.</p>
-                </div>
+                    <div class="conteudo-bloco">
+
+                        <div class="texto-livreAuto">
+                            <b>Gráfico de Barras Verticais</b><ver> (Gráfico de Colunas)</ver>: Eixo das Abscissas ($X$): Representa as categorias ou valores da variável. Eixo das Ordenadas ($Y$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$). A altura de cada coluna é proporcional à frequência da respetiva categoria.
+                        </div>
+
+                        <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+                    </div> <!-- FECHA conteudo-bloco -->
+                </div> <!-- FECHA segundo card -->
             </div>
         </section>
 
@@ -745,21 +758,21 @@
                             <b><ver>Frequência Relativa</ver></b> ($f_{r,i}$ ou $Fr_i$): Proporção ou percentagem da frequência absoluta em relação ao total de observações ($n$):
 
                             <div class="equacao-container"> 
-                                $$f_{r,i} = \frac{f_i}{n} \quad \text{ou} \quad f_{r,i}(\%) = \left(\frac{f_i}{n}\right) \times 100$$.
+                                $$f_{r,i} = \frac{f_i}{n} \quad \text{ou} \quad f_{r,i}(\%) = \left(\frac{f_i}{n}\right) \times 100$$
                             </div>
                         </li>
                         <li>
                             <b><ver>Frequência Absoluta Acumulada</ver></b> ($F_{ac,i}$): Somatório das frequências absolutas desde a primeira categoria até à categoria $i$:
 
                             <div class="equacao-container"> 
-                                $$F_{ac,i} = \sum_{j=1}^{i} f_j$$.
+                                $$F_{ac,i} = \sum_{j=1}^{i} f_j$$
                             </div>
                         </li>
                         <li>
                             <b><ver>Frequência Relativa Acumulada</ver></b> ($F_{r,ac,i}$ ou $Fr_{ac,i}$): Somatório das frequências relativas acumuladas até à categoria $i$:
 
                             <div class="equacao-container">
-                                $$F_{r,ac,i} = \sum_{j=1}^{i} f_{r,j}$$.
+                                $$F_{r,ac,i} = \sum_{j=1}^{i} f_{r,j}$$
                             </div>
                         </li>
                     </ul>
@@ -849,27 +862,27 @@
                 <div class="texto-livreAuto">
                     <ul class="quadrado">
                         <li>
-                            <b><ver>Passo 1</ver> - Ordenação</b>: Organizar os dados amostrais por ordem crescente (rol de dados: $X_{(1)} \le X_{(2)} \le \dots \le X_{(n)}$).
+                            <b><ver>Passo 1</ver> - Ordenação</b>: Organizar os dados amostrais por ordem crescente (rol de dados: $X_{(1)} \le X_{(2)} \le \dots \le X_{(n)}$)
                         </li>
                         <li>
                             <b><ver>Passo 2</ver> - Determinação do Número de Classes</b> ($k$): O valor de $k$ deve ser um número inteiro, obtido comummente por um dos seguintes critérios:(em que $n$ representa o tamanho total da amostra):
                             
                             <div class="equacao-container"> 
-                                $$\text{Regra de Sturges} \quad k = 1 + 3{,}322 \cdot \log_{10}(n)  \quad \text{ou} \quad \text{Regra da Raiz Quadrada} \quad k = \sqrt{n}$$.
+                                $$\text{Regra de Sturges} \quad k = 1 + 3{,}322 \cdot \log_{10}(n)  \quad \text{ou} \quad \text{Regra da Raiz Quadrada} \quad k = \sqrt{n}$$
                             </div>
                         </li>
                         <li>
                             <b><ver>Passo 3</ver> - Cálculo da Amplitude da Classe</b> ($h$): Calcula-se dividindo a amplitude total da amostra ($A = X_{\max} - X_{\min}$) pelo número de classes ($k$):
 
                             <div class="equacao-container"> 
-                                $$h = \frac{A}{k} = \frac{X_{\max} - X_{\min}}{k}$$.
+                                $$h = \frac{A}{k} = \frac{X_{\max} - X_{\min}}{k}$$
                             </div>
                         </li>
                         <li>
                             <b><ver>Passo 4</ver> - Definição dos Limites e Construção da Tabela</b>: O limite inferior da primeira classe ($l_1$) corresponde ao valor mínimo ($X_{\min}$). O limite superior da classe é $u_i = l_i + h$. Utiliza-se a notação de intervalo fechado à esquerda e aberto à direita (ex.: $[l_i, u_i[$ ou $l_i \vdash u_i$), garantindo que cada ponto pertença a exatamente uma classe. Para cada classe, calculam-se as frequências absolutas ($f_i$), relativas ($f_{r,i}$), acumuladas ($F_{ac}$) e o ponto médio da classe ($x_i$):
                             
                             <div class="equacao-container"> 
-                                $$x_i = \frac{l_i + u_i}{2}$$.
+                                $$x_i = \frac{l_i + u_i}{2}$$
                             </div>
                         </li>
                     </ul>
@@ -942,11 +955,74 @@
         <!-- REPRESENTAÇÃO GRÁFICA (SUB-MENU) -->
         <section id="representacao-grafica" class="conteudo-seccao" data-grupo="estat2">
             <h2>REPRESENTAÇÃO GRÁFICA</h2>
+            
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                O comportamento e a estrutura dos dados relativos a variáveis qualitativas e quantitativas também podem ser representados graficamente.
+                
+                Um gráfico estatístico é uma representação visual de dados numéricos mediante figuras geométricas (diagramas, vetores ou formas bidimensionais). O seu principal objetivo é proporcionar ao leitor uma interpretação rápida, clara e objetiva da distribuição e das tendências subjacentes aos dados.
+                
+                Os <b>principais gráficos para Variáveis Qualitativas</b>: Gráfico de Barras (ou Colunas); Gráfico de Setores (ou "Pizza"); Diagrama de Pareto
+                
+                Os <b>principais gráficos para Variáveis Quantitativas</b>: Gráfico de Linhas (Séries Temporais); Gráfico de Dispersão (Pontos); Histograma; Diagrama de Ramos e Folhas (Stem-and-Leaf); Diagrama de Caixas (Boxplot).
+                
+                <div class="texto-livreAuto">
+                    <h2>Gráficos para Variáveis Qualitativas</h2>
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h4>Gráfico de Barras</h4>
+                </div>
+                
+                O <b>gráfico de barras</b> é amplamente aplicado a variáveis qualitativas (nominais e ordinais), sendo igualmente adequado para variáveis quantitativas discretas com poucos valores distintos, uma vez que facilita a identificação de padrões e frequências dominantes.
+                
+                As frequências (absolutas ou relativas) são representadas pelo comprimento ou pela altura de retângulos (barras) de largura constante:
+                
+               <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Gráfico de Barras Verticais</b><ver> (Gráfico de Colunas)</ver>: Eixo das Abscissas ($X$): Representa as categorias ou valores da variável.Eixo das Ordenadas ($Y$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$). A altura de cada coluna é proporcional à frequência da respetiva categoria.
+                        </li>
+                        <li>
+                            <b>Gráfico de Barras Horizontais</b>: Eixo das Ordenadas ($Y$): Representa as categorias da variável.Eixo das Abscissas ($X$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$).O comprimento de cada barra é proporcional à frequência da respetiva categoria.
+                        </li>
+                    </ul>
+                </div>
+                                
+                <b><ver>Exemplo 1.2</ver></b>: Uma instituição bancária realizou um estudo de satisfação junto de $120$ clientes ($n = 120$) para avaliar a agilidade no atendimento, utilizando uma escala ordinal (Excelente, Bom, Regular e Ruim). As frequências absolutas observadas para cada categoria encontram-se resumidas na tabela abaixo. Com base nestes dados, construa o gráfico de barras verticais e o gráfico de barras horizontais.
 
+                <div class="grid">
+                    <div class="card">
+                        <table class="tabela-frequencias">
+                            <caption><ver>Tabela 1.1</ver> - Tipo Sanguíneo do pacientes internados</caption>
+                            <thead>
+                                <tr>
+                                    <th>Satisfacao</th>
+                                    <th>Frequencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Excelente</td><td>58</td></tr>
+                                <tr><td>Bom</td><td>18</td></tr>
+                                <tr><td>Regular</td><td>32</td></tr>
+                                <tr><td>Ruim</td><td>12</td></tr>
+                            </tbody>
+                        </table>
+
+                            <div class="texto-livreAuto">
+                                <b>Gráfico de Barras Verticais</b><ver> (Gráfico de Colunas)</ver>: Eixo das Abscissas ($X$): Representa as categorias ou valores da variável.Eixo das Ordenadas ($Y$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$). A altura de cada coluna é proporcional à frequência da respetiva categoria.
+                            </div>
+                            
+                        <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+                    </div>
+                    <div class="card">
+                        <div class="tabela-imagem-container">
+                            <caption><ver>Tabela 1.1</ver> - Tipo Sanguíneo do pacientes internados</caption>
+                            <img src="GBarra1.png" alt="Gráfico de Satisfação">
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1645,7 +1721,7 @@
             <p>Métodos para obtenção de estimadores pontuais de parâmetros.</p>
 
             <div class="tabela-imagem-container">
-                <img src="grafico_e_tabela.png" alt="Tabela de Distribuição de Frequências">
+                <img src="GBarra1.png" alt="Tabela de Distribuição de Frequências">
             </div>
 
         </section>
