@@ -869,7 +869,18 @@ div:has(+ .grid) {
 
 .grid .card {
     margin-top: -30px !important;
+    margin-bottom: -65px !important;
     padding-top: 0 !important;
+}
+
+.texto-livreAuto .grid .card .texto-livreAuto h4 {
+    margin-top: -166px !important;
+    margin-bottom: 155px !important;
+}
+
+.texto-livreAuto h4 {
+    margin-top: 60px !important;
+    margin-bottom: -35px !important;
 }
 
 /* 3. Estiliza e zera a margem da legenda da imagem */
