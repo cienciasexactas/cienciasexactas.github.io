@@ -869,7 +869,7 @@ div:has(+ .grid) {
 
 .grid .card {
     margin-top: -30px !important;
-    margin-bottom: -52px !important;
+    margin-bottom: -82px !important;
     padding-top: 0 !important;
 }
 
@@ -1260,7 +1260,8 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     width: auto;      /* Mantém o tamanho real da imagem */
     height: auto;
     display: block;
-    margin: 0 auto !important;
+    margin-top: 0 !important;
+    padding-bottom: 28px !important;
 }
 
 /* =========================================================
@@ -1578,16 +1579,18 @@ img {
     margin-bottom: -65px !important;
 }
 
+/* 1. Zerar a margem inferior de QUALQUER tabela no card */
+.card .tabela-frequencias, .card div {
+    margin-bottom: -65px !important;
+}
+
 
 /* Reduz o espaço no topo do bloco de código */
 .texto-livreAuto pre {
     margin-top: -8px !important; /* Ajusta este valor positivo até colar como queres */
+    margin-bottom: -26px !important; /* Ajusta este valor positivo até colar como queres */
 }
 
-/* Reduz o espaço no topo do bloco de código */
-.texto-livreAuto pre {
-    margin-bottom: 26px !important; /* Ajusta este valor positivo até colar como queres */
-}
 
 /* Legenda/Título da Tabela (Se usares <caption>) */
 .tabela-frequencias caption {
