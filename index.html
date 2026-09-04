@@ -1002,7 +1002,7 @@
                 <div class="grid">
                     <div class="card">
                         <table class="tabela-frequencias">
-                            <caption><ver>Tabela 1.1</ver> - Tipo Sanguíneo do pacientes internados</caption>
+                            <caption><ver>Tabela 1</ver> - Satisfação do Cliente</caption>
                             <thead>
                                 <tr>
                                     <th>Satisfacao</th>
@@ -1017,20 +1017,14 @@
                             </tbody>
                         </table>
 
-                        <b>Gráfico de Barras Verticais</b><ver> (Gráfico de Colunas)</ver>: Eixo das Abscissas ($X$): Representa as categorias ou valores da variável.Eixo das Ordenadas ($Y$): Representa as frequências (absolutas $f_i$ ou relativas $f_{r,i}$). A altura de cada coluna é proporcional à frequência da respetiva categoria.
-                            
-                        <pre><code class="language-r">pnorm(35, mean = 40, sd = 2, lower.tail = FALSE)</code></pre>
+                        <b><ver>Nota</b></ver>: A construção e interpretação de gráficos de barras horizontais constituem o objeto de avaliação prática individual.
 
-                        teste
                     </div>
                     <div class="card">
                         <div class="tabela-imagem-container">
-                            <caption><ver>Tabela 1.1</ver> - Tipo Sanguíneo do pacientes internados</caption>
+                            <caption><ver>Gráfico 1</ver> - Satisfação do Cliente</caption>
                             <img src="GBarra1.png" alt="Gráfico de Satisfação">
                         </div>
-                        
-                        <b><ver>Exemplo 1.2</ver></b>: Uma instituição bancária realizou um estudo de satisfação junto de $120$ clientes ($n = 120$) para avaliar a agilidade no atendimento, utilizando uma escala ordinal (Excelente, Bom, Regular e Ruim). As frequências absolutas observadas para cada categoria encontram-se resumidas na tabela abaixo. Com base nestes dados, construa o gráfico de barras verticais e o gráfico de barras horizontais.
-
                     </div>
                 </div>
 
@@ -1038,7 +1032,94 @@
                     <h4>Gráfico de Setores (ou "Pizza")</h4>
                 </div>
 
-                O gráfico de setores (comumente denominado gráfico de "pizza") é uma representação circular amplamente utilizada para ilustrar a frequência relativa (percentagem) de variáveis qualitativas ou quantitativas discretas com poucas categorias.Nesta representação:O círculo completo representa a totalidade dos dados ($100\%$ da amostra ou população), correspondendo a uma amplitude angular total de $360^\circ$.Cada categoria da variável é representada por um setor circular ("fatia"), cuja área e ângulo central ($\alpha_i$) são diretamente proporcionais à sua frequência relativa ($f_{r,i}$):$$\alpha_i = f_{r,i} \times 360^\circ \quad \text{ou} \quad \alpha_i = \left(\frac{\%_i}{100}\right) \times 360^\circ$$Esta visualização permite ao analista identificar instantaneamente a dimensão relativa de cada categoria relativamente ao todo.Nota Prática: O gráfico de setores é especialmente recomendado para conjuntos de dados com poucas categorias (idealmente entre 3 e 7). Quando existem muitas categorias pequenas, a distinção entre as fatias torna-se difícil, sendo preferível a utilização do gráfico de barras.Enunciado do Exemplo PráticoExemplo (Gráfico de Setores — Preferência Partidária)Uma sondagem eleitoral foi realizada no município de São Paulo para averiguar a intenção de voto dos eleitores relativamente aos partidos políticos na eleição para a prefeitura.A distribuição percentual de preferência dos eleitores por partido encontra-se sintetizada na tabela abaixo. Com base nesses dados, calcule os ângulos correspondentes a cada categoria e construa o gráfico de setores (pizza).
+                O <b>gráfico de setores</b> (comumente denominado <i>gráfico de "pizza"</i>) é uma representação circular amplamente utilizada para ilustrar a <ver>frequência relativa (percentagem)</ver> de variáveis qualitativas ou quantitativas discretas com poucas categorias.
+                
+                Nesta representação, o círculo completo representa a totalidade dos dados ($100\%$ da amostra ou população), correspondendo a uma amplitude angular total de $360^\circ$. Cada categoria da variável é representada por um setor circular ("fatia"), cuja área e ângulo central ($\alpha_i$) são diretamente proporcionais à sua frequência relativa ($f_{r,i}$):
+
+                <div class="equacao-container">
+                    $$\alpha_i = f_{r,i} \times 360^\circ \quad \text{ou} \quad \alpha_i = \left(\frac{\%_i}{100}\right) \times 360^\circ$$
+                </div>
+                
+                Esta visualização permite ao analista identificar instantaneamente a dimensão relativa de cada categoria relativamente ao todo.
+                
+                <blockquote> <b>Aplicações Práticas</b>: O gráfico de setores é especialmente recomendado para conjuntos de dados com poucas categorias (idealmente entre 3 e 7). Quando existem muitas categorias pequenas, a distinção entre as fatias torna-se difícil, sendo preferível a utilização do gráfico de barras.</blockquote>
+
+                    
+                <b><ver>Exemplo 1.3</ver></b>: Uma sondagem eleitoral foi realizada no município de São Paulo para averiguar a intenção de voto dos eleitores relativamente aos partidos políticos na eleição para a prefeitura.A distribuição percentual de preferência dos eleitores por partido encontra-se sintetizada na tabela abaixo. Com base nesses dados, calcule os ângulos correspondentes a cada categoria e construa o gráfico de setores (pizza).
+
+                <div class="grid">
+                    <div class="card">
+                        <table class="tabela-frequencias">
+                            <caption><ver>Tabela 2</ver> - Preferência dos Eleitores</caption>
+                            <thead>
+                                <tr>
+                                    <th>Partidos Políticos</th>
+                                    <th>Percentagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Partido A</td><td>18</td></tr>
+                                <tr><td>Partido B</td><td>22</td></tr>
+                                <tr><td>Partido C</td><td>12</td></tr>
+                                <tr><td>Partido D</td><td>25</td></tr>
+                                <tr><td>Partido E</td><td>8</td></tr>
+                                <tr><td>Partido F</td><td>5</td></tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="card">
+                        <div class="tabela-imagem-container">
+                            <caption><ver>Gráfico 2</ver> - Preferência dos Eleitores</caption>
+                            <img src="GCircular.png" alt="Gráfico de Satisfação">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h4>Diagrama de Pareto</h4>
+                </div>
+
+                O <b>Diagrama de Pareto</b> é uma das Sete Ferramentas Clássicas da Qualidade. O seu propósito fundamental é identificar e priorizar os problemas mais críticos e as suas respetivas causas, permitindo que as ações corretivas sejam direcionadas para onde produzirão o maior impacto de melhoria.
+                
+                Visualmente, o <i>Diagrama de Pareto combina um gráfico de colunas (barras verticais) com um gráfico de linhas (Polígono de Pareto)</i>: <b>Eixo das Abscissas ($X$)</b>: Apresenta as categorias dos problemas ou defeitos, ordenadas rigorosamente de forma decrescente da frequência absoluta ($f_i$) de ocorrências (do mais frequente para o menos frequente). <b>Eixo das Ordenadas Principal (Esquerdo)</b>: Representa a frequência absoluta ($f_i$) ou o custo/impacto associado a cada problema. <b>Eixo das Ordenadas Secundário (Direito)</b>: Representa a frequência relativa acumulada ($F_{r,ac}$ em percentagem, variando de $0\%$ a $100\%$). <b>Gráfico de Colunas</b>: Representa a frequência individual de cada problema. <b>Gráfico de Linha (Ojiva de Pareto)</b>: Traça a percentagem acumulada das ocorrências, permitindo identificar com precisão a faixa dos "poucos vitais" (os $20\%$ de defeitos que somam $\approx 80\%$ do total) face aos "muitos triviais".
+                
+                <b>Enunciado do Exemplo Prático</b><b>Exemplo (Diagrama de Pareto — Controlo de Qualidade de Cartões)</b>
+                
+                <b><ver>Exemplo 1.3</ver></b>: Uma empresa produtora de cartões de crédito e magnéticos pretende implementar um programa de melhoria contínua para reduzir a incidência de unidades defeituosas na linha de montagem.Durante uma semana de produção, o inspetor de qualidade analisou uma amostra de $1.000$ cartões com anomalias ($n = 1.000$) e classificou-os segundo os tipos de defeitos identificados, conforme apresentado na tabela abaixo. 
+                
+                Com base nesses dados: Ordene os defeitos por frequência decrescente e calcule as frequências relativas e relativas acumuladas. Construa o Diagrama de Pareto para a linha de produção.
+
+                <div class="grid">
+                    <div class="card">
+                        <table class="tabela-frequencias">
+                            <caption><ver>Tabela 2</ver> - Preferência dos Eleitores</caption>
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Defeito</th>
+                                    <th>Frequência Absoluta $f_i$</th>
+                                    <th>Frequência Relativa Acumulada $F_{r,ac}$</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Amassado</td><td>71</td><td>39,23</td></tr>
+                                <tr><td>Números Errados</td><td>44</td><td>63,54</td></tr>
+                                <tr><td>Perfurado</td><td>28</td><td>79,01</td></tr>
+                                <tr><td>Caracteres Errados</td><td>20</td><td>90,06</td></tr>
+                                <tr><td>Impressão Ilegível</td><td>12</td><td>96,69</td></tr>
+                                <tr><td>Outros</td><td>6</td><td>100</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <div class="tabela-imagem-container">
+                            <caption><ver>Gráfico 2</ver> - Preferência dos Eleitores</caption>
+                            <img src="GDPareto.png" alt="Gráfico de Satisfação">
+                        </div>
+
+                    </div>
+                </div>
+     
             </div>
         </section>
 
