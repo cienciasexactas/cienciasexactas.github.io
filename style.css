@@ -1263,6 +1263,14 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     -webkit-overflow-scrolling: touch; /* Suaviza o scroll no Safari/iOS */
 }
 
+.card .tabela-imagem-container img {
+    padding-bottom: 6pt !important;
+}
+
+.grid .card .tabela-imagem-container img {
+    margin-bottom: 6pt !important;
+}
+
 .tabela-imagem-container img {
     /* REMOVIDO: max-width: 100% (para impedir a imagem de encolher) */
     min-width: 350px; /* Ou a largura mínima fixa que desejares, ex: 500px */
@@ -1590,7 +1598,8 @@ img {
 
 /* 1. Zerar a margem inferior de QUALQUER tabela no card */
 .card .tabela-frequencias {
-    margin-bottom: -30px !important;
+    margin-bottom: -25px !important;
+    padding-bottom: 7px !important;
 }
 
 
