@@ -1226,6 +1226,7 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     border-collapse: collapse;
     text-align: center;
     white-space: normal !important;
+    padding: 5px !important;
 }
 
 .tabela-frequencias thead tr {
@@ -1599,7 +1600,7 @@ img {
 /* 1. Zerar a margem inferior de QUALQUER tabela no card */
 .card .tabela-frequencias {
     margin-bottom: -25px !important;
-    padding-bottom: 7px !important;
+    padding-bottom: 0 !important;
 }
 
 
