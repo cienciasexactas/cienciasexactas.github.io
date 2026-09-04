@@ -246,7 +246,6 @@ header,
     /* Ajuste para 1.5 usando PONTO */
     margin-top: -35pt !important;
     margin-bottom: -25pt;
-
 }
 
 .texto-livreAuto li {
@@ -295,8 +294,7 @@ header,
 .texto-livreAuto h1 {
     font-size: 18pt;
     padding-bottom: 4pt;
-    border-bottom: 2px solid #004080;
-    /* Linha azul acompanhando a cor do texto */
+    border-bottom: 2px solid #004080; /* Linha azul acompanhando a cor do texto */
 }
 
 /* Subtítulo (Nível 2) */
@@ -442,6 +440,10 @@ pre[class*="language-"] {
     height: auto !important;
 }
 
+.texto-livreAuto .grid {
+    margin-bottom: -110px !important;
+    height: auto !important;
+}
 
 .card h3 {
     color: var(--secondary-color);
@@ -869,12 +871,18 @@ div:has(+ .grid) {
 
 .grid .card {
     margin-top: -30px !important;
-    margin-bottom: -82px !important;
-    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 30px !important;
 }
 
+.grid .card h3{
+    padding-top: 5px !important;
+    margin-bottom: 20px !important;
+}
+
+
 .texto-livreAuto h4 {
-    margin-top: 70px !important;
+    margin-top: -30px !important;
     margin-bottom: -35px !important;
 }
 
@@ -1575,20 +1583,21 @@ img {
 }
 
 /* 1. Zerar a margem inferior de QUALQUER tabela no card */
-.card .tabela-frequencias, .card div {
+.card div {
     margin-bottom: -65px !important;
 }
 
 /* 1. Zerar a margem inferior de QUALQUER tabela no card */
-.card .tabela-frequencias, .card div {
-    margin-bottom: -65px !important;
+.card .tabela-frequencias {
+    margin-bottom: -30px !important;
 }
 
 
 /* Reduz o espaço no topo do bloco de código */
 .texto-livreAuto pre {
-    margin-top: -8px !important; /* Ajusta este valor positivo até colar como queres */
-    margin-bottom: -26px !important; /* Ajusta este valor positivo até colar como queres */
+    padding-top: 0 !important; /* Ajusta este valor positivo até colar como queres */
+    margin-top: -45px !important; /* Ajusta este valor positivo até colar como queres */
+    margin-bottom: -36px !important; /* Ajusta este valor positivo até colar como queres */
 }
 
 
