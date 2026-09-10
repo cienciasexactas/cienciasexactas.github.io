@@ -1,0 +1,46 @@
+No terminal do VS Code, corra estes comandos:
+
+# 1. Criar uma nova branch temporária sem histórico de commits
+git checkout --orphan main-limpa
+
+# 2. Adicionar todos os ficheiros atuais ao staging
+git add .
+
+# 3. Criar o commit inicial da nova branch
+git commit -m "Site - Versão Limpa"
+
+# 4. Eliminar a branch 'main' antiga (que tinha todo o histórico)
+git branch -D main
+
+# 5. Renomear a branch 'main-limpa' para 'main'
+git branch -m main
+
+# 6. Forçar a atualização no GitHub (substitui o histórico remoto)
+git push -f origin main
+
+Limpar e apagar o histórico local já gravado
+Abra o VS Code.
+
+Pressione a combinação de teclas Ctrl + Shift + P (ou Cmd + Shift + P no Mac) para abrir a Paleta de Comandos.
+
+Escreva: Local History: Delete All (ou Histórico Local: Excluir Tudo).
+
+Pressione Enter e confirme. Todos os registos da linha do tempo serão apagados imediatamente.
+
+
+Conversa com o Gemini
+Não altera nada deste código a não ser isso que estou a pedi e apenas isso.
+
+Eu quero que os menus de nível 2 e nível 3 abram no modo mibile onde:
+
+1- Um click no menu pai (sem submenu) ele fecha automaticamente e mostra os conteúdos apenas.
+
+2- Um click no menu pai (com submenu) ele permanece e mostra os menus filho.
+
+3- Dois click no menu pai (com submenu) ele fecha automaticamente e mostra os conteúdos apenas.
+
+4- Um click no menu pai (com submenu) ele permanece e mostra os menus filho e se clicar noutro menu, o menu anterior fecha automaticamente e volta as regras anteriores de aconte com o nível do menu.
+
+5- Quero que cada nível de menu tem um fundo mais claro que o anterior nivel e que ajusta o conteúdo desses subniveis (a esquerda ou direira ou pra baixo).
+
+Apenas isso que eu quero que faça neste código:

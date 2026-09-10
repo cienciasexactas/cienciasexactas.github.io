@@ -1,0 +1,2281 @@
+/* =========================================================
+   1. VARIÁVEIS, RESET E BASE GLOBAL
+   ========================================================= */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #27ae60;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --navbar-height: 80px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 20px;
+    padding-top: var(--navbar-height);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.86;
+    text-align: justify;
+    text-justify: inter-word;
+    top: 0px !important;
+    position: static !important;
+    /* Reseta os contadores no início da página */
+    counter-reset: contTabela contGrafico contFigura contEquacao;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+a {
+    color: #0000ee;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #551a8b;
+}
+
+.link-destaque {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   2. TIPOGRAFIA, FORMATANDO TEXTO LIVRE E CITAÇÕES
+   ========================================================= */
+/* Blockquotes e equações (MathJax / KaTeX) */
+blockquote,
+.texto-livreAuto blockquote {
+    display: block !important;
+    margin-top: -40px !important;
+    margin-bottom: -22pt !important;
+    padding: 0 0 0 15px !important;
+    padding-bottom: 0 !important;
+    border-left: 4px solid #39e206 !important;
+    line-height: 1.86 !important;
+    text-align: justify !important;
+    background-color: #f3f3f3;
+}
+
+blockquote + p,
+blockquote + div {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove folga inferior em equações renderizadas no MathJax/KaTeX */
+.texto-livreAuto blockquote .mjx-chtml, 
+.texto-livreAuto blockquote .katex-display,
+.texto-livreAuto blockquote .MathJax_Display {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 1. Controla o espaço superior do container da equação no blockquote */
+blockquote .equacao,
+.texto-livreAuto blockquote .equacao {
+    margin-top: -80px !important;   /* Altera aqui: usa valores negativos (ex: -5px a -15px) para subir a equação */
+    padding-top: 0 !important;
+}
+
+/* 2. Zera as margens do renderizador (MathJax / KaTeX) para evitar folgas automáticas */
+blockquote .equacao .mjx-chtml,
+blockquote .equacao .katex-display,
+blockquote .equacao .MathJax_Display,
+blockquote .equacao MathJax {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Zera e ajusta a margem do último elemento filho dentro do blockquote */
+blockquote > *:last-child,
+.texto-livreAuto blockquote > *:last-child,
+.texto-livreAuto blockquote p:last-child {
+    margin-bottom: -22pt !important;
+    padding-bottom: 0 !important;
+}
+
+/* Texto, parágrafos e divs (.texto-livreauto) */
+.texto-livreAuto p {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    padding: 0 !important;
+    box-sizing: border-box;
+    text-align: justify;
+    line-height: 1.86;
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+
+    white-space: pre-line;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.texto-livreAuto div {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.texto-livreAuto p:has(mark) {
+    margin-top: -3pt !important;
+    line-height: 1.86 !important;
+}
+
+.texto-livreAuto p:empty::before {
+    content: "\00a0";
+}
+
+/* Hierarquia de títulos (H1, H2, H3, H4) */
+/* Regra Base: Tipografia e margens comuns para todos os títulos */
+.texto-livreAuto h1,
+.texto-livreAuto h2,
+.texto-livreAuto h3,
+.texto-livreAuto h4 {
+    color: #004080;
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-weight: bold;
+    margin-top: 3pt;
+    margin-bottom: 6pt;
+}
+
+/* Título Principal (Nível 1) */
+.texto-livreAuto h1 {
+    font-size: 18pt;
+    padding-bottom: 4pt;
+    border-bottom: 2px solid #004080;
+}
+
+/* Subtítulo (Nível 2) */
+.texto-livreAuto h2 {
+    color: #0280ff; /* Cor específica para H2 */
+    font-size: 16pt;
+    padding-bottom: 3pt;
+    border-bottom: 1px solid #004080;
+    width: fit-content;
+}
+
+/* Subseção (Nível 3) */
+.texto-livreAuto h3 {
+    font-size: 12pt;
+    padding-bottom: 3pt;
+    border-top: 1px solid #df0000;
+    width: fit-content;
+}
+
+/* Tópico Menor (Nível 4) */
+.texto-livreAuto h4 {
+    font-size: 12pt;
+    font-style: italic;
+    padding-bottom: 3pt;
+    border-bottom: 1px solid #004080;
+    width: fit-content;
+}
+
+/* Exceções e ajustes de posicionamento dos títulos */
+
+.texto-livreAuto .grid h3 {
+    margin-top: 0 !important;
+}
+
+/* Ajustes quando o título é o primeiro elemento (:first-child) */
+.texto-livreAuto > h1:first-child,
+.texto-livreAuto > h4:first-child {
+    margin-top: -35pt !important;
+    margin-bottom: -25pt !important;
+}
+
+.texto-livreAuto > h2:first-child {
+    margin-top: -30pt !important;
+    margin-bottom: -25pt !important;
+}
+
+.texto-livreAuto > h3:first-child {
+    margin-top: -20pt !important;
+    margin-bottom: -30pt !important;
+}
+
+/* Resets gerais de cabeçalhos da página (estruturais) */
+header, .header, #header, .page-header, #page-header, .navbar, .page-title, .header-content {
+    margin-bottom: 12pt !important;
+    padding-bottom: 0.2rem !important;
+}
+
+/* =========================================================
+   3. ESTRUTURA DE LAYOUT, CONTAINERS E SEÇÕES
+   ========================================================= */
+
+/* Estrutura global da página (HEADER, CONTAINER, FOOTER)*/
+header {
+    background-color: #34495e;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6rem 1rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Regra global para H1 fora de escopos específicos */
+h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Regra global para H2 (sem afetar .texto-livreAuto) */
+body > h2,
+section > h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: -25px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: calc(var(--navbar-height, 60px) + 20px);
+}
+
+footer {
+    text-align: center;
+    padding: 0.8rem 0;
+    background-color: var(--primary-color, #34495e);
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Controlo de secções e abas */
+.conteudo-seccao {
+    display: none;
+}
+
+.conteudo-seccao.ativo {
+    display: block;
+}
+
+/* Blocos de conteúdo e código (PRE / PRISM / KATEX) */
+/* Isolamento total do bloco interno */
+.conteudo-bloco {
+    display: block !important;
+    width: 100% !important;
+    margin-top: -25pt !important;
+}
+
+.conteudo-bloco .texto-livreAuto {
+    display: block !important;
+    margin-bottom: -50px !important;
+}
+
+.conteudo-bloco pre {
+    display: block !important;
+    padding: 0 !important;
+    clear: both !important;
+}
+
+/* Contentores de código dentro de cartões ou com destaques de sintaxe */
+.card pre,
+pre[class*="language-"] {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* =========================================================
+   4. BARRA DE NAVEGAÇÃO E DROPDOWNS (NAVBAR)
+   ========================================================= */
+/* Estrutura principal da navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height, 60px);
+    background-color: var(--primary-color, #2c3e50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Perfil do utilizador */
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ecf0f1;
+    border: 2px solid var(--secondary-color, #3498db);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color, #2c3e50);
+    font-weight: bold;
+    font-size: 1.2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.nav-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.nav-role {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #bdc3c7;
+}
+
+/* Links de navegação principal */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: center;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--secondary-color, #3498db);
+    outline: none;
+}
+
+/* Submenus e dropdowns (multi-nível) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a::after {
+    content: " ▼";
+    font-size: 0.6rem;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 180px;
+    width: max-content;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Posicionamento do Dropdown Principal */
+.nav-links > .dropdown > .dropdown-content {
+    top: 100%;
+    left: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Direções de abertura para Sub-dropdowns */
+.dropdown-content .dropdown-content.abrir-esquerda {
+    top: 0;
+    right: 100% !important;
+    left: auto !important;
+}
+
+.dropdown-content .dropdown-content.abrir-direita {
+    top: 0;
+    left: 100% !important;
+    right: auto !important;
+}
+
+/* Estilo dos links dentro do Dropdown */
+.dropdown-content a {
+    color: var(--primary-color, #2c3e50);
+    background-color: #ffffff;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom: 1px solid #f1f1f1;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Remove a borda do último item (suporta tanto <li><a> como <a> diretos) */
+.dropdown-content > *:last-child > a,
+.dropdown-content > a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover,
+.dropdown-content a:focus-visible {
+    background-color: #f8f9fa;
+    color: var(--secondary-color, #3498db);
+}
+
+/* Exibição do Menu ao passar o rato ou focar */
+.dropdown:hover > .dropdown-content,
+.dropdown:focus-within > .dropdown-content {
+    display: block;
+}
+
+/* Controlos interativos e utilitários */
+/* Oculta elementos desktop no estado padrão */
+.nav-actions-desktop,
+.search-container {
+    display: none;
+}
+
+/* Garante o clique correto em ícones/botões de interatividade JS */
+.search-icon-btn,
+.search-close-btn,
+.hamburger-btn {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.search-icon-btn *,
+.search-close-btn *,
+.hamburger-btn * {
+    pointer-events: none;
+}
+
+/* =========================================================
+   5. GRELHA DE NOTÍCIAS E CARTÕES
+   ========================================================= */
+.news-container {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-card-wrapper {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.news-card-wrapper:nth-child(n+7) {
+    display: none;
+}
+
+.news-card {
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-img {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 0.8rem;
+}
+
+.news-date {
+    font-size: 0.72rem;
+    color: #7f8c8d;
+    font-weight: bold;
+}
+
+.news-card h3 {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    color: var(--primary-color);
+}
+
+.news-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+    color: #444444;
+}
+
+.news-card-wrapper.saindo {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.news-card-wrapper.entrando {
+    animation: fadeInNews 0.6s ease forwards;
+}
+
+@keyframes fadeInNews {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a.news-card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: block;
+}
+
+a.news-card-link:hover,
+a.news-card-link:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+a.news-card-link:hover h3 {
+    color: var(--secondary-color);
+}
+
+.link-icon {
+    font-size: 0.75rem;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   6. CARROSSEL E REDES SOCIAIS
+   ========================================================= */
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.social-links a {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.social-links img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover img,
+.social-links a:focus-visible img {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 20px 0;
+}
+
+#carousel-list {
+    display: flex !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#carousel-list li {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    min-width: 25% !important;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#carousel-list img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 9px;
+}
+
+#carousel-list a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+.carousel-container.escondido {
+    display: none !important;
+}
+
+@keyframes rolarInfinito {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   7. BLOCOS DE CÓDIGO (PRISM / HIGHLIGHT)
+   ========================================================= */
+pre[class*="language-"] {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: none;
+    padding: 8px 12px !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+    font-size: 0.95rem;
+    color: #333333;
+    display: block;
+    overflow-x: auto;
+}
+
+/* 1. Remove a margem negativa do bloco <pre> */
+pre {
+    margin-top: 0;    /* Espaço saudável acima do código */
+    margin-bottom: 15px; /* Espaço saudável abaixo do código */
+    padding: 12px;       /* Preenchimento interno do bloco */
+    width: 100%;         /* Garante que ajusta ao card */
+    box-sizing: border-box;
+    overflow-x: auto;    /* Mantém o scroll lateral em ecrãs pequenos */
+    white-space: pre-wrap; /* Quebra linhas longas de código se necessário */
+    max-width: 100%;
+}
+
+/* 2. Reseta margens internas da tag <code> */
+pre code {
+    margin: 0;
+    padding: 0;
+}
+
+code[class*="language-"] {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block;
+}
+
+.texto-livreAuto h4 {
+    margin-top: -55px !important;
+    margin-bottom: -35px !important;
+}
+
+.token.comment {
+    color: #7fb881 !important;
+    font-style: italic;
+}
+
+.token.function {
+    color: #d35400 !important;
+    font-weight: bold;
+}
+
+.token.string {
+    color: #2e7d32 !important;
+}
+
+.token.number {
+    color: #c0392b !important;
+}
+
+.token.operator,
+.token.punctuation {
+    color: #2c3e50 !important;
+}
+
+.token.keyword {
+    color: #8e44ad !important;
+}
+
+/* Reduz o espaço no topo do bloco de código */
+.texto-livreAuto pre {
+    padding-top: 0 !important; /* Ajusta este valor positivo até colar como queres */
+    margin-top: -45px !important; /* Ajusta este valor positivo até colar como queres */
+    margin-bottom: -36px !important; /* Ajusta este valor positivo até colar como queres */
+}
+
+
+/* =========================================================
+   8. NEWSLETTER E CARDS INTERNOS
+   ========================================================= */
+.newsletter-section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.newsletter-section.conteudo-seccao {
+    display: none !important;
+}
+
+.newsletter-section.conteudo-seccao.ativo {
+    display: block !important;
+}
+
+.newsletter-section p {
+    color: #444444;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: #94a3b8;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--secondary-color);
+}
+
+.newsletter-btn {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    border-radius: 25px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.newsletter-btn:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+.newsletter-btn:active {
+    transform: translateY(0);
+}
+
+.bloco-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.bloco-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bloco-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.bloco-icone {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #a3d900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.bloco-topo h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2d3748;
+}
+
+.bloco-card p {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bloco-btn {
+    display: block;
+    text-align: center;
+    padding: 7px 18px;
+    /* Ajusta a altura e largura interna */
+    font-size: 1rem;
+    /* Define explicitamente o tamanho do texto */
+    max-width: 200px;
+    /* OPCIONAL: limita a largura máxima se não quiser 100% */
+    margin: 0 auto;
+    /* OPCIONAL: centraliza o botão se usar max-width */
+    background: linear-gradient(90deg, #48bb78, #ecc94b);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+}
+
+
+/* =========================================================
+   9. EQUAÇÕES MATEMÁTICAS (MATHJAX / KATEX)
+   ========================================================= */
+mjx-container[jax="CHTML"][display="true"],
+.MathJax_Display,
+.katex-display {
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+    text-align: center;
+    margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"]>mjx-math,
+.MathJax_Display>.MathJax,
+.katex-display>.katex {
+    display: inline-block !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+    transform-origin: center center;
+}
+
+/* 1. Libera o MathJax para expandir na vertical e horizontal sem criar caixas */
+.texto-livreAuto .MathJax_Display,
+.texto-livreAuto .MathJax_CHTML,
+.texto-livreAuto .mjx-chtml,
+.texto-livreAuto .katex-display,
+.texto-livreAuto .MathJax {
+    overflow: visible !important;
+    width: max-content !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* 2. Container isolado da equação: reduz 12% no mobile e ativa scroll apenas horizontal */
+.texto-livreAuto .equacao-container {
+    font-size: 100%;
+    /* Redução de 12% no tamanho */
+    /* overflow: visible !important; /* Libera o conteúdo sem gerar barras de rolagem */
+    overflow-x: auto !important;
+    /* Scroll horizontal quando necessário */
+    overflow-y: hidden !important;
+    /* Garante expansão vertical sem cortar texto */
+    -webkit-overflow-scrolling: touch;
+    margin-top: -38pt !important;
+    margin-bottom: -33pt !important;
+}
+
+/* 2. Container isolado da equação: reduz 12% no mobile e ativa scroll apenas horizontal */
+.texto-livreAuto .equacao {
+    margin-top: -38pt !important;
+    margin-bottom: -30pt !important;
+}
+
+
+/* =========================================================
+   10. TABELAS DE FREQUÊNCIA, IMAGENS E LEGENDAS
+   ========================================================= */
+/* Containers e tabelas de frequência */
+.tabela-container {
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+    padding: 0 !important;
+}
+
+.tabela-container h3 {
+    color: #a0a0a0;
+    font-weight: normal;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+/* Tabela Base */
+.tabela-frequencias {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    text-align: center;
+    white-space: normal !important;
+}
+
+.tabela-frequencias thead tr {
+    background-color: #f2f2f2;
+}
+
+/* Células e Colunas */
+.tabela-frequencias th {
+    padding: 3px;
+    font-weight: bold;
+    color: #222;
+    border-bottom: 1px solid #f2f2f2;
+    vertical-align: middle;
+    width: 100px; /* Simplificado de min/max width */
+}
+
+.tabela-frequencias td {
+    padding: 8px 16px;
+    width: 55px !important;
+    color: #111;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+/* Primeira Coluna (Fundo Cinza) - Mantém apenas o que difere do th padrão */
+.tabela-frequencias tr th:first-child {
+    background-color: #f2f2f2;
+    padding: 8px 12px;
+    white-space: normal;
+    word-break: break-word;
+    width: 130px;
+    min-width: auto;
+    max-width: none;
+}
+
+.tabela-frequencias tr.linha-total td {
+    padding-top: 3px;
+    background-color: #f2f2f2;
+}
+
+/* Containers de imagem e legendas */
+.tabela-imagem-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 15px 0;
+    padding: 0 !important;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabela-imagem-container .legenda {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    font-weight: bold;
+}
+
+.tabela-imagem-container img {
+    min-width: 350px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Espaçamento inferior unificado para imagens dentro de Cards e Grids */
+.card .tabela-imagem-container img,
+.grid .card .tabela-imagem-container img {
+    padding-bottom: 6pt !important;
+    margin-bottom: 6pt !important;
+}
+
+/* Ajustes específicos de espaçamento (.texto-livreauto) */
+.texto-livreAuto .tabela-container h3 {
+    margin-bottom: 0 !important;
+}
+
+.texto-livreAuto .tabela-container {
+    margin-top: -42pt !important;
+    margin-bottom: -20pt !important;
+}
+
+/* Caso seja a tag <ul> dentro de .texto-livreAuto (corrigido do antigo .ul) */
+.texto-livreAuto ul {
+    margin-top: -42pt !important;
+    margin-bottom: -25pt !important;
+}
+
+.texto-livreAuto figure {
+    margin-top: -34pt !important;
+    margin-bottom: -28pt !important;
+}
+/* ======================================================
+   RÓTULOS (LABELS) AGRUPADOS: Tabela, Gráfico, Figura e Equação
+   ESTILO DOS RÓTULOS E LINKS
+   ====================================================== */
+.rotulo-tabela,
+.rotulo-grafico,
+.rotulo-figura {
+  font-weight: 500;
+  color: #0056b3;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: bold;
+}
+
+.rotulo-exercicio {
+  font-weight: 500;
+  color: #ff1e00;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: bold;
+}
+
+.rotulo-exemplo {
+  font-weight: 500;
+  color: #7700ff;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: bold;
+}
+
+/* Evita que a navbar fixa tape o bloco ao clicar no link/âncora */
+.bloco-exercicio,
+.bloco-exemplo {
+  scroll-margin-top: calc(var(--navbar-height, 60px) + 20px);
+  display: flow-root;           /* Impede o colapso de margens com elementos internos/externos */
+  width: 100%;
+}
+
+/* 2. ESPAÇAMENTO EXTERNO: ACIMA (Topo)
+   ---------------------------------------------------------------------------- */
+/* Zera a margem inferior do elemento (parágrafo, tabela ou figura) que vem LOGO ANTES */
+.texto-livreAuto p:has(+ .bloco-exemplo),
+.texto-livreAuto p:has(+ .bloco-exercicio),
+.texto-livreAuto figure:has(+ .bloco-exemplo),
+.texto-livreAuto figure:has(+ .bloco-exercicio),
+.texto-livreAuto .tabela-container:has(+ .bloco-exemplo),
+.texto-livreAuto .tabela-container:has(+ .bloco-exercicio) {
+  margin-bottom: -20pt;
+}
+
+/* Ajusta o topo do bloco de exemplo/exercício em relação ao elemento anterior */
+.texto-livreAuto p + .bloco-exemplo,
+.texto-livreAuto p + .bloco-exercicio,
+.texto-livreAuto figure + .bloco-exemplo,
+.texto-livreAuto figure + .bloco-exercicio,
+.texto-livreAuto .tabela-container + .bloco-exemplo,
+.texto-livreAuto .tabela-container + .bloco-exercicio {
+  margin-top: 0.5rem;
+}
+
+
+/* 3. ESPAÇAMENTO EXTERNO: ABAIXO (Base)
+   ---------------------------------------------------------------------------- */
+/* Ajusta a margem inferior do bloco quando existe um elemento LOGO A SEGUIR */
+.texto-livreAuto .bloco-exemplo:has(+ p),
+.texto-livreAuto .bloco-exercicio:has(+ p),
+.texto-livreAuto .bloco-exemplo:has(+ figure),
+.texto-livreAuto .bloco-exercicio:has(+ figure),
+.texto-livreAuto .bloco-exemplo:has(+ .tabela-container),
+.texto-livreAuto .bloco-exercicio:has(+ .tabela-container) {
+  margin-bottom: 0.5rem;
+}
+
+/* Zera a margem superior do elemento (parágrafo, tabela ou figura) LOGO A SEGUIR */
+.texto-livreAuto .bloco-exemplo + p,
+.texto-livreAuto .bloco-exercicio + p,
+.texto-livreAuto .bloco-exemplo + figure,
+.texto-livreAuto .bloco-exercicio + figure,
+.texto-livreAuto .bloco-exemplo + .tabela-container,
+.texto-livreAuto .bloco-exercicio + .tabela-container {
+  margin-top: -28pt;
+}
+
+
+/* 4. ESPAÇAMENTO INTERNO (Conteúdo dentro do bloco)
+   ---------------------------------------------------------------------------- */
+/* Impede que o primeiro e o último elemento interno empurrem as bordas do bloco */
+.bloco-exemplo > :first-child,
+.bloco-exercicio > :first-child {
+  margin-top: 0 !important;
+}
+
+.bloco-exemplo > :last-child,
+.bloco-exercicio > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Espaço entre parágrafos consecutivos DENTRO do bloco */
+.bloco-exemplo p + p,
+.bloco-exercicio p + p {
+  margin-top: -20pt;
+}
+
+/* Espaço entre texto e tabelas / imagens / figuras DENTRO do bloco */
+.bloco-exemplo p + .tabela-container,
+.bloco-exercicio p + .tabela-container,
+.bloco-exemplo p + figure,
+.bloco-exercicio p + figure,
+.bloco-exemplo p + img,
+.bloco-exercicio p + img {
+  margin-top: 1rem;
+}
+
+/* Regras para o elemento pai (<figure>) */
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza a imagem e a legenda */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Exclusivo para legendas de figuras */
+caption, figcaption {
+  caption-side: top;
+  font-size: 16px;
+  color: #333333;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin-top: 8px;
+  
+  /* Centralização garantida e bloqueio absoluto de quebra */
+  text-align: left !important;
+  white-space: nowrap !important;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* Regra essencial para a Imagem do Gráfico */
+.tabela-imagem-container img,
+figure img {
+    max-width: 100% !important; /* Força a imagem a ajustar-se à largura da ecrã */
+    height: auto !important;    /* Mantém a proporção sem distorcer */
+    display: block;
+    margin: 0 auto;             /* Centraliza a imagem sem os problemas do flexbox */
+    object-fit: contain;        /* Garante que nenhum pedaço da imagem seja cortado */
+}
+
+/* Estilo do Link de Referência no texto */
+.link-referencia {
+  color: #0056b3;
+  font-weight: 600;
+  text-decoration: underline;
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.link-referencia:hover {
+    color: #ff0202;
+}
+
+/* 4. Garante que as imagens encolhem proporcionalmente */
+img {
+    max-width: 100%;
+    height: auto;
+    min-width: 0; /* Evita que a imagem encolha além do container */
+}
+
+
+/* =========================================================
+   11. LISTAGEM DE FICHEIROS E VISUALIZADOR EMBUTIDO / MODAL
+   ========================================================= */
+.file-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align: left;
+    table-layout: auto;
+}
+
+.file-list th,
+.file-list td {
+    padding: 4px 10px;
+    word-break: break-word;
+}
+
+.viewer-container {
+    margin-top: 15px;
+    border: 2px solid #333;
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.viewer-container.hidden {
+    display: none;
+}
+
+.viewer-header {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+}
+
+.viewer-header button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#pdf-frame {
+    width: 100%;
+    height: 600px;
+    background-color: #525659;
+}
+
+/* --- REGRAS DO MODAL AJUSTADAS --- */
+
+#pdf-preview-modal {
+    display: none; /* Controlado pelo JS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+}
+
+.modal-overlay {
+    position: fixed; /* MUDANÇA: de absolute para fixed para acompanhar o scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    height: 85vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #64748b;
+    line-height: 1;
+}
+
+.modal-body {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 50px); /* Garante altura para o iframe */
+    background-color: #525659;
+}
+
+.modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Torna o container da tabela rolável em telas muito pequenas */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Estilo da janela sobreposta (Modal) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal-overlay.ativo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-conteudo {
+  background: #ffffff;
+  padding: 30px 20px 20px 20px;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Estilo do link visível */
+a.link-referencia {
+  color: #0056b3;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   12. MARCAÇÃO DE LISTAS E TAGS CUSTOMIZADAS
+   ========================================================= */
+/* Formatação geral de listas */
+.texto-livreAuto ul,
+.texto-livreAuto ol {
+    white-space: normal;
+    padding-left: 2.5rem;
+    font-family: Arial, "Times New Roman", sans-serif;
+    font-size: 12pt;
+    line-height: 1.86;
+    margin-top: -35pt !important;
+    margin-bottom: -25pt;
+}
+
+/* Espaçamento dos itens da lista (Fix: Mantido 4px e removido o 6pt sobrescrito) */
+.texto-livreAuto li {
+    margin-bottom: 4px;
+}
+
+.texto-livreAuto li p {
+    margin-bottom: 0;
+}
+
+/* Estilos de marcadores (tipo de lista) */
+.texto-livre ul                   { list-style-type: disc; }
+.texto-livre ul.circulo           { list-style-type: circle; }
+.texto-livre ul.quadrado          { list-style-type: square; }
+.texto-livre ul.sem-estilo        { list-style-type: none; }
+
+.texto-livre ol                   { list-style-type: decimal; }
+.texto-livre ol.zero              { list-style-type: decimal-leading-zero; }
+.texto-livre ol.letras-minusculas { list-style-type: lower-alpha; }
+.texto-livre ol.letras-maiusculas { list-style-type: upper-alpha; }
+.texto-livre ol.romano-minusculo  { list-style-type: lower-roman; }
+.texto-livre ol.romano-maiusculo  { list-style-type: upper-roman; }
+
+/* Equações matemáticas dentro de listas: Simplificado: 'li' já garante o contexto de listas (ul/ol) */
+.texto-livreAuto li .katex-display,
+.texto-livreAuto li .MathJax_Display {
+    margin-top: 4px;
+    margin-bottom: 4px !important;
+}
+
+/* Comportamento em aninhamentos (.texto-livreauto duplos) */
+.texto-livreAuto .texto-livreAuto li {
+    margin-bottom: 8px;
+}
+
+.texto-livreAuto .texto-livreAuto li p,
+.texto-livreAuto .texto-livreAuto li div {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.texto-livreAuto .texto-livreAuto li .katex-display,
+.texto-livreAuto .texto-livreAuto li .MathJax_Display,
+.texto-livreAuto .texto-livreAuto li mjx-container[display="true"] {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+/* Tags customizadas / atalhos de cor */
+ver  { color: red; }
+azul { color: blue; }
+g    { color: rgb(0, 219, 0); }
+bg   { background-color: #f2f2f2; font-weight: bold; }
+
+/* =========================================================
+   13. RESETS DO GOOGLE TRANSLATE
+   ========================================================= */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate,
+div.skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight {
+    display: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+select:not(.goog-te-combo) {
+    max-width: 100px;
+    font-size: 0.8rem;
+    padding: 4px 6px;
+}
+
+
+/* =========================================================
+   14. CONFIGURAÇÕES E REGRAS DE IMPRESSÃO (@MEDIA PRINT)
+   ========================================================= */
+/* Oculta o rodapé específico de impressão na visualização normal de tela */
+.rodape-impressao {
+    display: none;
+}
+
+@media print {
+
+    /* 1. Configuração da folha e rodapé automático */
+    @page {
+        size: A4 portrait;
+        margin-top: 2cm;
+        margin-bottom: 2cm;
+        margin-left: 1.5cm;
+        margin-right: 1.5cm;
+
+        /* Rodapé fixo nativo em todas as páginas do PDF */
+        @bottom-center {
+            content: "Prof. Wadiley Nascimento || Mestre em Estatística (Estatística Computacional) || (+239) 980 10 45";
+            font-family: Arial, sans-serif;
+            font-size: 8.5pt;
+            color: #555555;
+            border-top: 1px solid #cccccc;
+            width: 100%;
+            margin-top: 3px !important;
+            padding-top: 18px !important;
+            vertical-align: 5px !important;
+        }
+    }
+
+    /* 2. Cancela a repetição de elementos fixos/sticky do topo */
+    header,
+    nav,
+    [class*="header"],
+    [class*="profile"],
+    [class*="topo"],
+    [class*="navbar"] {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    /* 3. Ajuste do corpo da página e reserva de espaço inferior */
+    html,
+    body {
+        position: static !important;
+        overflow: visible !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: -30pt 0 0 0 !important;
+        padding: 0 0 60px 0 !important; /* Reserva espaço para não cobrir o rodapé */
+    }
+}
+
+/* =================================================================================================
+   15. LAYOUT DA GRID, CARDS E OVERRIDES
+   ===============================================================================================*/
+
+/* Estrutura principal do grid (2 colunas) */
+.texto-livreAuto .grid,
+.grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    align-items: start !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: -40px !important;
+    margin-bottom: -40px !important;
+}
+
+/* Espaçamento relativo a elementos anteriores */
+p + .grid,
+ul + .grid,
+div + .grid {
+    margin-top: 10px !important;
+}
+
+/* Oculta parágrafos vazios injetados pelo Markdown */
+.grid > p:empty {
+    display: none !important;
+}
+
+/* Cards e colunas internas */
+
+.grid > .card,
+.card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    align-self: start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+/* Zera margens superiores de todos os elementos filhos */
+.grid .card > *,
+.grid .card h2,
+.grid .card h3,
+.grid .card figure,
+.grid .card .tabela-imagem-container,
+.grid .card figcaption,
+.grid .card .caption,
+.grid .card img {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    align-self: start !important;
+}
+
+/* Ajusta a distância entre a imagem e o bloco de texto explicativo no card */
+.grid .card .texto-livreAuto,
+.grid .card figure .texto-livreAuto {
+    margin-top: -30px !important;    /* Controla a distância em relação à imagem (ex: 5px a 12px) */
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    text-align: justify !important; /* Força o alinhamento justificado no texto dentro da div */
+    line-height: 1.86 !important;   /* Garante a entrelinha padrão do projeto mesmo sem a tag <p> */
+    font-size: 12pt !important;
+}
+
+.grid .card h3 {
+    color: var(--secondary-color, #a0a0a0);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+/* Tabela e wrapper de rolagem */
+
+.tabela-container,
+.tabela-wrapper,
+.grid .card .tabela-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+}
+
+.grid .card .tabela-frequencias,
+.tabela-frequencias {
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.grid .card .tabela-frequencias th,
+.grid .card .tabela-frequencias td {
+    padding: 8px 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Gráfico / imagem com scroll horizontal */
+
+.grid .tabela-imagem-container,
+.grid figure {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    align-self: start !important;
+}
+
+.grid .tabela-imagem-container img,
+.grid figure img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin-top: 0 !important;
+}
+
+/* Uniformização de títulos e legendas */
+
+.grid caption,
+.grid figcaption,
+.grid .rotulo-tabela,
+.grid .rotulo-figura {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+/* Responsividade (dispositivos móveis) */
+
+@media (max-width: 768px) {
+    .texto-livreAuto .grid,
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .grid .card .tabela-frequencias {
+        min-width: 300px !important;
+    }
+}
+
+/* =========================================================
+   16. MEDIA QUERIES - DESKTOP (Min 769px)
+   ========================================================= */
+@media (min-width: 769px) {
+
+    .hamburger-btn,
+    .lang-selector-mobile {
+        display: none !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px 18px !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        flex: 1 !important;
+    }
+
+    .nav-links>a,
+    .nav-links>.dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+    }
+
+    .dropdown:hover>.dropdown-content {
+        display: block !important;
+    }
+
+    .nav-actions-desktop {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+        position: relative;
+    }
+
+    .lang-selector-desktop select {
+        background-color: #ffffff;
+        color: #333333;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 3px 6px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+        max-width: 100px;
+    }
+
+    .lang-selector-desktop select:hover,
+    .lang-selector-desktop select:focus {
+        border-color: var(--secondary-color);
+    }
+
+    .search-desktop-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-desktop-btn {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+    }
+
+    .search-desktop-btn:hover {
+        color: var(--secondary-color);
+    }
+
+    .search-desktop-input-container {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 280px;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 4px 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        z-index: 1010;
+        align-items: center;
+    }
+
+    .search-desktop-wrapper.ativo .search-desktop-input-container {
+        display: flex;
+    }
+
+    .search-desktop-input-container input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.9rem;
+        color: #333333;
+        padding: 4px 8px;
+    }
+
+    .search-desktop-close {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0 4px;
+        line-height: 1;
+    }
+
+    .search-desktop-close:hover {
+        color: #000000;
+    }
+}
+
+
+/* =========================================================
+   17. MEDIA QUERIES - MOBILE (Max 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px !important;
+    }
+
+    section {
+        scroll-margin-top: 90px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        width: 100%;             /* Garante que não passa a largura da tela */
+        max-width: 100vw;        /* Evita scroll horizontal */
+        box-sizing: border-box;  /* Garante que padding e border não aumentam a largura */
+        padding: 0 16px;         /* Dá uma margem de respiro nas laterais */
+    }
+
+    .news-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem;
+    }
+
+    .news-grid>*:nth-child(n+3) {
+        display: none !important;
+    }
+
+    /* Redução da tabela para mobile */
+    .tabela-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela-frequencias {
+        zoom: 0.85;
+        width: 100%;
+    }
+
+    .tabela-frequencias th {
+        padding: 8px 5px;
+    }
+
+    .tabela-frequencias td {
+        padding: 6px 4px;
+    }
+
+    /* Navbar Flutuante Mobile */
+    .navbar {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        flex-direction: column;
+        padding: 0.8rem 1rem;
+        box-sizing: border-box;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+        border: 1px solid #e1e6eb;
+    }
+
+    .nav-header {
+        position: relative;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        height: 40px;
+    }
+
+    /* Foto de Perfil */
+    .nav-profile {
+        position: absolute;
+        left: 30%;
+        transform: translateX(-50%);
+        transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
+        z-index: 1;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-header.search-active .nav-profile {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    /* Pesquisa Mobile */
+    .search-container {
+        display: flex;
+        align-items: center;
+        order: 2;
+        margin-left: auto !important;
+        margin-right: 2px !important;
+        z-index: 2;
+    }
+
+    .search-icon-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        font-size: 1.1rem;
+    }
+
+    .search-input-wrapper {
+        display: none;
+        align-items: center;
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 14px;
+        padding: 3px 10px;
+        width: 170px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition: width 0.3s ease;
+    }
+
+    .search-container.ativo .search-icon-btn {
+        display: none;
+    }
+
+    .search-container.ativo .search-input-wrapper {
+        display: flex;
+    }
+
+    .search-input-wrapper input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 0.85rem;
+        padding-right: 16px;
+        color: #333333;
+    }
+
+    .search-close-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        color: #000000;
+        padding: 0 2px;
+        line-height: 1;
+    }
+
+    /* Seletor de Idioma Mobile */
+    .lang-selector-mobile {
+        display: flex !important;
+        align-items: center;
+        order: 3;
+        margin-right: 8px;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .lang-selector-mobile select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #ffffff;
+        color: #333333;
+        border: 1.5px solid var(--secondary-color, #22c55e);
+        border-radius: 8px;
+        padding: 1px 4px !important;
+        font-size: 0.75rem;
+        font-weight: 550;
+        outline: none;
+        cursor: pointer;
+        height: 24px;
+        width: 70px;
+        max-width: 90px;
+        text-align: left;
+    }
+
+    .lang-selector-mobile select::-ms-expand {
+        display: none;
+    }
+
+    /* Botão Hambúrguer */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 15px;
+        height: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        order: 4;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .hamburger-btn span {
+        width: 100%;
+        height: 2px;
+        background-color: #0f172a;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-btn.ativo span:nth-child(1) {
+        transform: translateY(6.75px) rotate(45deg);
+    }
+
+    .hamburger-btn.ativo span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-btn.ativo span:nth-child(3) {
+        transform: translateY(-6.75px) rotate(-45deg);
+    }
+
+    /* Menu Colapsável Mobile */
+    .nav-links {
+        display: none !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+        max-height: 75vh;
+        overflow-y: auto;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links.menu-aberto {
+        display: flex !important;
+    }
+
+    .nav-links>a,
+    .nav-links>.dropdown {
+        display: inline-flex !important;
+        width: auto !important;
+        margin: 0;
+        position: relative;
+    }
+
+    .nav-links a,
+    .nav-links .dropdown-toggle,
+    .dropdown-content a,
+    .dropdown-content .dropdown-toggle {
+        color: #f8fafc !important;
+        background-color: #1e293b !important;
+        padding: 7px 12px;
+        text-decoration: none;
+        display: inline-block !important;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        border: 1px solid #334155 !important;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus,
+    .nav-links .dropdown-toggle:hover,
+    .nav-links .dropdown-toggle:active,
+    .nav-links .dropdown-toggle:focus,
+    .dropdown-content a:hover,
+    .dropdown-content a:active,
+    .dropdown-content a:focus,
+    .dropdown-content .dropdown-toggle:hover,
+    .dropdown-content .dropdown-toggle:active,
+    .dropdown-content .dropdown-toggle:focus {
+        background-color: #2563eb !important;
+        color: #ffffff !important;
+    }
+
+    .dropdown-content,
+    .dropdown-content .dropdown-content {
+        display: none !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.4rem;
+        box-shadow: none !important;
+        border: 1px solid #1e293b !important;
+        background-color: #0f172a !important;
+        border-radius: 6px;
+        margin-top: 6px;
+        padding: 8px;
+        flex-basis: 100%;
+    }
+
+    .dropdown-content.submenu-visivel {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    /* Carrossel Mobile */
+    .carousel-container {
+        margin-top: 15px !important;
+    }
+
+    #carousel-list li {
+        flex: 0 0 33.333% !important;
+        max-width: 33.333% !important;
+        min-width: 33.333% !important;
+        box-sizing: border-box;
+    }
+
+    /* Fórmulas Matemáticas Mobile */
+    mjx-container,
+    .MathJax_Display,
+    .katex-display {
+        font-size: 65% !important;
+    }
+}
