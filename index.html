@@ -1622,7 +1622,7 @@
                 
                 <div class="equacao" id="equacao-12">
                     \begin{equation} 
-                    \overline{X} = \frac{\sum_{i=1}^{k} X_i \cdot F_i}{\sum_{i=1}^{k} F_i} = \frac{\sum_{i=1}^{k} X_i \cdot F_i}{n} = \sum_{i=1}^{k} X_i \cdot Fr_i
+                    \overline{X} = \frac{\sum_{i=1}^{k} X_i \cdot F_i}{\sum_{i=1}^{k} F_i} = \frac{\sum_{i=1}^{k} X_i \cdot F_i}{n} = \underbrace{\sum_{i=1}^k X_i \cdot Fr_i}_{\text{Na forma decimal}}
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
@@ -1700,7 +1700,6 @@
                     </div>
                 </div>
 
-
                 <div class="texto-livreAuto">
                     <h3> <ver><b>Cenário 2</b></ver>: Dados Agrupados (Discretos)</h3>
                 </div>
@@ -1739,6 +1738,179 @@
                                 </tr>
                                 <tr>
                                     <th>$F_{ac}$</th> <td>6</td> <td>19</td> <td>39</td> <td>54</td> <td>61</td> <td>67</td> <td>70</td> <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h3> <ver><b>Cenário 3</b></ver>: Dados Contínuos Agrupados em Classes</h3>
+                </div>
+                
+                Para variáveis contínuas agrupadas em intervalos de classe numa tabela de distribuição de frequências, o cálculo da mediana é realizado assumindo uma distribuição uniforme dos dados no interior de cada classe. 
+                
+                A determinação do seu valor exato segue uma sequência de três passos:
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Determinação da Posição da Mediana</b>: Diferentemente dos dados não agrupados, a posição da mediana para dados contínuos agrupados é obtida dividindo o tamanho total da amostra ($n$) por dois, independentemente de $n$ ser par ou ímpar:
+
+                            <div class="equacao" id="equacao-12">
+                                \begin{equation} 
+                                \text{Pos}(M_d) = \frac{n}{2}
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <b>Identificação da Classe Mediana</b>: A partir do valor obtido em $\text{Pos}(M_d)$, identifica-se na coluna das frequências absolutas acumuladas ($F_{ac}$) a primeira classe cuja frequência acumulada seja maior ou igual a $\frac{n}{2}$. Essa classe é denominada classe mediana.
+                        </li>
+                        <li>
+                            <b>Interpolação Linear para Cálculo da Mediana</b>: A mediana é calculada através da seguinte fórmula de interpolação linear:
+
+                            <div class="equacao" id="equacao-12">
+                                \begin{equation} 
+                                M_d = L_{i, M_d} + \left[ \frac{\frac{n}{2} - F_{ac, (M_d - 1)}}{f_{M_d}} \right] \cdot h_{M_d}
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+
+                            Onde: $L_{i, M_d}$ é o limite inferior da classe mediana. $n$ é o número total de observações ($n = \sum f_i$). $F_{ac, (M_d - 1)}$ é a frequência absoluta acumulada da classe imediatamente anterior à classe mediana. $f_{M_d}$ é a frequência absoluta simples da classe mediana. $h_{M_d}$ é a amplitude do intervalo da classe mediana ($h = u_i - l_i$).
+                        </li>                        
+                    </ul>
+                </div>
+
+                <div id="exercicio-5" class="bloco-exercicio">
+                <span class="rotulo-exercicio"></span>: Considere os dados do <a href="#exercicio-45"></a>. Calcule o salário mediano dos colaboradores.
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Moda</h4>
+                </div>                
+
+                A <b><azul>Moda</azul></b> ($M_o$) de um conjunto de dados representa o valor ou categoria que ocorre com a maior frequência absoluta.
+                
+                Diferentemente da média e da mediana, a moda possui características únicas:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            É a única medida de tendência central aplicável a variáveis qualitativas (nominais e ordinais), uma vez que estas não admitem operações aritméticas, mas permitem a contagem de frequências.
+                        </li>
+                        <li>
+                            Um conjunto de dados pode ser <b>amodal</b> (sem nenhuma moda, quando todas as frequências são iguais), <b>unimodal</b> (uma única moda), <b>bimodal</b> (duas modas com a mesma frequência máxima) ou <b>multimodal</b> (três ou mais modas).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 1</b></ver>: Dados Não Agrupados (Discretos e Contínuos)</h4>
+                </div>
+
+                Para uma série de observações não agrupadas $X_1, X_2, \ldots, X_n$, a moda é identificada diretamente determinando qual o valor $X_i$ que se repete com maior frequência.
+
+                <div id="exercicio-5" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: A fase de acabamento na produção de cenouras de determinada empresa foi monitorizada ao longo de $20$ observações ($n = 20$), registando-se o tempo de processamento em segundos (<a href="#tabela-66"></a>).Com base nesses dados, determine o tempo modal de processamento.
+
+                    <div class="tabela-container">
+                        <table id="tabela-66" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Tempo de processamento da cenoura</caption>
+                            <tbody>
+                                <tr>
+                                    <td>45.0</td> <td>44.5</td> <td>44.0</td> <td>45.0</td> <td>46.5</td> <td>46.0</td> <td>45.8</td> <td>44.8</td> <td>45.0</td> <td>46.2</td>
+                                </tr>
+                                <tr>
+                                    <td>44.5</td> <td>45.0</td> <td>45.4</td> <td>44.9</td> <td>45.7</td> <td>46.2</td> <td>44.7</td> <td>45.6</td> <td>46.3</td> <td>44.9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 2</b></ver>: Dados Qualitativos ou Discretos Agrupados</h4>
+                </div>
+
+                Quando os dados (qualitativos ou quantitativos discretos) se encontram organizados numa tabela de distribuição de frequências, a moda é obtida por inspeção direta: corresponde à categoria ou valor $X_i$ associado ao maior valor da coluna de frequência absoluta ($f_i$).
+
+                <div id="exercicio-5" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Uma emissora de televisão realizou uma sondagem a $500$ telespectadores ($n = 500$) para avaliar a preferência por categorias de programação. Os resultados estão sintetizados na Tabela 3.10.Determine a categoria modal de interesse dos telespectadores.
+
+                    <div class="tabela-container">
+                        <table id="tabela-66" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Preferências dos telespectadores</caption>
+                            <tbody>
+                                <tr>
+                                    <th><b>Categorias</b></th>
+                                    <td>Filmes</td> <td>Novelas</td> <td>Jornalismo</td> <td>Humor</td> <td>Esporte</td> <td>Shows</td> <td>Variedades</td>
+                                </tr>
+                                <tr>
+                                    <th><b>$F_i$</b></th>
+                                    <td>71</td> <td>46</td> <td>90</td> <td>98</td> <td>120</td> <td>35</td> <td>40</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h4> <ver><b>Cenário 2</b></ver>: Dados Contínuos Agrupados em Classes</h4>
+                </div>
+
+                Para dados contínuos agrupados em intervalos de classe, a determinação da moda exige métodos de interpolação. O Método de Czuber é o mais difundido e fundamenta-se nas frequências da classe modal e das suas classes vizinhas:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Identificação da Classe Modal</b>: Localiza-se na tabela a classe que apresenta a maior frequência absoluta ($f_i$). Esta será a classe modal.
+                        </li>
+                        <li>
+                            O valor da moda é calculado a partir de uma das seguintes interpolações:
+
+                            <div class="texto-livreAuto">
+                                <ul class="quadrado">
+                                    <li>
+                                        <b>Aplicação da Fórmula de Czuber</b>: 
+
+                                        <div class="equacao" id="equacao-12">
+                                            \begin{equation} 
+                                            M_o = L_{i, M_o} + \left[ \frac{f_{M_o} - f_{(M_o - 1)}}{2 \cdot f_{M_o} - (f_{(M_o - 1)} + f_{(M_o + 1)})} \right] \cdot h_{M_o}
+                                            \end{equation}
+                                            <span class="rotulo-equacao"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <b>Aplicação da Fórmula de King</b>: 
+
+                                        <div class="equacao" id="equacao-12">
+                                            \begin{equation} 
+                                            M_o = L_{i, M_o} + \left[ \frac{f_{(M_o + 1)}}{(f_{(M_o - 1)} + f_{(M_o + 1)})} \right] \cdot h_{M_o}
+                                            \end{equation}
+                                            <span class="rotulo-equacao"></span>
+                                        </div>
+                                    </li>                     
+                                </ul>
+                            </div>
+                        </li>                    
+                    </ul>
+                </div>
+
+                Onde: $L_{i, M_o}$ é o limite inferior da classe modal. $f_{M_o}$ é a frequência absoluta da classe modal. $f_{M_o - 1}$ é a frequência absoluta da classe imediatamente anterior à classe modal. $f_{M_o + 1}$ é a frequência absoluta da classe imediatamente posterior à classe modal. $h_{M_o}$ é a amplitude do intervalo da classe modal ($h = u_i - l_i$).
+
+                <div id="exercicio-5" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Um conjunto de $200$ observações de uma variável contínua ($n = 200$) encontra-se agrupado em classes de frequência na <a href="#exercicio-66"></a>. Com base nesses dados, identifique a classe modal e determine a moda pelo método de Czuber e de King.
+
+                    <div class="tabela-container">
+                        <table id="tabela-66" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Frequência das $200$ observações</caption>
+                            <tbody>
+                                <tr>
+                                    <th>Casse</th> <td>01 ⊢ 10</td> <td>10 ⊢ 20</td> <td>20 ⊢ 30</td> <td>30 ⊢ 40</td> <td>40 ⊢ 50</td> <td><b>Soma</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$F_i$</th> <td>21</td> <td>36</td> <td>58</td> <td>24</td> <td>19</td> <td><b>158</b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1829,22 +2001,9 @@
                 </blockquote>
 
                 <div id="exercicio-5" class="bloco-exercicio">
-                    <span class="rotulo-exercicio"></span>: Considere os dados do tempo médio de processamento de cenoura na fase de acabamento (apresentados na Tabela 3.13 do Exemplo 3.9). Determine o: 1.º Quartil ($Q_1$), 3.º Quartil ($Q_3$), 2.º Decil ($D_2$), 64.º Percentil ($P_{64}$).
-
-                    <div class="tabela-container">
-                        <table id="tabela-66" class="tabela-frequencias">
-                        <caption><span class="rotulo-tabela"></span> - Tempo de processamento da cenoura</caption>
-                            <tbody>
-                                <tr>
-                                    <td>45.0</td> <td>44.5</td> <td>44.0</td> <td>45.0</td> <td>46.5</td> <td>46.0</td> <td>45.8</td> <td>44.8</td> <td>45.0</td> <td>46.2</td>
-                                </tr>
-                                <tr>
-                                    <td>44.5</td> <td>45.0</td> <td>45.4</td> <td>44.9</td> <td>45.7</td> <td>46.2</td> <td>44.7</td> <td>45.6</td> <td>46.3</td> <td>44.9</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <span class="rotulo-exercicio"></span>: Considere os dados do <a href="#exercicio-45"></a>. Determine o: 1.º Quartil ($Q_1$), 3.º Quartil ($Q_3$), 2.º Decil ($D_2$), 64.º Percentil ($P_{64}$).
                 </div>
+                
 
                 <div class="texto-livreAuto">
                     <h3>Interpretação dos Resultados</h3>
@@ -1868,7 +2027,7 @@
                 </div>
                 
                 <div class="texto-livreAuto">
-                    <h3> <ver><b>Cenário 1</b></ver>: Dados Agrupados (Discretos)</h3>
+                    <h3> <ver><b>Cenário 2</b></ver>: Dados Agrupados (Discretos)</h3>
                 </div>
 
                 Neste cenário, os dados encontram-se organizados numa tabela de distribuição de frequências discretas, devidamente ordenada por ordem crescente, acompanhada das respetivas frequências absolutas ($F_i$) e acumuladas ($F_{ac}$).
