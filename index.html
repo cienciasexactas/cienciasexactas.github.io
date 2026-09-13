@@ -13,13 +13,13 @@
     <!-- LIGAÇÃO AO FICHEIRO CSS EXTERNO -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Validação da data de submissão do trabalho -->
+    <!-- 1. Primeiro carregas as configurações e datas -->
     <script src="config.js"></script>
 
-    <!-- 1. Chama o seu script externo PRIMEIRO (sem defer e sem async) -->
+    <!-- 2. Depois carregas a lógica principal do teu site -->
     <script src="script.js"></script>
 
-    <!-- 2. Chama o MathJax LOGO EM SEGUIDA (ele vai ler a configuração criada no script.js) -->
+    <!-- 3. Por fim, carregas o MathJax para formatar as fórmulas matemáticas -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- PRISM.JS PARA DESTACAR SINTAXE DE CÓDIGO -->
