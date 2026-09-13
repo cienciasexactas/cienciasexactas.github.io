@@ -1121,6 +1121,16 @@ function formatarTamanho(bytes) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + tamanhos[i];
 }
 
+function formatarData(stringData) {
+  if (!stringData) return 'N/A';
+  const d = new Date(stringData);
+  return d.toLocaleDateString('pt-PT', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+}
+
 async function carregarFicheirosExistentes() {
   const containerGeral = document.getElementById('lista-cursos-container');
   if (!containerGeral) return;
@@ -1170,8 +1180,9 @@ async function carregarFicheirosExistentes() {
         tabela.innerHTML = `
           <thead>
             <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left; height: auto !important;">
-              <th style="padding: 10px; width: 60%;">Nome</th>
-              <th style="padding: 10px; width: 40%;">Tamanho</th>
+              <th style="padding: 10px; width: 50%;">Nome</th>
+              <th style="padding: 10px; width: 25%;">Data de Envio</th>
+              <th style="padding: 10px; width: 25%;">Tamanho</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -1182,13 +1193,13 @@ async function carregarFicheirosExistentes() {
         for (const item of blocoAno.ficheiros) {
           const tr = document.createElement('tr');
           tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
-          // Para abrir direto no navegador em uma nova aba
           tr.innerHTML = `
             <td style="padding: 10px;">
               <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">
                 ${item.nome}
               </a>
             </td>
+            <td style="padding: 10px; color: #555;">${formatarData(item.data)}</td>
             <td style="padding: 10px; color: #555;">${formatarTamanho(item.tamanho)}</td>
           `;
           tbody.appendChild(tr);
