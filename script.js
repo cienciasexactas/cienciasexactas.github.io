@@ -1127,8 +1127,6 @@ async function carregarFicheirosExistentes() {
 
   containerGeral.innerHTML = ''; // Limpa o container principal
 
-  const REPO_OWNER = "cienciasexactas";
-  const REPO_NAME = "cienciasexactas.github.io";
   const cursos = [
     { id: 'biologia', nome: 'Licenciatura em Biologia' },
     { id: 'quimica', nome: 'Licenciatura em Química' },
@@ -1146,96 +1144,58 @@ async function carregarFicheirosExistentes() {
     divCurso.appendChild(h3);
 
     try {
-      const timestamp = new Date().getTime();
-      const resAnos = await fetch(
-        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/uploads/${curso.id}?t=${timestamp}`,
-        { cache: "no-store" }
-      );
+      // Faz o pedido diretamente ao seu endpoint seguro na Vercel
+      const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=${curso.id}`);
+      const dados = await resposta.json();
 
-      // Trata limite de requisições excedido da API do GitHub (403)
-      if (resAnos.status === 403) {
-        divCurso.innerHTML += `<p style="color: #d90429; margin-left: 20px; font-weight: bold;">Limite de requisições à API do GitHub atingido. Aguarde alguns minutos e recarregue a página.</p>`;
+      if (!resposta.ok || !dados.estrutura || dados.estrutura.length === 0) {
+        divCurso.innerHTML += `<p style="color: #777; margin-left: 20px; font-style: italic;">Ainda não existem ficheiros ou pastas para este curso.</p>`;
         containerGeral.appendChild(divCurso);
         continue;
       }
 
-      if (!resAnos.ok) {
-        divCurso.innerHTML += `<p style="color: #777; margin-left: 20px; font-style: italic;">A pasta 'uploads/${curso.id}' ainda não existe no repositório GitHub.</p>`;
-        containerGeral.appendChild(divCurso);
-        continue;
-      }
-
-      const anosPastas = await resAnos.json();
-      let encontrouPasta = false;
-
-      for (const pastaAno of anosPastas) {
-        if (pastaAno.type !== 'dir') continue;
-        encontrouPasta = true;
-
-        const resFicheiros = await fetch(`${pastaAno.url}&t=${timestamp}`, { cache: "no-store" });
-        if (!resFicheiros.ok) continue;
-        const listaFicheiros = await resFicheiros.json();
-
-        // Bloco do Ano Lectivo
+      // Renderiza as pastas de anos e tabelas retornadas pela Vercel
+      for (const blocoAno of dados.estrutura) {
         const divAno = document.createElement('div');
         divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both; position: relative !important;';
 
         const h4 = document.createElement('p');
-        h4.innerHTML = `<strong>Ano Lectivo:</strong> ${pastaAno.name}`;
+        h4.innerHTML = `<strong>Ano Lectivo:</strong> ${blocoAno.ano}`;
         h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0; display: block; position: relative !important;';
         divAno.appendChild(h4);
 
-        // Tabela isolada
         const tabela = document.createElement('table');
         tabela.style.cssText = 'width: 100%; border-collapse: collapse; margin-top: 5px; position: relative !important; display: table !important;';
 
         tabela.innerHTML = `
           <thead>
             <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left; height: auto !important;">
-              <th style="padding: 10px; width: 50%;">Nome</th>
-              <th style="padding: 10px; width: 25%;">Tamanho</th>
-              <th style="padding: 10px; width: 25%;">Data de Envio</th>
+              <th style="padding: 10px; width: 60%;">Nome</th>
+              <th style="padding: 10px; width: 40%;">Tamanho</th>
             </tr>
           </thead>
           <tbody></tbody>
         `;
 
         const tbody = tabela.querySelector('tbody');
-        let temFicheiros = false;
 
-        for (const item of listaFicheiros) {
-          if (item.type === 'file') {
-            temFicheiros = true;
-            
-            // Exibe a data de envio genérica/atual para evitar requisições extras por ficheiro que estouram a API
-            const dataEnvio = new Date().toLocaleDateString('pt-PT');
-
-            const tr = document.createElement('tr');
-            tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
-            tr.innerHTML = `
-              <td style="padding: 10px;"><a href="${item.html_url}" target="_blank" style="color: #0066cc; text-decoration: underline;">${item.name}</a></td>
-              <td style="padding: 10px; color: #555;">${formatarTamanho(item.size)}</td>
-              <td style="padding: 10px; color: #555;">${dataEnvio}</td>
-            `;
-            tbody.appendChild(tr);
-          }
+        for (const item of blocoAno.ficheiros) {
+          const tr = document.createElement('tr');
+          tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
+          tr.innerHTML = `
+            <td style="padding: 10px;"><a href="${item.url}" target="_blank" style="color: #0066cc; text-decoration: underline;">${item.nome}</a></td>
+            <td style="padding: 10px; color: #555;">${formatarTamanho(item.tamanho)}</td>
+          `;
+          tbody.appendChild(tr);
         }
 
-        if (temFicheiros) {
-          divAno.appendChild(tabela);
-        } else {
-          divAno.innerHTML += `<p style="color: #888; font-size: 0.9rem;">Nenhum ficheiro encontrado nesta pasta.</p>`;
-        }
-
+        divAno.appendChild(tabela);
         divCurso.appendChild(divAno);
-      }
-
-      if (!encontrouPasta) {
-        divCurso.innerHTML += `<p style="color: #777; margin-left: 20px; font-style: italic;">Sem pastas de Anos Lectivos encontradas neste curso.</p>`;
       }
 
     } catch (erro) {
       console.warn(`Erro no curso ${curso.id}:`, erro);
+      divCurso.innerHTML += `<p style="color: #d90429; margin-left: 20px;">Falha ao carregar ficheiros deste curso.</p>`;
     }
 
     containerGeral.appendChild(divCurso);
