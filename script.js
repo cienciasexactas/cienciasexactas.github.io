@@ -1044,6 +1044,15 @@ const URL_DA_VERCEL = 'https://backend-upload-sooty.vercel.app/api/upload';
 async function enviarFicheiro(event) {
   if (event) event.preventDefault();
 
+  // Validação do intervalo de tempo externo (lido do config.js)
+  if (typeof PERIODO_SUBMISSAO !== 'undefined') {
+    const agora = new Date();
+    if (agora < PERIODO_SUBMISSAO.inicio || agora > PERIODO_SUBMISSAO.fim) {
+      alert('O carregamento de ficheiros encontra-se encerrado fora do período permitido.');
+      return;
+    }
+  }
+
   const selectCurso = document.getElementById('select-curso');
   const selectAno = document.getElementById('select-ano');
   const inputFicheiro = document.getElementById('input-ficheiro');
