@@ -2079,28 +2079,36 @@
                 Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
                 investigação científica e académica.
 
-                <div>
-                    <label for="select-curso">Curso:</label>
-                    <select id="select-curso">
-                        <option value="biologia">Licenciatura em Biologia</option>
-                        <option value="quimica">Licenciatura em Química</option>
-                        <option value="matematica">Licenciatura em Matemática</option>
-                    </select>
+<h2>Enviar Ficheiro por Curso</h2>
 
-                    <label for="select-ano">Ano Lectivo:</label>
-                    <select id="select-ano">
-                        <option value="2023-2024">2023-2024</option>
-                        <option value="2024-2025">2024-2025</option>
-                        <option value="2025-2026">2025-2026</option>
-                        <option value="2026-2027">2026-2027</option>
-                    </select>
+<div>
+    <label for="select-curso">Curso:</label>
+    <select id="select-curso">
+        <option value="biologia">Licenciatura em Biologia</option>
+        <option value="quimica">Licenciatura em Química</option>
+        <option value="matematica">Licenciatura em Matemática</option>
+    </select>
 
-                    <input type="file" id="input-ficheiro">
-                    <button id="btn-enviar" type="button">Enviar Ficheiro</button>
-                </div>
+    <br><br>
 
-            <!-- Único contentor onde todos os cursos serão renderizados -->
-            <div id="lista-cursos-container"></div>
+    <label for="select-ano">Ano Lectivo:</label>
+    <select id="select-ano">
+        <option value="2023-2024">2023-2024</option>
+        <option value="2024-2025">2024-2025</option>
+        <option value="2025-2026">2025-2026</option>
+        <option value="2026-2027">2026-2027</option>
+    </select>
+
+    <br><br>
+
+    <input type="file" id="input-ficheiro">
+    <button id="btn-enviar" type="button">Enviar Ficheiro</button>
+</div>
+
+<hr style="margin: 20px 0;">
+
+<!-- Único contentor onde todos os cursos serão renderizados -->
+<div id="lista-cursos-container"></div>
 
 
             </div>
