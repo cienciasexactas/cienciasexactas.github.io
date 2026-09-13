@@ -1137,35 +1137,82 @@ async function carregarFicheirosExistentes() {
 
   containerGeral.innerHTML = ''; // Limpa o container principal
 
+  // Preenchimento dinâmico dos Anos Letivos
+  const anosLectivos = [
+    '2023-2024',
+    '2024-2025',
+    '2025-2026',
+    '2026-2027'
+  ];
+
+  const selectAno = document.getElementById('select-ano');
+  if (selectAno) {
+    selectAno.innerHTML = '<option value="" disabled selected>Selecione o ano</option>';
+    anosLectivos.forEach(ano => {
+      const option = document.createElement('option');
+      option.value = ano;
+      option.textContent = ano;
+      selectAno.appendChild(option);
+    });
+  }
+
+  // Preenchimento dinâmico dos Cursos
   const cursos = [
     { id: 'biologia', nome: 'Licenciatura em Biologia' },
     { id: 'quimica', nome: 'Licenciatura em Química' },
-    { id: 'matematica', nome: 'Licenciatura em Matemática' }
+    { id: 'matematica', nome: 'Licenciatura em Matemática' },
+    { id: 'economia', nome: 'Licenciatura em Economia' },
+    { id: 'gestao-empresa', nome: 'Licenciatura em Gestão de Empresa' },
+    { id: 'gestao-iscgvsm', nome: 'Licenciatura em Gestão - ISCSVSM' },
+    { id: 'enfermagem', nome: 'Licenciatura em Enfermagem' },
+    { id: 'contabilidade', nome: 'Licenciatura em Contabilidade' },
+    { id: 'agronomia', nome: 'Licenciatura em Agronomia' },
+    { id: 'turismo', nome: 'Licenciatura em Turismo' },
+    { id: 'geografia', nome: 'Licenciatura em Geografia' },
+    { id: 'educacao-infancia', nome: 'Licenciatura em Educação de Infância' }
   ];
 
+  const selectCurso = document.getElementById('select-curso');
+  if (selectCurso) {
+    selectCurso.innerHTML = '<option value="" disabled selected>Selecione um curso</option>';
+    
+    cursos.forEach(curso => {
+      const option = document.createElement('option');
+      option.value = curso.id;
+      option.textContent = curso.nome;
+      selectCurso.appendChild(option);
+    });
+  }
+
   for (const curso of cursos) {
-    // Bloco Principal do Curso
-    const divCurso = document.createElement('div');
-    divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
-
-    const h3 = document.createElement('h3');
-    h3.textContent = `Curso: ${curso.nome}`;
-    h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; position: relative !important; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
-    divCurso.appendChild(h3);
-
     try {
-      // Faz o pedido diretamente ao seu endpoint seguro na Vercel
       const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=${curso.id}`);
       const dados = await resposta.json();
 
-      if (!resposta.ok || !dados.estrutura || dados.estrutura.length === 0) {
-        divCurso.innerHTML += `<p style="color: #777; margin-left: 20px; font-style: italic;">Ainda não existem ficheiros ou pastas para este curso.</p>`;
-        containerGeral.appendChild(divCurso);
+      if (!resposta.ok || !dados.estrutura) {
         continue;
       }
 
-      // Renderiza as pastas de anos e tabelas retornadas pela Vercel
-      for (const blocoAno of dados.estrutura) {
+      // Filtra estritamente apenas os anos que contenham ficheiros lá dentro
+      const estruturaComFicheiros = dados.estrutura.filter(
+        blocoAno => blocoAno.ficheiros && blocoAno.ficheiros.length > 0
+      );
+
+      // Se não houver nenhum ficheiro em nenhum ano deste curso, salta-o por completo
+      if (estruturaComFicheiros.length === 0) {
+        continue;
+      }
+
+      // Bloco Principal do Curso (só é criado se houver ficheiros válidos)
+      const divCurso = document.createElement('div');
+      divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = `Curso: ${curso.nome}`;
+      h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; position: relative !important; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
+      divCurso.appendChild(h3);
+
+      for (const blocoAno of estruturaComFicheiros) {
         const divAno = document.createElement('div');
         divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both; position: relative !important;';
 
@@ -1174,7 +1221,6 @@ async function carregarFicheirosExistentes() {
         h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0; display: block; position: relative !important;';
         divAno.appendChild(h4);
 
-        // Contêiner de rolagem horizontal para ecrãs móveis
         const divTabelaWrapper = document.createElement('div');
         divTabelaWrapper.style.cssText = 'width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 5px;';
 
@@ -1214,12 +1260,11 @@ async function carregarFicheirosExistentes() {
         divCurso.appendChild(divAno);
       }
 
-    } catch (erro) {
-      console.warn(`Erro no curso ${curso.id}:`, erro);
-      divCurso.innerHTML += `<p style="color: #d90429; margin-left: 20px;">Falha ao carregar ficheiros deste curso.</p>`;
-    }
+      containerGeral.appendChild(divCurso);
 
-    containerGeral.appendChild(divCurso);
+    } catch (erro) {
+      console.warn(`Erro ao consultar o curso ${curso.id}:`, erro);
+    }
   }
 }
 
@@ -1229,6 +1274,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btnEnviar.addEventListener('click', enviarFicheiro);
   }
 
-  // Carrega a lista ao abrir a página
+  // Carrega a lista ao abrir a página (removida a duplicação do listener)
   carregarFicheirosExistentes();
 });

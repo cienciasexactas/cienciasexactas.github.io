@@ -186,7 +186,6 @@ blockquote > *:last-child,
 .texto-livreAuto h3 {
     font-size: 12pt;
     padding-bottom: 3pt;
-    border-top: 1px solid #df0000;
     width: fit-content;
 }
 
@@ -2318,4 +2317,55 @@ div + .grid {
 .lista-downloads a {
   position: static;
   display: inline;
+}
+
+/* =========================================================
+   18. MEDIA QUERIES - BOTÃO DE ENVIO DE FICHEIROS
+   ========================================================= */
+
+.form-grid {
+  display: grid;
+  /* A 1ª coluna ajusta-se ao conteúdo (Ano Lectivo / Curso), a 2ª ocupa o resto do espaço */
+  grid-template-columns: 35% 65%; /* Primeira coluna com 35% e segunda com 65% */
+  gap: 16px 32px; /* Espaçamento vertical e horizontal */
+  align-items: center;
+  background-color: #f7f7f8;
+}
+
+/* O select do curso ganha a largura necessária para exibir todo o texto */
+#select-curso {
+  width: 100%;
+  min-width: 260px; /* Altere este valor se quiser a caixa ainda maior */
+}
+
+/* O ano lectivo mantém-se compacto e original */
+#select-ano {
+  width: auto;
+}
+
+/* Responsividade para telemóveis: empilha tudo numa coluna só */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  #select-curso {
+    width: 100%;
+    min-width: 240px;
+  }
+}
+
+.form-grid input[type="file"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Estiliza o texto de estado do ficheiro quando está vazio (funciona na maioria dos navegadores modernos) */
+input[type="file"]::file-selector-button {
+  margin-right: 12px; /* Dá um espaço agradável entre o botão e o texto */
+}
+
+/* Aplica o itálico na área de texto do input de ficheiro */
+input[type="file"] {
+  font-style: italic;
+  color: #3474fe;
 }
