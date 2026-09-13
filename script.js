@@ -1174,15 +1174,19 @@ async function carregarFicheirosExistentes() {
         h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0; display: block; position: relative !important;';
         divAno.appendChild(h4);
 
+        // Contêiner de rolagem horizontal para ecrãs móveis
+        const divTabelaWrapper = document.createElement('div');
+        divTabelaWrapper.style.cssText = 'width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 5px;';
+
         const tabela = document.createElement('table');
-        tabela.style.cssText = 'width: 100%; border-collapse: collapse; margin-top: 5px; position: relative !important; display: table !important;';
+        tabela.style.cssText = 'width: 100%; min-width: 500px; border-collapse: collapse; position: relative !important; display: table !important;';
 
         tabela.innerHTML = `
           <thead>
             <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left; height: auto !important;">
-              <th style="padding: 10px; width: 50%;">Nome</th>
-              <th style="padding: 10px; width: 25%;">Data de Envio</th>
-              <th style="padding: 10px; width: 25%;">Tamanho</th>
+              <th style="padding: 10px; width: 50%; white-space: nowrap;">Nome</th>
+              <th style="padding: 10px; width: 25%; white-space: nowrap;">Data de Envio</th>
+              <th style="padding: 10px; width: 25%; white-space: nowrap;">Tamanho</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -1194,18 +1198,19 @@ async function carregarFicheirosExistentes() {
           const tr = document.createElement('tr');
           tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
           tr.innerHTML = `
-            <td style="padding: 10px;">
+            <td style="padding: 10px; word-break: break-word;">
               <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">
                 ${item.nome}
               </a>
             </td>
-            <td style="padding: 10px; color: #555;">${formatarData(item.data)}</td>
-            <td style="padding: 10px; color: #555;">${formatarTamanho(item.tamanho)}</td>
+            <td style="padding: 10px; color: #555; white-space: nowrap;">${formatarData(item.data)}</td>
+            <td style="padding: 10px; color: #555; white-space: nowrap;">${formatarTamanho(item.tamanho)}</td>
           `;
           tbody.appendChild(tr);
         }
 
-        divAno.appendChild(tabela);
+        divTabelaWrapper.appendChild(tabela);
+        divAno.appendChild(divTabelaWrapper);
         divCurso.appendChild(divAno);
       }
 
