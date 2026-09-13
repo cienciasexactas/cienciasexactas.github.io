@@ -2079,6 +2079,30 @@
                 Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
                 investigação científica e académica.
 
+                <div>
+                    <label for="select-curso">Curso:</label>
+                    <select id="select-curso">
+                        <option value="biologia">Licenciatura em Biologia</option>
+                        <option value="quimica">Licenciatura em Química</option>
+                        <option value="matematica">Licenciatura em Matemática</option>
+                    </select>
+
+                    <label for="select-ano">Ano Lectivo:</label>
+                    <select id="select-ano">
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2025-2026">2025-2026</option>
+                        <option value="2026-2027">2026-2027</option>
+                    </select>
+
+                    <input type="file" id="input-ficheiro">
+                    <button id="btn-enviar" type="button">Enviar Ficheiro</button>
+                </div>
+
+            <!-- Único contentor onde todos os cursos serão renderizados -->
+            <div id="lista-cursos-container"></div>
+
+
             </div>
             <div class="bloco-container">
 

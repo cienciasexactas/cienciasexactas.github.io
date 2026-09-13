@@ -426,11 +426,16 @@ const idiomasMaisFalados = [
 ];
 
 function popularSelectoresIdioma() {
-  const selectores = document.querySelectorAll('select:not(.goog-te-combo)');
+  // Captura APENAS os elementos <select> que estejam dentro das áreas de idioma
+  const selectores = document.querySelectorAll('.lang-selector-desktop select, .lang-selector-mobile select');
 
   selectores.forEach(select => {
     if (!select) return;
-    select.options.length = 0;
+    
+    // Trava de segurança extra para nunca afetar o formulário de upload
+    if (select.id === 'select-curso' || select.id === 'select-ano') return;
+
+    select.options.length = 0; // Limpa apenas o seletor de idioma
 
     idiomasMaisFalados.forEach(idioma => {
       const option = new Option(idioma.name, idioma.code);
@@ -1028,4 +1033,209 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   }, true);
   
+});
+
+// ============================================================================
+// 7. ENVIO DE FICHEIROS PARA A VERCEL (BACK-END)
+// ============================================================================
+
+const URL_DA_VERCEL = 'https://backend-upload-sooty.vercel.app/api/upload';
+
+async function enviarFicheiro(event) {
+  if (event) event.preventDefault();
+
+  const selectCurso = document.getElementById('select-curso');
+  const selectAno = document.getElementById('select-ano');
+  const inputFicheiro = document.getElementById('input-ficheiro');
+  const btnEnviar = document.getElementById('btn-enviar');
+
+  if (!inputFicheiro || !inputFicheiro.files[0]) {
+    alert('Por favor, selecione um ficheiro primeiro.');
+    return;
+  }
+
+  const ficheiro = inputFicheiro.files[0];
+  const cursoSelecionado = selectCurso ? selectCurso.value : '';
+  const anoSelecionado = selectAno ? selectAno.value : '';
+
+  // O caminho enviado para a Vercel inclui o Ano Lectivo na pasta
+  const caminhoCursoComAno = `${cursoSelecionado}/${anoSelecionado}`;
+
+  if (btnEnviar) {
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = 'A enviar...';
+  }
+
+  const reader = new FileReader();
+  reader.readAsDataURL(ficheiro);
+  
+  reader.onload = async function () {
+    const conteudoBase64 = reader.result.split(',')[1];
+
+    const payload = {
+      nomeArquivo: ficheiro.name,
+      conteudoBase64: conteudoBase64,
+      curso: caminhoCursoComAno
+    };
+
+    try {
+      const resposta = await fetch(URL_DA_VERCEL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const dados = await resposta.json();
+
+      if (resposta.ok) {
+        alert('Ficheiro enviado com sucesso!');
+        inputFicheiro.value = '';
+        // Recarrega a estrutura para exibir a nova entrada com os metadados
+        carregarFicheirosExistentes();
+      } else {
+        alert('Erro no envio: ' + (dados.error || 'Erro desconhecido.'));
+      }
+    } catch (erro) {
+      console.error('Erro ao conectar com a API:', erro);
+      alert('Falha na comunicação com o servidor.');
+    } finally {
+      if (btnEnviar) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = 'Enviar Ficheiro';
+      }
+    }
+  };
+}
+
+// ============================================================================
+// 8. CARREGAR E RENDERIZAR FICHEIROS ORGANIZADOS POR ANO E TABELA
+// ============================================================================
+// ============================================================================
+// CARREGAR E RENDERIZAR FICHEIROS ORGANIZADOS
+// ============================================================================
+
+function formatarTamanho(bytes) {
+  if (!bytes || bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const tamanhos = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + tamanhos[i];
+}
+
+async function carregarFicheirosExistentes() {
+  const containerGeral = document.getElementById('lista-cursos-container');
+  if (!containerGeral) return;
+
+  containerGeral.innerHTML = ''; // Limpa o container principal
+
+  const REPO_OWNER = "cienciasexactas";
+  const REPO_NAME = "cienciasexactas.github.io";
+  const cursos = [
+    { id: 'biologia', nome: 'Licenciatura em Biologia' },
+    { id: 'quimica', nome: 'Licenciatura em Química' },
+    { id: 'matematica', nome: 'Licenciatura em Matemática' }
+  ];
+
+  for (const curso of cursos) {
+    // Bloco Principal do Curso
+    const divCurso = document.createElement('div');
+    divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = `Curso: ${curso.nome}`;
+    h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; position: relative !important; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
+    divCurso.appendChild(h3);
+
+    try {
+      const resAnos = await fetch(
+        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/uploads/${curso.id}`
+      );
+      
+      if (resAnos.ok) {
+        const anosPastas = await resAnos.json();
+
+        for (const pastaAno of anosPastas) {
+          if (pastaAno.type !== 'dir') continue;
+
+          const resFicheiros = await fetch(pastaAno.url);
+          if (!resFicheiros.ok) continue;
+          const listaFicheiros = await resFicheiros.json();
+
+          // Bloco do Ano Lectivo
+          const divAno = document.createElement('div');
+          divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both; position: relative !important;';
+
+          const h4 = document.createElement('p'); // Usamos <p> para evitar regras globais de <h4>
+          h4.innerHTML = `<strong>Ano Lectivo:</strong> ${pastaAno.name}`;
+          h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0; display: block; position: relative !important;';
+          divAno.appendChild(h4);
+
+          // Tabela isolada
+          const tabela = document.createElement('table');
+          tabela.style.cssText = 'width: 100%; border-collapse: collapse; margin-top: 5px; position: relative !important; display: table !important;';
+
+          tabela.innerHTML = `
+            <thead>
+              <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left; height: auto !important;">
+                <th style="padding: 10px; width: 50%;">Nome</th>
+                <th style="padding: 10px; width: 25%;">Tamanho</th>
+                <th style="padding: 10px; width: 25%;">Data de Envio</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          `;
+
+          const tbody = tabela.querySelector('tbody');
+
+          for (const item of listaFicheiros) {
+            if (item.type === 'file') {
+              let dataEnvio = 'N/A';
+              try {
+                const resCommit = await fetch(
+                  `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits?path=${item.path}&page=1&per_page=1`
+                );
+                if (resCommit.ok) {
+                  const commits = await resCommit.json();
+                  if (commits.length > 0) {
+                    const dataRaw = new Date(commits[0].commit.committer.date);
+                    dataEnvio = dataRaw.toLocaleDateString('pt-PT');
+                  }
+                }
+              } catch (e) {
+                console.warn('Erro na data:', e);
+              }
+
+              const tr = document.createElement('tr');
+              tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
+              tr.innerHTML = `
+                <td style="padding: 10px;"><a href="${item.html_url}" target="_blank" style="color: #0066cc; text-decoration: underline;">${item.name}</a></td>
+                <td style="padding: 10px; color: #555;">${formatarTamanho(item.size)}</td>
+                <td style="padding: 10px; color: #555;">${dataEnvio}</td>
+              `;
+              tbody.appendChild(tr);
+            }
+          }
+
+          divAno.appendChild(tabela);
+          divCurso.appendChild(divAno);
+        }
+      }
+    } catch (erro) {
+      console.warn(`Sem ficheiros no curso: ${curso.id}`);
+    }
+
+    containerGeral.appendChild(divCurso);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnEnviar = document.getElementById('btn-enviar');
+  if (btnEnviar) {
+    btnEnviar.addEventListener('click', enviarFicheiro);
+  }
+
+  // Carrega a lista ao abrir a página
+  carregarFicheirosExistentes();
 });

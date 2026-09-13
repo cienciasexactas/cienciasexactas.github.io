@@ -2279,3 +2279,43 @@ div + .grid {
         font-size: 65% !important;
     }
 }
+
+/* =========================================================
+   18. MEDIA QUERIES - ENVIO DE FICHEIROS
+   ========================================================= */
+
+/* Container de cada curso */
+.bloco-curso {
+  display: block;
+  clear: both;
+  margin-bottom: 1.5rem;
+}
+
+.bloco-curso h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  position: static;
+}
+
+/* Garante que os links dinâmicos não sobem nem sobrepõem */
+.lista-downloads {
+  display: block;
+  position: static;
+  margin: 0;
+  padding-left: 1.5rem;
+  min-height: 5px; /* Evita o colapso do elemento quando a lista está vazia */
+  padding-bottom: 2px; /* Evita o colapso do elemento quando a lista está vazia */
+  padding-top: 35px; /* Evita o colapso do elemento quando a lista está vazia */
+
+}
+
+.lista-downloads li {
+  display: list-item;
+  position: static;
+  margin-bottom: 0.3rem;
+}
+
+.lista-downloads a {
+  position: static;
+  display: inline;
+}
