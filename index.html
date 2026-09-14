@@ -315,9 +315,8 @@
             <div class="dropdown">
                 <a href="#recursos">Recursos</a>
                 <div class="dropdown-content">
-                    <a href="#doc-aulas">Notas de Aula (Slides)</a>
-                    <a href="#doc-metodologia">Metodologia (Syllabus)</a>
-                    <a href="#doc-bibliografia">Bibliografia</a>
+                    <a href="#programas">Programas/Syllabus</a>
+                    <a href="#exercicios-propostos">Exercícios Propostos</a>
                     <a href="#testes-e-exames">Testes & Exames</a>
                 </div>
             </div>
@@ -2164,28 +2163,6 @@
                 Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
                 investigação científica e académica.
 
-<div class="form-grid">
-  <div class="form-group">
-    <label for="select-ano">Ano Lectivo:</label>
-    <select id="select-ano"> </select>
-  </div>
-  <div class="form-group">
-    <input type="file" id="input-ficheiro">
-  </div>
-  <div class="form-group">
-    <label for="select-curso">Curso:</label>
-    <select id="select-curso"> </select>
-  </div>
-  <div class="form-group">
-    <button id="btn-enviar" type="button">Enviar Ficheiro</button>
-  </div>
-</div>
-
-
-<hr style="margin: 20px 0;">
-
-<!-- Único contentor onde todos os cursos serão renderizados -->
-<div id="lista-cursos-container"></div>
 
 
             </div>
@@ -2603,42 +2580,48 @@
 
         <!-- SECÇÃO PRINCIPAL: RECURSOS -->
         <section id="recursos" class="conteudo-seccao">
-            <h2>Referências Bibliográficas</h2>
-
+            <h2>Central de Submissões de Trabalhos</h2>
             <div class="texto-livreAuto">
-
-                Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas. Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
-
-                <a href="TabelaQQuadrado.pdf" class="embed-link" data-title="Tabela da Distribuição Qui-Quadrado">Abrir PDF</a>
-                
-                <a href="Noterminal.txt" class="embed-link" data-title="Bloco de Notas">Abrir TXT</a>
-                
-                <a href="Modelo.docx" class="embed-link" data-title="Relatório Word">Abrir Word</a>
-
-                <a href="Apresentação.pptx" class="embed-link" data-title="Relatório PPT">Abrir Word</a>
-
-                <a href="CálculoReitoria.xlsx" class="embed-link" data-title="Planilha de Dados">Abrir Excel</a>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="select-ano">Ano Lectivo:</label>
+                        <select id="select-ano"> </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="input-ficheiro">
+                    </div>
+                    <div class="form-group">
+                        <label for="select-curso">Curso:</label>
+                        <select id="select-curso"> </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="btn-enviar" type="button">Enviar Ficheiro</button>
+                    </div>
+                </div>
+                <hr style="margin: 20pt 0;">
+                <!-- Único contentor onde todos os cursos serão renderizados -->
+                <div id="lista-cursos-container"></div>
             </div>
 
             <div class="bloco-container">
                 <div class="bloco-card">
                     <div class="bloco-topo">
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
-                        <h3>Notas de Aulas (Slides/PDF)</h3>
+                        <h3>Programas/Syllabus</h3>
                     </div>
                     <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
                         áreas do saber.</p>
-                    <a href="#ofertas-formativas" class="bloco-btn">Ver Cursos</a>
+                    <a href="#programas" class="bloco-btn">Ver Cursos</a>
                 </div>
 
                 <div class="bloco-card">
                     <div class="bloco-topo">
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
-                        <h3>Programas/Syllabus</h3>
+                        <h3>Exercícios Propostos</h3>
                     </div>
                     <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
                         oportunidades disponíveis.</p>
-                    <a href="#estudantes-ustp" class="bloco-btn">Área do Estudante</a>
+                    <a href="#exercicios-propostos" class="bloco-btn">Área do Estudante</a>
                 </div>
 
                 <div class="bloco-card">
@@ -2648,71 +2631,95 @@
                     </div>
                     <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
                         estudo e outras ajudas.</p>
-                    <a href="#bolsas" class="bloco-btn">Ver Bolsas</a>
+                    <a href="#testes-e-exames" class="bloco-btn">Ver Bolsas</a>
                 </div>
             </div>
         </section>
 
-        <section id="doc-aulas" class="conteudo-seccao">
-            <h2>Notas de Aula</h2>
-            <p>Sumários detalhados das matérias lecionadas.</p>
-            <div class="container">
-                <!-- Título Estilo Servidor -->
-                <h1>Index of /~giolo/Livro/Mat_Apoio/</h1>
-                <hr>
+        <!-- SECÇÃO PRINCIPAL: PROGRAMA -->
+        <section id="programas" class="conteudo-seccao">
+            <h2>PROGRAMA / <i>SYLLABUS</i></h2>
+            <div class="texto-livreAuto">
+            
+                <div class="texto-livreAuto">
+                    <h3>Curso: Licenciatura em Economia</h3>
+                </div>                   
 
-                <!-- Lista de Ficheiros com Wrapper Responsivo -->
-                <div class="table-wrapper">
-                    <table class="file-list">
-                        <thead>
-                            <tr>
-                                <th>Nome do Ficheiro</th>
-                                <th>Data de Modificação</th>
-                                <th>Tamanho</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <!-- Ficheiro HTML normal -->
-                                    <a href="Apendice_B.html">Apendice_B.html</a>
-                                </td>
-                                <td>15-Feb-2018 00:40</td>
-                                <td>992307</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- Ficheiro PDF que abre embutido na página -->
-                                    <a href="TabelaTStudent.pdf" class="embed-link" data-doc="TabelaTStudent.pdf">Tabela
-                                        t-Student.pdf</a>
-                                </td>
-                                <td>15-Feb-2018 00:41</td>
-                                <td>980182</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            Marôco, J. (2018). <i>Análise Estatística com o SPSS Statistics, 7ª edição</i>. ReportNumber, Lda.(Disponível na Biblioteca da FCT/USTP)
+                        </li>
+                        <li>
+                            Pestana, M. H., & Gageiro, J. N. (2020). <i>Análise de dados para ciências sociais: a complementaridade do SPSS</i>, 6ª Edição, 2ª Impressão – Lisboa, Outubro.
+                        </li>
+                        <li>
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                        </li>
+                        <li>
+                            Hoffmann, R. (2006). <i>Estatística para economistas. 4ª Edição</i>. São Paulo: Pioneira Thomson Learning.
+                        </li>
+                        <li>
+                            Fonseca, J. S. D., & Martins, G. D. A. (1993). <i>Curso de estatística</i>.
+                        </li>
+                        <li>
+                            Martins, M. E. G. (2005). <i>Introdução à Probabilidade e à Estatística com complementos de Excel</i>.
+                        </li>
+                        <li>
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                        </li>
+                        <li>
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                        </li>
+                        <li>
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                        </li>
+                        <li>
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                        </li>
+                    </ul>
                 </div>
-                <hr>
-            </div>
 
-            Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade.
-            
-            Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
-            
-            As <b>medidas de posição</b> (ou de localização) caracterizam o comportamento de um conjunto de dados, indicando a localização dos valores ao longo do eixo da variável em estudo.
+                Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas. Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
+
+                <a href="TabelaQQuadrado.pdf" class="embed-link" data-title="Tabela da Distribuição Qui-Quadrado">Abrir PDF</a>
                 
-            Como se observa na <a href="#tabela-2"></a> e na <a href="#equacao-19"></a>, a variação demonstra estabilidade.
+                <a href="Noterminal.txt" class="embed-link" data-title="Bloco de Notas">Abrir TXT</a>
 
-            Como se observa na <a href="#figura-2"></a> e no <a href="#figura-1">Tipo de Escala</a>, a variação demonstra estabilidade.
+                <a href="https://uabpt-my.sharepoint.com/:b:/g/personal/2102132_estudante_uab_pt/IQDITW_4jC5XSpTTa3mluCHrAT9kF-8zNoYtta14HhyI6S0" target="_blank" rel="noopener noreferrer">Abrir Relatório</a>
 
-            Como se observa na <a href="#exercicio-44"></a> e na <a href="#equacao-20"></a>, a variação demonstra estabilidade.
+                <a href="#" onclick="window.open('https://uabpt-my.sharepoint.com/:b:/g/personal/2102132_estudante_uab_pt/IQDITW_4jC5XSpTTa3mluCHrAT9kF-8zNoYtta14HhyI6S0', 'popup', 'width=800,height=600'); return false;"> Abrir Relatório</a>
 
+                <a href="Apresentação.pptx" class="embed-link" data-title="Relatório PPT">Abrir Word</a>
 
+                <a href="CálculoReitoria.xlsx" class="embed-link" data-title="Planilha de Dados">Abrir Excel</a>
+                
+                
+            </div>
+        </section>
 
+        <!-- SECÇÃO PRINCIPAL: EXERCÍCIOS PROPOSTOS -->
+        <section id="exercicios-propostos" class="conteudo-seccao">
+            <h2>EXERCÍCIOS PROPOSTOS</h2>
+            
+            <div class="texto-livreAuto">
+                
+                Sumários detalhados das matérias lecionadas.
+    
+                Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade.
+                
+                Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
+                
+                As <b>medidas de posição</b> (ou de localização) caracterizam o comportamento de um conjunto de dados, indicando a localização dos valores ao longo do eixo da variável em estudo.
+                    
+                Como se observa na <a href="#tabela-2"></a> e na <a href="#equacao-19"></a>, a variação demonstra estabilidade.
+
+                Como se observa na <a href="#figura-2"></a> e no <a href="#figura-1">Tipo de Escala</a>, a variação demonstra estabilidade.
+
+                Como se observa na <a href="#exercicio-44"></a> e na <a href="#equacao-20"></a>, a variação demonstra estabilidade.
+            </div>
+        </section>
     </div>
-
-
-    </section>
 
     <!-- Contacto -->
     <section id="contato" class="conteudo-seccao">
@@ -2740,7 +2747,6 @@
             <button type="submit" class="newsletter-btn">Subscrever</button>
         </form>
     </section>
-    </div>
 
     <footer>
         <p>&copy; 2026 Prof. Wadiley Nascimento. || "Sem dados, você é apenas mais uma pessoa com uma opinião.” — W. Edwards
