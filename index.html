@@ -128,7 +128,6 @@
                         <div class="dropdown-content">
                             <a href="#medidas-de-posicao">Medidas de Posição</a>
                             <a href="#medidas-de-dispersao">Medidas de Dispersão</a>
-                            <a href="#medidas-de-assimetria">Medidas de Assimetria</a>
                             <a href="#medidas-de-forma">Medidas de Forma</a>
                         </div>
                     </div>
@@ -195,7 +194,6 @@
                             <a href="#estat-distp">Distribuição de Probabilidades</a>
                         </div>
                     </div>
-
                     <!-- Submenu 2: Teoria da Amostragem -->
                     <div class="dropdown">
                         <a href="#estat-amost">Teoria da Amostragem</a>
@@ -204,7 +202,6 @@
                             <a href="#estat-dim">Dimensão da Amostra</a>
                         </div>
                     </div>
-
                     <!-- Submenu 3: Inferência Estatística -->
                     <div class="dropdown">
                         <a href="#estat-inf">Inferência Estatística</a>
@@ -218,7 +215,6 @@
                                     <a href="#estat-estpont-metodos">Métodos de Estimação</a>
                                 </div>
                             </div>
-
                             <!-- Nível 3.2: Estimação por Intervalo -->
                             <div class="dropdown">
                                 <a href="#estat-estint">Estimação por Intervalo</a>
@@ -244,10 +240,10 @@
 
             <!-- MENU: NÚMEROS ÍNDICES (Com Submenus em Cascata) -->
             <div class="dropdown">
-                <a href="#estatistica-ii">Números Índices</a>
+                <a href="#numeros-indices">Números Índices</a>
                 <div class="dropdown-content">
-                    <a href="#estat-prob">Índice de Gini</a>
-                    <a href="#estat-amost">Índide Composto</a>
+                    <a href="#indice-de-gini">Índice de Gini</a>
+                    <a href="#indice-composto">Índide Composto</a>
                 </div>
             </div>
 
@@ -1458,7 +1454,7 @@
 
         <!-- ESTATÍSTICA I (MENU PRINCIPAL) -->
         <section id="medidas-de-posicao" class="conteudo-seccao" data-grupo="estat1" data-capitulo="7">
-            <h2>Medidas de Posição ou Localização</h2>
+            <h2>MEDIDAS DE POSIÇÃO OU LOCALIZAÇÃO</h2>
             <div class="texto-livreAuto">
 
                 Essas estatísticas subdividem-se em: <azul>Medidas de Tendência Central</azul>: Sintetizam o conjunto de dados em torno de um valor central representativo, destacando-se a média aritmética, a mediana e a moda e, <azul>Medidas Separatrizes (ou Não Centrais)</azul>: Dividem a distribuição ordenada em partes proporcionais, compreendendo os quartis, decis e percentis.
@@ -2156,6 +2152,53 @@
         </section>
 
         <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="medidas-de-dispersao" class="conteudo-seccao" data-grupo="estat1">
+            <h2>MEDIDAS DE DISPERSÃO</h2>
+            <div class="texto-livreAuto">
+
+                Para caracterizar de forma abrangente o comportamento de um conjunto de dados, o estudo das medidas de tendência central deve ser acompanhado pela análise da sua dispersão e da forma da distribuição. Enquanto as medidas de localização determinam um valor central representativo, as medidas de dispersão quantificam o grau de afastamento ou variabilidade dos dados em torno desse ponto central.
+                
+                As principais medidas de dispersão utilizadas na análise descritiva são: Amplitude Total ($A$), Desvio Médio ($DM$), Variância ($S^2$ ou $\sigma^2$), Desvio-Padrão ($S$ ou $\sigma$), Erro-Padrão ($EP$) e o Coeficiente de Variação ($CV$)
+                
+                <div class="texto-livreAuto">
+                    <h2>Amplitude Total ($A$)</h2>
+                </div>
+                
+                
+                A <b><azul>Amplitude Total</azul> ($A$)</b> é a medida de variabilidade mais simples. Corresponde à diferença absoluta entre o maior e o menor valor observados no conjunto de dados:
+                
+                $$A = X_{\max} - X_{\min}$$
+                
+                Apesar de ser de fácil cálculo, a amplitude possui limitações analíticas significativas, pois depende exclusivamente dos dois valores extremos da distribuição, ignorando a dispersão de todas as observações intermédias e sendo altamente sensível a outliers.
+                
+                <div class="texto-livreAuto">
+                    <h2>Variância ($S^2$)</h2>
+                </div>
+                
+                A <b><azul>Variância</azul></b> é uma medida fundamental de dispersão que avalia o quão afastados os dados se encontram relativamente à média aritmética ($\overline{X}$). Quanto maior for o valor da variância, maior será a heterogeneidade e a dispersão dos dados.
+                
+                Para evitar que os desvios positivos e negativos em relação à média se anulem ($\sum (X_i - \overline{X}) = 0$), eleva-se cada desvio ao quadrado. A variância amostral ($S^2$) corresponde, assim, à média dos desvios quadráticos dividida pelos graus de liberdade ($n - 1$):
+                
+                Cenário 1: Variância para Dados Não Agrupados (Discretos ou Contínuos)Para uma amostra de tamanho $n$ com observações não agrupadas $X_1, X_2, \ldots, X_n$, a variância amostral ($S^2$) é calculada por:
+                
+                $$S^2 = \frac{\sum_{i=1}^{n} (X_i - \overline{X})^2}{n - 1} = \frac{\sum_{i=1}^{n} X_i^2 - \frac{\left(\sum_{i=1}^{n} X_i\right)^2}{n}}{n - 1} \tag{3.5}$$
+                
+                Onde: $S^2$: Variância amostral. $X_i$: $i$-ésima observação individual.$\overline{X}$: Média aritmética amostral. $n$: Número total de observações na amostra. $n - 1$: Graus de liberdade (fator de correção para estimador não viesado da variância populacional $\sigma^2$).
+
+        </section>
+
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <section id="medidas-de-forma" class="conteudo-seccao" data-grupo="estat1">
+            <h2>MEDIDAS DE FORMA</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+
+        </section>
+
+
+        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
         <section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1">
             <h2>EXPLORAÇÃO DE DADOS BI-VARIADOS </h2>
             <div class="texto-livreAuto">
@@ -2163,11 +2206,8 @@
                 Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
                 investigação científica e académica.
 
-
-
             </div>
             <div class="bloco-container">
-
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
@@ -2226,7 +2266,6 @@
 
             </div>
             <div class="bloco-container">
-
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
@@ -2457,103 +2496,94 @@
             <h2>ESTIMAÇÃO POR INTERVALO</h2>
             <div class="texto-livreAuto">
 
-                A inferência estatística tem como objetivo tirar conclusões sobre parâmetros populacionais com base em
-                informações amostrais. Nesse contexto, os intervalos de confiança constituem uma ferramenta fundamental.
+                A inferência estatística tem como objetivo tirar conclusões sobre parâmetros populacionais com base em informações amostrais. Nesse contexto, os intervalos de confiança constituem uma ferramenta fundamental.
 
-                <blockquote> Em repetições repetidas do processo de amostragem, aproximadamente $100(1 - \alpha)$% dos
-                    intervalos construídos conterão o verdadeiro valor de $p$.</blockquote>
+                <blockquote>
+                Em repetições repetidas do processo de amostragem, aproximadamente $100(1 - \alpha)\%$ dos intervalos construídos conterão o verdadeiro valor do parâmetro.
+                </blockquote>
 
-                Diferentemente da estimação pontual — que fornece apenas um único valor como estimativa — a estimação
-                por intervalo fornece um conjunto de valores plausíveis para o parâmetro de interesse, permitindo
-                quantificar a incerteza associada à estimativa.
+                Diferentemente da estimação pontual — que fornece apenas um único valor como estimativa — a estimação por intervalo fornece um conjunto de valores plausíveis para o parâmetro de interesse, permitindo quantificar a incerteza associada à estimativa.
 
-                Seja $\theta$ um parâmetro populacional e $\hat{\theta}$ um estimador de $\theta$. Com base na
-                distribuição de probabilidade de $\hat{\theta}$, é possível construir um intervalo da forma: $$
-                \hat{\theta}_1 \leq \theta \leq \hat{\theta}_2,
-                $$ tal que a probabilidade de o intervalo conter o verdadeiro valor do parâmetro seja $(1 - \alpha)$,
-                denominado nível de confiança.
+                Seja $\theta$ um parâmetro populacional e $\hat{\theta}$ um estimador de $\theta$. Com base na distribuição de probabilidade de $\hat{\theta}$, é possível construir um intervalo da forma:
 
-                O valor $\alpha \in (0,1)$ representa o nível de significância, isto é, a probabilidade de o intervalo
-                não conter o parâmetro. Então $ 1 - \alpha = \text{nível de confiança}.
-                $
+                <div class="equacao-container">
+                $$ \hat{\theta}_1 \leq \theta \leq \hat{\theta}_2 $$
+                </div>
 
-                Um intervalo de confiança (IC) é, portanto, um intervalo aleatório que, em repetidas amostragens, contém
-                o verdadeiro valor do parâmetro em aproximadamente $100(1 - \alpha)\%$ dos casos.
+                tal que a probabilidade de o intervalo conter o verdadeiro valor do parâmetro seja $(1 - \alpha)$, denominado nível de confiança.
 
-                Formalmente, se $U$ e $V$ são estatísticas tais que $$
-                P\left[(U < \theta < V )\mid \theta\right]=1 - \alpha, $$ então $(U, V)$ é um intervalo de confiança
-                    para $\theta$ com nível $100(1 - \alpha)\%$. A amplitude do intervalo está diretamente relacionada à
-                    incerteza da estimação: intervalos mais largos indicam maior incerteza, enquanto intervalos mais
-                    estreitos indicam maior precisão. <div class="texto-livreAuto">
-                    <h2> Interpretação </h2>
+                O valor $\alpha \in (0,1)$ representa o nível de significância, isto é, a probabilidade de o intervalo não conter o parâmetro. Assim, temos que $1 - \alpha = \text{nível de confiança}$.
+
+                Um intervalo de confiança (IC) é, portanto, um intervalo aleatório que, em repetidas amostragens, contém o verdadeiro valor do parâmetro em aproximadamente $100(1 - \alpha)\%$ dos casos.
+
+                Formalmente, se $U$ e $V$ são estatísticas tais que:
+
+                <div class="equacao-container">
+                $$ P\left[(U < \theta < V) \mid \theta\right] = 1 - \alpha $$
+                </div>
+
+                então $(U, V)$ é um intervalo de confiança para $\theta$ com nível $100(1 - \alpha)\%$. A amplitude do intervalo está diretamente relacionada à incerteza da estimação: intervalos mais largos indicam maior incerteza, enquanto intervalos mais estreitos indicam maior precisão.
+
+                <div class="texto-livreAuto">
+                <h2>Interpretação</h2>
+                </div>
+
+                É importante destacar que o parâmetro $\theta$ é fixo, enquanto o intervalo é aleatório. Assim, não se diz que há uma probabilidade de $\theta$ estar no intervalo após sua construção; em vez disso, afirma-se que o método utilizado produz intervalos que contêm $\theta$ em uma proporção $(1 - \alpha)$ das amostras possíveis.
+
+                <mark style="background-color: #e74c3c; color: white;"><b>Exemplo</b>:</mark> Considere uma amostra de 500 indivíduos cuja média das alturas é $\bar{x} = 1{,}66$ m. Essa é uma estimativa pontual da média populacional $\mu$. Um intervalo de confiança de 95% poderia ser, por exemplo, $[1{,}58;\quad 1{,}68]$ m.
+
+                Isso significa que, ao repetir o procedimento de amostragem diversas vezes, cerca de 95% dos intervalos construídos dessa forma conteriam o verdadeiro valor de $\mu$.
+
+                Os intervalos de confiança fornecem não apenas uma estimativa para o parâmetro, mas também uma medida explícita da incerteza associada. Por isso, são amplamente utilizados para avaliar a precisão e a fiabilidade de resultados obtidos a partir de amostras.
+
+                <div class="texto-livreAuto">
+                <h2>Intervalo de Confiança para a Média</h2>
+                </div>
+
+                Quando queremos estimar a média de uma população através de uma amostra, temos dois casos distintos a considerar: quando a variância da população é conhecida e quando ela é desconhecida.
+
+                <div class="texto-livreAuto">
+                <h3><b><mark style="background-color: #e74c3c; color: white;">Cenário 1</mark></b>: Variância Populacional Conhecida</h3>
+                </div>
+
+                Considere uma amostra aleatória simples $X_1, X_2, \ldots, X_n$ proveniente de uma população com distribuição normal, com média $\mu$ desconhecida e variância $\sigma^2$ conhecida. Nesse caso, a média amostral $\bar{X}$ também possui distribuição normal, dada por:
+
+                <div class="equacao-container">
+                $$ \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right) $$
+                </div>
+
+                Padronizando a variável, obtemos:
+
+                <div class="equacao-container">
+                $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1) $$
+                </div>
+
+                isto é, $Z$ segue a distribuição normal padrão.
+
+                Para um nível de significância $\alpha$, consideramos os quantis $-z_{\alpha/2}$ e $z_{\alpha/2}$ tais que:
+
+                <div class="equacao-container">
+                $$ P\left(-z_{\alpha/2} \leq Z \leq z_{\alpha/2}\right) = 1 - \alpha $$
+                </div>
+
+                Substituindo a variável padronizada $Z$:
+
+                <div class="equacao-container">
+                $$ P\left(-z_{\alpha/2} \leq \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \leq z_{\alpha/2}\right) = 1 - \alpha $$
+                </div>
+
+                Reorganizando os termos isolando a média $\mu$ no centro da desigualdade, obtemos o intervalo formal:
+
+                <div class="equacao-container">
+                $$ P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha $$
+                </div>
+
+                Para o caso específico de um nível de confiança de 95% ($\alpha = 0{,}05$), temos $z_{\alpha/2} = 1{,}96$, resultando em:
+
+                <div class="equacao-container">
+                $$ P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + 1{,}96\frac{\sigma}{\sqrt{n}}\right) = 0{,}95 $$
+                </div>
             </div>
-
-            É importante destacar que o parâmetro $\theta$ é fixo, enquanto o intervalo é aleatório. Assim, não se diz
-            que há probabilidade de $\theta$ estar no intervalo após sua construção; em vez disso, afirma-se que o
-            método utilizado produz intervalos que contêm $\theta$ em uma proporção $(1 - \alpha)$ das amostras
-            possíveis.
-
-            <mark style="background-color: #e74c3c; color: white;"><b>Exemplo</b>:</mark> Considere uma amostra de 500
-            indivíduos cuja média das alturas é $\bar{x} = 1{,}66$ m. Essa é uma estimativa pontual da média
-            populacional $\mu$. Um intervalo de confiança de 95% poderia ser, por exemplo: $[1,58;\quad 1,68]$.
-
-            Isso significa que, ao repetir o procedimento de amostragem diversas vezes, cerca de 95% dos intervalos
-            construídos dessa forma conteriam o verdadeiro valor de $\mu$.
-
-            Suponha que $X_1, X_2, \ldots, X_n$ sejam independentes e identicamente distribuídos segundo uma normal com
-            média $\mu$ desconhecida e variância $\sigma^2$ conhecida.
-
-            A média amostral $\bar{X}$ é um estimador de $\mu$ e satisfaz: $$
-            \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right).
-            $$
-
-            Padronizando a variável: $$ Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1).$$
-
-            Assim, $$ P(-1{,}96 < Z < 1{,}96)=0{,}95, $$ o que implica: <div class="equacao-container"> $$
-                P\left(-1{,}96 < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < 1{,}96\right)=0{,}95. $$ </div>
-
-                    Reorganizando,
-
-                    <div class="equacao-container"> $$
-                        P\left(\bar{X} - 1{,}96\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} +
-                            1{,}96\frac{\sigma}{\sqrt{n}}\right)=0{,}95. $$ </div>
-
-                            Esse é o intervalo de confiança de 95% para a média populacional.
-
-                            Os intervalos de confiança fornecem não apenas uma estimativa para o parâmetro, mas também
-                            uma medida explícita da incerteza associada. Por isso, são amplamente utilizados para
-                            avaliar a precisão e a fiabilidade de resultados obtidos a partir de amostras.
-
-                            <div class="texto-livreAuto">
-                                <h2> Intervalo de Confiança para a Média </h2>
-                            </div>
-
-                            Quando queremos estimar a média de uma população através de uma amostra temos dois casos
-                            distintos a considerar: quando a variância da população é conhecida e quando ela é
-                            desconhecida. A seguir, temos os dois casos.
-
-                            <div class="texto-livreAuto">
-                                <h3> <b><mark style="background-color: #e74c3c; color: white;">Cenário 1</mark></b>:
-                                    Variância Populacional Conhecida </h3>
-                            </div>
-
-                            Considere uma amostra aleatória simples $X_1, X_2, \ldots, X_n$ proveniente de uma população
-                            com distribuição normal, com média $\mu$ e variância $\sigma^2$ conhecida. Nesse caso, a
-                            média amostral $\bar{X}$ também possui distribuição normal, dada por:
-
-                            $$
-                            \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)
-                            $$
-
-                            Padronizando, obtemos a variável:
-                            $$
-                            T = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)
-                            $$, isto é, $T$ segue a distribuição normal padrão.
-
-                            Para um nível de significância $\alpha$, considere os quantis $-z_{\alpha/2}$ e
-                            $z_{\alpha/2}$ tais que: $P(-z_{\alpha/2} \leq Z \leq z_{\alpha/2}) = 1 - \alpha$
-
-                    </div>
         </section>
 
 
@@ -2568,12 +2598,59 @@
             </div>
         </section>
 
-        <section id="estat-estpont" class="conteudo-seccao" data-grupo="estat-inf">
-            <h2>Estimação Pontual</h2>
-            <p>Métodos para obtenção de estimadores pontuais de parâmetros.</p>
+        <section id="numeros-indices" class="conteudo-seccao" data-grupo="estat-indices">
+            <h2>NÚMEROS ÍNDICES</h2>
+            <div class="texto-livreAuto">
 
-            <div class="tabela-imagem-container">
-                <img src="GBarra1.png" alt="Tabela de Distribuição de Frequências">
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+    
+                <div class="bloco-container">
+                    <div class="bloco-card">
+                        <div class="bloco-topo">
+                            <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                            <h3>Índice de Gini</h3>
+                        </div>
+                        Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.
+                        <a href="#indice-de-gini" class="bloco-btn">Ver Cursos</a>
+                    </div>
+                    <div class="bloco-card">
+                        <div class="bloco-topo">
+                            <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                            <h3>Índide Composto</h3>
+                        </div>
+                        Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.
+                        <a href="#indice-composto" class="bloco-btn">Ver Bolsas</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="indice-de-gini" class="conteudo-seccao" data-grupo="estat-indices">
+            <h2>ÍNDICE DE GINI</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+    
+                <div class="tabela-imagem-container">
+                    <img src="GBarra.png" alt="Tabela de Distribuição de Frequências">
+                </div>
+            </div>
+
+        </section>
+
+        <section id="indice-composto" class="conteudo-seccao" data-grupo="estat-indices">
+            <h2>ÍNDICE COMPOSTO</h2>
+            <div class="texto-livreAuto">
+
+                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
+                investigação científica e académica.
+    
+                <div class="tabela-imagem-container">
+                    <img src="GBarra.png" alt="Tabela de Distribuição de Frequências">
+                </div>
             </div>
 
         </section>
@@ -2609,8 +2686,7 @@
                         <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
                         <h3>Programas/Syllabus</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
-                        áreas do saber.</p>
+                    Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.
                     <a href="#programas" class="bloco-btn">Ver Cursos</a>
                 </div>
 
@@ -2619,8 +2695,7 @@
                         <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Exercícios Propostos</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
-                        oportunidades disponíveis.</p>
+                    Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.
                     <a href="#exercicios-propostos" class="bloco-btn">Área do Estudante</a>
                 </div>
 
@@ -2629,8 +2704,7 @@
                         <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
                         <h3>Testes & Exames</h3>
                     </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
-                        estudo e outras ajudas.</p>
+                    Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.
                     <a href="#testes-e-exames" class="bloco-btn">Ver Bolsas</a>
                 </div>
             </div>
@@ -2666,7 +2740,7 @@
                             Martins, M. E. G. (2005). <i>Introdução à Probabilidade e à Estatística com complementos de Excel</i>.
                         </li>
                         <li>
-                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
+                            Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo. <a href="#" onclick="window.open('https://uabpt-my.sharepoint.com/:b:/g/personal/2102132_estudante_uab_pt/IQDITW_4jC5XSpTTa3mluCHrAT9kF-8zNoYtta14HhyI6S0', 'popup', 'width=800,height=600'); return false;">Aceder ao Livro</a>
                         </li>
                         <li>
                             Reis, E., et al. (1999). <i>Estatística aplicada</i>. Lisboa: Edições Sílabo.
@@ -2682,26 +2756,14 @@
 
                 Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas. Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
 
-<!-- Botão para abrir o Pop-up -->
-<button onclick="abrirPopupPDF()" class="btn-popup">
-  📄 Abrir Tabela / Livro em Pop-up
-</button>
-
-
                 <a href="TabelaQQuadrado.pdf" class="embed-link" data-title="Tabela da Distribuição Qui-Quadrado">Abrir PDF</a>
                 
                 <a href="Noterminal.txt" class="embed-link" data-title="Bloco de Notas">Abrir TXT</a>
-
-                <a href="https://uabpt-my.sharepoint.com/:b:/g/personal/2102132_estudante_uab_pt/IQDITW_4jC5XSpTTa3mluCHrAT9kF-8zNoYtta14HhyI6S0" target="_blank" rel="noopener noreferrer">Abrir Relatório</a>
-
-                <a href="#" onclick="window.open('https://uabpt-my.sharepoint.com/:b:/g/personal/2102132_estudante_uab_pt/IQDITW_4jC5XSpTTa3mluCHrAT9kF-8zNoYtta14HhyI6S0', 'popup', 'width=800,height=600'); return false;"> Abrir Relatório</a>
 
                 <a href="Apresentação.pptx" class="embed-link" data-title="Relatório PPT">Abrir Word</a>
 
                 <a href="CálculoReitoria.xlsx" class="embed-link" data-title="Planilha de Dados">Abrir Excel</a>
                 
-                <!-- Modal Reutilizável com Botão de Transferência -->
-
             </div>
         </section>
 

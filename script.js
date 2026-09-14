@@ -1286,20 +1286,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carrega a lista ao abrir a página (removida a duplicação do listener)
   carregarFicheirosExistentes();
 });
-
-function abrirPopupPDF() {
-    // URL de visualização oficial do SharePoint
-    const url = "https://uabpt-my.sharepoint.com/personal/2102132_estudante_uab_pt/_layouts/15/embed.aspx?UniqueId=f86f4dc8-2e8c-4a57-94d3-6b79a5b821eb";
-    
-    // Configurações do tamanho e posição da janela Pop-up
-    const largura = 900;
-    const altura = 700;
-    const esquerda = (screen.width / 2) - (largura / 2);
-    const topo = (screen.height / 2) - (altura / 2);
-
-    window.open(
-      url, 
-      'JanelaPDF', 
-      `width=${largura},height=${altura},top=${topo},left=${esquerda},scrollbars=yes,resizable=yes`
-    );
-  }
