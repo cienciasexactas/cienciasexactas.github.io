@@ -2536,22 +2536,25 @@
                 
                 O <azul>principal objetivo</azul> da análise bivariada é investigar a existência, a natureza e a intensidade da relação entre duas variáveis. Essas relações manifestam-se na forma de associações (para variáveis qualitativas) ou de correlações (para variáveis quantitativas).
                 
+                A análise desenvolve-se através de três pilares fundamentais:
+
                 <div class="texto-livreAuto">
                     <ul class="quadrado">
                         <li>
-                            <b>Distribuições Conjuntas de Frequências</b>: Organização estruturada em tabelas de contingência (cross-tabulation).
+                            <b>Distribuições Conjuntas de Frequências</b>: Organização estruturada em tabelas de contingência (<i>cross-tabulation</i>).
                         </li>
                         <li>
-                            <b>Leptocúrtica</b> ($K < 0,263$): Apresenta uma curva mais afunilada, com pico pronunciado e caudas mais pesadas/longas (maior probabilidade de ocorrência de valores extremos/discrepantes).
+                            <b>Representações Gráficas</b>: Diagramas de dispersão (scatter plots) e mapas perceptuais (análise de correspondência).Medidas-Resumo: Métricas numéricas que quantificam a força e a direção da relação.
                         </li>
                         <li>
-                            <b>Platicúrtica</b> ($K > 0,263$): Apresenta uma curva mais achatada, com topo aplanado e caudas mais leves/curtas (menor concentração em torno do centro).
+                            <b>Medidas-Resumo</b>: Métricas numéricas que quantificam a força e a direção da relação.
                         </li>
                     </ul>
                 </div>                
-                A análise desenvolve-se através de três pilares fundamentais:
                 
-                Representações Gráficas: Diagramas de dispersão (scatter plots) e mapas perceptuais (análise de correspondência).Medidas-Resumo: Métricas numéricas que quantificam a força e a direção da relação.
+                <figure id="figura-3" class="tabela-imagem-container">
+                    <img src="AnaliseBivariada.jpg" alt="Tipo de Variável">
+                </figure>                
 
             </div>
             <div class="bloco-container">
@@ -3019,12 +3022,13 @@
                         <select id="select-curso"> </select>
                     </div>
                     <div class="form-group">
+                        <label for="select-seccao">Secção / Categoria:</label>
+                        <select id="select-seccao"></select>
+                    </div>
+                    <div class="form-group">
                         <button id="btn-enviar" type="button">Enviar Ficheiro</button>
                     </div>
                 </div>
-                <hr style="margin: 20pt 0;">
-                <!-- Único contentor onde todos os cursos serão renderizados -->
-                <div id="lista-cursos-container"></div>
             </div>
 
             <div class="bloco-container">
@@ -3101,7 +3105,14 @@
                     </ul>
                 </div>
 
-                Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas. Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
+                Repositório de materiais de apoio pedagógico, guias metodológicos e referências bibliográficas. 
+                
+                <hr style="margin: 20pt 0;">
+                <!-- Trabalhos Colaborativos -->
+                <div id="lista-colaborativos-container"></div>
+            
+                
+                Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade. Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
 
                 <a href="TabelaQQuadrado.pdf" class="embed-link" data-title="Tabela da Distribuição Qui-Quadrado">Abrir PDF</a>
                 
@@ -3122,13 +3133,38 @@
                 
                 Sumários detalhados das matérias lecionadas.
 
-
+                <hr style="margin: 20pt 0;">
+                <!-- Trabalhos de Grupo -->
+                <div id="lista-grupo-container"></div>                
                 
     
                 Segue uma distribuição $t$ de Student com $n - 1$ graus de liberdade.
                 
                 Consulte a <a href="TabelaTStudent.pdf" class="embed-link link-destaque" data-doc="TabelaTStudent.pdf" data-title="Tabela de Distribuição t-Student">Tabela t-Student</a>.
                 
+                As <b>medidas de posição</b> (ou de localização) caracterizam o comportamento de um conjunto de dados, indicando a localização dos valores ao longo do eixo da variável em estudo.
+                    
+                Como se observa na <a href="#tabela-2"></a> e na <a href="#equacao-19"></a>, a variação demonstra estabilidade.
+
+                Como se observa na <a href="#figura-2"></a> e no <a href="#figura-1">Tipo de Escala</a>, a variação demonstra estabilidade.
+
+                Como se observa na <a href="#exercicio-44"></a> e na <a href="#equacao-20"></a>, a variação demonstra estabilidade.
+            </div>
+        </section>
+
+        <!-- SECÇÃO PRINCIPAL: EXERCÍCIOS PROPOSTOS -->
+        <section id="testes-e-exames" class="conteudo-seccao">
+            <h2>TESTES & EXAMES</h2>
+            
+            <div class="texto-livreAuto">
+                
+                Sumários detalhados das matérias lecionadas.
+
+                <hr style="margin: 20pt 0;">
+                <!-- Trabalhos de Grupo -->
+                <div id="lista-publicacoes-container"></div>                
+                
+    
                 As <b>medidas de posição</b> (ou de localização) caracterizam o comportamento de um conjunto de dados, indicando a localização dos valores ao longo do eixo da variável em estudo.
                     
                 Como se observa na <a href="#tabela-2"></a> e na <a href="#equacao-19"></a>, a variação demonstra estabilidade.

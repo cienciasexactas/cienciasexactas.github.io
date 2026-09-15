@@ -1044,19 +1044,40 @@ const URL_DA_VERCEL = 'https://backend-upload-sooty.vercel.app/api/upload';
 async function enviarFicheiro(event) {
   if (event) event.preventDefault();
 
-  // Validação do intervalo de tempo externo (lido do config.js)
-  if (typeof PERIODO_SUBMISSAO !== 'undefined') {
-    const agora = new Date();
-    if (agora < PERIODO_SUBMISSAO.inicio || agora > PERIODO_SUBMISSAO.fim) {
-      alert('O carregamento de ficheiros encontra-se encerrado fora do período permitido.');
-      return;
-    }
-  }
-
+  const selectSeccao = document.getElementById('select-seccao');
   const selectCurso = document.getElementById('select-curso');
   const selectAno = document.getElementById('select-ano');
   const inputFicheiro = document.getElementById('input-ficheiro');
   const btnEnviar = document.getElementById('btn-enviar');
+
+  const seccao = selectSeccao ? selectSeccao.value : '';
+  const curso = selectCurso ? selectCurso.value : '';
+  const ano = selectAno ? selectAno.value : '';
+
+  // VALIDAÇÕES OBRIGATÓRIAS DOS SELETORES
+  if (!seccao) {
+    alert('Por favor, selecione a Secção / Categoria.');
+    return;
+  }
+  if (!curso) {
+    alert('Por favor, selecione o Curso.');
+    return;
+  }
+  if (!ano) {
+    alert('Por favor, selecione o Ano Lectivo.');
+    return;
+  }
+
+  // VALIDAÇÃO DE PRAZO ESPECÍFICO DA SECÇÃO SELECIONADA
+  if (typeof PERIODOS_SUBMISSAO !== 'undefined' && PERIODOS_SUBMISSAO[seccao]) {
+    const agora = new Date();
+    const prazo = PERIODOS_SUBMISSAO[seccao];
+
+    if (agora < prazo.inicio || agora > prazo.fim) {
+      alert('O carregamento de ficheiros para esta secção encontra-se encerrado fora do período permitido.');
+      return;
+    }
+  }
 
   if (!inputFicheiro || !inputFicheiro.files[0]) {
     alert('Por favor, selecione um ficheiro primeiro.');
@@ -1064,11 +1085,7 @@ async function enviarFicheiro(event) {
   }
 
   const ficheiro = inputFicheiro.files[0];
-  const cursoSelecionado = selectCurso ? selectCurso.value : '';
-  const anoSelecionado = selectAno ? selectAno.value : '';
-
-  // O caminho enviado para a Vercel inclui o Ano Lectivo na pasta
-  const caminhoCursoComAno = `${cursoSelecionado}/${anoSelecionado}`;
+  const caminhoPastaDestino = `${seccao}/${curso}/${ano}`;
 
   if (btnEnviar) {
     btnEnviar.disabled = true;
@@ -1077,32 +1094,29 @@ async function enviarFicheiro(event) {
 
   const reader = new FileReader();
   reader.readAsDataURL(ficheiro);
-  
+
   reader.onload = async function () {
     const conteudoBase64 = reader.result.split(',')[1];
 
     const payload = {
       nomeArquivo: ficheiro.name,
       conteudoBase64: conteudoBase64,
-      curso: caminhoCursoComAno
+      curso: caminhoPastaDestino
     };
 
     try {
       const resposta = await fetch(URL_DA_VERCEL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
       const dados = await resposta.json();
 
       if (resposta.ok) {
-        alert('Ficheiro enviado com sucesso!');
+        alert('Ficheiro enviado com sucesso para a secção selecionada!');
         inputFicheiro.value = '';
-        // Recarrega a estrutura para exibir a nova entrada com os metadados
-        carregarFicheirosExistentes();
+        await carregarFicheirosExistentes();
       } else {
         alert('Erro no envio: ' + (dados.error || 'Erro desconhecido.'));
       }
@@ -1119,7 +1133,7 @@ async function enviarFicheiro(event) {
 }
 
 // ============================================================================
-// 8. CARREGAR E RENDERIZAR FICHEIROS ORGANIZADOS POR ANO E TABELA
+// 8. CARREGAR E RENDERIZAR FICHEIROS FILTRADOS POR SECÇÃO E PRAZO DEDICADO
 // ============================================================================
 
 function formatarTamanho(bytes) {
@@ -1136,26 +1150,34 @@ function formatarData(stringData) {
   return d.toLocaleDateString('pt-PT', {
     day: '2-digit',
     month: '2-digit',
-    year: 'numeric'
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
   });
 }
 
-async function carregarFicheirosExistentes() {
-  const containerGeral = document.getElementById('lista-cursos-container');
-  if (!containerGeral) return;
-
-  containerGeral.innerHTML = ''; // Limpa o container principal
-
-  // Preenchimento dinâmico dos Anos Letivos
-  const anosLectivos = [
-    '2023-2024',
-    '2024-2025',
-    '2025-2026',
-    '2026-2027'
+function inicializarSelectsFormulario() {
+  const seccoes = [
+    { id: 'colaborativos', nome: 'Trabalhos Colaborativos' },
+    { id: 'grupo', nome: 'Trabalhos de Grupo' },
+    { id: 'publicacoes', nome: 'Produção Científica' }
   ];
 
+  const selectSeccao = document.getElementById('select-seccao');
+  if (selectSeccao && selectSeccao.children.length <= 1) {
+    selectSeccao.innerHTML = '<option value="" disabled selected>Selecione a secção</option>';
+    seccoes.forEach(sec => {
+      const option = document.createElement('option');
+      option.value = sec.id;
+      option.textContent = sec.nome;
+      selectSeccao.appendChild(option);
+    });
+  }
+
+  const anosLectivos = ['2023-2024', '2024-2025', '2025-2026', '2026-2027'];
   const selectAno = document.getElementById('select-ano');
-  if (selectAno) {
+  if (selectAno && selectAno.children.length <= 1) {
     selectAno.innerHTML = '<option value="" disabled selected>Selecione o ano</option>';
     anosLectivos.forEach(ano => {
       const option = document.createElement('option');
@@ -1165,7 +1187,6 @@ async function carregarFicheirosExistentes() {
     });
   }
 
-  // Preenchimento dinâmico dos Cursos
   const cursos = [
     { id: 'biologia', nome: 'Licenciatura em Biologia' },
     { id: 'quimica', nome: 'Licenciatura em Química' },
@@ -1182,9 +1203,8 @@ async function carregarFicheirosExistentes() {
   ];
 
   const selectCurso = document.getElementById('select-curso');
-  if (selectCurso) {
+  if (selectCurso && selectCurso.children.length <= 1) {
     selectCurso.innerHTML = '<option value="" disabled selected>Selecione um curso</option>';
-    
     cursos.forEach(curso => {
       const option = document.createElement('option');
       option.value = curso.id;
@@ -1192,53 +1212,70 @@ async function carregarFicheirosExistentes() {
       selectCurso.appendChild(option);
     });
   }
+}
+
+async function carregarFicheirosPorSeccao(tipoSeccao, containerId) {
+  const containerGeral = document.getElementById(containerId);
+  if (!containerGeral) return;
+
+  containerGeral.innerHTML = '';
+
+  const cursos = [
+    { id: 'biologia', nome: 'Licenciatura em Biologia' },
+    { id: 'quimica', nome: 'Licenciatura em Química' },
+    { id: 'matematica', nome: 'Licenciatura em Matemática' },
+    { id: 'economia', nome: 'Licenciatura em Economia' },
+    { id: 'gestao-empresa', nome: 'Licenciatura em Gestão de Empresa' },
+    { id: 'gestao-iscgvsm', nome: 'Licenciatura em Gestão - ISCSVSM' },
+    { id: 'enfermagem', nome: 'Licenciatura em Enfermagem' },
+    { id: 'contabilidade', nome: 'Licenciatura em Contabilidade' },
+    { id: 'agronomia', nome: 'Licenciatura em Agronomia' },
+    { id: 'turismo', nome: 'Licenciatura em Turismo' },
+    { id: 'geografia', nome: 'Licenciatura em Geografia' },
+    { id: 'educacao-infancia', nome: 'Licenciatura em Educação de Infância' }
+  ];
+
+  const agora = new Date();
 
   for (const curso of cursos) {
     try {
-      const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=${curso.id}`);
+      const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=${tipoSeccao}/${curso.id}`);
       const dados = await resposta.json();
 
-      if (!resposta.ok || !dados.estrutura) {
-        continue;
-      }
+      if (!resposta.ok || !dados.estrutura) continue;
 
-      // Filtra estritamente apenas os anos que contenham ficheiros lá dentro
       const estruturaComFicheiros = dados.estrutura.filter(
         blocoAno => blocoAno.ficheiros && blocoAno.ficheiros.length > 0
       );
 
-      // Se não houver nenhum ficheiro em nenhum ano deste curso, salta-o por completo
-      if (estruturaComFicheiros.length === 0) {
-        continue;
-      }
+      if (estruturaComFicheiros.length === 0) continue;
 
-      // Bloco Principal do Curso (só é criado se houver ficheiros válidos)
       const divCurso = document.createElement('div');
       divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
 
       const h3 = document.createElement('h3');
       h3.textContent = `Curso: ${curso.nome}`;
-      h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; position: relative !important; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
+      h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
       divCurso.appendChild(h3);
 
       for (const blocoAno of estruturaComFicheiros) {
         const divAno = document.createElement('div');
-        divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both; position: relative !important;';
+        divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both;';
 
         const h4 = document.createElement('p');
         h4.innerHTML = `<strong>Ano Lectivo:</strong> ${blocoAno.ano}`;
-        h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0; display: block; position: relative !important;';
+        h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0;';
         divAno.appendChild(h4);
 
         const divTabelaWrapper = document.createElement('div');
         divTabelaWrapper.style.cssText = 'width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 5px;';
 
         const tabela = document.createElement('table');
-        tabela.style.cssText = 'width: 100%; min-width: 500px; border-collapse: collapse; position: relative !important; display: table !important;';
+        tabela.style.cssText = 'width: 100%; min-width: 500px; border-collapse: collapse; display: table !important;';
 
         tabela.innerHTML = `
           <thead>
-            <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left; height: auto !important;">
+            <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left;">
               <th style="padding: 10px; width: 50%; white-space: nowrap;">Nome</th>
               <th style="padding: 10px; width: 25%; white-space: nowrap;">Data de Envio</th>
               <th style="padding: 10px; width: 25%; white-space: nowrap;">Tamanho</th>
@@ -1251,13 +1288,37 @@ async function carregarFicheirosExistentes() {
 
         for (const item of blocoAno.ficheiros) {
           const tr = document.createElement('tr');
-          tr.style.cssText = 'border-bottom: 1px solid #e9ecef; height: auto !important;';
-          tr.innerHTML = `
-            <td style="padding: 10px; word-break: break-word;">
+          tr.style.cssText = 'border-bottom: 1px solid #e9ecef;';
+
+          let conteudoColunaNome = '';
+          const dataEnvioFicheiro = new Date(item.data);
+          let linkBloqueado = false;
+
+          // LÓGICA DE BLOQUEIO BASEADA NO PRAZO DA SECÇÃO CORRESPONDENTE
+          if (typeof PERIODOS_SUBMISSAO !== 'undefined' && PERIODOS_SUBMISSAO[tipoSeccao]) {
+            const prazo = PERIODOS_SUBMISSAO[tipoSeccao];
+            const foiEnviadoNoPeriodoAtual = dataEnvioFicheiro >= prazo.inicio;
+            const prazoAindaAtivo = agora < prazo.fim;
+
+            if (foiEnviadoNoPeriodoAtual && prazoAindaAtivo) {
+              linkBloqueado = true;
+            }
+          }
+
+          if (linkBloqueado) {
+            conteudoColunaNome = `
+              <span style="color: #6c757d; cursor: not-allowed;" title="O link ficará disponível após o encerramento do prazo.">
+                ${item.nome} 🔒 <em style="font-size: 0.85em; color: #d93025; font-style: normal;">(Pendente)</em>
+              </span>`;
+          } else {
+            conteudoColunaNome = `
               <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">
                 ${item.nome}
-              </a>
-            </td>
+              </a>`;
+          }
+
+          tr.innerHTML = `
+            <td style="padding: 10px; word-break: break-word;">${conteudoColunaNome}</td>
             <td style="padding: 10px; color: #555; white-space: nowrap;">${formatarData(item.data)}</td>
             <td style="padding: 10px; color: #555; white-space: nowrap;">${formatarTamanho(item.tamanho)}</td>
           `;
@@ -1272,9 +1333,19 @@ async function carregarFicheirosExistentes() {
       containerGeral.appendChild(divCurso);
 
     } catch (erro) {
-      console.warn(`Erro ao consultar o curso ${curso.id}:`, erro);
+      console.warn(`Erro ao consultar a secção ${tipoSeccao} para o curso ${curso.id}:`, erro);
     }
   }
+}
+
+async function carregarFicheirosExistentes() {
+  inicializarSelectsFormulario();
+
+  await Promise.all([
+    carregarFicheirosPorSeccao('colaborativos', 'lista-colaborativos-container'),
+    carregarFicheirosPorSeccao('grupo', 'lista-grupo-container'),
+    carregarFicheirosPorSeccao('publicacoes', 'lista-publicacoes-container')
+  ]);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
