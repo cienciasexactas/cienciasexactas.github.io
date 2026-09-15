@@ -478,7 +478,7 @@
         </section>
 
         <!-- Áreas de Especialização -->
-        <section id="areass" class="conteudo-seccao" data-grupo="estat2" data-capitulo="1">
+        <section id="areas" class="conteudo-seccao" data-grupo="estat2" data-capitulo="1">
             <h2>Áreas de Especialização (2.º Ciclo)</h2>
             <div class="grid">
                 <div class="card">
@@ -672,6 +672,10 @@
                 <b>Técnicas de Análise e Visualização:</b> <azul>Representação Gráfica e Tabular</azul>: Tabelas de distribuição de frequências (absolutas e relativas), gráficos de barras, colunas ou setores ("tarte"). <azul>Medidas Resumo Permitidas</azul>: A moda é a única medida de tendência central aplicável a qualquer variável qualitativa (nominal ou ordinal). 
                 
                 Nas variáveis qualitativas ordinais, a mediana e os percentis/quartis também podem ser legitimamente calculados, já que existe uma ordenação hierárquica implícita entre as suas categorias.
+
+                <figure id="figura-1" class="tabela-imagem-container">
+                    <img src="TipodeVariavel.png" alt="Tipo de Variável">
+                </figure>
 
                 <div class="texto-livreAuto">
                     <h2> Escala de Mensuração </h2>
@@ -2142,7 +2146,7 @@
                                     <th>Casse</th> <td>50 ⊢ 60</td> <td>60 ⊢ 70</td> <td>70 ⊢ 80</td> <td>80 ⊢ 90</td> <td>90 ⊢ 100</td> <td>100 ⊢ 110</td> <td>110 ⊢ 120</td> <td><b>Soma</b></td>
                                 </tr>
                                 <tr>
-                                    <th>$F_i$</th> <td>18</td> <td>28</td> <td>49</td> <td>66</td> <td>40</td> <td>33</td> <td>16</td> <td><b>250</b></td>
+                                    <th>$f_i$</th> <td>18</td> <td>28</td> <td>49</td> <td>66</td> <td>40</td> <td>33</td> <td>16</td> <td><b>250</b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2152,7 +2156,7 @@
         </section>
 
         <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-        <section id="medidas-de-dispersao" class="conteudo-seccao" data-grupo="estat1">
+        <section id="medidas-de-dispersao" class="conteudo-seccao" data-grupo="estat1" data-capitulo="8">
             <h2>MEDIDAS DE DISPERSÃO</h2>
             <div class="texto-livreAuto">
 
@@ -2166,7 +2170,12 @@
                 
                 A <b><azul>Amplitude Total</azul> ($A$)</b> é a medida de variabilidade mais simples. Corresponde à diferença absoluta entre o maior e o menor valor observados no conjunto de dados:
                 
-                $$A = X_{\max} - X_{\min}$$
+                <div class="equacao" id="equacao-24">
+                    \begin{equation} 
+                    A = X_{\max} - X_{\min}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
                 
                 Apesar de ser de fácil cálculo, a amplitude possui limitações analíticas significativas, pois depende exclusivamente dos dois valores extremos da distribuição, ignorando a dispersão de todas as observações intermédias e sendo altamente sensível a outliers.
                 
@@ -2178,33 +2187,371 @@
                 
                 Para evitar que os desvios positivos e negativos em relação à média se anulem ($\sum (X_i - \overline{X}) = 0$), eleva-se cada desvio ao quadrado. A variância amostral ($S^2$) corresponde, assim, à média dos desvios quadráticos dividida pelos graus de liberdade ($n - 1$):
                 
-                Cenário 1: Variância para Dados Não Agrupados (Discretos ou Contínuos)Para uma amostra de tamanho $n$ com observações não agrupadas $X_1, X_2, \ldots, X_n$, a variância amostral ($S^2$) é calculada por:
+                <div class="texto-livreAuto">
+                    <h4> <ver>Cenário 1</ver>: Dados Não Agrupados (Discretos ou Contínuos)</h4>
+                </div>
                 
-                $$S^2 = \frac{\sum_{i=1}^{n} (X_i - \overline{X})^2}{n - 1} = \frac{\sum_{i=1}^{n} X_i^2 - \frac{\left(\sum_{i=1}^{n} X_i\right)^2}{n}}{n - 1} \tag{3.5}$$
+                Para uma amostra de tamanho $n$ com observações não agrupadas $X_1, X_2, \ldots, X_n$, a variância amostral ($S^2$) é calculada por:
                 
-                Onde: $S^2$: Variância amostral. $X_i$: $i$-ésima observação individual.$\overline{X}$: Média aritmética amostral. $n$: Número total de observações na amostra. $n - 1$: Graus de liberdade (fator de correção para estimador não viesado da variância populacional $\sigma^2$).
+                <div class="equacao" id="equacao-25">
+                    \begin{equation} 
+                    S^2 = \frac{\sum_{i=1}^{n} (X_i - \overline{X})^2}{n - 1} = \frac{\sum_{i=1}^{n} X_i^2 - \frac{\left(\sum_{i=1}^{n} X_i\right)^2}{n}}{n - 1}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                onde: $S^2$ é a variância amostral. $X_i$ é a $i$-ésima observação individual.$\overline{X}$ é a média aritmética amostral. $n$ é o número total de observações na amostra. $n - 1$ é o grau de liberdade (fator de correção para estimador não viesado da variância populacional $\sigma^2$).
 
+                <div id="exercicio-15" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: A <a href="#tabela-20"></a> apresenta as distâncias percorridas (em quilómetros) por um veículo comercial para efetuar a entrega de $10$ encomendas ($n = 10$) ao longo de um dia de trabalho.Com base nesses dados, determine a média aritmética e calcule a variância amostral da distância percorrida.
+
+                    <div class="tabela-container">
+                        <table id="tabela-20" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Distâncias percorridas ($km$)</caption>
+                            <tbody>
+                                <tr>
+                                    <td>12.4</td> <td>22.6</td> <td>18.9</td> <td>9.7</td> <td>14.5</td> <td>22.5</td> <td>26.3</td> <td>17.7</td> <td>31.2</td> <td>20.4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4> <ver>Cenário 2</ver>: Dados Discretos Agrupados ou Contínuos Agrupados em Classe</h4>
+                </div>
+                
+                Quando os dados se encontram organizados numa tabela de distribuição de frequências com $k$ grupos ou classes, a fórmula da variância amostral ($S^2$) deve ponderar as observações pelas respetivas frequências absolutas ($f_i$):
+                
+                <div class="equacao" id="equacao-26">
+                    \begin{equation} 
+                    S^2 = \frac{\sum_{i=1}^{k} (X_i - \overline{X})^2 \cdot f_i}{n - 1} = \frac{\sum_{i=1}^{k} X_i^2 \cdot f_i - \frac{\left(\sum_{i=1}^{k} X_i \cdot f_i\right)^2}{n}}{n - 1}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                onde: $X_i$ é o valor do $i$-ésimo grupo (para dados discretos) ou ponto médio da $i$-ésima classe ($X_i = \frac{l_i + u_i}{2}$, para dados contínuos).
+                
+                <blockquote> <g><b>Importante</b></g>: No caso de dados contínuos agrupados em intervalos de classe, assume-se a premissa de distribuição uniforme das observações no interior de cada intervalo, adotando-se o ponto médio $X_i$ como o valor representativo da classe. </blockquote>
+
+                <div id="exercicio-16" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: A <a href="#tabela-21"></a> apresenta a distribuição de frequências do número de golos marcados pela equipa do Ubatuba ao longo dos seus últimos $30$ jogos ($n = 30$).Com base nesses dados determine a variância amostral ($S^2$) do desempenho ofensivo da equipa.
+                
+                    <div class="tabela-container">
+                        <table id="tabela-21" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Desempenho Desportivo</caption>
+                            <tbody>
+                                <tr>
+                                    <th>N.º de Golos</th> <td>0</td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> <td><b>Soma</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$f_i$</th> <td>5</td> <td>8</td> <td>6</td> <td>4</td> <td>4</td> <td>2</td> <td>1</td> <td><b>30</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$fr_i$</th> <td>16.67</td> <td>26.67</td> <td>20</td> <td>13.33</td> <td>13.33</td> <td>6.67</td> <td>3.33</td> <td><b>100</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$F_i$</th> <td>5</td> <td>13</td> <td>19</td> <td>23</td> <td>27</td> <td>29</td> <td>30</td> <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>   
+
+                <div id="exercicio-17" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Um estudo pediátrico realizado com $100$ recém-nascidos ($n = 100$) recolheu dados sobre o peso corporal dos bebés ao nascer, com o objetivo de avaliar a variabilidade do peso em função de fatores genéticos e pré-natais.Os dados encontram-se agrupados em intervalos de classe na <a href="#tabela-22"></a>, acompanhados das respetivas frequências absolutas ($f_i$).Com base nessa distribuição determine a variância amostral ($S^2$) do peso dos bebés.
+
+                    <div class="tabela-container">
+                        <table id="tabela-22" class="tabela-frequencias">
+                        <caption><span class="rotulo-tabela"></span> - Peso dos recém-nascidos (em $kg$) agrupados em classe</caption>
+                            <tbody>
+                                <tr>
+                                    <th>Casse</th> <td>2.0 ⊢ 2.5</td> <td>2.5 ⊢ 3.0</td> <td>3.0 ⊢ 3.5</td> <td>3.5 ⊢ 4.0</td> <td>4.0 ⊢ 4.5</td> <td><b>Soma</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$f_i$</th> <td>10</td> <td>24</td> <td>31</td> <td>22</td> <td>13</td> <td><b>100</b></td>
+                                </tr>
+                                <tr>
+                                    <th>$F_i$</th> <td>10</td> <td>34</td> <td>65</td> <td>87</td> <td>100</td> <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2>Variância ($S^2$)</h2>
+                </div>
+
+                Como a <b><azul>Variância ($S^2$)</azul></b> resulta da soma dos desvios elevados ao quadrado, a sua unidade de medida fica expressa no quadrado da unidade original dos dados (por exemplo, $\text{kg}^2$, $\text{km}^2$ ou $\text{€}^2$). Essa alteração de escala dificulta a interpretação direta e a comparação com a média aritmética.
+                
+                Para reverter essa elevação quadrática e restituir a escala original da variável, extrai-se a raiz quadrada positiva da variância. Esta medida é denominada desvio-padrão ($S$ para amostras ou $\sigma$ para populações):
+                
+                <div class="equacao" id="equacao-27">
+                    \begin{equation} 
+                    S = \sqrt{S^2}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                <b><azul>Propriedades e Interpretação:</azul></b>
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Escala Original</b>: O desvio-padrão é expresso na mesma unidade de medida das observações e da média aritmética.
+                        </li>
+                        <li>
+                            <b>Medida de Variabilidade</b>: Quantifica o afastamento médio dos dados em relação à média. Quanto menor for o desvio-padrão, mais homogéneo é o conjunto de dados.
+                        </li>
+                        <li>
+                            <b>Não Negatividade</b>: $S \ge 0$, sendo $S = 0$ se e somente se todas as observações forem estritamente idênticas.
+                        </li>                        
+                    </ul>
+                </div>
+
+                <div id="exercicio-18" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Considere os resultados da variância amostral ($S^2$) obtidos nos <a href="#exercicio-15"></a>, <a href="#exercicio-16"></a> e <a href="#exercicio-17"></a>. Com base nas variâncias calculadas em cada caso, determine o respetivo desvio-padrão amostral ($S$) e interprete os resultados na unidade original das variáveis.
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2>Coeficiente de Variação ($CV$)</h2>
+                </div>
+
+                O <azul><b>Coeficiente de Variação ($CV$)</b></azul> é uma medida de dispersão relativa que quantifica a magnitude do desvio-padrão em relação à média aritmética, expressa habitualmente em percentagem.
+                
+                Ao contrário da variância e do desvio-padrão, o $CV$ é uma grandeza adimensional. Esta propriedade torna-o a medida ideal para:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Comparar a variabilidade</b> entre dois ou mais conjuntos de dados que possuem unidades de medida distintas (ex.: comparar a variabilidade do peso em $\text{kg}$ com a da altura em $\text{cm}$).
+                        </li>
+                        <li>
+                            <b>Comparar a dispersão</b> entre conjuntos de dados com a mesma unidade de medida, mas com médias de ordens de grandeza substancialmente diferentes.
+                        </li>                        
+                    </ul>
+                </div>
+                
+                <div class="equacao" id="equacao-28">
+                    \begin{equation} 
+                    CV = \left( \frac{S}{\overline{X}} \right) \cdot 100\%
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                                
+                <b><azul>Critérios Gerais de Homogeneidade:</azul></b>
+                
+                Embora os limiares de classificação possam variar consoante a área de aplicação (ex.: agronomia, controlo de qualidade industrial ou ciências da saúde), adota-se frequentemente a seguinte regra prática:
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            $CV \le 30\% \quad \longrightarrow \quad$ <b>Baixa dispersão / Alta homogeneidade</b>: O conjunto de dados é considerado razoavelmente homogéneo, sendo a média aritmética uma medida altamente representativa da série.
+                        </li>
+                        <li>
+                            $CV > 30\% \quad \longrightarrow \quad$ <b>Alta dispersão / Heterogeneidade</b>: O conjunto de dados é considerado heterogéneo, indicando elevada variabilidade em torno da média.
+                        </li>                        
+                    </ul>
+                </div>
+
+                <div id="exercicio-19" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Considere os resultados do desvio-padrão amostral ($S$) obtidos no <a href="#exercicio-18"></a>. Com base nesses resultados: <i>i)</i> Calcule o coeficiente de variação ($CV$) para cada uma das três séries de dados. <i>ii)</i> Classifique o grau de homogeneidade de cada conjunto de dados e identifique qual das variáveis apresenta a menor variabilidade relativa em torno da média.
+                </div>
             </div>
         </section>
 
         <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-        <section id="medidas-de-forma" class="conteudo-seccao" data-grupo="estat1">
+        <section id="medidas-de-forma" class="conteudo-seccao" data-grupo="estat1" data-capitulo="9">
             <h2>MEDIDAS DE FORMA</h2>
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                As medidas de assimetria (<i>skewness</i>) e curtose (<i>kurtosis</i>) permitem caracterizar a forma da distribuição dos elementos da população amostrada em torno da média (Maroco, 2014).
 
+                <div class="texto-livreAuto">
+                    <h2>Assimetria (Skewness)</h2>
+                </div>
+
+                As <b><azul>medidas de assimetria</azul></b> quantificam a deformação ou o desvio de uma distribuição de frequências em relação a uma forma perfeitamente simétrica em torno da média. A distribuição desta medida pode ser classificada como:
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Distribuição Simétrica:</b> A curva apresenta simetria perfeita em relação ao centro. A média, a mediana e a moda coincidem no mesmo ponto: $\overline{X} = M_d = M_o$
+                        </li>
+                        <li>
+                            <b>Assimetria Positiva (à Direita):</b> Os dados concentram-se no lado esquerdo da distribuição e a cauda estende-se para os valores mais elevados (à direita). A média é puxada pelos valores extremos positivos: $\overline{X} > M_d > M_o$
+                        </li>
+                        <li>
+                            <b>Assimetria Negativa (à Esquerda):</b> Os dados concentram-se no lado direito da distribuição e a cauda estende-se para os valores mais baixos (à esquerda). A média é puxada pelos valores extremos negativos: $\overline{X} < M_d < M_o$
+                        </li>
+                    </ul>
+                </div>
+
+                <figure id="figura-3" class="tabela-imagem-container">
+                    <img src="GAssimetria.png" alt="Tipo de Variável">
+                </figure>
+                
+                <div class="texto-livreAuto">
+                    <h3>Primeiro Coeficiente de Assimetria de Pearson ($A_{s_1}$)</h3>
+                </div>
+                
+                O $1^\circ$ coeficiente de assimetria de Pearson avalia o desvio entre a média aritmética e a moda, adimensionado pelo desvio-padrão:
+
+                <div class="equacao" id="equacao-29">
+                    \begin{equation} 
+                    A_{s_1} = \frac{\overline{X} - M_o}{S}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+               <b>Critério de Classificação:</b> 
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            $A_{s_1} = 0 \longrightarrow$ Distribuição simétrica.
+                        </li>
+                        <li>
+                            $A_{s_1} > 0 \longrightarrow$ Assimetria positiva (à direita).
+                        </li>
+                        <li>
+                            $A_{s_1} < 0 \longrightarrow$ Assimetria negativa (à esquerda).
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="exercicio-20" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Um conjunto de dados apresentou os seguintes indicadores estatísticos: $\overline{X} = 34{,}7$, $M_o = 31{,}5$, $M_d = 33{,}2$ e $S = 12{,}4$.Classifique o tipo de assimetria através da relação entre as medidas de tendência central e determine o $1^\circ$ coeficiente de assimetria de Pearson ($A_{s_1}$).
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h3>Segundo Coeficiente de Assimetria de Pearson ($A_{s_2}$)</h3>
+                </div>
+                
+                Nos casos em que a moda é de difícil determinação ou a distribuição é amodal/multimodal, utiliza-se a relação empírica de Pearson ($\overline{X} - M_o \approx 3 \cdot (\overline{X} - M_d)$), resultando no $2^\circ$ coeficiente de assimetria de Pearson:
+
+                <div class="equacao" id="equacao-30">
+                    \begin{equation} 
+                    A_{s_2} = \frac{3 \cdot (\overline{X} - M_d)}{S}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+               <b>Critério de Classificação</b> (o valor absoluto do coeficiente indica a intensidade do desvio de simetria): 
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            $0 < \vert{}A_{s_2}\vert{} < 0{,}15 \longrightarrow$ Assimetria fraca.
+                        </li>
+                        <li>
+                            $0{,}15 \le \vert{}A_{s_2}\vert{} \le 1{,}00 \longrightarrow$ Assimetria moderada.
+                        </li>
+                        <li>
+                            $\vert{}A_{s_2}\vert{} > 1{,}00 \longrightarrow$ Assimetria forte.
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="exercicio-21" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Considere as estatísticas do <a href="#exercicio-20"></a>. Determine o $2^\circ$ coeficiente de assimetria de Pearson ($A_{s_2}$) e classifique a sua intensidade.
+                </div>
+                
+                <div class="texto-livreAuto">
+                    <h3>Coeficiente Quartílico de Assimetria de Bowley ($A_{s_B}$)</h3>
+                </div>
+                
+                O coeficiente de Bowley (ou assimetria quartílica) é uma medida robusta baseada exclusivamente em estatísticas de posição (quartis e mediana), sendo imune a outliers extremos nas caudas:
+
+                <div class="equacao" id="equacao-31">
+                    \begin{equation} 
+                    A_{s_B} = \frac{Q_3 + Q_1 - 2 \cdot M_d}{Q_3 - Q_1} = \frac{(Q_3 - M_d) - (M_d - Q_1)}{AIQ}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+               <b>Critério de Classificação:</b> 
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            $A_{s_B} = 0 \longrightarrow$ Distribuição simétrica ($Q_3 - M_d = M_d - Q_1$).
+                        </li>
+                        <li>
+                            $A_{s_B} > 0 \longrightarrow$ Assimetria positiva (à direita).
+                        </li>
+                        <li>
+                            $A_{s_B} < 0 \longrightarrow$ Assimetria negativa (à esquerda).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2>Curtose (<i>Kurtosis</i>)</h2>
+                </div>
+
+                 A <b><azul>curtose</azul></b> é uma medida de forma que avalia o grau de achatamento ou de afunilamento da curva de uma distribuição de frequências em relação à Distribuição Normal (curva gaussiana padrão). Ela indica a concentração de dados em redor do centro (pico) e a espessura das caudas (tails) da distribuição. A Classificação desta medida quanto ao achatamento, pode ser:
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Mesocúrtica</b> ($K = 0,263$): Apresenta o grau de achatamento e caudas equivalentes aos de uma Distribuição Normal padrão. Serve como ponto de referência.
+                        </li>
+                        <li>
+                            <b>Leptocúrtica</b> ($K < 0,263$): Apresenta uma curva mais afunilada, com pico pronunciado e caudas mais pesadas/longas (maior probabilidade de ocorrência de valores extremos/discrepantes).
+                        </li>
+                        <li>
+                            <b>Platicúrtica</b> ($K > 0,263$): Apresenta uma curva mais achatada, com topo aplanado e caudas mais leves/curtas (menor concentração em torno do centro).
+                        </li>
+                    </ul>
+                </div>
+
+                <figure id="figura-3" class="tabela-imagem-container">
+                    <img src="GCurtose.png" alt="Tipo de Variável">
+                </figure>
+                
+                <div class="texto-livreAuto">
+                    <h3>Coeficiente Percentílico de Curtose ($K$)</h3>
+                </div>
+
+               O coeficiente percentílico de curtose ($K$) é uma medida clássica baseada em separatrizes, definida pela razão entre a metade da amplitude interquartil e a amplitude entre o $90^\circ$ e o $10^\circ$ percentil:
+               
+                <div class="equacao" id="equacao-32">
+                    \begin{equation} 
+                    K = \frac{Q_3 - Q_1}{2 \cdot (P_{90} - P_{10})} = \frac{AIQ}{2 \cdot (P_{90} - P_{10})}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+            </div>
         </section>
 
 
         <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
-        <section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1">
+        <section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1" data-capitulo="10">
             <h2>EXPLORAÇÃO DE DADOS BI-VARIADOS </h2>
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                O capítulo anterior abordou a estatística descritiva univariada, concentrando-se no comportamento isolado de uma única variável. Este capítulo introduz a estatística descritiva bivariada, dedicada ao estudo simultâneo de duas variáveis ($X$ e $Y$).
+                
+                O <azul>principal objetivo</azul> da análise bivariada é investigar a existência, a natureza e a intensidade da relação entre duas variáveis. Essas relações manifestam-se na forma de associações (para variáveis qualitativas) ou de correlações (para variáveis quantitativas).
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Distribuições Conjuntas de Frequências</b>: Organização estruturada em tabelas de contingência (cross-tabulation).
+                        </li>
+                        <li>
+                            <b>Leptocúrtica</b> ($K < 0,263$): Apresenta uma curva mais afunilada, com pico pronunciado e caudas mais pesadas/longas (maior probabilidade de ocorrência de valores extremos/discrepantes).
+                        </li>
+                        <li>
+                            <b>Platicúrtica</b> ($K > 0,263$): Apresenta uma curva mais achatada, com topo aplanado e caudas mais leves/curtas (menor concentração em torno do centro).
+                        </li>
+                    </ul>
+                </div>                
+                A análise desenvolve-se através de três pilares fundamentais:
+                
+                Representações Gráficas: Diagramas de dispersão (scatter plots) e mapas perceptuais (análise de correspondência).Medidas-Resumo: Métricas numéricas que quantificam a força e a direção da relação.
 
             </div>
             <div class="bloco-container">
@@ -2233,7 +2580,7 @@
         </section>
 
         <!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (SUB-MENU) -->
-        <section id="medidas-de-associacao" class="conteudo-seccao" data-grupo="estat2">
+        <section id="medidas-de-associacao" class="conteudo-seccao" data-grupo="estat2" data-capitulo="11">
             <h2>ASSOCIAÇÃO ENTRE VARIÁVEIS</h2>
             <div class="texto-livreAuto">
 
@@ -2245,7 +2592,7 @@
 
 
         <!-- ASSOCIAÇÃO ENTRE VARIÁVEIS (MENU PRINCIPAL) -->
-        <section id="medidas-de-correlacao" class="conteudo-seccao" data-grupo="estat2">
+        <section id="medidas-de-correlacao" class="conteudo-seccao" data-grupo="estat2" data-capitulo="12">
             <h2>CORRELAÇÃO ENTRE VARIÁVEIS</h2>
             <div class="texto-livreAuto">
 
