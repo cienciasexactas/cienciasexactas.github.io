@@ -2457,23 +2457,21 @@
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-compress-arrows-alt"></i></span>
                         <h3>Associação entre Variáveis</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
-                        áreas do saber.</p>
-                    <a href="#medidas-de-associacao" class="bloco-btn">Ver Cursos</a>
+                    Explore como duas ou mais variáveis categóricas se relacionam. Analise tabelas de contingência e testes de independência para identificar padrões de associação.
+                    <a href="#medidas-de-associacao" class="bloco-btn">Ver Associação</a>
                 </div>
 
                 <!-- BLOCO 2 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-exchange-alt"></i></span>
                         <h3>Correlação entre Variáveis</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
-                        oportunidades disponíveis.</p>
-                    <a href="#medidas-de-correlacao" class="bloco-btn">Área do Estudante</a>
+                    Meça a força e a direção da relação linear entre variáveis quantitativas. Calcule coeficientes de correlação (como Pearson e Spearman) para orientar suas análises.
+                    <a href="#medidas-de-correlacao" class="bloco-btn">Ver Correlação</a>
                 </div>
             </div>
         </section>
@@ -2483,9 +2481,560 @@
             <h2>ASSOCIAÇÃO ENTRE VARIÁVEIS</h2>
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                O objetivo da análise bivariada entre duas variáveis qualitativas (ou categóricas) é verificar a dependência estocástica entre elas e mensurar a intensidade dessa associação.
 
+                <div class="texto-livreAuto">
+                    <h2>Tabelas de Contingência</h2>
+                </div>
+
+                A forma mais simples e direta de sintetizar o comportamento conjunto de duas variáveis qualitativas é por meio de uma tabela de distribuição conjunta de frequências, também conhecida como tabela de contingência, tabela de classificação cruzada (cross-tabulation) ou tabela de correspondência.
+                
+                Essa estrutura apresenta, de forma simultânea, as frequências absolutas ou relativas resultantes do cruzamento das categorias da variável $X$ e da variável $Y$:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Variável de Linha</b> ($X$): Representa tradicionalmente a primeira variável categórica em estudo, cujas categorias definem as linhas da tabela ($i = 1, 2, \ldots, r$).
+                        </li>
+                        <li>
+                            <b>Variável de Coluna </b>($Y$): Representa a segunda variável categórica em estudo, cujas categorias definem as colunas da tabela ($j = 1, 2, \ldots, c$).
+                        </li>
+                        <li>
+                            <b>Frequências Conjuntas</b> ($f_{ij}$): Indicam o número de observações que pertencem simultaneamente à categoria $i$ de $X$ e à categoria $j$ de $Y$.
+                        </li>
+                        <li>
+                            <b>Totais Marginais</b>: Correspondem às somas das frequências ao longo de cada linha (total marginal de $X$) e ao longo de cada coluna (total marginal de $Y$). A soma de todos os totais marginais resulta no tamanho total da amostra ($n$).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tabela-container">
+                    <table id="tabela-23" class="tabela-frequencias">
+                        <colgroup>
+                            <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
+                        </colgroup>
+                        <caption><span class="rotulo-tabela"></span> - Tabela de Dupla Entrada (Contingência)</caption>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Variável X \ Variável Y</th>  <th colspan="4" class="com-borda-baixo">Variável Y</th>  <th rowspan="2">Total Marginal (X)</th>
+                            </tr>
+                            <tr>
+                                <th>Categoria $Y_1$</th>  <th>Categoria $Y_2$</th>  <th>$\cdots$</th>  <th>Categoria $Y_c$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Categoria $X_1$</td> <td>$f_{11}$</td> <td>$f_{12}$</td> <td>$\cdots$</td> <td>$f_{1c}$</td> <td>$f_{1\cdot}$</td>
+                            </tr>
+                            <tr>
+                                <td>Categoria $X_2$</td> <td>$f_{21}$</td> <td>$f_{22}$</td> <td>$\cdots$</td> <td>$f_{2c}$</td> <td>$f_{2\cdot}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\vdots$</td> <td>$\vdots$</td> <td>$\vdots$</td> <td>$\ddots$</td> <td>$\vdots$</td> <td>$\vdots$</td>
+                            </tr>
+                            <tr>
+                                <td>Categoria $X_r$</td> <td>$f_{r1}$</td> <td>$f_{r2}$</td> <td>$\cdots$</td> <td>$f_{rc}$</td> <td>$f_{r\cdot}$</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="linha-total">
+                                <th>Total Marginal (Y)</th> <td>$f_{\cdot 1}$</td> <td>$f_{\cdot 2}$</td> <td>$\cdots$</td> <td>$f_{\cdot c}$</td> <td>$n$</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <blockquote> <g><b>Importante</b></g>:Diferente dos gráficos (como o diagrama de dispersão), onde as variáveis são associadas aos eixos das abscissas ($X$) e ordenadas ($Y$), nas tabelas de contingência a disposição refere-se a linhas e colunas. Caso os dados sejam posteriormente representados graficamente (como num mapa perceptual de análise de correspondência), a variável $X$ associa-se ao eixo horizontal (abscissas) e a variável $Y$ ao eixo vertical (ordenadas).</blockquote>
+
+                <div id="exemplo-9" class="bloco-exemplo">
+                    <span class="rotulo-exemplo"></span>: Foi realizado um estudo com $200$ indivíduos para analisar o comportamento conjunto das variáveis $X$ (operadora do plano de saúde) e $Y$ (nível de satisfação). A distribuição conjunta das frequências absolutas, acompanhada dos totais marginais, é apresentada na <a href="#tabela-24"></a>.
+
+                    <div class="tabela-container">
+                        <table id="tabela-24" class="tabela-frequencias">
+                            <colgroup>
+                                <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
+                            </colgroup>
+                            <caption><span class="rotulo-tabela">Tabela 3.1</span> - Distribuição conjunta de frequências absolutas das variáveis em estudo.</caption>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Operadora</th> <th colspan="3" class="com-borda-baixo">Nível de satisfação</th> <th rowspan="2">Total</th>
+                                </tr>
+                                <tr>
+                                    <th>Baixo</th> <th>Médio</th> <th>Alto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Health</td> <td>40</td> <td>16</td> <td>12</td> <td>68</td>
+                                </tr>
+                                <tr>
+                                    <td>Viva Vida</td> <td>32</td> <td>24</td> <td>16</td> <td>72</td>
+                                </tr>
+                                <tr>
+                                    <td>Mena Saúde</td> <td>24</td> <td>32</td> <td>4</td> <td>60</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="linha-total">
+                                    <th>Total</th> <td>96</td> <td>72</td> <td>32</td> <td>200</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                A análise também pode ser efetuada com base nas frequências relativas, estendendo os conceitos estudados no Capítulo 2 para problemas univariados. Conforme salientam Bussab e Morettin (2011), existem três formas de ilustrar a proporção de cada categoria: <i>i)</i> em relação ao total geral; <i>ii)</i> em relação ao total de cada linha; <i>iii)</i> em relação ao total de cada coluna.   
+                
+                A escolha da modalidade adequada depende do objetivo da pesquisa. A Tabela 3.2 ilustra a distribuição conjunta das frequências relativas em relação ao total geral.
+
+                <div id="exemplo-10" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: Considerando os dados do <a href="#exemplo-9"></a>, ilustraremos a distribuição conjunta das frequências relativas em relação ao total geral.
+
+                    <div class="tabela-container">
+                        <table id="tabela-25" class="tabela-frequencias">
+                            <colgroup>
+                                <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
+                            </colgroup>
+                            <caption><span class="rotulo-tabela">Tabela 3.2</span> - Distribuição conjunta de frequências relativas das variáveis em estudo em relação ao total geral.</caption>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Operadora</th> <th colspan="3" class="com-borda-baixo">Nível de satisfação</th> <th rowspan="2">Total</th>
+                                </tr>
+                                <tr>
+                                    <th>Baixo</th> <th>Médio</th> <th>Alto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Health</td> <td>20%</td> <td>8%</td> <td>6%</td> <td>34%</td>
+                                </tr>
+                                <tr>
+                                    <td>Viva Vida</td> <td>16%</td> <td>12%</td> <td>8%</td> <td>36%</td>
+                                </tr>
+                                <tr>
+                                    <td>Mena Saúde</td> <td>12%</td> <td>16%</td> <td>2%</td> <td>30%</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="linha-total"> <th>Total</th> <td>48%</td>
+                                    <td>36%</td> <td>16%</td> <td>100%</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                Inicialmente, analisam-se os totais marginais das linhas e colunas, os quais fornecem as distribuições unidimensionais de cada variável. Os totais marginais das linhas correspondem à soma das frequências relativas de cada categoria da variável Operadora, enquanto os das colunas equivalem à soma de cada categoria da variável Nível de satisfação.
+                
+                Dessa forma, conclui-se que $34\%$ dos indivíduos são clientes da operadora Total Health, $36\%$ pertencem à Viva Vida e $30\%$ à Mena Saúde. Analogamente, observa-se que $48\%$ da amostra apresenta insatisfação com as operadoras (baixo nível de satisfação), $36\%$ avalia o nível de satisfação como médio e apenas $16\%$ o classifica como alto.
+                
+                No tocante à distribuição conjunta de frequências relativas (tabela de contingência), constata-se, por exemplo, que $20\%$ dos indivíduos utilizam a operadora Total Health e reportam baixo nível de satisfação. O mesmo raciocínio aplica-se às demais células da tabela.
+
+                <div id="exercicio-22" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Considere os dados do <a href="#exemplo-9"></a>. Apresente e interprete a distribuição conjunta de frequências relativas das variáveis em estudo em relação ao total de cada coluna.
+                </div>
+
+                <div id="exercicio-23" class="bloco-exercicio">
+                    <span class="rotulo-exercicio"></span>: Considere os dados do <a href="#exemplo-9"></a>. Apresente e interprete a distribuição conjunta de frequências relativas das variáveis em estudo em relação ao total de cada linha.
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h2>Medidas de Associação</h2>
+                </div>
+
+                As principais medidas empregadas para mensurar a associação entre duas variáveis qualitativas são:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            A <b>estatística qui-quadrado</b> ($\chi^2$), aplicável a variáveis qualitativas nominais e ordinais;
+                        </li>
+                        <li>
+                            O <b>coeficiente <i>Phi</i></b>, o coeficiente de contingência e o coeficiente $V$ de Cramer, empregados para variáveis nominais e fundamentados na estatística qui-quadrado;
+                        </li>
+                        <li>
+                            O coeficiente de Spearman, indicado para variáveis ordinais.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Estatística qui-quadrado</h4>
+                </div>
+                
+                A <b><azul>estatística qui-quadrado</azul></b> ($\chi^2$) mensura a discrepância entre uma tabela de contingência com frequências observadas e uma tabela de contingência esperada, sob a hipótese nula de ausência de associação entre as variáveis analisadas. Caso a distribuição de frequências observadas seja idêntica à de frequências esperadas, a estatística qui-quadrado assume valor igual a zero. Dessa forma, valores reduzidos de $\chi^2$ indicam independência entre as variáveis.
+                
+                A estatística $\chi^2$ é expressa por:
+                
+                <div class="equacao" id="equacao-33">
+                    \begin{equation} 
+                    \chi^2 = \sum_{i=1}^{I} \sum_{j=1}^{J} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                                
+                em que:   $O_{ij}$: frequência de observações na $i$-ésima categoria da variável $X$ e na $j$-ésima categoria da variável $Y$;   $E_{ij}$: frequência esperada de observações na $i$-ésima categoria da variável $X$ e na $j$-ésima categoria da variável $Y$;   $I$: quantidade de categorias (linhas) da variável $X$;   $J$: quantidade de categorias (colunas) da variável $Y$
+
+                <div id="exemplo-11" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: Considere os dados do <a href="#exercicio-22"></a> e calcule a estatística $\chi^2$. O cálculo dos valores esperados é apresentado na <a href="#tabela-26"></a>. A título de ilustração, o valor esperado para a primeira célula é dado por $0,48 \times 68 = 32,64$.
+
+                    <div class="tabela-container">
+                        <table id="tabela-26" class="tabela-frequencias">
+                            <colgroup>
+                                <col class="col-categoria">
+                                <col class="col-dados">
+                                <col class="col-dados">
+                                <col class="col-dados">
+                                <col class="col-categoria">
+                            </colgroup>
+                            <caption><span class="rotulo-tabela">Tabela 3.6</span> - Valores esperados da Tabela 3.5, assumindo a não associação entre as variáveis.</caption>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Operadora</th>
+                                    <th colspan="3" class="com-borda-baixo">Nível de satisfação</th>
+                                    <th rowspan="2">Total</th>
+                                </tr>
+                                <tr>
+                                    <th>Baixo</th>
+                                    <th>Médio</th>
+                                    <th>Alto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Health</td>
+                                    <td>32,6 (48%)</td>
+                                    <td>24,5 (36%)</td>
+                                    <td>10,9 (16%)</td>
+                                    <td>68 (100%)</td>
+                                </tr>
+                                <tr>
+                                    <td>Viva Vida</td>
+                                    <td>34,6 (48%)</td>
+                                    <td>25,9 (36%)</td>
+                                    <td>11,5 (16%)</td>
+                                    <td>72 (100%)</td>
+                                </tr>
+                                <tr>
+                                    <td>Mena Saúde</td>
+                                    <td>28,8 (48%)</td>
+                                    <td>21,6 (36%)</td>
+                                    <td>9,6 (16%)</td>
+                                    <td>60 (100%)</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <td>96 (48%)</td>
+                                    <td>72 (36%)</td>
+                                    <td>32 (16%)</td>
+                                    <td>200 (100%)</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                Para a determinação da estatística $\chi^2$, aplica-se a <a href="#equacao-33"></a> aos dados obtidos nos <a href="#exercicio-22"></a> e <a href="#tabela-26"></a> Tabelas 3.5 e 3.6. O cálculo individual de cada termo $\frac{(O_{ij} - E_{ij})^2}{E_{ij}}$ encontra-se sumarizado na <a href="#tabela-27"></a>, juntamente com o valor total da medida $\chi^2$, resultante do somatório de todas as categorias.
+                
+                O nível de significância $\alpha$ expressa a probabilidade de rejeição de determinada hipótese nula quando esta for verdadeira. 
+                
+                O $P$-value, por sua vez, representa a probabilidade associada ao valor observado na amostra, indicando o menor nível de significância necessário para conduzir à rejeição da hipótese testada. Em outros termos, o $P$-value atua como um índice inversamente proporcional à confiabilidade do resultado amostral: quanto menor o seu valor, menor a plausibilidade da hipótese de independência.
+                
+                No contexto do teste $\chi^2$, cuja hipótese pressupõe a ausência de associação entre as variáveis analisadas, os principais pacotes estatísticos (incluindo o SPSS e o R(Studio)) fornecem automaticamente o $P$-value correspondente. 
+                
+                Assim, adotando um nível de confiança de $95\%$, se o $P$-value $< 0,05$, a hipótese de independência é rejeitada, concluindo-se pela existência de associação estatisticamente significante entre as variáveis. Por outro lado, caso o $P$-value $> 0,05$, não se rejeita a hipótese de independência.
+                
+                <div class="tabela-container">
+                    <table id="tabela-27" class="tabela-frequencias">
+                        <colgroup>
+                            <col class="col-categoria">
+                            <col class="col-dados">
+                            <col class="col-dados">
+                            <col class="col-dados">
+                        </colgroup>
+                        <caption><span class="rotulo-tabela">Tabela 3.7</span> - Cálculo da estatística $\chi^2$.</caption>
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Operadora</th>
+                                <th colspan="3" class="com-borda-baixo">Nível de satisfação</th>
+                            </tr>
+                            <tr>
+                                <th>Baixo</th>
+                                <th>Médio</th>
+                                <th>Alto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Health</td>
+                                <td>1,66</td>
+                                <td>2,94</td>
+                                <td>0,12</td>
+                            </tr>
+                            <tr>
+                                <td>Viva Vida</td>
+                                <td>0,19</td>
+                                <td>0,14</td>
+                                <td>1,74</td>
+                            </tr>
+                            <tr>
+                                <td>Mena Saúde</td>
+                                <td>0,80</td>
+                                <td>5,01</td>
+                                <td>3,27</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="equacao">
+                    \begin{equation} 
+                    \chi^2 = \sum_{i=1}^{I} \sum_{j=1}^{J} \frac{(O_{ij} - E_{ij})^2}{E_{ij}} = 15{}{,}861
+                    \end{equation}
+                </div>
+
+                As principais medidas de associação fundamentadas na estatística qui-quadrado ($\chi^2$) são o coeficiente Phi, o $V$ de Cramer e o coeficiente de contingência ($C$), todas aplicadas a variáveis qualitativas nominais.  
+                
+                Em geral, um coeficiente de associação ou correlação varia no intervalo entre $0$ e $1$, assumindo o valor $0$ na ausência de relação entre as variáveis e o valor $1$ quando há uma associação perfeita. 
+                
+                A seguir, analisa-se o comportamento de cada um desses coeficientes frente a essas propriedades.
+
+                <div class="texto-livreAuto">
+                    <h4>Coeficiente Phi</h4>
+                </div>
+
+                O <azul><b>coeficiente <i>Phi</i></b></azul> representa a medida de associação para variáveis nominais mais simples derivada do $\chi^2$, sendo expresso por:
+                
+                <div class="equacao" id="equacao-34">
+                    \begin{equation} 
+                    Phi = \sqrt{\frac{\chi^2}{n}}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                Para que o coeficiente Phi permaneça estritamente no intervalo entre $0$ e $1$, é requisito fundamental que a tabela de contingência seja de dimensão $2 \times 2$.
+                
+                <div id="exemplo-12" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: Com o objetivo de oferecer serviços de alta qualidade alinhados às expectativas do seu público-alvo, a empresa Ivanblue — atuante no segmento de moda masculina - está investindo em estratégias de segmentação de mercado. Atualmente, a organização conta com quatro lojas na cidade de Campinas, distribuídas pelas regiões Norte, Centro, Sul e Leste, e comercializa quatro categorias de produtos: gravata, camisa social, camisa polo e calça. A Tabela 3.8 sintetiza os dados de compra de $20$ consumidores, relacionando o tipo de peça ao local de aquisição. Verifique a existência de associação entre essas duas variáveis utilizando o coeficiente Phi.
+                
+                    <div class="tabela-container">
+                        <table id="tabela-28" class="tabela-frequencias">
+                            <colgroup>
+                                <col class="col-dados">
+                                <col class="col-categoria">
+                                <col class="col-categoria">
+                            </colgroup>
+                            <caption><span class="rotulo-tabela">Tabela 3.8</span> - Dados de compra de 20 consumidores.</caption>
+                            <thead>
+                                <tr>
+                                    <th>Consumidor</th>
+                                    <th>Roupa</th>
+                                    <th>Região</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Gravata</td><td>Sul</td></tr>
+                                <tr><td>2</td><td>Camisa polo</td><td>Norte</td></tr>
+                                <tr><td>3</td><td>Camisa social</td><td>Sul</td></tr>
+                                <tr><td>4</td><td>Calça</td><td>Norte</td></tr>
+                                <tr><td>5</td><td>Gravata</td><td>Sul</td></tr>
+                                <tr><td>6</td><td>Camisa polo</td><td>Centro</td></tr>
+                                <tr><td>7</td><td>Camisa polo</td><td>Leste</td></tr>
+                                <tr><td>8</td><td>Gravata</td><td>Sul</td></tr>
+                                <tr><td>9</td><td>Camisa social</td><td>Sul</td></tr>
+                                <tr><td>10</td><td>Gravata</td><td>Centro</td></tr>
+                                <tr><td>11</td><td>Calça</td><td>Norte</td></tr>
+                                <tr><td>12</td><td>Calça</td><td>Centro</td></tr>
+                                <tr><td>13</td><td>Gravata</td><td>Centro</td></tr>
+                                <tr><td>14</td><td>Camisa polo</td><td>Leste</td></tr>
+                                <tr><td>15</td><td>Calça</td><td>Centro</td></tr>
+                                <tr><td>16</td><td>Gravata</td><td>Centro</td></tr>
+                                <tr><td>17</td><td>Calça</td><td>Sul</td></tr>
+                                <tr><td>18</td><td>Calça</td><td>Norte</td></tr>
+                                <tr><td>19</td><td>Camisa polo</td><td>Leste</td></tr>
+                                <tr><td>20</td><td>Camisa social</td><td>Centro</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                Empregando o procedimento descrito para o cálculo da estatística $chi^2$, obtém-se o valor da estatística qui-quadrado $\chi^2 = 18,214$. Assim:   
+                
+                <div class="equacao">
+                    \begin{equation} 
+                    Phi = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{18,214}{20}} = 0,954
+                    \end{equation}
+                </div>
+                
+                Dado que o número de categorias de ambas as variáveis é igual a $4$ ($4 \times 4$), a condição $0 \le Phi \le 1$ deixa de ser válida, o que dificulta a interpretação direta da intensidade da associação. Pois, para que $Phi$ varie apenas entre $O$ e $1$, é necessário que a tabela de contingência seja de dimensão $2 \times 2$.
+
+                <div class="texto-livreAuto">
+                    <h4>Coeficiente de contingência</h4>
+                </div>                
+
+                O <azul><b>coeficiente de contingência</b></azul> ($C$), também <i>denominado coeficiente de contingência de Pearson</i>, constitui outra medida de associação para variáveis nominais fundamentada na estatística $\chi^2$, dada pela equação:
+                
+                <div class="equacao" id="equacao-35">
+                    \begin{equation} 
+                    C = \sqrt{\frac{\chi^2}{n + \chi^2}}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>  
+                
+                O coeficiente $C$ possui limite inferior igual a $0$, indicando ausência de relação entre as variáveis. No entanto, seu limite superior varia conforme o número de categorias da tabela, de modo que:
+                
+                <div class="equacao" id="equacao-36">
+                    \begin{equation} 
+                    0 \le C \le \sqrt{\frac{q - 1}{q}}  \qquad \qquad q = \min(I, J)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                em que $I$ e $J$ denotam, respectivamente, a quantidade de linhas e de colunas da tabela de contingência.
+                
+                Quando $C = \sqrt{\frac{q - 1}{q}}$, verifica-se a existência de uma associação perfeita; contudo, essa medida nunca atinge o valor $1$. Por essa razão, dois coeficientes de contingência só podem ser comparados diretamente se forem derivados de tabelas que possuam idêntico número de linhas e colunas.
+
+                <div id="exemplo-13" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: Calcule o coeficiente de contingência ($C$) para os dados do <a href="#exemplo-12"></a>. </div>
+
+                <div class="equacao">
+                    \begin{equation} 
+                    C = \sqrt{\frac{\chi^2}{n + \chi^2}} = \sqrt{\frac{18,214}{20 + 18,214}} = 0,690
+                    \end{equation}
+                </div>
+                
+                Como a tabela de contingência é de dimensão $4 \times 4$ ($q = \min(4,4) = 4$), o intervalo de variação para $C$ é definido por:   
+                
+                <div class="equacao">
+                    \begin{equation} 
+                    0 \le C \le \sqrt{\frac{3}{4}} \longrightarrow 0 \le C \le 0,866
+                    \end{equation}
+                </div> 
+                
+                Conclui-se, portanto, pela presença de associação entre as variáveis analisadas.
+                
+                <div class="texto-livreAuto">
+                    <h4>Coeficiente $V$ de Cramer</h4>
+                </div>                
+                
+                Outra medida de associação para variáveis nominais baseada no $\chi^2$ é o coeficiente $V$ de Cramer, determinado por:
+                
+                <div class="equacao" id="equacao-37">
+                    \begin{equation} 
+                    V = \sqrt{\frac{\chi^2}{n \cdot (q - 1)}}  \qquad \qquad q = \min(I, J)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                Para tabelas de contingência $2 \times 2$, a <a href="#equacao-37"></a> reduz-se a $V = \sqrt{\frac{\chi^2}{n}}$, que coincide com o coeficiente Phi (<a href="#equacao-34"></a>).
+                
+                O coeficiente $V$ de Cramer configura-se como uma alternativa superior aos coeficientes Phi e de contingência ($C$), uma vez que seu valor permanece estritamente delimitado ao intervalo $[0, 1]$, independentemente das dimensões da tabela.
+                
+                O valor $0$ indica ausência completa de associação, enquanto o valor $1$ aponta para uma associação perfeita. Consequentemente, o coeficiente $V$ de Cramer permite a comparação direta entre tabelas de contingência de diferentes dimensões.
+                
+                <div id="exemplo-14" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: Calcule o coeficiente $V$ de Cramer para os dados do <a href="#exemplo-12"></a>. </div>
+                
+                <div class="equacao">
+                    \begin{equation} 
+                    V = \sqrt{\frac{\chi^2}{n \cdot (q - 1)}} = \sqrt{\frac{18,214}{20 \cdot 3}} = 0,551
+                    \end{equation}
+                </div>
+                
+                Como $0 \le V \le 1$, confirma-se a existência de associação entre as variáveis, classificada, porém, como de intensidade moderada.
+
+                <div class="texto-livreAuto">
+                    <h4>coeficiente de Spearman</h4>
+                </div>
+                
+                O <b><azul>Coeficiente de Spearman</azul></b> ($r_{sp}$) consiste em uma medida de associação indicada para duas variáveis qualitativas ordinais.
+                
+                Inicialmente, ordena-se o conjunto de dados das variáveis $X$ e $Y$ em ordem crescente. Com base nessa ordenação, atribuem-se postos ou rankings, denotados por $k$ ($k = 1, \dots, n$). A atribuição é feita isoladamente para cada variável: o posto $1$ é conferido ao menor valor, o posto $2$ ao segundo menor, e assim sucessivamente até o posto $n$, associado ao maior valor. Em caso de empate entre observações de ordem $k$ e $k+1$, atribui-se o posto médio $k + 1/2$ a ambas.
+                
+                O cálculo do coeficiente de Spearman é realizado por meio da seguinte expressão:
+                
+                <div class="equacao" id="equacao-38">
+                    \begin{equation} 
+                    r_{sp} = 1 - \frac{6 \sum_{k=1}^{n} d_k^2}{n \cdot (n^2 - 1)}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                em que: $n$: número de observações (pares de valores); $d_k$: diferença entre os postos atribuídos na $k$-ésima observação.
+                
+                O coeficiente de Spearman varia no intervalo de $-1$ a $+1$. 
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            Se $r_{sp} = 1$, todas as diferenças $d_k$ são nulas, indicando uma associação linear positiva perfeita entre as variáveis $X$ e $Y$.
+                        </li>
+                        <li>
+                            O valor $r_{sp} = -1$ ocorre quando a soma $\sum_{k=1}^{n} d_k^2$ atinge seu valor máximo, igual a $\frac{n \cdot (n^2 - 1)}{3}$, sinalizando uma inversão total nos postos e, portanto, uma associação linear negativa perfeita.
+                        </li>
+                        <li>
+                            Por fim, quando $r_{sp} = 0$, não há associação entre as variáveis.
+                        </li>
+                    </ul>
+                </div>
+
+                <figure id="figura-1" class="tabela-imagem-container">
+                    <img src="CefSpearman.png" alt="Tipo de Variável">
+                </figure>
+
+                <div id="exemplo-15" class="bloco-exemplo">
+                <span class="rotulo-exemplo"></span>: O coordenador do curso de graduação em Administração deseja averiguar se existe associação entre as notas obtidas por $10$ alunos em duas disciplinas: Simulação e Finanças. Os dados amostrais constam na <a href="#tabela-29"></a>. Calcule o coeficiente de Spearman.
+
+                    <div class="tabela-container">
+                        <table id="tabela-29" class="tabela-frequencias">
+                            <caption><span class="rotulo-tabela"></span> - Exercício do Coeficiente de Spearman</caption>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Aluno</th>
+                                    <th colspan="2" class="com-borda-baixo">Notas</th>
+                                    <th colspan="2" class="com-borda-baixo">Postos</th>
+                                    <th colspan="2" class="com-borda-baixo">Cálculos Auxiliares</th>
+                                </tr>
+                                <tr>
+                                    <th>Simulação</th>
+                                    <th>Finanças</th>
+                                    <th>Simulação</th>
+                                    <th>Finanças</th>
+                                    <th>$d_k$</th>
+                                    <th>$d_k^2$</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td> <td>4.7</td> <td>6.6</td> <td>5</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>2</td> <td>6.3</td> <td>5.1</td> <td>7</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>3</td> <td>7.5</td> <td>6.9</td> <td>8</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>4</td> <td>5</td> <td>7.1</td> <td>6</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>5</td> <td>4.4</td> <td>3.5</td> <td>4</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>6</td> <td>3.7</td> <td>4.6</td> <td>2</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>7</td> <td>8.5</td> <td>6.8</td> <td>10</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>8</td> <td>8.2</td> <td>7.5</td> <td>9</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>9</td> <td>3.5</td> <td>4.2</td> <td>1</td> <td></td> <td></td> <td></td></tr>
+                                <tr><td>10</td> <td>4</td> <td>3.3</td> <td>3</td> <td></td> <td></td> <td></td></tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="linha-total">
+                                    <th>Total</th> <td></td> <td></td> <td></td> <td></td> <td></td> <td><b>40</b></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                Aplicando-se a <a href="#equacao-38"></a>, obtém-se:   
+                
+                <div class="equacao">
+                    \begin{equation} 
+                    r_{sp} = 1 - \frac{6 \sum_{k=1}^{n} d_k^2}{n \cdot (n^2 - 1)} = 1 - \frac{6 \times 40}{10 \times 99} = 0,758
+                    \end{equation}
+                </div>
+                
+                O valor de $0,758$ indica uma associação linear positiva forte entre o desempenho dos alunos nas duas disciplinas.
             </div>
         </section>
 
@@ -2510,19 +3059,19 @@
                 <div class="bloco-container">
                     <div class="bloco-card">
                         <div class="bloco-topo">
-                            <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="bloco-icone"><i class="fas fa-percentage"></i></span>
                             <h3>Índice de Gini</h3>
                         </div>
-                        Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.
-                        <a href="#indice-de-gini" class="bloco-btn">Ver Cursos</a>
+                        Avalie o grau de concentração e desigualdade na distribuição de dados ou rendimentos. Compreenda o cálculo do coeficiente e a interpretação da curva de Lorenz.
+                        <a href="#indice-de-gini" class="bloco-btn">Ver Índice</a>
                     </div>
                     <div class="bloco-card">
                         <div class="bloco-topo">
-                            <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                            <span class="bloco-icone"><i class="fas fa-layer-group"></i></span>
                             <h3>Índide Composto</h3>
                         </div>
-                        Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.
-                        <a href="#indice-composto" class="bloco-btn">Ver Bolsas</a>
+                        Combine múltiplos indicadores em uma única métrica sintética. Aprenda a ponderar e agregar diferentes dimensões para mensurar fenômenos complexos.
+                        <a href="#indice-composto" class="bloco-btn">Ver Índices</a>
                     </div>
                 </div>
             </div>
@@ -2570,34 +3119,31 @@
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-filter"></i></span>
                         <h3>Teorema de Bayes</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
-                        áreas do saber.</p>
-                    <a href="#teorema-de-bayes" class="bloco-btn">Ver Cursos</a>
+                    Calcule probabilidades condicionais e atualize chances à luz de novas evidências. Aplique a inferência bayesiana para a tomada de decisões sob incerteza.
+                    <a href="#teorema-de-bayes" class="bloco-btn">Ver Teorema</a>
                 </div>
 
                 <!-- BLOCO 2 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-dice"></i></span>
                         <h3>Variáveis Aleatórias</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
-                        áreas do saber.</p>
-                    <a href="#variaveis-aleatorias" class="bloco-btn">Ver Cursos</a>
+                    Compreenda os conceitos de variáveis aleatórias discretas e contínuas. Estude suas funções de probabilidade, densidade e valor esperado.
+                    <a href="#variaveis-aleatorias" class="bloco-btn">Ver Variáveis</a>
                 </div>
 
                 <!-- BLOCO 3 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-chart-area"></i></span>
                         <h3>Distribuições de Probabilidades</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
-                        oportunidades disponíveis.</p>
-                    <a href="#distribuicao-de-probabilidade" class="bloco-btn">Área do Estudante</a>
+                    Mapeie os modelos probabilísticos mais utilizados (Binomial, Poisson, Normal, entre outros) e entenda como eles descrevem o comportamento de eventos reais.
+                    <a href="#distribuicao-de-probabilidade" class="bloco-btn">Ver Distribuições</a>
                 </div>
             </div>
         </section>
@@ -2701,34 +3247,31 @@
                 <!-- BLOCO 1 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-users-slash"></i></span>
                         <h3>Teoria de Amostragem</h3>
                     </div>
-                    <p>Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias
-                        áreas do saber.</p>
-                    <a href="#inferencia-teoria-de-amostragem" class="bloco-btn">Ver Cursos</a>
+                    Domine as técnicas de seleção de amostras representativas. Explore métodos probabilísticos e não-probabilísticos para garantir a validade dos dados.
+                    <a href="#inferencia-teoria-de-amostragem" class="bloco-btn">Ver Amostragem</a>
                 </div>
 
                 <!-- BLOCO 2 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-crosshairs"></i></span>
                         <h3>Teoria de Estimação</h3>
                     </div>
-                    <p>Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e
-                        oportunidades disponíveis.</p>
-                    <a href="#inferencia-teoria-de-estimacao" class="bloco-btn">Área do Estudante</a>
+                    Estime parâmetros populacionais desconhecidos através de estimadores pontuais e intervalos de confiança com margens de erro controladas.
+                    <a href="#inferencia-teoria-de-estimacao" class="bloco-btn">Ver Estimação</a>
                 </div>
 
                 <!-- BLOCO 3 -->
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-balance-scale"></i></span>
                         <h3>Teoria de Decisão</h3>
                     </div>
-                    <p>Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de
-                        estudo e outras ajudas.</p>
-                    <a href="#inferencia-teoria-de-decisao" class="bloco-btn">Ver Bolsas</a>
+                    Aplique modelos matemáticos e estatísticos para escolher a melhor estratégia diante de cenários de risco, incerteza e cenários competitivos.
+                    <a href="#inferencia-teoria-de-decisao" class="bloco-btn">Teste de Hipóteses</a>
                 </div>
             </div>
 
@@ -2963,29 +3506,29 @@
             <div class="bloco-container">
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
                         <h3>Programas/Syllabus</h3>
                     </div>
-                    Conheça os cursos de licenciatura e pós-graduação disponíveis na USTP, distribuídos por várias áreas do saber.
-                    <a href="#programas" class="bloco-btn">Ver Cursos</a>
+                    Consulte o plano de ensino completo da disciplina, incluindo objetivos, conteúdos programáticos, cronograma de aulas e bibliografia recomendada.
+                    <a href="#programas" class="bloco-btn">Ver Programa</a>
                 </div>
 
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-tasks"></i></span>
                         <h3>Exercícios Propostos</h3>
                     </div>
-                    Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.
-                    <a href="#exercicios-propostos" class="bloco-btn">Área do Estudante</a>
+                    Pratique os conceitos estudados com listas de exercícios resolvidas e propostas, elaboradas para reforçar o aprendizado teórico.
+                    <a href="#exercicios-propostos" class="bloco-btn">Ver Exercícios</a>
                 </div>
 
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-file-signature"></i></span>
                         <h3>Testes & Exames</h3>
                     </div>
-                    Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.
-                    <a href="#testes-e-exames" class="bloco-btn">Ver Bolsas</a>
+                    Confira o calendário de avaliações, critérios de correção, enunciados e resoluções de provas e exames de semestres anteriores.
+                    <a href="#testes-e-exames" class="bloco-btn">Ver Avaliações</a>
                 </div>
             </div>
         </section>
@@ -3107,19 +3650,19 @@
             <div class="bloco-container">
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-book-open"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-user-edit"></i></span>
                         <h3>Trabalhos Individuais</h3>
                     </div>
-                    Informações úteis para os estudantes, incluindo regulamentos, direitos e deveres, associações e oportunidades disponíveis.
-                    <a href="#trabalhos-individuais" class="bloco-btn">Área do Estudante</a>
+                    Acesse as orientações, temas e prazos para o desenvolvimento das atividades práticas e projetos individuais da disciplina.
+                    <a href="#trabalhos-individuais" class="bloco-btn">Ver Trabalhos</a>
                 </div>
                 <div class="bloco-card">
                     <div class="bloco-topo">
-                        <span class="bloco-icone"><i class="fas fa-dollar-sign"></i></span>
+                        <span class="bloco-icone"><i class="fas fa-share-alt"></i></span>
                         <h3>Partilha de Conhecimento</h3>
                     </div>
-                    Conheça as oportunidades de apoio financeiro disponíveis para os estudantes, incluindo bolsas de estudo e outras ajudas.
-                    <a href="#producao-cientifica" class="bloco-btn">Ver Bolsas</a>
+                    Explore artigos, fóruns de discussão e materiais complementares para colaborar e expandir seu aprendizado com a comunidade acadêmica.
+                    <a href="#producao-cientifica" class="bloco-btn">Acessar Conteúdo</a>
                 </div>
             </div>
         </section>

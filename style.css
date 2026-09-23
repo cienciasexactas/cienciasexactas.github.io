@@ -1023,6 +1023,14 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     padding: 0 !important;
 }
 
+/* 2. A TABELA interna define o tamanho real do conteúdo */
+.tabela-container table {
+    min-width: max-content !important; /* Tamanho natural base nos dados reais */
+    width: 100% !important;            /* Ocupa 100% se a tela for grande */
+    table-layout: auto !important;     /* Ajusta colunas pelo conteúdo */
+    flex-shrink: 0 !important;         /* Impede que diminua no flexbox */
+}
+
 .tabela-container h3 {
     color: #a0a0a0;
     font-weight: normal;
@@ -1059,6 +1067,18 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     color: #111;
     border-bottom: 1px solid #eee;
     white-space: nowrap;
+}
+
+.tabela-frequencias th.com-borda-baixo {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Distribuição proporcional das colunas */
+.tabela-frequencias col.col-categoria {
+width: 24%;
+}
+.tabela-frequencias col.col-dados {
+width: 13%;
 }
 
 /* Primeira Coluna (Fundo Cinza) - Mantém apenas o que difere do th padrão */
