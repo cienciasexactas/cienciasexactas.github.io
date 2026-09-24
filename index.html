@@ -3089,7 +3089,7 @@
 
                 A covariância mensura a variação conjunta entre duas variáveis quantitativas $X$ e $Y$, sendo definida por:
                 
-                <div class="equacao" id="equacao-32">
+                <div class="equacao" id="equacao-39">
                     \begin{equation} 
                     \text{COV}(X,Y) = \frac{\sum_{i=1}^{n} (X_i - \bar{X}) \cdot (Y_i - \bar{Y})}{n - 1}
                     \end{equation}
@@ -3100,7 +3100,7 @@
                 
                 Uma das limitações da covariância reside no fato de sua magnitude ser influenciada pelas escalas das variáveis e pelo tamanho da amostra, o que pode levar a estimativas imprecisas em amostras reduzidas. O coeficiente de correlação de Pearson surge como uma alternativa para contornar essa restrição.
 
-                <div id="exemplo-10" class="bloco-exemplo">
+                <div id="exercicio-24" class="bloco-exemplo">
                     <span class="rotulo-exemplo"></span>: Uma plataforma de ensino online direcionada aos cursos de Economia e Gestão pretende investigar se o tempo de estudo semanal dedicado às disciplinas ($X$, mensurado em minutos por semana) influencia o desempenho dos estudantes na prova final ($Y$, com pontuação expressa na escala de 0 a 20 valores). A avaliação engloba os conteúdos programáticos de Fiscalidade, Auditoria, TEOE (Técnicas de Expressão Oral e Escrita), Matemática e Estatística. Para a realização desta análise, foram recolhidos os dados apresentados na <a href="#tabela-30"></a>.
                 
                     <div class="tabela-container">
@@ -3112,17 +3112,60 @@
                                     <td>57</td> <td>69</td> <td>84</td> <td>55</td> <td>61</td> <td>51</td> <td>31</td> <td>56</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Doadores ($F_i$)</th>
-                                    <td>15</td> <td>2</td> <td>6</td> <td>1</td> <td>1</td> <td>1</td>
-                                    <td>32</td> <td>2</td> <td><b>60</b></td>
+                                    <th scope="row">Dezempenho</th>
+                                    <td>5</td> <td>11</td> <td>15</td> <td>10</td> <td>12</td> <td>5</td> <td>8</td> <td>19</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                
-                3.3.3.2. Coeficiente de correlação de PearsonO coeficiente de correlação de Pearson ($\rho$) é uma medida padronizada que varia no intervalo entre $-1$ e $+1$. O sinal do coeficiente indica a direção da relação linear (se $Y$ tende a aumentar ou diminuir com o incremento de $X$), enquanto seu valor absoluto reflete a intensidade da associação: quanto mais próximo dos extremos ($-1$ ou $+1$), mais forte é a correlação.   Se $\rho > 0$, existe uma relação diretamente proporcional entre as variáveis; quando $\rho = 1$, a correlação linear positiva é perfeita.   Se $\rho < 0$, existe uma relação inversamente proporcional entre as variáveis; quando $\rho = -1$, a correlação linear negativa é perfeita.   Se $\rho = 0$, não há correlação linear entre as variáveis.   A Figura 3.35 sintetiza a escala de interpretação do coeficiente de Pearson.   Figura 3.35 — Interpretação do coeficiente de correlação de Pearson.   $\begin{array}{ccccc} \mathbf{-1} & & \mathbf{0} & & \mathbf{+1} \\ \bullet & \leftarrow------------- \rightarrow & \bullet & \leftarrow------------- \rightarrow & \bullet \\ \text{correlação linear} & & \text{não existe correlação} & & \text{correlação linear} \\ \text{negativa perfeita entre} & & \text{entre as variáveis } X \text{ e } Y & & \text{positiva perfeita entre} \\ \text{as variáveis } X \text{ e } Y & & & & \text{as variáveis } X \text{ e } Y \end{array}$   O coeficiente de correlação de Pearson ($\rho$) é definido pela razão entre a covariância das duas variáveis e o produto de seus respectivos desvios-padrão ($S$):   $$\rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{\frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}}{S_X \cdot S_Y} \quad (3.10)$$   Sendo os desvios-padrão amostrais dados por $S_X = \sqrt{\frac{\sum_{i=1}^{n} (X_i - \bar{X})^2}{n-1}}$ e $S_Y = \sqrt{\frac{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}{n-1}}$, a expressão (3.10) pode ser reescrita como:   $$\rho = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n} (X_i - \bar{X})^2} \cdot \sqrt{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}} \quad (3.11)$$   ■ EXEMPLO 9Acesse novamente o arquivo Renda_Estudo.xls e determine o coeficiente de correlação de Pearson entre as duas variáveis.   ■ SOLUÇÃOUtilizando a equação (3.10), o cálculo de $\rho$ é dado por:   $$\rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{761,336}{970,774 \cdot 1,009} = 0,777$$   O cálculo também pode ser efetuado por meio da expressão (3.11), a qual independe do tamanho amostral. O resultado obtido ($0,777$) evidencia uma correlação positiva forte entre as variáveis Renda Familiar e Anos de Estudo. 
 
+                <div class="texto-livreAuto">
+                    <h4>Coeficiente de correlação de Pearson</h4>
+                </div>
+                
+                O <b><azul>coeficiente de correlação de Pearson</azul></b> ($\rho$) é uma medida padronizada que varia no intervalo entre $-1$ e $+1$. O sinal do coeficiente indica a direção da relação linear (se $Y$ tende a aumentar ou diminuir com o incremento de $X$), enquanto seu valor absoluto reflete a intensidade da associação: <ver>quanto mais próximo dos extremos ($-1$ ou $+1$), mais forte é a correlação.</ver>
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            Se $\rho > 0$, existe uma relação diretamente proporcional entre as variáveis; quando $\rho = 1$, a correlação linear positiva é perfeita.
+                        </li>
+                        <li>
+                            Se $\rho < 0$, existe uma relação inversamente proporcional entre as variáveis; quando $\rho = -1$, a correlação linear negativa é perfeita.
+                        </li>
+                        <li>
+                            Se $\rho = 0$, não há correlação linear entre as variáveis.
+                        </li>
+                    </ul>
+                </div>
+                
+                      
+                <figure id="figura-1" class="tabela-imagem-container">
+                    <img src="CefPearson.png" alt="Tipo de Variável">
+                </figure>
+                
+                O coeficiente de correlação de Pearson ($\rho$) é definido pela razão entre a covariância das duas variáveis e o produto de seus respectivos desvios-padrão ($S$):
+                
+                <div class="equacao" id="equacao-40">
+                    \begin{equation} 
+                    \rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{\frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}}{S_X \cdot S_Y}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                Sendo os desvios-padrão amostrais dados por $S_X$ e $S_Y$, a <a href="#equacao-40"></a> pode ser reescrita como:
+
+                <div class="equacao" id="equacao-41">
+                    \begin{equation} 
+                    rho = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n} (X_i - \bar{X})^2} \cdot \sqrt{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                <div id="exercicio-25" class="bloco-exemplo">
+                    <span class="rotulo-exemplo"></span>: Considere os dados do <a href="#exercicio-24"></a>. Calcule e classifique a correlação existente entre as duas variáveis.
+                </div>
             </div>
         </section>
 
