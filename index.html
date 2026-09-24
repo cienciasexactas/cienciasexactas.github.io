@@ -2423,9 +2423,9 @@
         </section>
 
 
-        <!-- ESTATÍSTICA INFERENCIAL (MENU PRINCIPAL) -->
+        <!-- EXPLORAÇÃO DE DADOS BIVARIADOS -->
         <section id="exploracao-de-dados-bivariados" class="conteudo-seccao" data-grupo="estat1" data-capitulo="10">
-            <h2>EXPLORAÇÃO DE DADOS BIVARIADOS </h2>
+            <h2>EXPLORAÇÃO DE DADOS BIVARIADOS</h2>
             <div class="texto-livreAuto">
 
                 O capítulo anterior abordou a estatística descritiva univariada, concentrando-se no comportamento isolado de uma única variável. Este capítulo introduz a estatística descritiva bivariada, dedicada ao estudo simultâneo de duas variáveis ($X$ e $Y$).
@@ -2510,9 +2510,6 @@
 
                 <div class="tabela-container">
                     <table id="tabela-23" class="tabela-frequencias">
-                        <colgroup>
-                            <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
-                        </colgroup>
                         <caption><span class="rotulo-tabela"></span> - Tabela de Dupla Entrada (Contingência)</caption>
                         <thead>
                             <tr>
@@ -2551,9 +2548,6 @@
 
                     <div class="tabela-container">
                         <table id="tabela-24" class="tabela-frequencias">
-                            <colgroup>
-                                <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
-                            </colgroup>
                             <caption><span class="rotulo-tabela">Tabela 3.1</span> - Distribuição conjunta de frequências absolutas das variáveis em estudo.</caption>
                             <thead>
                                 <tr>
@@ -2592,9 +2586,6 @@
 
                     <div class="tabela-container">
                         <table id="tabela-25" class="tabela-frequencias">
-                            <colgroup>
-                                <col class="col-categoria"> <col class="col-dados"> <col class="col-dados"> <col class="col-dados"> <col class="col-categoria">
-                            </colgroup>
                             <caption><span class="rotulo-tabela">Tabela 3.2</span> - Distribuição conjunta de frequências relativas das variáveis em estudo em relação ao total geral.</caption>
                             <thead>
                                 <tr>
@@ -2680,14 +2671,7 @@
 
                     <div class="tabela-container">
                         <table id="tabela-26" class="tabela-frequencias">
-                            <colgroup>
-                                <col class="col-categoria">
-                                <col class="col-dados">
-                                <col class="col-dados">
-                                <col class="col-dados">
-                                <col class="col-categoria">
-                            </colgroup>
-                            <caption><span class="rotulo-tabela">Tabela 3.6</span> - Valores esperados da Tabela 3.5, assumindo a não associação entre as variáveis.</caption>
+                            <caption><span class="rotulo-tabela"></span> - Valores esperados da Tabela 3.5, assumindo a não associação entre as variáveis.</caption>
                             <thead>
                                 <tr>
                                     <th rowspan="2">Operadora</th>
@@ -2748,12 +2732,6 @@
                 
                 <div class="tabela-container">
                     <table id="tabela-27" class="tabela-frequencias">
-                        <colgroup>
-                            <col class="col-categoria">
-                            <col class="col-dados">
-                            <col class="col-dados">
-                            <col class="col-dados">
-                        </colgroup>
                         <caption><span class="rotulo-tabela">Tabela 3.7</span> - Cálculo da estatística $\chi^2$.</caption>
                         <thead>
                             <tr>
@@ -2964,7 +2942,8 @@
                 
                 em que: $n$: número de observações (pares de valores); $d_k$: diferença entre os postos atribuídos na $k$-ésima observação.
                 
-                O coeficiente de Spearman varia no intervalo de $-1$ a $+1$. 
+                O coeficiente de Spearman varia no intervalo de $-1$ a $+1$.
+                
                 <div class="texto-livreAuto">
                     <ul class="quadrado">
                         <li>
@@ -3043,8 +3022,106 @@
             <h2>CORRELAÇÃO ENTRE VARIÁVEIS</h2>
             <div class="texto-livreAuto">
 
-                Espaço dedicado aos conteúdos computacionais, inferência estatística e modelação avançada aplicada à
-                investigação científica e académica.
+                O objetivo desta seção é avaliar a existência de relação entre variáveis quantitativas, bem como determinar a intensidade dessa associação. Essa análise pode ser realizada por meio de tabelas de distribuição de frequências, representações gráficas (como o diagrama de dispersão) e medidas numéricas de correlação, a exemplo da covariância e do coeficiente de correlação de Pearson.
+
+                <div class="texto-livreAuto">
+                    <h2>Tabelas de Contingência</h2>
+                </div>
+
+                O procedimento empregado para variáveis qualitativas pode ser estendido à representação da distribuição conjunta de variáveis quantitativas, permitindo examinar as relações entre elas. À semelhança da estatística descritiva univariada, dados contínuos com baixas frequências de repetição podem ser agrupados em intervalos de classe.
+
+                <div class="texto-livreAuto">
+                    <h2>Representação Gráfica</h2>
+                </div>
+
+                A relação entre duas variáveis quantitativas pode ser visualizada graficamente mediante um diagrama de dispersão, o qual projeta os pares ordenados das variáveis $X$ e $Y$ em um plano cartesiano. O diagrama de dispersão possibilita avaliar:
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            A presença ou ausência de relação entre as variáveis em estudo;
+                        </li>
+                        <li>
+                            A direção do relacionamento, isto é, a tendência de aumento ou redução da variável $Y$ em função das variações em $X$; 
+                        </li>
+                        <li>
+                            O grau ou intensidade da relação;
+                        </li>
+                        <li>
+                            a natureza do comportamento funcional (linear, exponencial, entre outros).
+                        </li>
+                    </ul>
+                </div>                
+                
+                As figuras a seguir ilustram diagramas de dispersão com diferentes padrões de relação linear entre as variáveis $X$ e $Y$ (da esquerda para a direita):
+                
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Nula</b>: ocorre quando não se observa qualquer padrão de associação entre as variáveis $X$ e $Y$;
+                        </li>
+                        <li>
+                            <b>Positiva (Negativa) Forte</b>: verifica-se quando a variação de $Y$ é diretamente (ou inversamente) proporcional à variação de $X$, indicando uma associação intensa de natureza linear;
+                        </li>
+                        <li>
+                            <b>Positiva (Negativa) Perfeita</b>: ocorre quando todos os pontos do diagrama estão rigorosamente alinhados sobre uma única reta.
+                        </li>
+                    </ul>
+                </div> 
+
+                <figure id="figura-1" class="tabela-imagem-container">
+                    <img src="CorrPositivo.png" alt="Tipo de Variável">
+                </figure>
+                
+                <figure id="figura-1" class="tabela-imagem-container">
+                    <img src="CorrNegativo.png" alt="Tipo de Variável">
+                </figure>                
+
+                <div class="texto-livreAuto">
+                    <h2>Medidas de correlação</h2>
+                </div>
+
+                As principais medidas de correlação aplicadas a variáveis quantitativas são a covariância e o coeficiente de correlação de Pearson.
+
+                <div class="texto-livreAuto">
+                    <h4>Covariância</h4>
+                </div>
+
+                A covariância mensura a variação conjunta entre duas variáveis quantitativas $X$ e $Y$, sendo definida por:
+                
+                <div class="equacao" id="equacao-32">
+                    \begin{equation} 
+                    \text{COV}(X,Y) = \frac{\sum_{i=1}^{n} (X_i - \bar{X}) \cdot (Y_i - \bar{Y})}{n - 1}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                em que: $X_i$: $i$-ésimo valor da variável $X$; $Y_i$: $i$-ésimo valor da variável $Y$; $\bar{X}$: média dos valores de $X$;   $\bar{Y}$: média dos valores de $Y$; $n$: tamanho da amostra.
+                
+                Uma das limitações da covariância reside no fato de sua magnitude ser influenciada pelas escalas das variáveis e pelo tamanho da amostra, o que pode levar a estimativas imprecisas em amostras reduzidas. O coeficiente de correlação de Pearson surge como uma alternativa para contornar essa restrição.
+
+                <div id="exemplo-10" class="bloco-exemplo">
+                    <span class="rotulo-exemplo"></span>: Uma plataforma de ensino online direcionada aos cursos de Economia e Gestão pretende investigar se o tempo de estudo semanal dedicado às disciplinas ($X$, mensurado em minutos por semana) influencia o desempenho dos estudantes na prova final ($Y$, com pontuação expressa na escala de 0 a 20 valores). A avaliação engloba os conteúdos programáticos de Fiscalidade, Auditoria, TEOE (Técnicas de Expressão Oral e Escrita), Matemática e Estatística. Para a realização desta análise, foram recolhidos os dados apresentados na <a href="#tabela-30"></a>.
+                
+                    <div class="tabela-container">
+                        <table id="tabela-30" class="tabela-frequencias">
+                            <caption><span class="rotulo-tabela"></span> - Tipo Sanguíneo dos doadores</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tempo de Estudo</th>
+                                    <td>57</td> <td>69</td> <td>84</td> <td>55</td> <td>61</td> <td>51</td> <td>31</td> <td>56</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Doadores ($F_i$)</th>
+                                    <td>15</td> <td>2</td> <td>6</td> <td>1</td> <td>1</td> <td>1</td>
+                                    <td>32</td> <td>2</td> <td><b>60</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                3.3.3.2. Coeficiente de correlação de PearsonO coeficiente de correlação de Pearson ($\rho$) é uma medida padronizada que varia no intervalo entre $-1$ e $+1$. O sinal do coeficiente indica a direção da relação linear (se $Y$ tende a aumentar ou diminuir com o incremento de $X$), enquanto seu valor absoluto reflete a intensidade da associação: quanto mais próximo dos extremos ($-1$ ou $+1$), mais forte é a correlação.   Se $\rho > 0$, existe uma relação diretamente proporcional entre as variáveis; quando $\rho = 1$, a correlação linear positiva é perfeita.   Se $\rho < 0$, existe uma relação inversamente proporcional entre as variáveis; quando $\rho = -1$, a correlação linear negativa é perfeita.   Se $\rho = 0$, não há correlação linear entre as variáveis.   A Figura 3.35 sintetiza a escala de interpretação do coeficiente de Pearson.   Figura 3.35 — Interpretação do coeficiente de correlação de Pearson.   $\begin{array}{ccccc} \mathbf{-1} & & \mathbf{0} & & \mathbf{+1} \\ \bullet & \leftarrow------------- \rightarrow & \bullet & \leftarrow------------- \rightarrow & \bullet \\ \text{correlação linear} & & \text{não existe correlação} & & \text{correlação linear} \\ \text{negativa perfeita entre} & & \text{entre as variáveis } X \text{ e } Y & & \text{positiva perfeita entre} \\ \text{as variáveis } X \text{ e } Y & & & & \text{as variáveis } X \text{ e } Y \end{array}$   O coeficiente de correlação de Pearson ($\rho$) é definido pela razão entre a covariância das duas variáveis e o produto de seus respectivos desvios-padrão ($S$):   $$\rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{\frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}}{S_X \cdot S_Y} \quad (3.10)$$   Sendo os desvios-padrão amostrais dados por $S_X = \sqrt{\frac{\sum_{i=1}^{n} (X_i - \bar{X})^2}{n-1}}$ e $S_Y = \sqrt{\frac{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}{n-1}}$, a expressão (3.10) pode ser reescrita como:   $$\rho = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n} (X_i - \bar{X})^2} \cdot \sqrt{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}} \quad (3.11)$$   ■ EXEMPLO 9Acesse novamente o arquivo Renda_Estudo.xls e determine o coeficiente de correlação de Pearson entre as duas variáveis.   ■ SOLUÇÃOUtilizando a equação (3.10), o cálculo de $\rho$ é dado por:   $$\rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{761,336}{970,774 \cdot 1,009} = 0,777$$   O cálculo também pode ser efetuado por meio da expressão (3.11), a qual independe do tamanho amostral. O resultado obtido ($0,777$) evidencia uma correlação positiva forte entre as variáveis Renda Familiar e Anos de Estudo. 
 
             </div>
         </section>
