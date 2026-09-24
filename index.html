@@ -3014,6 +3014,44 @@
                 </div>
                 
                 O valor de $0,758$ indica uma associação linear positiva forte entre o desempenho dos alunos nas duas disciplinas.
+
+                <div class="texto-livreAuto">
+                    <h4>Significância do Coeficiente de Spearman</h4>
+                </div>
+
+                O valor do coeficiente de correlação $r_{sp}$ indica a direção (positiva ou negativa) e a intensidade (forte, moderada ou fraca) da associação linear entre duas variáveis.
+                
+                Contudo, para verificar se a correlação observada possui significância estatística na população a partir de uma amostra, - ou seja, se o resultado pode ser generalizado -, é necessário testar se $r_{sp}$ difere significativamente de zero para a dimensão amostral recolhida.
+                
+                Dessa forma, sob a hipótese nula ($H_0$) de ausência de correlação linear:
+                
+                <div class="equacao" id="equacao-39">
+                    \begin{equation} 
+                    \begin{cases} H_0 : r_{sp} = 0 \\ H_1 : r_{sp} \neq 0 \end{cases}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                Uma das abordagens possíveis consiste em empregar a estatística de teste apresentada na <a href="#equacao-45"></a>, substituindo o coeficiente de Pearson por $r_{sp}$ para a avaliação do teste de hipóteses acima.
+
+                Contudo, a literatura aponta que, para amostras de dimensão suficientemente grande, é mais adequado utilizar uma estatística de teste aproximada baseada na distribuição normal padrão:
+                
+                <div class="equacao" id="equacao-40">
+                    \begin{equation} 
+                    Z = \sqrt{\frac{n - 3}{1,06}} \cdot F(R_{\text{Spearman}}) \sim N(0, 1)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                Esta variável $Z$ segue aproximadamente uma distribuição normal $N(0,1)$, fundamentando-se na transformação $Z$ de Fisher:
+                
+                <div class="equacao" id="equacao-40-1">
+                    \begin{equation} 
+                    F(r) = \frac{1}{2} \ln \left( \frac{1 + r}{1 - r} \right)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
             </div>
         </section>
 
@@ -3089,7 +3127,7 @@
 
                 A covariância mensura a variação conjunta entre duas variáveis quantitativas $X$ e $Y$, sendo definida por:
                 
-                <div class="equacao" id="equacao-39">
+                <div class="equacao" id="equacao-41">
                     \begin{equation} 
                     \text{COV}(X,Y) = \frac{\sum_{i=1}^{n} (X_i - \bar{X}) \cdot (Y_i - \bar{Y})}{n - 1}
                     \end{equation}
@@ -3147,7 +3185,7 @@
                 
                 O coeficiente de correlação de Pearson ($\rho$) é definido pela razão entre a covariância das duas variáveis e o produto de seus respectivos desvios-padrão ($S$):
                 
-                <div class="equacao" id="equacao-40">
+                <div class="equacao" id="equacao-42">
                     \begin{equation} 
                     \rho = \frac{\text{cov}(X,Y)}{S_X \cdot S_Y} = \frac{\frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{n-1}}{S_X \cdot S_Y}
                     \end{equation}
@@ -3156,9 +3194,9 @@
 
                 Sendo os desvios-padrão amostrais dados por $S_X$ e $S_Y$, a <a href="#equacao-40"></a> pode ser reescrita como:
 
-                <div class="equacao" id="equacao-41">
+                <div class="equacao" id="equacao-43">
                     \begin{equation} 
-                    rho = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n} (X_i - \bar{X})^2} \cdot \sqrt{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}}
+                    \rho = \frac{\sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n} (X_i - \bar{X})^2} \cdot \sqrt{\sum_{i=1}^{n} (Y_i - \bar{Y})^2}}
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
@@ -3166,6 +3204,33 @@
                 <div id="exercicio-25" class="bloco-exemplo">
                     <span class="rotulo-exemplo"></span>: Considere os dados do <a href="#exercicio-24"></a>. Calcule e classifique a correlação existente entre as duas variáveis.
                 </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Significância do Coeficiente de Pearson</h4>
+                </div>
+
+                Da mesma forma, torna-se necessário testar a significância estatística do coeficiente de Pearson, de modo a verificar se os dados amostrais fornecem evidências suficientes para inferir que o valor populacional de $\rho$ é estatisticamente significante.
+                                
+                <div class="equacao" id="equacao-44">
+                    \begin{equation} 
+                    \begin{cases} H_0 : \rho = 0 \\ H_1 : \rho \neq 0 \end{cases}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                A estatística de teste adequada é dada por:
+                
+                <div class="equacao" id="equacao-45">
+                    \begin{equation} 
+                    T = \frac{\rho \sqrt{n - 2}}{\sqrt{1 - \rho^2}} \sim t_{n-2}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
+                Nota-se que a significância do coeficiente $R$ depende exclusivamente do seu valor absoluto e do tamanho da amostra $n$. O resultado torna-se estatisticamente mais significante quanto maior for o valor absoluto de $R$ (visto que $\vert{}\rho\vert{} \to 1$ faz com que o denominador $\sqrt{1 - \rho^2}$ se aproxime de zero, elevando o valor de $T$ para $\pm\infty$) ou quanto maior for a dimensão amostral $n$ (pois o aumento de $n$ amplia diretamente a magnitude de $T$).
+                
+                É possível que uma correlação de baixa intensidade apresente significância estatística em amostras de grande dimensão (por exemplo, $\rho = 0,2$ com $p\text{-value} = 0,003$). Nesses casos, conclui-se que a correlação existe e é extrapolável para a população, embora a relação seja fraca — isto é, as variações de uma variável exercem baixo impacto prático sobre o comportamento da outra.
+
             </div>
         </section>
 
