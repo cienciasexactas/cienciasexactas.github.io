@@ -1627,12 +1627,18 @@ a.link-referencia {
 }
 
 /* Comportamento em aninhamentos (.texto-livreauto duplos) */
-.texto-livreAuto .texto-livreAuto li {
-    margin-bottom: 8px;
+.texto-livreAuto .texto-livreAuto .equacao {
+    margin-bottom: -20px !important;
 }
 
 .texto-livreAuto .texto-livreAuto ul.quadrado li {
     margin-bottom: 6px !important;
+}
+
+/* Reduz o espaço superior do segundo parágrafo/bloco dentro do mesmo li */
+.texto-livreAuto .texto-livreAuto ul.quadrado li > * + * {
+    margin-top: -18px !important;
+    padding-bottom: 0px !important;
 }
 
 .texto-livreAuto .texto-livreAuto li,

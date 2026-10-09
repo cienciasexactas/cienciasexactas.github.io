@@ -157,8 +157,9 @@
                     <div class="dropdown">
                         <a href="#numeros-indices">Números Índices</a>
                         <div class="dropdown-content">
-                            <a href="#indice-de-gini">Índice de Gini</a>
-                            <a href="#indice-composto">Índide Composto</a>
+                            <a href="#medidas-de-concentracao">Medidas de Concentração</a>
+                            <a href="#medidas-de-desigualdade">Medidas de Desigualdade</a>
+                            <a href="#medidas-de-pobreza">Medidas de Pobreza</a>
                         </div>
                     </div>
                 </div>
@@ -3333,7 +3334,7 @@
                 </div>
 
                 <div class="texto-livreAuto">
-                    <h4>Índices Ponderados Clássicos</h4>
+                    <h2>Índices Agregados Compostos ou Ponderados Clássicos</h2>
                 </div>
 
                 A superação das limitações dos métodos não ponderados efetua-se mediante a introdução de pesos associados às quantidades ou aos valores monetários.
@@ -3428,19 +3429,22 @@
                     <span class="rotulo-exemplo">Exemplo 30</span>: Uma empresa do setor da Educação e Tecnologia pretende avaliar a evolução dos custos dos insumos associados à produção do curso $X$ entre o Ano 0 (ano base) e o Ano 2, recorrendo aos dados reportados na <a href="#tabela-30"></a>.
 
                     <div class="texto-livreAuto">
-                        <ul class="lower-roman" type="a">
+                        <ol class="lower-roman" type="i">
                             <li>
                                 Calcule o índice de preços de Laspeyres para o Ano 2 tomando o Ano 0 como período de referência ($I_{L; 2/0}$);
                             </li>
                             <li>
-                                Interprete o resultado obtido, explicitando a variação percentual do custo dos fatores imputável exclusivamente à alteração de preços.
+                                Calcule o índice de preços de Paasche para o Ano 2 tomando o Ano 0 como período de referência ($I_{P; 2/0}$);
                             </li>
-                        </ul>                        
+                            <li>
+                                Interprete os resultado obtidos, explicitando a variação percentual do custo dos fatores imputável exclusivamente à alteração de preços.
+                            </li>
+                        </ol>                        
                     </div>
 
                     <div class="tabela-container">
                         <table id="tabela-30" class="tabela-frequencias">
-                            <caption><span class="rotulo-tabela">Tabela 30: </span>Matérias-primas utilizadas na produção de $X$</caption>
+                            <caption><span class="rotulo-tabela"></span> Matérias-primas utilizadas na produção de $X$</caption>
                             <thead>
                                 <tr>
                                     <th rowspan="2">Matéria-prima</th>
@@ -3534,10 +3538,37 @@
                 <blockquote> <g><b>Importante</b></g>: <b>Ausência de Interpretação Direta</b>: Ao contrário de Laspeyres ou Paasche — que medem diretamente o custo de aquisição de uma cesta física de bens bem definida —, o índice de Fisher carece de uma interpretação económica simples em termos de cabaz de consumo concreto. </blockquote>
 
                 <div class="texto-livreAuto">
-                    <h4>Alteração do Ano-Base e Encadeamento</h4>
+                    <h2>Manipulação de Números Índices</h2>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Mudança do Ano Base</h4>
                 </div>
                 
-                <b><azul>Mudança de Ano-Base</azul>:</b> Realiza-se dividindo a série original pelo valor do índice no novo ano-base e multiplicando por 100.
+                Sempre que se pretende comparar séries de índices associadas a diferentes períodos base, torna-se necessário proceder à sua transformação, de modo a homogeneizar a base de referência.
+                
+                Esta alteração traduz-se no ajustamento proporcional dos valores de uma ou de todas as séries. 
+                
+                O procedimento inicia-se com a definição do novo período base, dividindo-se o valor correspondente da série por 100 para determinar o factor de proporcionalidade.
+                
+                Em seguida, dividem-se todos os restantes valores da série por esse mesmo factor, obtendo-se assim uma nova série de números-índices referida ao novo período base.
+
+                <div class="texto-livreAuto">
+                    <h4>Cálculo das Alterações Percentuais entre períodos consecutivos</h4>
+                </div>
+
+                Embora uma série de números-índices permita identificar, de forma imediata, as variações ocorridas em cada momento face ao período-base, é frequentemente mais útil analisar a evolução em relação ao período imediatamente anterior.
+                
+                Esta análise intertemporal, contudo, exige rigor metodológico: não é correto calcular a variação simplesmente subtraindo os valores do índice de dois períodos consecutivos. Como qualquer taxa de variação, é indispensável relacionar essa diferença com o valor do período de partida (o valor inicial).
+                
+                Assim, a variação percentual entre um período $i$ e o período seguinte ($i+1$) é dada pela seguinte fórmula:
+
+                <div class="equacao" id="equacao-33">
+                    \begin{equation} 
+                    \Delta \%_{i \to i+1} = \frac{I_{i+1} - I_i}{I_i} \times 100
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
                 
                 <b><azul>Encadeamento de Séries</azul>:</b> Para ligar duas séries históricas distintas com um período comum de sobreposição, aplica-se o fator de proporcionalidade ($k$):
 
@@ -3600,64 +3631,76 @@
 
         </section>
 
-        <section id="indice-de-gini" class="conteudo-seccao" data-grupo="estat-indices">
+        <section id="medidas-de-concentracao" class="conteudo-seccao" data-grupo="estat-indices">
             <h2>Medidas de Concentração</h2>
             <div class="texto-livreAuto">
 
-                Hoffmann (2006) explicita uma distinção concetual por vezes negligenciada: <i><ver>desigualdade</ver></i> refere-se à distribuição relativa de um atributo (ex.: rendimento) entre os membros de uma população (independentemente do número de indivíduos $n$), ao passo que <i>c<ver>oncentração industrial</ver></i> quantifica o grau em que uma fração reduzida de empresas controla uma parcela predominante da produção, vendas ou capital no mercado ($n$ absoluto de empresas). <i><b>Exemplo</b></i>: Num mercado com apenas 2 empresas de portes idênticos, a desigualdade é nula, mas a concentração é elevadíssima (duopólio).
+                A análise da distribuição de recursos económicos exige uma distinção clara entre desigualdade e concentração industrial. A <azul><b>desigualdade</b></azul> mede a assimetria relativa na repartição de atributos económicos (tais como o volume de negócios, o valor acrescentado, o capital ativo ou o número de trabalhadores) entre as unidades de uma população, independentemente da dimensão total desse universo ($n$). Por sua vez, a <azul><b>concentração industrial</b></azul> quantifica o grau em que uma parcela predominantemente elevada da atividade de um setor é controlada por um número absoluto reduzido de empresas..
+                
+                Esta diferença evidencia-se quando ponderamos um mercado com $n$ empresas de quotas idênticas ($y_i = 1/n$): embora a desigualdade seja nula ($G = 0$), o grau de concentração varia em função direta do número total de agentes ($n$). Um mercado com duas empresas ($n = 2$) apresenta forte concentração (duopólio), ao passo que um setor com 30 000 empresas ($n = 30\,000$) caracteriza-se por uma elevada pulverização concorrencial, onde a concentração é negligenciável. Assim, a concentração industrial é uma função decrescente do número de empresas ($n$) e uma função crescente da assimetria na repartição das quotas de mercado.
+                
+                Para mensurar com rigor a concentração de um setor composto por $n$ empresas, adota-se uma variável quantitativa $X_i$ representativa do tamanho económico de cada unidade. O indicador selecionado varia consoante os objetivos do estudo e os dados disponíveis, utilizando-se habitualmente o volume de vendas, a produção, o ativo líquido ou o total de empregados.
 
+                Assumindo a ordenação não decrescente das empresas de acordo com a variável de dimensão: $X_1 \ge X_2 \ge \dots \ge X_n$.
+
+                A quota de mercado ou participação relativa da $i$-ésima empresa ($y_i$) é definida pela razão entre a sua dimensão individual e a dimensão agregada da indústria:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation} 
+                    y_i = \frac{X_i}{\sum_{j=1}^n X_j} = \frac{X_i}{n\mu} \quad \text{onde} \quad \sum_{i=1}^n y_i = 1 \quad \text{e} \quad 0 \le y_i \le 1
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+                
                 <div class="texto-livreAuto">
                     <ul class="quadrado">
                         <li>
-                            <b><azul>Razão de Concentração</azul></b> ($CR_k$): Quantifica a quota de mercado acumulada pelas $k$ maiores empresas do setor ordenadas de forma decrescente ($X_1 \ge X_2 \ge \dots \ge X_n$):
+                            <b><azul>Razão de Concentração</azul></b>: ($CR_k$, do inglês *Concentration Ratio*) quantifica a fração acumulada do atributo total do setor que se encontra sob o controlo das $k$ maiores empresas da indústria ($1 \le k \le n$).
 
-                            <div class="equacao" id="equacao-59">
+                            <div class="equacao" id="equacao-58">
                                 \begin{equation} 
-                                CR_k = \sum_{i=1}^k y_i \quad \text{onde} \quad y_i = \frac{X_i}{\sum_{j=1}^n X_j}
+                                CR_k = \sum_{i=1}^k y_i = \frac{\sum_{i=1}^k X_i}{n\mu}
                                 \end{equation}
                                 <span class="rotulo-equacao"></span>
-                            </div>                            
+                            </div>
+
+                            Nas aplicações empíricas da economia industrial, adota-se comummente $k = 4$ ou $k = 8$. O indicador varia no intervalo $]0, 1]$, aproximando-se da unidade à medida que as $k$ maiores empresas dominam a produção total do setor.
+
+                            Apesar da sua facilidade de cálculo e interpretação direta, a razão $CR_k$: <i>i)</i> Ignora por completo a distribuição do atributo entre as $n - k$ empresas restantes da indústria; <i>ii)</i> Não distingue alterações na estrutura produtiva ocorridas no seio do grupo das $k$ maiores empresas (por exemplo, uma situação em que uma empresa detém 70% e as restantes 3 detêm 1% cada produz o mesmo $CR_4 = 0,73$ que um oligopólio simétrico onde cada uma detém 18,25%).
                         </li>
                         <li>
-                            <b><azul>Índice de Hirschman-Herfindahl</azul></b> ($H$): Soma dos quadrados das participações individuais de mercado ($y_i$) de todas as $n$ empresas:
-                            
-                            <div class="equacao" id="equacao-61">
-                                \begin{equation} 
+                            <b><azul>Índice de Hirschman-Herfindahl</azul></b> ($H$): Para superar o caráter parcial do indicador $CR_k$, o Índice de Hirschman-Herfindahl ($H$) incorpora a totalidade das $n$ empresas a funcionar no mercado, elevando as respetivas quotas de participação ao quadrado.
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
                                 H = \sum_{i=1}^n y_i^2
                                 \end{equation}
                                 <span class="rotulo-equacao"></span>
                             </div>
-                            
-                            O valor de $H$ varia no intervalo $[\frac{1}{n}, 1]$. Hoffmann demonstra a sua articulação direta com o Coeficiente de Variação ($C = \frac{\sigma}{\mu}$) das quotas de mercado:
-                            
-                            <div class="equacao" id="equacao-62">
-                                \begin{equation} 
-                                H = \frac{1}{n} (C^2 + 1)
+                        </li>
+                        <li>
+                            <b><azul>Índice de Rosenbluth</azul></b> ($B$): contempla a estrutura global do setor ao ponderar a quota de mercado de cada empresa pelo seu posto ordinal ou ordenação no ranking da indústria ($i = 1, 2, \dots, n$), atribuindo maior peso relativo às unidades de maior dimensão.
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                B = \frac{1}{2 \sum_{i=1}^n i y_i - 1}
                                 \end{equation}
                                 <span class="rotulo-equacao"></span>
                             </div>
+                
+                            onde as quotas estão ordenadas de forma decrescente ($y_1 \ge y_2 \ge \dots \ge y_n$).
                         </li>
                         <li>
-                            <b><azul>Índice de Rosenbluth</azul></b> ($B$): Incorpora a ordenação por ranking ($i$) das empresas, variando inversamente com a área sob a curva de concentração:
-                            
-                            <div class="equacao" id="equacao-63">
-                                \begin{equation} 
-                                B = \frac{1}{2 \sum_{i=1}^n i y_i - 1} = \frac{1}{n(1 - G)}
+                            <b><azul>Entropia da Informação</azul></b> ($E$): Derivada da Teoria da Informação de Shannon, a Entropia da Informação ($E$) é applied à economia industrial para mensurar o grau de incerteza ou desordem na repartição do mercado. Ao contrário de $CR_k$, $H$ e $B$, a entropia funciona como uma medida direta de desconcentração.
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                E = \sum_{i=1}^n y_i \log \left(\frac{1}{y_i}\right) = -\sum_{i=1}^n y_i \log y_i
                                 \end{equation}
                                 <span class="rotulo-equacao"></span>
                             </div>
 
-                            onde $G$ representa o Coeficiente de Gini da distribuição.
-                        </li>
-                        <li>
-                            <b><azul>Entropia da Informação</azul></b> ($E$): Atua como medida de desconcentração industrial. Atinge o valor máximo ($\log n$) em concorrência perfeita e o valor mínimo ($0$) em monopólio absoluto:
-                            
-                            <div class="equacao" id="equacao-64">
-                                \begin{equation} 
-                                E = \sum_{i=1}^n y_i \log \left( \frac{1}{y_i} \right)
-                                \end{equation}
-                                <span class="rotulo-equacao"></span>
-                            </div>
+                            O intervalo de variação é $0 \le E \le \log n$. A entropia aumenta à medida que o número de empresas cresce ou que as quotas de mercado se tornam mais homogéneas, sinalizando um mercado mais desconcentrado.
                         </li>
                     </ul>
                 </div>
@@ -3665,9 +3708,414 @@
 
         </section>
 
-        <section id="indice-composto" class="conteudo-seccao" data-grupo="estat-indices">
-            <h2>MEDIDAS DE DESIGUALDADE</h2>
+        <section id="medidas-de-desigualdade" class="conteudo-seccao" data-grupo="estat-indices">
+            <h2>Medidas de Desigualdade de Rendimento</h2>
             <div class="texto-livreAuto">
+
+                A análise do bem-estar social e da distribuição dos recursos económicos exige a quantificação do grau de assimetria na repartição do rendimento entre os membros de uma sociedade. Ao contrário da análise de dispersão clássica — que avalia o desvio dos valores em relação a uma medida de tendência central (como a média ou a mediana) —, a mensuração da desigualdade foca-se na comparação entre a distribuição observada de um atributo acumulável (o rendimento total, $Y$) e a sua distribuição perfeitamente equitativa entre as unidades populacionais ($N$).
+
+                A distribuição do rendimento pode ser formalmente representada por um vetor ordenado de observações não decrescentes: $X = (X_1, X_2, \dots, X_n) \quad \text{onde} \quad 0 \le X_1 \le X_2 \le \dots \le X_n$
+
+                <div class="texto-livreAuto">
+                    <h2>A Curva de Lorenz</h2>
+                </div>
+
+                A Curva de Lorenz constitui o instrumento gráfico fundamental para visualizar a concentração e a desigualdade na repartição de uma variável quantitativa. Estrutura-se num referencial cartesiano ortogonal delimitado pelo quadrado unitário $[0,1] \times [0,1]$.
+
+                Para uma população de $n$ observações individuais ordenadas ($X_1 \le X_2 \le \dots \le X_n$), definem-se duas proporções acumuladas ($p_i$ - População e $q_i$ - Rendimento) para cada ponto $i$ ($i = 1, 2, \dots, n$):
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation} 
+                    p_i = \frac{i}{n} \qquad \qquad
+                    q_i = \Phi_i = \frac{\sum_{j=1}^i X_j}{\sum_{j=1}^n X_j} = \frac{1}{n\mu} \sum_{j=1}^i X_j \quad \text{com} \quad  0 \le p_i, \;\; q_i \le 1
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                No caso de dados agrupados em $k$ classes de rendimento com frequências absolutas $f_i$ e pontos médios $x_i$, as proporções assumem a forma:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                    p_i = \frac{\sum_{j=1}^i f_j}{n}, \quad q_i = \frac{\sum_{j=1}^i f_j x_j}{n\mu} \quad \text{onde} \quad n = \sum_{i=1}^k f_i \quad \text{e} \quad \mu = \frac{1}{n} \sum_{i=1}^k f_i x_i
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Propriedades Geométricas da Curva de Lorenz</h4>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b><azul>Monotonicidade e Convexidade</azul></b>: Como a sequência $X_i$ é não decrescente, os declives dos segmentos de reta sucessivos que unem os pontos $(p_i, q_i)$ constituem uma sequência não decrescente $\left(\frac{q_i - q_{i-1}}{p_i - p_{i-1}} = \frac{X_i}{\mu}\right)$.
+                            
+                            Consequentemente, a Curva de Lorenz é contínua, não decrescente e estritamente convexa em relação ao eixo das abscissas.
+                        </li>
+                        <li>
+                            <b><azul>Linha de Perfeita Igualdade:</azul></b> A diagonal que conecta $(0,0)$ a $(1,1)$ representa a bissetriz do primeiro quadrante ($q_i = p_i$). Corresponde à situação em que cada percentil da população detém uma quota idêntica do rendimento total.
+                        </li>
+                        <li>
+                            <b><azul>Área de Desigualdade ($\alpha$) e Área sob a Poligonal ($\beta$):</azul></b> A superfície compreendida entre a linha de perfeita igualdade e a Curva de Lorenz define a área de desigualdade ($\alpha$). A superfície situada entre a Curva de Lorenz e o eixo das abscissas define a área sob a poligonal ($\beta$). Uma vez que a área total do triângulo inferior delimitado pela bissetriz é $0,5$, estabelece-se a relação fundamental:
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                \alpha + \beta = 0,5 \quad \Longleftrightarrow \quad \alpha = 0,5 - \beta
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div class="texto-livreAuto">
+                    <h2>O Coeficiente e Índice de Gini</h2>
+                </div>
+
+                O Índice de Gini ($G$) é a medida resumo de desigualdade de utilização mais disseminada. Corresponde à razão entre a área de desigualdade ($\alpha$) e a área máxima teoricamente atingível ($0,5$).
+
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   G = \frac{\alpha}{0,5} = 2\alpha = 2(0,5 - \beta) = 1 - 2\beta
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                O indicador varia no intervalo fechado $[0, 1]$: $G = 0$ denota equidade perfeita e $G = 1$ denota concentração absoluta (onde um único indivíduo aufere a totalidade do rendimento).
+
+                <div class="texto-livreAuto">
+                    <h4>Índice de Gini ($G$): Dados Agrupados em Classes (E. Reis)</h4>
+                </div>
+
+                Para uma distribuição organizada em $k$ classes, a área $\beta$ resulta da soma das superfícies dos $k$ trapézios formados sob a poligonal de Lorenz:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   \beta = \frac{1}{2} \sum_{i=1}^k (p_i - p_{i-1})(q_{i-1} + q_i)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                Substituindo em $G = 1 - 2\beta$ e simplificando sob a premissa de amplitudes de classe constantes no eixo das abscissas, E. Reis (2009) formula a expressão sintética do Índice de Gini:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   IG = \frac{\sum_{i=1}^{k-1} (p_i - q_i)}{\sum_{i=1}^{k-1} p_i} = 1 - \frac{\sum_{i=1}^{k-1} q_i}{\sum_{i=1}^{k-1} p_i}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Índice de Gini ($G$): Dados Individuais Discretos (Hoffmann)</h4>
+                </div>
+
+                Para $n$ observações individuais ordenadas com $p_i = i/n$, a área de cada trapézio sob a curva é $S_i = \frac{1}{2n} (q_{i-1} + q_i)$. Somando para as $n$ unidades, a área $\beta$ é dada por:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   \beta = \frac{1}{2n} \sum_{i=1}^n (q_{i-1} + q_i) = \frac{1}{2n} \left[ 2 \sum_{i=1}^n q_i - 1 \right] = \frac{1}{n} \sum_{i=1}^n q_i - \frac{1}{2n}
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                Substituindo $\beta$ em $G = 1 - 2\beta$:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   IG = 1 - 2 \left( \frac{1}{n} \sum_{i=1}^n q_i - \frac{1}{2n} \right) = 1 + \frac{1}{n} - \frac{2}{n} \sum_{i=1}^n q_i
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                Expandindo a proporção acumulada $q_i = \frac{1}{n\mu} \sum_{j=1}^i X_j$, Hoffmann (2006) deduz a fórmula computacional direta do Coeficiente de Gini:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   IG = \frac{2}{n^2\mu} \sum_{i=1}^n i X_i - \frac{1}{n} - 1
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+
+                <div class="texto-livreAuto">
+                    <h2>Análise Axiomática: O Princípio das Transferências de Pigou-Dalton</h2>
+                </div>
+
+                A validação teórica de qualquer indicador de desigualdade baseia-se na verificação de propriedades axiomáticas formais. Entre estas, destaca-se o Princípio das Transferências de Pigou-Dalton (Pigou, 1912; Dalton, 1920).
+
+                Considere-se uma transferência pura de rendimento de valor $h > 0$ do indivíduo $i$ para o indivíduo $j$, tal que $X_i < X_j$.
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b><azul>Transferência Regressiva</azul></b>: Se a transferência ocorre do indivíduo mais pobre ($i$) para o indivíduo mais rico ($j$) sem alterar a sua ordenação relativa ($X_i - h \le X_j + h$), diz-se que a transferência é regressiva. O princípio exige que uma medida de desigualdade rigorosa, $I(X)$, apresente um aumento estrito: $I(X') > I(X)$
+                        </li>
+                        <li>
+                            <b><azul>Transferência Progressiva:</azul></b> Se a transferência ocorre do indivíduo mais rico para o mais pobre (transferência progressiva), a medida de desigualdade deve registar uma diminuição estrita.
+                        </li>
+                    </ul>
+                </div>
+
+                O Coeficiente de Gini cumpre estritamente o princípio de Pigou-Dalton. O impacto de uma transferência regressiva $h$ entre o $i$-ésimo e o $j$-ésimo indivíduos ($j > i$) na variação do índice é expresso por:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   \Delta G = G' - G = \frac{2h}{n^2\mu} (j - i) > 0
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                Como $j > i$, a variação $\Delta G$ é estritamente positiva. Nota-se, contudo, uma característica estrutural de $G$: a magnitude da variação depende exclusivamente da diferença entre as posições ordinais no ranking ($j - i$), e não da magnitude absoluta dos rendimentos dos indivíduos envolvidos na transferência.
+
+                <div class="texto-livreAuto">
+                    <h4>Decomposição do Índice de Gini por Estratos</h4>
+                </div>
+
+                Quando uma população de dimensão $N$ é dividida em $k$ estratos ou subgrupos populacionais mutuamente exclusivos (por exemplo, regiões geográficas, níveis de escolaridade ou sectores de atividade), torna-se relevante avaliar em que medida a desigualdade global deriva de disparidades entre os grupos ou de assimetrias dentro dos próprios grupos.
+
+                Ao tentar decompor o Índice de Gini global ($G$), Hoffmann (2006) demonstra que a expressão analítica assume a forma:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   G = G_e + \sum_{h=1}^k \pi_h Y_h G_h + R
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                onde: $G_e$ representa a componente inter-grupos (calculada atribuindo a cada indivíduo do grupo $h$ o rendimento médio do seu estrato, $\mu_h$); $G_h$ representa o Índice de Gini interno do estrato $h$. $\pi_h = \frac{n_h}{N}$ é a proporção demográfica do estrato $h$. $Y_h = \frac{n_h \mu_h}{N \mu}$ é a parcela do rendimento total apropriada pelo estrato $h$. $R$ é um termo residual de sobreposição (*overlap*).
+
+                O termo residual $R$ só é estritamente nulo se não existir qualquer sobreposição entre os intervalos de rendimento dos subgrupos (isto é, se o rendimento do indivíduo mais rico do grupo mais pobre for inferior ao rendimento do indivíduo mais pobre do grupo seguinte).
+                
+                Sempre que existe intersecção entre as distribuições dos estratos — situação padrão nas ciências sociais —, $R > 0$. Consequentemente, o Índice de Gini não é perfeitamente decomponível aditivamente, o que limita a sua aplicabilidade quando se pretende isolar rigorosamente os efeitos intra-grupo e inter-grupo.
+
+                <div class="texto-livreAuto">
+                    <h2>Medidas Fundamentadas na Teoria da Informação</h2>
+                </div>
+
+                Para ultrapassar a imperfeição aditiva do Coeficiente de Gini, Henri Theil (1967) desenvolveu uma classe de medidas de desigualdade fundamentada no conceito de entropia da Teoria da Informação de Shannon.
+
+                <div class="texto-livreAuto">
+                    <h4>A Entropia e a Origem do Índice $T$ de Theil</h4>
+                </div>
+
+                Em teoria da informação, a entropia de uma distribuição de probabilidades mede o seu grau de incerteza ou desordem. Transpondo para a análise económica, se o rendimento de uma população estiver distribuído em equidade perfeita, a quota de cada indivíduo é $y_i = 1/n$, e a entropia atinge o seu valor máximo, $H(y) = \log n$.
+
+                O Índice $T$ de Theil é formulado como o desvio ou distância de informação entre a entropia máxima e a entropia observada na distribuição do rendimento:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   T = \log n - H(y) = \sum_{i=1}^n y_i \log(n y_i)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                onde $y_i = \frac{X_i}{n\mu}$ representa a fração do rendimento total detida pelo indivíduo $i$.
+
+                <div class="texto-livreAuto">
+                    <h4>O Índice $L$ de Theil</h4>
+                </div>
+
+                Paralelamente, Theil definiu o Índice $L$ (também designado por Desvio Logarítmico Médio), que toma como ponderador a fração demográfica ($1/n$) em alternativa à fração do rendimento ($y_i$):
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                   L = \sum_{i=1}^n \frac{1}{n} \log\left(\frac{1}{n y_i}\right) = \frac{1}{n} \sum_{i=1}^n \log\left(\frac{\mu}{X_i}\right)
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="medidas-de-pobreza" class="conteudo-seccao" data-grupo="estat-indices">
+            <h2>MEDIDAS DE POBREZA</h2>
+            <div class="texto-livreAuto">
+
+                A mensuração da pobreza constitui uma dimensão essencial do diagnóstico socioeconómico e do planeamento de políticas públicas de redistribuição. Enquanto os estudos de desigualdade (Capítulo 6) avaliam a assimetria na distribuição do rendimento ao longo de toda a escala populacional, a análise da pobreza foca-se exclusivamente no segmento da população cujos recursos materiais se situam abaixo de um limiar mínimo considerado indispensável para assegurar a sobrevivência ou um nível de vida digno.
+
+                O ponto de partida analítico para a quantificação da pobreza absoluta consiste na fixação de uma linha de pobreza (ou limiar de pobreza), denotada por $z$. Dado um vetor de rendimentos individuais ou domiciliares ordenados de forma não decrescente, $X = (X_1, X_2, \dots, X_n)$, um indivíduo $i$ é classificado como pobre se o seu rendimento $X_i$ for igual ou inferior ao valor crítico $z$:$X_i \le z$
+
+                Admitindo a existência de $k$ indivíduos na condição de pobreza, a população fica dividida em dois subconjuntos mutuamente exclusivos:
+
+                <div class="equacao" id="equacao-58">
+                    \begin{equation}
+                    X_1 \le X_2 \le \dots \le X_k \le z < X_{k+1} \le \dots \le X_n
+                    \end{equation}
+                    <span class="rotulo-equacao"></span>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Limitações na Determinação de $z$</h4>
+                </div>
+
+                Conforme salientado por Hoffmann (2006), a mensuração da pobreza com base estritamente no rendimento monetário envolve escolhas metodológicas complexas que afetam decisivamente os resultados:
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>Arbitrariedade do Limiar Monetário</b>: A definição do valor exato de $z$ encerra inevitavelmente um grau de arbitrariedade. Habitualmente, calcula-se $z$ com base no custo de um cabaz alimentar mínimo (capaz de fornecer os requisitos calóricos e nutricionais básicos), adicionado de um montante estimado para despesas não alimentares essenciais (habitação, vestuário, transporte e saúde).
+                        </li>
+                        <li>
+                            <b>Atualização Temporal e Comparabilidade Espacial</b>: Em análises longitudinais, o valor nominal de $z$ deve ser corrigido ao longo do tempo através da deflação por um deflator de preços adequado (como o IPC ou o INPC), de forma a manter constante o seu valor real. 
+                            
+                            No entanto, alterações nos padrões de consumo e no aparecimento de novas necessidades decorrentes do desenvolvimento económico complicam a fixação de uma linha absoluta rígida. Do mesmo modo, comparações entre regiões geográficas distintas exigem o ajustamento de $z$ aos diferenciais do custo de vida local.
+                        </li>
+                        <li>
+                            <b>Unidade de Análise e Adulto-Equivalente</b>: A mensuração direta pelo rendimento individual descura a partilha de recursos no seio da família. Por conseguinte, adota-se com frequência a Renda Domiciliar Per Capita (RDPC) ou o rendimento por adulto-equivalente, aplicando escalas de equivalência para incorporar as economias de escala no consumo familiar e as necessidades diferenciadas por idade.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="texto-livreAuto">
+                    <h4>Indicadores Clássicos: Incidência ($H$) e Hiato de Pobreza ($I$)</h4>
+                </div>
+
+                As medidas tradicionais de pobreza pretendem quantificar duas dimensões primárias: a quantidade de pessoas atingidas (extensão) e a magnitude do défice de rendimento (intensidade).
+
+                <div class="texto-livreAuto">
+                    <ul class="quadrado">
+                        <li>
+                            <b>A Proporção ou Taxa de Incidência de Pobres ($H$)</b>: A Proporção de Pobres (denotada por $H$, do inglês *Headcount Ratio*) mede a fração da população total ($n$) que vive abaixo da linha de pobreza:
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                H = \frac{k}{n} \quad \text{com} \quad 0 \le H \le 1
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+                            
+                            $H$ quantifica a prevalência ou extensão percentual, mas não fornece qualquer informação sobre a intensidade do défice de rendimento dos pobres. $H$ é insensível à profundidade da pobreza e à distribuição interna do rendimento entre os pobres.
+                            
+                            <div>Se o rendimento de um indivíduo pobre ($X_i \le z$) diminuir drasticamente (tornando-o ainda mais miserável) ou se ocorrer uma transferência regressiva de rendimento entre dois pobres, o valor de $H$ permanece rigorosamente inalterado. Ou melhor, uma redução de $H$ não implica necessariamente uma melhoria do bem-estar dos pobres, podendo resultar de uma transferência regressiva de rendimento de um pobre para outro menos pobre.</div>
+                        </li>
+                        <li>
+                            <b>Hiato de Pobreza ($I$)</b>: A Razão de Insuficiência de Renda ($I$) quantifica o défice relativo médio de rendimento da população pobre em relação à linha de pobreza $z$:
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                I = \frac{1}{k} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right) = 1 - \frac{m}{z}
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+
+                            onde $m = \frac{1}{k} \sum_{i=1}^k X_i$ representa o rendimento médio do subgrupo dos pobres, e $S = \sum_{i=1}^k (z - X_i)$ representa a insuficiência de renda total acumulada (o montante financeiro total necessário para erradicar a pobreza se transferido em perfeita focalização).
+                            
+                            <div>$I$ varia no intervalo $0 \le I \le 1$ e mede a profundidade ou intensidade média da privação entre os que são pobres. $I$ é insensível ao número absoluto ou proporção de pobres ($H$) e insensível à distribuição interna do rendimento entre os próprios pobres.</div>
+                            
+                        </li>
+                        <li>
+                            <b>Hiato Populacional ($HI$)</b>: A combinação por produto das duas medidas anteriores dá origem ao Índice $HI$:
+
+                            <div class="equacao" id="equacao-58">
+                                \begin{equation}
+                                HI = H \times I = \frac{1}{n} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right)
+                                \end{equation}
+                                <span class="rotulo-equacao"></span>
+                            </div>
+
+                            O indicador $HI$ expressa a proporção do rendimento total da sociedade (medido em unidades de $z$) que teria de ser transferida para a população pobre de modo a eliminar inteiramente o hiato de pobreza. Contudo, apesar de incorporar simultaneamente a extensão ($H$) e a intensidade ($I$), $HI$ permanece insensível a transferências efetuadas entre os próprios pobres.
+                        </li>
+                    </ul>
+                </div>
+
+
+                
+
+                ## 7.3. O Índice de Pobreza de Amartya Sen ($P$): Integração Axiomática e o Coeficiente de Gini dos Pobres
+
+                Para ultrapassar as limitações estruturais dos indicadores $H$, $I$ e $HI$, Amartya Sen (1976) formulou uma medida compósita axiomática que sintetiza três dimensões fundamentais da pobreza:
+
+                1. A extensão da pobreza, medida pela proporção de pobres ($H$);
+                2. A intensidade da pobreza, medida pelo hiato médio de rendimento ($I$);
+                3. A desigualdade da distribuição de rendimento entre os próprios pobres, medida pelo Coeficiente de Gini do subgrupo dos pobres ($G^*$).
+
+                ### Formulação Matemática do Índice de Sen ($P$)
+
+                $$P = H \left[ I + (1 - I) G^* \right]$$
+
+                onde $G^*$ representa o Coeficiente de Gini calculated exclusivamente para o vetor de rendimentos dos $k$ indivíduos pobres ($X_1 \le X_2 \le \dots \le X_k$).
+
+                ### Casos Limite e Análise Teórica
+
+                * **Igualdade Perfeita entre os Pobres ($G^* = 0$):** Se todos os $k$ indivíduos pobres possuírem exatamente o mesmo rendimento ($X_1 = X_2 = \dots = X_k = m$), a desigualdade interna anula-se, reduzindo-se o índice de Sen ao hiato populacional:
+
+                $$P = H \times I = HI$$
+
+                * **Cumprimento do Princípio das Transferências:** O Índice $P$ satisfaz o princípio de Pigou-Dalton no domínio da pobreza: qualquer transferência regressiva de rendimento de um indivíduo pobre para outro indivíduo menos pobre provoca um incremento no Coeficiente de Gini $G^*$, resultando num aumento estrito do valor de $P$.
+
+                ### Limitação Analítica do Índice de Sen
+
+                Apesar do seu rigor axiomático, o Índice de Sen apresenta uma desvantagem prática relevante salientada por Hoffmann (2006): não é aditivamente decomponível por subgrupos populacionais. Se a população for dividida em regiões, o valor global de $P$ não equivale à média ponderada dos índices de Sen regionais, devido à presença da ordenação ordinal implícita no cálculo de $G^*$.
+
+                ## 7.4. A Família Axiomática de Foster, Greer e Thorbecke ($FGT / P_\alpha$)
+
+                Com o objetivo de aliar o cumprimento das propriedades axiomáticas de transferência à exigência metodológica de decomponibilidade aditiva por subgrupos, Foster, Greer e Thorbecke (1984) propuseram a classe parametrizada de índices $FGT$ (denotada por $P_\alpha$).
+
+                ### Formulação Geral da Classe $P_\alpha$
+
+                $$P_\alpha = \frac{1}{n} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right)^\alpha \quad \text{com} \quad \alpha \ge 0$$
+
+                onde $\alpha$ representa o parâmetro de aversão à pobreza (ou sensibilidade do indicador à gravidade das privações individuais).
+
+                ```text
+                Hiato Relativo de Pobreza (z - X_i) / z elevado ao expoente α
+                ========================================================================
+                α = 0  => P_0 = H   (Peso unitário idêntico para todos os pobres)
+                α = 1  => P_1 = HI  (Ponderação linear proporcional ao hiato individual)
+                α = 2  => P_2       (Ponderação quadrática penalizadora dos hiatos elevados)
+                ========================================================================
+
+                ```
+
+                ### Análise dos Casos Particulares do Parâmetro $\alpha$
+
+                1. **$\alpha = 0$ — Incidência da Pobreza ($P_0$):**
+
+                $$P_0 = \frac{1}{n} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right)^0 = \frac{1}{n} \sum_{i=1}^k 1 = \frac{k}{n} = H$$
+
+                Corresponde exatamente à taxa de incidência de pobres.
+
+                2. **$\alpha = 1$ — Hiato Populacional de Pobreza ($P_1$):**
+
+                $$P_1 = \frac{1}{n} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right)^1 = H \times I = HI$$
+
+                Corresponde à média dos hiatos relativos de toda a população.
+
+                3. **$\alpha = 2$ — Severidade da Pobreza ($P_2$):** Ao elevar o hiato relativo individual ao quadrado, $P_2$ atribui um peso ponderador progressivamente maior aos indivíduos que se encontram em situações de extrema indigência (cujo rendimento $X_i$ está muito distante de $z$).
+
+                ### Decomposição Analítica de $P_2$ e o Coeficiente de Variação dos Pobres ($C_p$)
+
+                Hoffmann (2006) demonstra formalmente que a medida de severidade $P_2$ integra a extensão ($H$), a intensidade ($I$) e a desigualdade interna dos pobres medida pelo Coeficiente de Variação dos rendimentos dos pobres ($C_p = \sigma_p / m$):
+
+                $$P_2 = \frac{1}{n} \sum_{i=1}^k \left( \frac{z - X_i}{z} \right)^2 = H \left[ I^2 + (1 - I)^2 C_p^2 \right]$$
+
+                onde $\sigma_p^2 = \frac{1}{k} \sum_{i=1}^k (X_i - m)^2$ é a variância dos rendimentos da população pobre.
+
+                * **Leitura Teórica:** Esta igualdade evidencia analiticamente que $P_2$ cumpre estritamente o princípio de Pigou-Dalton para a população pobre: mantendo-se $H$ e $I$ constantes, qualquer aumento na dispersão dos rendimentos entre os pobres (elevação de $C_p$) traduz-se num aumento direto da severidade da pobreza $P_2$.
+
+                ## 7.5. Propriedades Axiomáticas e Decomposição Aditiva por Subgrupos Populacionais
+
+                A vantagem decisiva da família $FGT$ no planeamento de políticas públicas de combate à pobreza reside na sua decomponibilidade aditiva perfeita.
+
+                ### Formulação da Decomposição por Estratos
+
+                Suponha-se que uma população de $N$ indivíduos é dividida em $h$ subgrupos ou estratos mutuamente exclusivos (por exemplo, áreas urbanas vs. rurais ou regiões administrativas), de modo que $N = \sum_{j=1}^h N_j$.
+
+                Sendo $k_j$ o número de pobres e $P_{\alpha, j}$ o índice $FGT$ do $j$-ésimo subgrupo:
+
+                $$P_{\alpha, j} = \frac{1}{N_j} \sum_{i=1}^{k_j} \left( \frac{z - X_{ji}}{z} \right)^\alpha$$
+
+                O índice $FGT$ global da população ($P_\alpha$) equivale exatamente à média ponderada dos índices de cada subgrupo, tomando como pesos as respetivas participações demográficas ($\pi_j = N_j / N$):
+
+                $$P_\alpha = \sum_{j=1}^h \pi_j P_{\alpha, j} \quad \text{onde} \quad \pi_j = \frac{N_j}{N}$$
+
+                ### Contribuição Relativa de Cada Subgrupo para a Pobreza Total
+
+                Esta propriedade permite calcular com precisão a contribuição percentual do $j$-ésimo subgrupo ($c_j$) para a pobreza total da sociedade:
+
+                $$c_j = \frac{\pi_j P_{\alpha, j}}{P_\alpha} \quad \text{com} \quad \sum_{j=1}^h c_j = 1$$
+
+                Se $c_j > \pi_j$, conclui-se que o subgrupo $j$ apresenta um perfil desproporcionalmente severo de pobreza no contexto nacional, orientando a focalização espacial e orçamental de programas sociais de apoio.
 
                 <div class="texto-livreAuto">
                     <h2>Curva de Lorenz e Índice de Gini</h2>
