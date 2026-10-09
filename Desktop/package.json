@@ -1,0 +1,32 @@
+{
+  "name": "exactas-prof-wadiley",
+  "version": "1.0.0",
+  "description": "Aplicação Desktop Ciências Exactas",
+  "author": "Prof. Wadiley",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.wadiley.exactas",
+    "productName": "Exactas - Prof Wadiley",
+    "extraResources": [
+      {
+        "from": "../www",
+        "to": "www"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  }
+}

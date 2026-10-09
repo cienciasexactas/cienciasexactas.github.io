@@ -1,0 +1,11 @@
+{
+  "appId": "com.cienciasexactas.estatistica",
+  "appName": "Exactas - Wadiley",
+  "webDir": "www",
+  "plugins": {
+    "CapacitorUpdater": {
+      "statsUrl": "https://stats.capgo.app/api/v1/stats",
+      "autoUpdate": false
+    }
+  }
+}
