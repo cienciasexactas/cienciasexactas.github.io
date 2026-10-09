@@ -1293,6 +1293,13 @@ mjx-container[jax="CHTML"][display="true"]>mjx-math,
     margin-top: 1rem;
 }
 
+/* 1. Ajuste a margem da div interior em vez de empurrar o topo */
+.texto-livreAuto .bloco-exemplo .texto-livreAuto {
+    margin-top: 10px !important;
+    margin-bottom: 30px !important;
+    display: block;
+}
+
 /* Regras para o elemento pai (<figure>) */
 figure {
     display: flex;
