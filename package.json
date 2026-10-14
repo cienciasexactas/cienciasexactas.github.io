@@ -1,0 +1,33 @@
+{
+  "name": "site---home",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wadiley/Site---Home.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wadiley/Site---Home/issues"
+  },
+  "homepage": "https://github.com/wadiley/Site---Home#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2",
+    "@capacitor/live-updates": "^0.5.0",
+    "@capgo/capacitor-updater": "^8.52.1"
+  },
+  "devDependencies": {
+    "@capgo/cli": "^8.75.1"
+  }
+}

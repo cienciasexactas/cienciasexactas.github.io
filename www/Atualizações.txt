@@ -1,0 +1,19 @@
+Quando houver atualizações no conteúdo do site.
+
+Sim, basta gerar um novo APK e instalá-lo por cima.
+
+1.Copiar os novos ficheiros no VS Code:
+
+Após fazer as alterações no site, garanta que os ficheiros atualizados estão na pasta www e execute no terminal: Bashnpx @capacitor/cli copy android
+
+2.Gerar o novo APK no Android Studio:
+
+No Android Studio, vá a Build > Generate App Bundles or APKs > Generate APKs (ou execute .\gradlew assembleDebug na pasta android via terminal).
+
+3.Instalar a atualização no telemóvel:
+
+Envie o novo ficheiro app-debug.apk para os utilizadores.
+
+
+No Computador basta:
+npm run dist
