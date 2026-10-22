@@ -388,9 +388,6 @@ function subscreverNewsletter(event) {
 // ============================================================================
 // 4. TRADUÇÃO DINÂMICA (GOOGLE TRANSLATE) & IDIOMAS
 // ============================================================================
-// ============================================================================
-// 4. TRADUÇÃO DINÂMICA (GOOGLE TRANSLATE) & IDIOMAS
-// ============================================================================
 
 /**
  * Callback de inicialização do widget do Google Translate.
@@ -1524,51 +1521,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carrega a lista ao abrir a página (removida a duplicação do listener)
   carregarFicheirosExistentes();
 });
+
 /* ============================================================================
- * INTEGRAÇÃO CAPGO / CAPACITOR (ATUALIZADA)
+ * NAVEGAÇÃO SPA E BOTÃO VOLTAR (OFFLINE / TRADICIONAL)
  * ============================================================================ */
-async function inicializarCapgoEBotaoVoltar() {
+function inicializarBotaoVoltar() {
   // Executa APENAS se estiver a correr dentro da app nativa (Android/iOS)
   if (!window.Capacitor || typeof window.Capacitor.isNativePlatform !== 'function' || !window.Capacitor.isNativePlatform()) {
     return;
   }
 
-  try {
-    // Importação dinâmica para não quebrar scripts tradicionais no browser
-    const { CapacitorUpdater } = await import('@capgo/capacitor-updater');
-    const { App } = await import('@capacitor/app');
-
-    // 1. Notifica o Capgo que a app abriu com sucesso (evita rollback)
-    await CapacitorUpdater.notifyAppReady();
-
-    // 2. Como o autoUpdate está ativo, o Capgo gere o download. 
-    // Ouve o evento de download concluído para aplicar a atualização imediatamente ou no próximo ciclo.
-    CapacitorUpdater.addListener('downloadComplete', async (info) => {
-      if (info && info.version) {
-        console.log('Atualização descarregada pelo Capgo:', info.version);
-        await CapacitorUpdater.set({ version: info.version });
-      }
-    });
-
-    // 3. Botão Voltar do Android sincronizado com a sua navegação SPA
+  // Importa apenas o plugin App do Capacitor para gerir o botão voltar
+  import('@capacitor/app').then(({ App }) => {
     App.addListener('backButton', () => {
       const secaoAtual = window.location.hash.replace('#', '') || 'inicio';
 
+      // Se não estiver no início, usa a sua função existente de navegação
       if (secaoAtual !== 'inicio' && typeof navegarParaSecao === 'function') {
         navegarParaSecao('inicio');
       } else {
         App.exitApp();
       }
     });
-
-  } catch (erro) {
-    console.warn('Capgo OTA ignorado ou erro de carregamento:', erro);
-  }
+  }).catch(erro => {
+    console.warn('Erro ao carregar o plugin App do Capacitor:', erro);
+  });
 }
 
-// Inicializa o Capgo sem bloquear o DOMContentLoaded principal da sua aplicação
+// Inicializa sem bloquear o DOMContentLoaded principal da aplicação
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', inicializarCapgoEBotaoVoltar);
+  document.addEventListener('DOMContentLoaded', inicializarBotaoVoltar);
 } else {
-  inicializarCapgoEBotaoVoltar();
+  inicializarBotaoVoltar();
 }
