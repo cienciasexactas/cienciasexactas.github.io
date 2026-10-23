@@ -2631,3 +2631,20 @@ input[type="file"]::file-selector-button {
     border-bottom: 1px solid #dee2e6;
     color: #495057;
 }
+
+.btn-pauta {
+    background-color: #2E86C1;
+    color: white;
+    font-weight: bold;
+    padding: 1px 5px;
+    font-size: 16px;
+    border-radius: 13px;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0;
+}
+
+/* Opcional: efeito subtil ao passar o rato (hover) */
+.btn-pauta:hover {
+    background-color: #2471A3;
+}
