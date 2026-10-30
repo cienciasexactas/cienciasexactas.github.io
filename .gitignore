@@ -1,0 +1,7 @@
+node_modules/
+dist/
+Desktop/dist/
+Desktop/node_modules/
+*.exe
+android/
+ios/

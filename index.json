@@ -1,0 +1,36 @@
+{
+  "colaborativos/biologia": [
+    {
+      "ano": "2025-2026",
+      "ficheiros": [
+        {
+          "nome": "Modelo_Relatorio.pdf",
+          "path": "uploads/colaborativos/biologia/2025-2026/Modelo_Relatorio.pdf",
+          "tamanho": 45120,
+          "url": "https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/uploads/colaborativos/biologia/2025-2026/Modelo_Relatorio.pdf",
+          "data": "2026-09-01T10:00:00.000Z"
+        }
+      ]
+    }
+  ],
+  "actividades/actividade-1/biologia": [
+    {
+      "ano": "2025-2026",
+      "ficheiros": [
+        {
+          "nome": "Modelo_Actividade1.pdf",
+          "path": "uploads/actividades/actividade-1/biologia/2025-2026/Modelo_Actividade1.pdf",
+          "tamanho": 32000,
+          "url": "https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/uploads/actividades/actividade-1/biologia/2025-2026/Modelo_Actividade1.pdf",
+          "data": "2026-09-05T08:00:00.000Z"
+        }
+      ]
+    }
+  ],
+  "grupo/economia": [
+    {
+      "ano": "2025-2026",
+      "ficheiros": []
+    }
+  ]
+}
