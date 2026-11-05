@@ -61,14 +61,14 @@ const PERIODOS_SUBMISSAO = {
       'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
     },
     cienciasnaturais: {
-      'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-5': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-6': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-7': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-      'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
+      'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-5': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-6': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-7': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') },
+      'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-11-05T23:59:59Z') }
     },
     matematica: {
       'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
