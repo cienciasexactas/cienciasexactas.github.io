@@ -1,0 +1,140 @@
+/* ============================================================================
+   ESTILOS ISOLADOS DO SISTEMA DE PAUTAS
+   ============================================================================ */
+
+.pauta-container { 
+    max-width: 900px; 
+    margin: 30px auto; 
+    background: #ffffff; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e2e8f0; 
+}
+
+.pauta-container h2 { 
+    text-align: center; 
+    color: #0f172a; 
+    margin-top: 0; 
+}
+
+.pauta-tabs { 
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 1.5rem; 
+    border-bottom: 2px solid #e2e8f0; 
+    padding-bottom: 1rem; 
+}
+
+.pauta-tab-btn { 
+    background: #e2e8f0; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    color: #475569; 
+}
+
+.pauta-tab-btn.active { 
+    background: #2563eb; 
+    color: #ffffff; 
+}
+
+.pauta-form-group { 
+    margin-bottom: 1rem; 
+}
+
+.pauta-form-group label { 
+    display: block; 
+    font-weight: 500; 
+    margin-bottom: 0.4rem; 
+}
+
+.pauta-form-group input, 
+.pauta-form-group select { 
+    width: 100%; 
+    padding: 0.75rem; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    box-sizing: border-box; 
+}
+
+.pauta-btn-primary { 
+    background-color: #2563eb; 
+    color: white; 
+    border: none; 
+    padding: 0.75rem 1.5rem; 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    width: 100%; 
+    margin-top: 1rem; 
+}
+
+.pauta-btn-primary:hover { 
+    background-color: #1d4ed8; 
+}
+
+.pauta-btn-secondary { 
+    background-color: #64748b; 
+    color: white; 
+    border: none; 
+    padding: 0.75rem 1.5rem; 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    width: 100%; 
+    margin-top: 1.5rem; 
+}
+
+.pauta-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 1rem; 
+}
+
+.pauta-table th, 
+.pauta-table td { 
+    border: 1px solid #e2e8f0; 
+    padding: 10px; 
+    text-align: left; 
+    font-size: 0.9rem; 
+}
+
+.pauta-table th { 
+    background-color: #f1f5f9; 
+    font-weight: 600; 
+}
+
+.pauta-hidden { 
+    display: none !important; 
+}
+
+.pauta-error { 
+    color: #dc2626; 
+    font-size: 0.875rem; 
+    margin-top: 0.5rem; 
+    text-align: center; 
+}
+
+.pauta-info-card { 
+    background: #f8fafc; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 1rem; 
+    border: 1px solid #e2e8f0; 
+}
+
+.pauta-file-box { 
+    border: 2px dashed #cbd5e1; 
+    padding: 20px; 
+    text-align: center; 
+    border-radius: 8px; 
+    margin-bottom: 1.5rem; 
+    background: #fafafa; 
+}

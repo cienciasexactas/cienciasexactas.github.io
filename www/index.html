@@ -14,10 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- LIGAÇÃO AO FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="pauta.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <!-- 1. Primeiro carregas as configurações e datas -->
     <script src="config.js"></script>
+
+    <script src="pauta.js"></script> <!-- Coloca aqui -->
 
     <!-- 2. Depois carregas a lógica principal do teu site -->
     <script src="script.js"></script>
@@ -231,6 +236,7 @@
                         </div>
                     </div>
                     <a href="#estat-inf">Confundimento & Fracionamento</a>
+                    <a href="#pauta" onclick="abrirSecaoPautas(event)">Pautas / Notas</a>
                     <a href="#exercicios-anova">Exercícios Propostos</a>
                 </div>
             </div>
@@ -5017,6 +5023,133 @@
                 
             </div>
         </section>
+
+<!-- ================= INÍCIO DO SISTEMA UNIFICADO DE AUTENTICAÇÃO ================= -->
+<section id="pauta" class="conteudo-seccao pauta-container">
+    <h2 id="pauta-titulo-principal">Sistema de Consulta e Gestão de Pautas</h2>
+    
+    <!-- 1. FORMULÁRIO DE LOGIN UNIFICADO -->
+    <div id="pauta-login-section">
+        <p style="text-align: center; color: #64748b; margin-bottom: 1.5rem;">Introduza os seus dados para aceder à sua área (Estudante ou Docente).</p>
+        <div class="pauta-form-group">
+            <label for="pauta-user-id">Número de ID / Utilizador:</label>
+            <input type="text" id="pauta-user-id" placeholder="Ex: docente ou 20260101">
+        </div>
+        <div class="pauta-form-group">
+            <label for="pauta-user-senha">Senha:</label>
+            <input type="password" id="pauta-user-senha" placeholder="Digite a sua senha">
+        </div>
+        <button class="pauta-btn-primary" onclick="autenticarUtilizador()">Entrar no Sistema</button>
+        <div id="pauta-login-error" class="pauta-error"></div>
+    </div>
+
+    <!-- 2. VISTA DO ESTUDANTE (Oculta por defeito) -->
+    <div id="vista-estudante" class="pauta-box pauta-hidden">
+        <div class="pauta-info-card">
+            <p><strong>Nome:</strong> <span id="lbl-nome"></span></p>
+            <p><strong>Curso:</strong> <span id="lbl-curso"></span></p>
+            <p><strong>ID:</strong> <span id="lbl-id"></span></p>
+        </div>
+
+        <h4>Avaliações por Cadeira</h4>
+        <table class="pauta-table">
+            <thead>
+                <tr>
+                    <th>Cadeira</th>
+                    <th>F1</th>
+                    <th>F2</th>
+                    <th>TP</th>
+                    <th>Final</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-avaliacoes"></tbody>
+        </table>
+
+        <h4 style="margin-top: 1.5rem;">Evolução Académica</h4>
+        <table class="pauta-table">
+            <thead>
+                <tr>
+                    <th>Período</th>
+                    <th>Média</th>
+                    <th>Progresso</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-evolucao"></tbody>
+        </table>
+
+        <button class="pauta-btn-secondary" onclick="terminarSessao()">Terminar Sessão</button>
+    </div>
+
+<!-- 3. VISTA DO DOCENTE -->
+<div id="vista-docente" class="pauta-box pauta-hidden">
+    <h3>Painel de Gestão Docente</h3>
+    
+    <!-- Seletores de Turma (Curso e Ano Letivo) -->
+    <div style="background: #e2e8f0; padding: 12px; border-radius: 8px; margin-bottom: 1.5rem; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 220px;">
+            <label style="font-weight: 500; font-size: 0.9rem; display: block; margin-bottom: 4px;">Selecionar Curso:</label>
+            <select id="select-docente-curso" class="pauta-form-group" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;" onchange="atualizarTabelaDocente()">
+                <option value="biologia">Licenciatura em Biologia</option>
+                <option value="cienciasnaturais">Ensino Básico - C. N. Sociais</option>
+                <option value="matematica">Licenciatura em Matemática</option>
+                <option value="economia">Licenciatura em Economia</option>
+                <option value="gestao-empresa">Licenciatura em Gestão de Empresa</option>
+                <option value="gestao-iscgvsm">Licenciatura em Gestão - ISCSVSM</option>
+                <option value="enfermagem-a">Licenciatura em Enfermagem - A</option>
+                <option value="enfermagem-b">Licenciatura em Enfermagem - B</option>
+                <option value="contabilidade">Licenciatura em Contabilidade</option>
+                <option value="agronomia">Licenciatura em Agronomia</option>
+                <option value="turismo">Licenciatura em Turismo</option>
+                <option value="geografia">Licenciatura em Geografia</option>
+                <option value="educacao-infancia">Licenciatura em Educação de Infância</option>
+            </select>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+            <label style="font-weight: 500; font-size: 0.9rem; display: block; margin-bottom: 4px;">Ano Letivo:</label>
+            <select id="select-docente-ano" class="pauta-form-group" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;" onchange="atualizarTabelaDocente()">
+                <option value="2025-2026">2025-2026</option>
+                <option value="2023-2024">2023-2024</option>
+                <option value="2024-2025">2024-2025</option>
+                <option value="2026-2027">2026-2027</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Formulário de Inserção / Edição Manual -->
+    <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; margin-bottom: 1.5rem;">
+        <h4 style="margin-top: 0;">Adicionar ou Atualizar Aluno / Notas</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="pauta-form-group"><input type="text" id="novo-id" placeholder="ID do Aluno (ex: 20260103)"></div>
+            <div class="pauta-form-group"><input type="password" id="novo-senha" placeholder="Senha do Aluno"></div>
+            <div class="pauta-form-group"><input type="text" id="novo-nome" placeholder="Nome Completo"></div>
+            <div class="pauta-form-group"><input type="text" id="novo-cadeira" placeholder="Nome da Cadeira"></div>
+            <div class="pauta-form-group"><input type="text" id="novo-f1" placeholder="Nota F1 (opcional)"></div>
+            <div class="pauta-form-group"><input type="text" id="novo-f2" placeholder="Nota F2 (opcional)"></div>
+            <div class="pauta-form-group"><input type="text" id="novo-tp" placeholder="Nota TP (opcional)"></div>
+            <div class="pauta-form-group"><input type="number" id="novo-final" placeholder="Nota Final (ex: 14)"></div>
+        </div>
+        <button class="pauta-btn-primary" onclick="adicionarAlunoManual()" style="margin-top: 10px;">Guardar / Atualizar na Pauta</button>
+    </div>
+    
+    <h4>Alunos Registados na Turma</h4>
+    <table class="pauta-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cadeira</th>
+                <th>Avaliações</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-docente-alunos"></tbody>
+    </table>
+
+    <button class="pauta-btn-secondary" onclick="terminarSessao()">Terminar Sessão</button>
+</div>
+</section>
+<!-- ================= FIM DO SISTEMA UNIFICADO DE AUTENTICAÇÃO ================= -->
 
     </div>
 
