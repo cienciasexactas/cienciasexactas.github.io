@@ -170,20 +170,45 @@ async function inicializarSistemaPauta() {
         const resposta = await fetch('/api/pauta');
         if (resposta.ok) {
             const dados = await resposta.json();
-            pautaEstado.estudantes = (dados.estudantes || []).map(est => est);
-            pautaEstado.planilhasColunas = dados.planilhasColunas || {
-                "Presenças": [],
-                "Trabalhos Individuais": [],
-                "Trabalhos de Grupo": []
-            };
-            pautaEstado.percentagens = dados.percentagens || {};
+            if (dados && dados.estudantes && dados.estudantes.length > 0) {
+                pautaEstado.estudantes = dados.estudantes;
+                pautaEstado.planilhasColunas = dados.planilhasColunas || pautaEstado.planilhasColunas;
+                pautaEstado.percentagens = dados.percentagens || {};
+                return;
+            }
         }
     } catch (erro) {
-        console.error("Erro ao carregar dados da API:", erro);
+        console.warn("Aviso ao carregar da API:", erro);
+    }
+
+    // Fallback de segurança para garantir portabilidade entre computadores
+    const localSalvo = localStorage.getItem('pautaEstadoGlobal');
+    if (localSalvo) {
+        try {
+            const dadosLocais = JSON.parse(localSalvo);
+            pautaEstado.estudantes = dadosLocais.estudantes || [];
+            pautaEstado.planilhasColunas = dadosLocais.planilhasColunas || pautaEstado.planilhasColunas;
+            pautaEstado.percentagens = dadosLocais.percentagens || {};
+        } catch (e) {
+            console.error("Erro ao ler dados locais:", e);
+        }
     }
 }
 
+// O que foi adicionado:
 async function salvarNaNuvem() {
+    // Guarda localmente para persistência imediata
+    try {
+        localStorage.setItem('pautaEstadoGlobal', JSON.stringify({
+            estudantes: pautaEstado.estudantes,
+            planilhasColunas: pautaEstado.planilhasColunas,
+            percentagens: pautaEstado.percentagens
+        }));
+    } catch (e) {
+        console.error("Erro ao salvar localmente:", e);
+    }
+
+    // Envia para o servidor na nuvem
     try {
         await fetch('/api/pauta', {
             method: 'POST',
