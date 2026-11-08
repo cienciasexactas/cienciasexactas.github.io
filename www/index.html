@@ -236,7 +236,6 @@
                         </div>
                     </div>
                     <a href="#estat-inf">Confundimento & Fracionamento</a>
-                    <a href="#pauta" onclick="abrirSecaoPautas(event)">Pautas / Notas</a>
                     <a href="#exercicios-anova">Exercícios Propostos</a>
                 </div>
             </div>
@@ -250,6 +249,9 @@
                     <a href="#producao-cientifica">Partilha de Conhecimento</a>
                 </div>
             </div>
+
+            <!-- MENU: REPOSITÓRIO ACADÉMICO -->
+            <a href="#pauta">PAUTAS</a>
         </div>
 
         <!-- ÁREA DIREITA (Desktop): Lupa + Selector de Idioma -->
@@ -5024,132 +5026,363 @@
             </div>
         </section>
 
-<!-- ================= INÍCIO DO SISTEMA UNIFICADO DE AUTENTICAÇÃO ================= -->
+<!-- ================= INÍCIO DA SECÇÃO PAUTAS ================= -->
 <section id="pauta" class="conteudo-seccao pauta-container">
-    <h2 id="pauta-titulo-principal">Sistema de Consulta e Gestão de Pautas</h2>
-    
-    <!-- 1. FORMULÁRIO DE LOGIN UNIFICADO -->
-    <div id="pauta-login-section">
-        <p style="text-align: center; color: #64748b; margin-bottom: 1.5rem;">Introduza os seus dados para aceder à sua área (Estudante ou Docente).</p>
+    <h2 style="text-align: center; margin-bottom: 20px;">Sistema Académico Integrado de Pautas</h2>
+
+    <!-- ECRÃ DE LOGIN -->
+    <div id="pauta-login-section" class="pauta-card" style="max-width: 420px; margin: 0 auto;">
+        <h3 style="text-align: center;">Autenticação no Sistema</h3>
         <div class="pauta-form-group">
-            <label for="pauta-user-id">Número de ID / Utilizador:</label>
-            <input type="text" id="pauta-user-id" placeholder="Ex: docente ou 20260101">
+            <label>ID / Utilizador:</label>
+            <input type="text" id="pauta-user-id" placeholder="Ex: docente ou ID do estudante">
         </div>
-        <div class="pauta-form-group">
-            <label for="pauta-user-senha">Senha:</label>
-            <input type="password" id="pauta-user-senha" placeholder="Digite a sua senha">
+        <div class="pauta-form-group" style="margin-top: 10px;">
+            <label>Senha:</label>
+            <input type="password" id="pauta-user-senha" placeholder="Palavra-passe">
         </div>
-        <button class="pauta-btn-primary" onclick="autenticarUtilizador()">Entrar no Sistema</button>
+        <button class="pauta-btn pauta-btn-primary" onclick="autenticarUtilizador()" style="width: 100%; margin-top: 15px; justify-content: center;">🔑 Entrar</button>
         <div id="pauta-login-error" class="pauta-error"></div>
     </div>
 
-    <!-- 2. VISTA DO ESTUDANTE (Oculta por defeito) -->
-    <div id="vista-estudante" class="pauta-box pauta-hidden">
-        <div class="pauta-info-card">
-            <p><strong>Nome:</strong> <span id="lbl-nome"></span></p>
-            <p><strong>Curso:</strong> <span id="lbl-curso"></span></p>
-            <p><strong>ID:</strong> <span id="lbl-id"></span></p>
+    <!-- 1. VISTA DO DOCENTE -->
+    <div id="vista-docente" class="pauta-hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3>👨‍🏫 Painel de Gestão Docente</h3>
+            <button class="pauta-btn pauta-btn-secondary" onclick="terminarSessao()">🚪 Terminar Sessão</button>
         </div>
 
-        <h4>Avaliações por Cadeira</h4>
-        <table class="pauta-table">
-            <thead>
-                <tr>
-                    <th>Cadeira</th>
-                    <th>F1</th>
-                    <th>F2</th>
-                    <th>TP</th>
-                    <th>Final</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-avaliacoes"></tbody>
-        </table>
+        <!-- Controlo de Operações -->
+        <div class="pauta-card">
+            <h4>⚙️ Controlo de Operações da Pauta</h4>
+            <div class="pauta-form-row">
+                <div class="pauta-form-group">
+                    <label>Ação Pretendida:</label>
+                    <select id="docente-acao-select" onchange="mudarSecaoDocenteDinamica()">
+                        <option value="" selected disabled>-- Selecione uma opção --</option>
+                        <option value="visualizar">Visualizar Turma / Curso</option>
+                        <option value="criar-estudante">Criar / Apagar Estudante</option>
+                        <option value="actualizar">Atualizar Dados / Notas</option>
+                        <option value="planilha">Gerir Planilhas e Colunas</option>
+                        <option value="percentagens">Configurar Percentagens</option>
+                    </select>
+                </div>
+                <div class="pauta-form-group">
+                    <label>Selecionar Curso:</label>
+                    <select id="docente-curso-global" onchange="carregarCamposPercentagensAtuais(); recarregarDadosDocente();">
+                        <option value="" selected disabled>-- Selecione uma opção --</option>
+                        <option value="biologia">Licenciatura em Biologia</option>
+                        <option value="cienciasnaturais">Ensino Básico - C. N. Sociais</option>
+                        <option value="matematica">Licenciatura em Matemática</option>
+                        <option value="economia">Licenciatura em Economia</option>
+                        <option value="gestao-empresa">Licenciatura em Gestão de Empresa</option>
+                        <option value="gestao-iscgvsm">Licenciatura em Gestão - ISCSVSM</option>
+                        <option value="enfermagem-a">Licenciatura em Enfermagem - A</option>
+                        <option value="enfermagem-b">Licenciatura em Enfermagem - B</option>
+                        <option value="contabilidade">Licenciatura em Contabilidade</option>
+                        <option value="agronomia">Licenciatura em Agronomia</option>
+                        <option value="turismo">Licenciatura em Turismo</option>
+                        <option value="geografia">Licenciatura em Geografia</option>
+                        <option value="educacao-infancia">Licenciatura em Educação de Infância</option>
+                    </select>
+                </div>
+                <div class="pauta-form-group">
+                    <label>Ano Lectivo:</label>
+                    <select id="docente-ano-global" onchange="carregarCamposPercentagensAtuais(); recarregarDadosDocente();">
+                        <option value="" selected disabled>-- Selecione uma opção --</option>  
+                        <option value="2025-2026">2025-2026</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2026-2027">2026-2027</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <h4 style="margin-top: 1.5rem;">Evolução Académica</h4>
-        <table class="pauta-table">
-            <thead>
-                <tr>
-                    <th>Período</th>
-                    <th>Média</th>
-                    <th>Progresso</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-evolucao"></tbody>
-        </table>
+        <!-- 1.1 SUB-SECÇÃO: CRIAR / APAGAR ESTUDANTE -->
+        <div id="subseccao-criar-estudante" class="pauta-card pauta-hidden">
+            <h4>👤 Criar / Registar Novo Estudante</h4>
+            <div class="pauta-form-row">
+                <div class="pauta-form-group"><label>ID:</label><input type="text" id="ce-id" placeholder="Ex: 20260101"></div>
+                <div class="pauta-form-group"><label>Senha:</label><input type="password" id="ce-senha" placeholder="Senha"></div>
+                <div class="pauta-form-group"><label>Nome:</label><input type="text" id="ce-nome" placeholder="Nome Completo"></div>
+                <div class="pauta-form-group"><label>Unidade Curricular:</label><input type="text" id="ce-cadeira" placeholder="Cadeira"></div>
+                <div class="pauta-form-group">
+                    <label>Estatuto:</label>
+                    <select id="ce-estatuto"><option value="Novo">Novo</option><option value="Repetente">Repetente</option></select>
+                </div>
+            
+                <button class="pauta-btn pauta-btn-success pauta-form-group" onclick="registarNovoEstudante()">💾 Registar Estudante</button>
+            </div>
 
-        <button class="pauta-btn-secondary" onclick="terminarSessao()">Terminar Sessão</button>
-    </div>
+            <hr style="margin: 20px 0; border:0; border-top:1px solid #cbd5e1;">
+            
+            <h4 style="color:#b91c1c;">🗑️ Apagar Estudante Existente</h4>
+            <div class="pauta-form-row">
+                <div class="pauta-form-group">
+                    <label>Selecionar Estudante para Apagar:</label>
+                    <select id="select-apagar-estudante"></select>
+                </div>
+                <button class="pauta-btn pauta-btn-danger" onclick="executarApagarEstudante()" style="margin-top:18px;">🗑️ Apagar Aluno Selecionado</button>
+            </div>
+        </div>
 
-<!-- 3. VISTA DO DOCENTE -->
-<div id="vista-docente" class="pauta-box pauta-hidden">
-    <h3>Painel de Gestão Docente</h3>
-    
-    <!-- Seletores de Turma (Curso e Ano Letivo) -->
-    <div style="background: #e2e8f0; padding: 12px; border-radius: 8px; margin-bottom: 1.5rem; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 220px;">
-            <label style="font-weight: 500; font-size: 0.9rem; display: block; margin-bottom: 4px;">Selecionar Curso:</label>
-            <select id="select-docente-curso" class="pauta-form-group" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;" onchange="atualizarTabelaDocente()">
-                <option value="biologia">Licenciatura em Biologia</option>
-                <option value="cienciasnaturais">Ensino Básico - C. N. Sociais</option>
-                <option value="matematica">Licenciatura em Matemática</option>
-                <option value="economia">Licenciatura em Economia</option>
-                <option value="gestao-empresa">Licenciatura em Gestão de Empresa</option>
-                <option value="gestao-iscgvsm">Licenciatura em Gestão - ISCSVSM</option>
-                <option value="enfermagem-a">Licenciatura em Enfermagem - A</option>
-                <option value="enfermagem-b">Licenciatura em Enfermagem - B</option>
-                <option value="contabilidade">Licenciatura em Contabilidade</option>
-                <option value="agronomia">Licenciatura em Agronomia</option>
-                <option value="turismo">Licenciatura em Turismo</option>
-                <option value="geografia">Licenciatura em Geografia</option>
-                <option value="educacao-infancia">Licenciatura em Educação de Infância</option>
+        <!-- 1.2 SUB-SECÇÃO: ATUALIZAR EM CASCATA -->
+<div id="subseccao-actualizar" class="pauta-card pauta-hidden">
+    <h4>🔄 Atualização de Dados e Notas</h4>
+    <div class="pauta-grid-3col">
+        <div class="pauta-form-group">
+            <label>Selecionar Estudante:</label>
+            <select id="act-estudante-id" onchange="carregarDadosEstudanteParaAtualizar()"></select>
+        </div>
+        <div class="pauta-form-group">
+            <label>Seção a Atualizar:</label>
+            <select id="act-secao-tipo" onchange="controlarCamposAtualizacao()">
+                <option value="dados">Dados Gerais</option>
+                <option value="notas">Avaliações</option>
             </select>
         </div>
-        <div style="flex: 1; min-width: 180px;">
-            <label style="font-weight: 500; font-size: 0.9rem; display: block; margin-bottom: 4px;">Ano Letivo:</label>
-            <select id="select-docente-ano" class="pauta-form-group" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;" onchange="atualizarTabelaDocente()">
-                <option value="2025-2026">2025-2026</option>
-                <option value="2023-2024">2023-2024</option>
-                <option value="2024-2025">2024-2025</option>
-                <option value="2026-2027">2026-2027</option>
-            </select>
+        <div class="pauta-form-group" style="display: flex; align-items: flex-end;">
+            <button class="pauta-btn pauta-btn-primary" onclick="executarAtualizacaoEstudante()" style="width: 100%;">✅ Confirmar Atualização</button>
         </div>
-    </div>
-
-    <!-- Formulário de Inserção / Edição Manual -->
-    <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; margin-bottom: 1.5rem;">
-        <h4 style="margin-top: 0;">Adicionar ou Atualizar Aluno / Notas</h4>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <div class="pauta-form-group"><input type="text" id="novo-id" placeholder="ID do Aluno (ex: 20260103)"></div>
-            <div class="pauta-form-group"><input type="password" id="novo-senha" placeholder="Senha do Aluno"></div>
-            <div class="pauta-form-group"><input type="text" id="novo-nome" placeholder="Nome Completo"></div>
-            <div class="pauta-form-group"><input type="text" id="novo-cadeira" placeholder="Nome da Cadeira"></div>
-            <div class="pauta-form-group"><input type="text" id="novo-f1" placeholder="Nota F1 (opcional)"></div>
-            <div class="pauta-form-group"><input type="text" id="novo-f2" placeholder="Nota F2 (opcional)"></div>
-            <div class="pauta-form-group"><input type="text" id="novo-tp" placeholder="Nota TP (opcional)"></div>
-            <div class="pauta-form-group"><input type="number" id="novo-final" placeholder="Nota Final (ex: 14)"></div>
-        </div>
-        <button class="pauta-btn-primary" onclick="adicionarAlunoManual()" style="margin-top: 10px;">Guardar / Atualizar na Pauta</button>
-    </div>
-    
-    <h4>Alunos Registados na Turma</h4>
-    <table class="pauta-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Cadeira</th>
-                <th>Avaliações</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="tabela-docente-alunos"></tbody>
-    </table>
-
-    <button class="pauta-btn-secondary" onclick="terminarSessao()">Terminar Sessão</button>
+        <!-- Campos dinâmicos de notas (caso aplicável) -->
+        <!-- Campos dinâmicos de notas -->
+<div class="pauta-form-group" id="grupo-sub-nota" style="display:none;">
+    <label>Qual Nota Atualizar:</label>
+    <select id="act-nota-tipo" class="pauta-select" onchange="atualizarOpcoesNotaAtualizacao()">
+        <option value="Presenca">Presença</option>
+        <option value="TrabalhosIndividuais">Trabalhos Individuais</option>
+        <option value="TrabalhoGrupo">Trabalho de Grupo</option>
+        <option value="Teste1">1º Teste</option>
+        <option value="Teste2">2º Teste</option>
+        <option value="Exame">Exame</option>
+        <option value="NotaProfessor">Nota do Professor</option>
+    </select>
 </div>
+
+<!-- Sub-coluna (Ocupa a 2ª coluna da grelha quando ativa) -->
+<div class="pauta-form-group" id="grupo-sub-coluna" style="display:none;">
+    <label>Selecione a Sub-coluna Específica:</label>
+    <select id="act-subcoluna-select" class="pauta-select" onchange="atualizarValorInputNota()"></select>
+</div>
+
+<div class="pauta-form-group" id="grupo-input-valor" style="display:none;">
+    <label>Actualiza o Valor:</label>
+    <input type="text" id="act-novo-valor" class="pauta-input" placeholder="O valor atual carrega automaticamente">
+</div>
+    </div>
+</div>
+
+        <!-- 1.3 SUB-SECÇÃO: GERIR PLANILHAS E COLUNAS -->
+        <div id="subseccao-planilha" class="pauta-card pauta-hidden">
+            <h4>📑 Gestão de Planilhas e Colunas do Curso</h4>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+                Primeiro selecione ou crie uma planilha, e depois adicione ou edite as colunas pertencentes à mesma.
+            </p>
+
+            <!-- Bloco 1: Gestão da Planilha -->
+            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #e2e8f0;">
+                <div class="pauta-form-row">
+                    <div class="pauta-form-group">
+                       <h5 style="margin-bottom: 10px; font-weight: 800; color: #0548b3;">1. Planilha Principal</h5>
+                    </div>
+                    <div class="pauta-form-group">
+                        <label>Selecionar Planilha:</label>
+                        <select id="select-planilha-ativa" onchange="carregarColunasDaPlanilha()">
+                            <option value="" selected disabled>-- Selecione uma planilha --</option>
+                        </select>
+                    </div>
+                    <div class="pauta-form-group">
+                        <label>Nome da Planilha:</label>
+                        <input type="text" id="gp-nome-planilha" placeholder="Ex: Avaliação Contínua 2026">
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-success" onclick="criarNovaPlanilha()">➕ Criar Nova Planilha</button>
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-primary" onclick="atualizarNomePlanilha()">✏️ Atualizar Título da Planilha</button>
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-danger" onclick="eliminarPlanilhaCompleta()">🗑️ Eliminar Planilha</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco 2: Gestão de Colunas da Planilha Selecionada -->
+            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                <div class="pauta-form-row">
+                    <div class="pauta-form-group">
+                        <h5 style="margin-bottom: 10px; font-weight: 800; color: #0548b3;">2. Colunas da Planilha Ativa</h5>
+                    </div>
+                    <div class="pauta-form-group">
+                        <label>Selecionar Coluna Existente:</label>
+                        <select id="select-coluna-ativa" onchange="preencherNomeColunaEdicao()"></select>
+                    </div>
+                    <div class="pauta-form-group">
+                        <label>Nome da Coluna:</label>
+                        <input type="text" id="gp-nome-coluna" placeholder="Ex: Projeto Prático">
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-warning" onclick="adicionarColunaNaPlanilha()">➕ Adicionar Coluna</button>
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-primary" onclick="atualizarNomeColuna()">✏️ Atualizar Coluna</button>
+                    </div>
+                    <div class="pauta-form-group">
+                        <button class="pauta-btn pauta-btn-danger" onclick="eliminarColunaDaPlanilha()">🗑️ Eliminar Coluna</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1.4 SUB-SECÇÃO: CONFIGURAR PERCENTAGENS DE AVALIAÇÃO -->
+        <div id="subseccao-percentagens" class="pauta-card pauta-hidden">
+            <h4>⚙️ Configurar Percentagens de Cálculo (Ponderação)</h4>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+                Defina os pesos para o curso e ano selecionados (ex: insira 10 para 10% ou 0.1 para 10%). No início começam a 0%.
+            </p>
+            <div class="pauta-form-row">
+                <div class="pauta-form-group">
+                    <label>% Presença:</label>
+                    <input type="number" id="pc-presenca" step="0.01" placeholder="0">
+                </div>
+                <div class="pauta-form-group">
+                    <label>% Testes (Global):</label>
+                    <input type="number" id="pc-testes" step="0.01" placeholder="0">
+                </div>
+                <div class="pauta-form-group">
+                    <label>% Trab. Individuais:</label>
+                    <input type="number" id="pc-trabind" step="0.01" placeholder="0">
+                </div>
+                <div class="pauta-form-group">
+                    <label>% Trab. Grupo:</label>
+                    <input type="number" id="pc-trabgrp" step="0.01" placeholder="0">
+                </div>
+                <button class="pauta-btn pauta-btn-primary" onclick="guardarPercentagensCurso()" style="margin-top: 10px;">💾 Guardar Percentagens</button>
+            </div>
+        </div>
+
+        <!-- 1.5 SUB-SECÇÃO: VISUALIZAÇÃO GERAL -->
+        <div id="subseccao-visualizar" class="pauta-hidden">
+            <h4>📊 Resumo Geral dos Estudantes do Curso</h4>
+            <div class="pauta-table-wrapper">
+                <table class="pauta-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>Nome</th><th>Curso</th><th>Unidade Curricular</th><th>Estatuto</th><th>Ano Letivo</th>
+                            <th>Presença</th><th>Trab. Ind.</th><th>Trab. Grupo</th>
+                            <th>1º Teste</th><th>2º Teste</th><th>Exame</th><th>Nota Prof.</th><th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-docente-resumo"></tbody>
+                </table>
+            </div>
+
+            <h4 style="margin-top: 25px;">📑 Tabelas Individuais por Componente</h4>
+
+            <!-- Presenças com Cabeçalho Agrupado -->
+            <h5>Presenças</h5>
+            <div class="pauta-table-wrapper">
+                <table class="pauta-table" id="tabela-presenca-agrupada">
+                    <thead id="thead-docente-presenca">
+                        <!-- Gerado dinamicamente no JS para acomodar o colspan -->
+                    </thead>
+                    <tbody id="tabela-docente-presenca"></tbody>
+                </table>
+            </div>
+
+            <!-- Trabalhos Individuais com Cabeçalho Agrupado -->
+            <h5 style="margin-top: 15px;">Trabalhos Individuais</h5>
+            <div class="pauta-table-wrapper">
+                <table class="pauta-table">
+                    <thead id="thead-docente-trabind"></thead>
+                    <tbody id="tabela-docente-trabind"></tbody>
+                </table>
+            </div>
+
+            <!-- Trabalhos de Grupo com Cabeçalho Agrupado -->
+            <h5 style="margin-top: 15px;">Trabalhos de Grupo</h5>
+            <div class="pauta-table-wrapper">
+                <table class="pauta-table">
+                    <thead id="thead-docente-trabgrp"></thead>
+                    <tbody id="tabela-docente-trabgrp"></tbody>
+                </table>
+            </div>
+
+            <h4 style="margin-top: 25px;">📈 Gráfico de Desempenho da Turma</h4>
+            <div class="pauta-chart-box"><canvas id="chart-docente-turma"></canvas></div>
+        </div>
+    </div>
+
+    <!-- 2. VISTA DO ESTUDANTE -->
+    <div id="vista-estudante" class="pauta-hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3>🎓 Portal do Estudante</h3>
+            <button class="pauta-btn pauta-btn-secondary" onclick="terminarSessao()">🚪 Terminar Sessão</button>
+        </div>
+
+        <div class="pauta-card">
+            <h4>Informações Gerais do Estudante</h4>
+            <p><strong>Nome:</strong> <span id="est-lbl-nome"></span></p>
+            <p><strong>Curso:</strong> <span id="est-lbl-curso"></span></p>
+            <p><strong>ID Estudante:</strong> <span id="est-lbl-id"></span></p>
+        </div>
+
+        <div class="pauta-card" style="margin-top: 15px;">
+            <h4>📊 Situação Académica Global</h4>
+            <div class="pauta-table-wrapper">
+                <table class="pauta-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>Nome</th><th>Curso</th><th>Unidade Curricular</th><th>Estatuto</th><th>Ano Letivo</th>
+                            <th>Presença</th><th>Trab. Ind.</th><th>Trab. Grupo</th>
+                            <th>1º Teste</th><th>2º Teste</th><th>Exame</th><th>Nota Prof.</th><th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-estudante-resumo"></tbody>
+                </table>
+            </div>
+
+<!-- Exemplo da secção de tabelas individuais na vista do estudante -->
+<h4 style="margin-top: 25px;">📑 As Minhas Tabelas Individuais por Componente</h4>
+
+<h5>Presenças</h5>
+<div class="pauta-table-wrapper">
+    <table class="pauta-table">
+        <thead id="thead-estudante-presenca"></thead>
+        <tbody id="tabela-estudante-presenca"></tbody>
+    </table>
+</div>
+
+<h5 style="margin-top: 15px;">Trabalhos Individuais</h5>
+<div class="pauta-table-wrapper">
+    <table class="pauta-table">
+        <thead id="thead-estudante-trabind"></thead>
+        <tbody id="tabela-estudante-trabind"></tbody>
+    </table>
+</div>
+
+<h5 style="margin-top: 15px;">Trabalhos de Grupo</h5>
+<div class="pauta-table-wrapper">
+    <table class="pauta-table">
+        <thead id="thead-estudante-trabgrp"></thead>
+        <tbody id="tabela-estudante-trabgrp"></tbody>
+    </table>
+</div>
+
+        </div>
+
+        <div class="pauta-card" style="margin-top: 15px;">
+            <h4>📈 Desempenho Por Componente</h4>
+            <div class="pauta-chart-box"><canvas id="chart-estudante-notas"></canvas></div>
+        </div>
+    </div>
+
 </section>
-<!-- ================= FIM DO SISTEMA UNIFICADO DE AUTENTICAÇÃO ================= -->
+<!-- ================= FIM DA SECÇÃO PAUTAS ================= -->
+
+<!-- Chart.js para os gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </div>
 
