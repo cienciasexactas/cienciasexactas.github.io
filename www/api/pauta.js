@@ -28,8 +28,12 @@ export default async function handler(req, res) {
             const respostaGh = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, { headers });
 
             if (respostaGh.status === 404) {
-                // Se o ficheiro ainda não existir, retorna estrutura inicial vazia
-                return res.status(200).json({ estudantes: [], colunasExtras: [], percentagens: {} });
+                // Se o ficheiro ainda não existir, retorna estrutura inicial vazia alinhada com o pauta.js
+                return res.status(200).json({
+                    estudantes: [],
+                    planilhasColunas: { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
+                    percentagens: {}
+                });
             }
 
             if (!respostaGh.ok) {
@@ -40,26 +44,26 @@ export default async function handler(req, res) {
             const conteudoDecodificado = Buffer.from(dadosFicheiro.content, 'base64').toString('utf8');
             const jsonDados = JSON.parse(conteudoDecodificado);
 
-            // Devolve também as percentagens gravadas
+            // Devolve os dados com a chave exata esperada pelo frontend
             return res.status(200).json({
                 estudantes: jsonDados.estudantes || [],
-                colunasExtras: jsonDados.colunasExtras || [],
+                planilhasColunas: jsonDados.planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
                 percentagens: jsonDados.percentagens || {}
             });
         }
 
         // MÉTODO POST: Atualizar/Guardar os dados no GitHub
         if (req.method === 'POST') {
-            const { estudantes, colunasExtras, percentagens } = req.body;
+            const { estudantes, planilhasColunas, percentagens } = req.body;
 
             if (!estudantes) {
                 return res.status(400).json({ error: 'Dados de estudantes obrigatórios.' });
             }
 
-            // Estrutura completa a guardar no JSON
+            // Estrutura completa a guardar no JSON (alinhada com o pauta.js)
             const dadosParaGuardar = {
                 estudantes,
-                colunasExtras: colunasExtras || [],
+                planilhasColunas: planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
                 percentagens: percentagens || {}
             };
 
