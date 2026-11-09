@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
         const REPO_OWNER = "cienciasexactas";
         const REPO_NAME = "cienciasexactas.github.io";
-        
+
         const caminhoArquivo = `uploads/${curso}/${nomeArquivo}`;
         const urlGithub = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${caminhoArquivo}`;
 
@@ -62,9 +62,9 @@ export default async function handler(req, res) {
         const data = await response.json();
 
         if (response.ok) {
-            return res.status(200).json({ 
-                success: true, 
-                url: data.content.html_url 
+            return res.status(200).json({
+                success: true,
+                url: data.content.html_url
             });
         } else {
             return res.status(400).json({ error: data.message });
