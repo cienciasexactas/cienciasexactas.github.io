@@ -167,7 +167,7 @@ function calcularSituacaoEstudante(est) {
 // Carregar dados da nuvem ao iniciar
 async function inicializarSistemaPauta() {
     try {
-        const resposta = await fetch('https://backend-upload-sooty.vercel.app/api/pauta');
+        const resposta = await fetch('https://api-cienciasexactas.vercel.app/api/pauta');
         if (resposta.ok) {
             const dados = await resposta.json();
             if (dados && dados.estudantes && dados.estudantes.length > 0) {
@@ -210,7 +210,7 @@ async function salvarNaNuvem() {
 
     // Envia para o servidor na nuvem
     try {
-        await fetch('https://backend-upload-sooty.vercel.app/api/pauta', {
+        await fetch('https://api-cienciasexactas.vercel.app/api/pauta', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
