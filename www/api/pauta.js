@@ -50,7 +50,7 @@ export default async function handler(req, res) {
             });
         }
 
-        // MÉTODO POST: Atualizar / Guardar os dados no GitHub
+        // MÉTODO POST: Atualizar/Guardar os dados no GitHub
         if (req.method === 'POST') {
             const { estudantes, planilhasColunas, percentagens } = req.body;
 
