@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const REPO_OWNER = "cienciasexactas";
     const REPO_NAME = "cienciasexactas.github.io";
-    const FILE_PATH = "dados/pauta_geral.json"; // Caminho onde o JSON é guardado no repositório
+    const FILE_PATH = "dados/pauta_geral.json";
 
     const headers = {
         'Authorization': `Bearer ${GITHUB_TOKEN}`,
@@ -23,12 +23,11 @@ export default async function handler(req, res) {
     };
 
     try {
-        // MÉTODOS GET: Ler os dados do GitHub
+        // MÉTODO GET: Ler os dados do GitHub
         if (req.method === 'GET') {
             const respostaGh = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, { headers });
 
             if (respostaGh.status === 404) {
-                // Se o ficheiro ainda não existir, retorna estrutura inicial vazia alinhada com o pauta.js
                 return res.status(200).json({
                     estudantes: [],
                     planilhasColunas: { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
@@ -44,7 +43,6 @@ export default async function handler(req, res) {
             const conteudoDecodificado = Buffer.from(dadosFicheiro.content, 'base64').toString('utf8');
             const jsonDados = JSON.parse(conteudoDecodificado);
 
-            // Devolve os dados com a chave exata esperada pelo frontend
             return res.status(200).json({
                 estudantes: jsonDados.estudantes || [],
                 planilhasColunas: jsonDados.planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
@@ -60,7 +58,6 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: 'Dados de estudantes obrigatórios.' });
             }
 
-            // Estrutura completa a guardar no JSON (alinhada com o pauta.js)
             const dadosParaGuardar = {
                 estudantes,
                 planilhasColunas: planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
@@ -69,7 +66,6 @@ export default async function handler(req, res) {
 
             const novoConteudoBase64 = Buffer.from(JSON.stringify(dadosParaGuardar, null, 2)).toString('base64');
 
-            // 1. Obter o SHA atual do ficheiro (exigido pela API do GitHub)
             let fileSha = null;
             const checkGh = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, { headers });
 
@@ -78,7 +74,6 @@ export default async function handler(req, res) {
                 fileSha = fileInfo.sha;
             }
 
-            // 2. Enviar o commit para o GitHub
             const payload = {
                 message: "Atualização automática de pautas e percentagens via painel Vercel",
                 content: novoConteudoBase64,
