@@ -217,24 +217,6 @@
       "notaProf": "",
       "subNotas": {},
       "situacao": "Pendente"
-    },
-    {
-      "id": "20261101",
-      "senha": "123",
-      "nome": "Wadiley Sousa do Nacimento",
-      "cadeira": "Estatística III",
-      "estatuto": "Novo",
-      "curso": "matematica",
-      "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
-      "teste1": "",
-      "teste2": "",
-      "exame": "",
-      "notaProf": "",
-      "subNotas": {},
-      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
@@ -264,7 +246,9 @@
     "Estatística MQQ": {
       "Presenças": [],
       "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
+      "Trabalhos de Grupo": [
+        "Trabalho I"
+      ]
     }
   },
   "percentagens": {}
