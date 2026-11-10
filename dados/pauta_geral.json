@@ -21,24 +21,6 @@
       "situacao": "Exame (0)"
     },
     {
-      "id": "202611011",
-      "senha": "123",
-      "nome": "Licícinia dos Ramos",
-      "cadeira": "Seminário I",
-      "estatuto": "Novo",
-      "curso": "cienciasnaturais",
-      "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": null,
-      "trabGrp": null,
-      "teste1": "",
-      "teste2": "",
-      "exame": "",
-      "notaProf": "",
-      "subNotas": {},
-      "situacao": "Pendente"
-    },
-    {
       "id": "20261111",
       "senha": "123",
       "nome": "Osvaldo da Cruz",
