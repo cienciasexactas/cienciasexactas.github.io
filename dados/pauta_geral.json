@@ -89,6 +89,24 @@
       "notaProf": "",
       "subNotas": {},
       "situacao": "Pendente"
+    },
+    {
+      "id": "20261101",
+      "senha": "123",
+      "nome": "Wadiley Sousa do Nacimento",
+      "cadeira": "Estatística I",
+      "estatuto": "Novo",
+      "curso": "matematica",
+      "ano": "2025-2026",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunas": {
