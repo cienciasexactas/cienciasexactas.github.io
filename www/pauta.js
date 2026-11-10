@@ -772,7 +772,7 @@ function recarregarDadosDocente() {
     renderizarGraficoTurma(filtrados);
 }
 
-// CONFIGURAR AUTO-PREENCHIMENTO INTELIGENTE AO REGISTAR ESTUDANTE
+// CONFIGURAR AUTO-PREENCHIMENTO INTELIGENTE E BLOQUEIO DE ID/NOME
 function configurarEventosAutopreenchimento() {
     const inputId = document.getElementById('ce-id');
     const inputNome = document.getElementById('ce-nome');
@@ -786,8 +786,8 @@ function configurarEventosAutopreenchimento() {
         if (existente) {
             inputNome.value = existente.nome;
             inputSenha.value = existente.senha;
-            inputNome.readOnly = true;
-            inputSenha.readOnly = true;
+            inputNome.readOnly = true; // Nome bloqueado
+            inputSenha.readOnly = true; // Senha bloqueada
         } else {
             inputNome.readOnly = false;
             inputSenha.readOnly = false;
@@ -800,8 +800,8 @@ function configurarEventosAutopreenchimento() {
         if (existente) {
             inputId.value = existente.id;
             inputSenha.value = existente.senha;
-            inputId.readOnly = true;
-            inputSenha.readOnly = true;
+            inputId.readOnly = true; // ID bloqueado
+            inputSenha.readOnly = true; // Senha bloqueada
         } else {
             inputId.readOnly = false;
             inputSenha.readOnly = false;
@@ -809,7 +809,7 @@ function configurarEventosAutopreenchimento() {
     });
 }
 
-// REGISTAR ESTUDANTE
+// REGISTAR ESTUDANTE COM CONSISTÊNCIA GLOBAL DE ID E NOME
 async function registarNovoEstudante() {
     const curso = document.getElementById('docente-curso-global').value;
     const ano = document.getElementById('docente-ano-global').value;
@@ -830,12 +830,26 @@ async function registarNovoEstudante() {
         return;
     }
 
+    // Validação de consistência: ID não pode pertencer a outro nome, nem nome a outro ID
+    const conflitoId = pautaEstado.estudantes.find(e => e.id === id && e.nome.toLowerCase() !== nome.toLowerCase());
+    const conflitoNome = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nome.toLowerCase() && e.id !== id);
+
+    if (conflitoId) {
+        alert(`⚠️ O ID "${id}" já pertence a outro estudante (${conflitoId.nome}). O ID e o Nome devem ser consistentes.`);
+        return;
+    }
+    if (conflitoNome) {
+        alert(`⚠️ O Nome "${nome}" já está associado ao ID (${conflitoNome.id}). O ID e o Nome devem ser consistentes.`);
+        return;
+    }
+
+    // Verificar se já existe exatamente na mesma U.C., Curso e Ano
     const duplicadoExato = pautaEstado.estudantes.some(e =>
         e.id === id && e.curso === curso && (e.cadeira || '') === (cadeira || '') && (e.ano || '') === (ano || '')
     );
 
     if (duplicadoExato) {
-        alert("Este estudante já se encontra registado nesta mesma Unidade Curricular, Curso e Ano Letivo.");
+        alert("⚠️ Este estudante já se encontra registado nesta mesma Unidade Curricular, Curso e Ano Letivo.");
         return;
     }
 
@@ -849,7 +863,7 @@ async function registarNovoEstudante() {
     });
 
     await salvarNaNuvem();
-    alert("Estudante registado com sucesso!");
+    alert("✅ Estudante registado com sucesso na nova Unidade Curricular/Curso!");
 
     document.getElementById('ce-id').value = "";
     document.getElementById('ce-senha').value = "";
@@ -908,7 +922,7 @@ function atualizarSelectCadeirasAtualizacao() {
         containerCadeira.className = 'pauta-form-group';
         containerCadeira.style.marginTop = '15px';
         containerCadeira.innerHTML = `
-            <label>Selecione a Unidade Curricular (Cadeira) para atualizar:</label>
+            <label>Cadeira (U. C.) a Atualizar:</label>
             <select id="act-cadeira-alvo" class="pauta-input" onchange="preencherCamposDadosGerais(); atualizarValorInputNota();"></select>
         `;
         const primeiroGrupo = secaoAtualizar.querySelector('.pauta-form-group');
