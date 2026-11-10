@@ -137,6 +137,24 @@
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
       "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
+    },
+    {
+      "id": "EBNS4A002",
+      "senha": "S9A1",
+      "nome": "2.\tAlzeza Rosa e Silva",
+      "cadeira": "Estatística MQQ",
+      "estatuto": "Novo",
+      "curso": "cienciasnaturais",
+      "ano": "2026-2027",
+      "presenca": "",
       "trabInd": "",
       "trabGrp": "",
       "teste1": "",
@@ -167,6 +185,11 @@
       "Trabalhos de Grupo": []
     },
     "Seminário I": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "Estatística MQQ": {
       "Presenças": [],
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
