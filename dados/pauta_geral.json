@@ -15,7 +15,9 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "10"
+      },
       "situacao": "Exame (0)"
     },
     {
@@ -99,8 +101,8 @@
       "curso": "matematica",
       "ano": "2025-2026",
       "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
