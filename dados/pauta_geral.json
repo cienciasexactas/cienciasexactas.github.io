@@ -81,8 +81,8 @@
       "curso": "matematica",
       "ano": "2026-2027",
       "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -92,7 +92,9 @@
     }
   ],
   "planilhasColunas": {
-    "Presenças": [],
+    "Presenças": [
+      "02/11/2026"
+    ],
     "Trabalhos Individuais": [],
     "Trabalhos de Grupo": []
   },
