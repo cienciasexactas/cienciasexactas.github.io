@@ -34,7 +34,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Pendente"
+      "situacao": "Exame (0)"
     },
     {
       "id": "202611011",
@@ -66,6 +66,24 @@
       "trabInd": null,
       "trabGrp": null,
       "teste1": "18",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
+    },
+    {
+      "id": "20261101",
+      "senha": "123",
+      "nome": "Wadiley Sousa do Nacimento",
+      "cadeira": "Estatística II",
+      "estatuto": "Novo",
+      "curso": "matematica",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
       "teste2": "",
       "exame": "",
       "notaProf": "",
