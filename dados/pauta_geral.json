@@ -47,8 +47,8 @@
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
       "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -127,6 +127,24 @@
       "notaProf": "",
       "subNotas": {},
       "situacao": "Pendente"
+    },
+    {
+      "id": "EBNS4A001",
+      "senha": "E7B3",
+      "nome": "Abknilza Semedo Varela",
+      "cadeira": "Estatística MQQ",
+      "estatuto": "Novo",
+      "curso": "cienciasnaturais",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
@@ -144,6 +162,11 @@
       "Trabalhos de Grupo": []
     },
     "Estatística III": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "Seminário I": {
       "Presenças": [],
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
