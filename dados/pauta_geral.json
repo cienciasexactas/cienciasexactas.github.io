@@ -26,7 +26,7 @@
       "nome": "Emilly Sousa do Nacimento",
       "cadeira": "Estatística I",
       "estatuto": "Novo",
-      "curso": "matematica",
+      "curso": "cienciasnaturais",
       "ano": "2026-2027",
       "presenca": "",
       "trabInd": null,
@@ -119,8 +119,8 @@
       "curso": "matematica",
       "ano": "2026-2027",
       "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -129,10 +129,25 @@
       "situacao": "Pendente"
     }
   ],
-  "planilhasColunas": {
+  "planilhasColunasPorCadeira": {
     "Presenças": [],
     "Trabalhos Individuais": [],
-    "Trabalhos de Grupo": []
+    "Trabalhos de Grupo": [],
+    "Estatística I": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "Estatística II": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "Estatística III": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    }
   },
   "percentagens": {}
 }
