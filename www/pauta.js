@@ -3,13 +3,22 @@
 let pautaEstado = {
     utilizadorAtual: null,
     estudantes: [],
-    planilhasColunas: {
-        "Presenças": [],
-        "Trabalhos Individuais": [],
-        "Trabalhos de Grupo": []
-    },
+    planilhasColunasPorCadeira: {},
     percentagens: {}
 };
+
+// Obter colunas da planilha para uma determinada U.C.
+function obterColunasCadeira(cadeira, categoria) {
+    const cid = cadeira || "Geral";
+    if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
+        pautaEstado.planilhasColunasPorCadeira[cid] = {
+            "Presenças": [],
+            "Trabalhos Individuais": [],
+            "Trabalhos de Grupo": []
+        };
+    }
+    return pautaEstado.planilhasColunasPorCadeira[cid][categoria] || [];
+}
 
 // Obter percentagens configuradas
 function obterPercentagens(curso, ano, cadeira) {
@@ -35,9 +44,10 @@ function formatarNota(val) {
     return parsed !== null ? val : "---";
 }
 
-// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) com chaves independentes
+// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C.
 function calcularMediaTrabalhos(est, categoria) {
-    const colunas = pautaEstado.planilhasColunas[categoria] || [];
+    const cadeira = est.cadeira || "Geral";
+    const colunas = obterColunasCadeira(cadeira, categoria);
     if (colunas.length === 0) return null;
 
     let soma = 0;
@@ -58,9 +68,10 @@ function calcularMediaTrabalhos(est, categoria) {
     return parseFloat((soma / contador).toFixed(2));
 }
 
-// CÁLCULO DE PRESENÇAS BASEADO EM P e F -> (P / (P + F)) * 20
+// CÁLCULO DE PRESENÇAS BASEADO EM P e F -> (P / (P + F)) * 20 por U.C.
 function calcularNotaPresenca(est) {
-    const colunas = pautaEstado.planilhasColunas["Presenças"] || [];
+    const cadeira = est.cadeira || "Geral";
+    const colunas = obterColunasCadeira(cadeira, "Presenças");
     if (colunas.length === 0) {
         return parseNota(est.presenca);
     }
@@ -172,8 +183,9 @@ async function inicializarSistemaPauta() {
             const dados = await resposta.json();
             if (dados && dados.estudantes && dados.estudantes.length > 0) {
                 pautaEstado.estudantes = dados.estudantes;
-                pautaEstado.planilhasColunas = dados.planilhasColunas || pautaEstado.planilhasColunas;
+                pautaEstado.planilhasColunasPorCadeira = dados.planilhasColunasPorCadeira || dados.planilhasColunas || {};
                 pautaEstado.percentagens = dados.percentagens || {};
+                configurarEventosAutopreenchimento();
                 return;
             }
         }
@@ -181,41 +193,39 @@ async function inicializarSistemaPauta() {
         console.warn("Aviso ao carregar da API:", erro);
     }
 
-    // Fallback de segurança para garantir portabilidade entre computadores
     const localSalvo = localStorage.getItem('pautaEstadoGlobal');
     if (localSalvo) {
         try {
             const dadosLocais = JSON.parse(localSalvo);
             pautaEstado.estudantes = dadosLocais.estudantes || [];
-            pautaEstado.planilhasColunas = dadosLocais.planilhasColunas || pautaEstado.planilhasColunas;
+            pautaEstado.planilhasColunasPorCadeira = dadosLocais.planilhasColunasPorCadeira || dadosLocais.planilhasColunas || {};
             pautaEstado.percentagens = dadosLocais.percentagens || {};
         } catch (e) {
             console.error("Erro ao ler dados locais:", e);
         }
     }
+    configurarEventosAutopreenchimento();
 }
 
-// O que foi adicionado:
+// Sincronização com a nuvem
 async function salvarNaNuvem() {
-    // Guarda localmente para persistência imediata
     try {
         localStorage.setItem('pautaEstadoGlobal', JSON.stringify({
             estudantes: pautaEstado.estudantes,
-            planilhasColunas: pautaEstado.planilhasColunas,
+            planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
             percentagens: pautaEstado.percentagens
         }));
     } catch (e) {
         console.error("Erro ao salvar localmente:", e);
     }
 
-    // Envia para o servidor na nuvem
     try {
         await fetch('https://api-cienciasexactas.vercel.app/api/pauta', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 estudantes: pautaEstado.estudantes,
-                planilhasColunas: pautaEstado.planilhasColunas,
+                planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
                 percentagens: pautaEstado.percentagens
             })
         });
@@ -308,16 +318,40 @@ function mudarSecaoDocenteDinamica() {
     }
 }
 
-// ================= GESTÃO DE COLUNAS POR PLANILHA FIXA =================
+// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira) =================
 function inicializarGestaoPlanilhas() {
-    if (!pautaEstado.planilhasColunas) {
-        pautaEstado.planilhasColunas = {
-            "Presenças": [],
-            "Trabalhos Individuais": [],
-            "Trabalhos de Grupo": []
-        };
-    }
+    atualizarSelectCadeirasGestaoPlanilhas();
     carregarSelectPlanilhas();
+}
+
+function atualizarSelectCadeirasGestaoPlanilhas() {
+    const cursoSel = document.getElementById('docente-curso-global').value;
+    const estudantesCurso = pautaEstado.estudantes.filter(e => e.curso === cursoSel);
+    const cadeirasUnicas = [...new Set(estudantesCurso.map(e => e.cadeira || "Geral").filter(Boolean))];
+
+    let selectCadeira = document.getElementById('select-cadeira-planilha-ativa');
+    if (!selectCadeira) {
+        const secaoPlanilha = document.getElementById('subseccao-planilha');
+        if (!secaoPlanilha) return;
+        const container = document.createElement('div');
+        container.className = 'pauta-form-group';
+        container.style.marginBottom = '15px';
+        container.innerHTML = `
+            <label>Selecione a Unidade Curricular (Cadeira):</label>
+            <select id="select-cadeira-planilha-ativa" class="pauta-input" onchange="carregarColunasDaPlanilha()"></select>
+        `;
+        secaoPlanilha.insertBefore(container, secaoPlanilha.firstChild);
+        selectCadeira = document.getElementById('select-cadeira-planilha-ativa');
+    }
+
+    selectCadeira.innerHTML = "";
+    if (cadeirasUnicas.length === 0) {
+        selectCadeira.innerHTML = `<option value="Geral">Geral (Nenhuma cadeira registada)</option>`;
+    } else {
+        cadeirasUnicas.forEach(c => {
+            selectCadeira.innerHTML += `<option value="${c}">${c}</option>`;
+        });
+    }
 }
 
 function carregarSelectPlanilhas() {
@@ -334,14 +368,17 @@ function carregarSelectPlanilhas() {
 }
 
 function carregarColunasDaPlanilha() {
+    const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
+    const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const selectColuna = document.getElementById('select-coluna-ativa');
     if (!selectColuna) return;
 
     selectColuna.innerHTML = '<option value="" selected disabled>-- Selecione uma coluna --</option>';
 
-    if (nomePlanilha && pautaEstado.planilhasColunas[nomePlanilha]) {
-        pautaEstado.planilhasColunas[nomePlanilha].forEach(coluna => {
+    if (nomePlanilha) {
+        const colunas = obterColunasCadeira(cadeiraSel, nomePlanilha);
+        colunas.forEach(coluna => {
             selectColuna.innerHTML += `<option value="${coluna}">${coluna}</option>`;
         });
     }
@@ -356,6 +393,8 @@ function preencherNomeColunaEdicao() {
 }
 
 async function adicionarColunaNaPlanilha() {
+    const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
+    const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const nomeColuna = document.getElementById('gp-nome-coluna').value.trim();
 
@@ -368,24 +407,30 @@ async function adicionarColunaNaPlanilha() {
         return;
     }
 
-    if (!pautaEstado.planilhasColunas[nomePlanilha]) {
-        pautaEstado.planilhasColunas[nomePlanilha] = [];
+    if (!pautaEstado.planilhasColunasPorCadeira[cadeiraSel]) {
+        pautaEstado.planilhasColunasPorCadeira[cadeiraSel] = {
+            "Presenças": [],
+            "Trabalhos Individuais": [],
+            "Trabalhos de Grupo": []
+        };
     }
 
-    if (pautaEstado.planilhasColunas[nomePlanilha].includes(nomeColuna)) {
-        alert("Esta coluna já existe nesta categoria.");
+    if (pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].includes(nomeColuna)) {
+        alert("Esta coluna já existe nesta categoria para esta Unidade Curricular.");
         return;
     }
 
-    pautaEstado.planilhasColunas[nomePlanilha].push(nomeColuna);
+    pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].push(nomeColuna);
     await salvarNaNuvem();
-    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" com sucesso!`);
+    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" (${cadeiraSel}) com sucesso!`);
     document.getElementById('gp-nome-coluna').value = "";
     carregarColunasDaPlanilha();
     recarregarDadosDocente();
 }
 
 async function atualizarNomeColuna() {
+    const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
+    const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const colunaAntiga = document.getElementById('select-coluna-ativa').value;
     const novoNomeColuna = document.getElementById('gp-nome-coluna').value.trim();
@@ -399,9 +444,10 @@ async function atualizarNomeColuna() {
         return;
     }
 
-    const index = pautaEstado.planilhasColunas[nomePlanilha].indexOf(colunaAntiga);
+    const colunas = pautaEstado.planilhasColunasPorCadeira[cadeiraSel]?.[nomePlanilha] || [];
+    const index = colunas.indexOf(colunaAntiga);
     if (index !== -1) {
-        pautaEstado.planilhasColunas[nomePlanilha][index] = novoNomeColuna;
+        colunas[index] = novoNomeColuna;
         await salvarNaNuvem();
         alert("Nome da coluna atualizado com sucesso!");
         document.getElementById('gp-nome-coluna').value = "";
@@ -411,6 +457,8 @@ async function atualizarNomeColuna() {
 }
 
 async function eliminarColunaDaPlanilha() {
+    const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
+    const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const colunaSel = document.getElementById('select-coluna-ativa').value;
 
@@ -420,7 +468,10 @@ async function eliminarColunaDaPlanilha() {
     }
 
     if (confirm(`Tem a certeza que deseja eliminar a coluna "${colunaSel}"?`)) {
-        pautaEstado.planilhasColunas[nomePlanilha] = pautaEstado.planilhasColunas[nomePlanilha].filter(c => c !== colunaSel);
+        if (pautaEstado.planilhasColunasPorCadeira[cadeiraSel]?.[nomePlanilha]) {
+            pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha] =
+                pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].filter(c => c !== colunaSel);
+        }
         await salvarNaNuvem();
         alert("Coluna eliminada.");
         carregarColunasDaPlanilha();
@@ -498,7 +549,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Com linhas de datas intercaladas exatamente como na imagem)
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -522,50 +573,57 @@ function recarregarDadosDocente() {
         return;
     }
 
-    const colsPresenca = pautaEstado.planilhasColunas["Presenças"] || [];
-    const colsTrabInd = pautaEstado.planilhasColunas["Trabalhos Individuais"] || [];
-    const colsTrabGrp = pautaEstado.planilhasColunas["Trabalhos de Grupo"] || [];
-
-    // --- 1. CABEÇALHO PRESENÇAS ---
-    if (theadPresenca) {
-        let htmlLinha1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th colspan="${colsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
-        let htmlLinha2 = `<tr>`;
-        if (colsPresenca.length > 0) {
-            colsPresenca.forEach(c => htmlLinha2 += `<th>${c}</th>`);
-        } else {
-            htmlLinha2 += `<th>Presença Geral</th>`;
-        }
-        htmlLinha2 += `</tr>`;
-        theadPresenca.innerHTML = htmlLinha1 + htmlLinha2;
-    }
-
-    // --- 2. CABEÇALHO TRABALHOS INDIVIDUAIS ---
-    if (theadTrabInd) {
-        let htmlLinha1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th colspan="${colsTrabInd.length || 1}" style="text-align:center;">Trabalhos Individuais</th></tr>`;
-        let htmlLinha2 = `<tr>`;
-        if (colsTrabInd.length > 0) {
-            colsTrabInd.forEach(c => htmlLinha2 += `<th>${c}</th>`);
-        } else {
-            htmlLinha2 += `<th>Trabalho Ind.</th>`;
-        }
-        htmlLinha2 += `</tr>`;
-        theadTrabInd.innerHTML = htmlLinha1 + htmlLinha2;
-    }
-
-    // --- 3. CABEÇALHO TRABALHOS DE GRUPO ---
-    if (theadTrabGrp) {
-        let htmlLinha1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th colspan="${colsTrabGrp.length || 1}" style="text-align:center;">Trabalhos de Grupo</th></tr>`;
-        let htmlLinha2 = `<tr>`;
-        if (colsTrabGrp.length > 0) {
-            colsTrabGrp.forEach(c => htmlLinha2 += `<th>${c}</th>`);
-        } else {
-            htmlLinha2 += `<th>Trabalho Grupo</th>`;
-        }
-        htmlLinha2 += `</tr>`;
-        theadTrabGrp.innerHTML = htmlLinha1 + htmlLinha2;
-    }
-
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
+
+    // Recolher todas as colunas existentes para construir as colunas globais da grelha
+    let todasColsPresenca = [];
+    let todasColsTrabInd = [];
+    let todasColsTrabGrp = [];
+
+    filtrados.forEach(e => {
+        obterColunasCadeira(e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+    });
+
+    // --- 1. CABEÇALHO PRESENÇAS UNIFICADO ---
+    if (theadPresenca) {
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
+        let htmlL2 = `<tr>`;
+        if (todasColsPresenca.length > 0) {
+            todasColsPresenca.forEach(c => htmlL2 += `<th>${c}</th>`);
+        } else {
+            htmlL2 += `<th>Geral</th>`;
+        }
+        htmlL2 += `</tr>`;
+        theadPresenca.innerHTML = htmlL1 + htmlL2;
+    }
+
+    // --- 2. CABEÇALHO TRABALHOS INDIVIDUAIS UNIFICADO ---
+    if (theadTrabInd) {
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabInd.length || 1}" style="text-align:center;">Trabalhos Individuais</th></tr>`;
+        let htmlL2 = `<tr>`;
+        if (todasColsTrabInd.length > 0) {
+            todasColsTrabInd.forEach(c => htmlL2 += `<th>${c}</th>`);
+        } else {
+            htmlL2 += `<th>Geral</th>`;
+        }
+        htmlL2 += `</tr>`;
+        theadTrabInd.innerHTML = htmlL1 + htmlL2;
+    }
+
+    // --- 3. CABEÇALHO TRABALHOS DE GRUPO UNIFICADO ---
+    if (theadTrabGrp) {
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabGrp.length || 1}" style="text-align:center;">Trabalhos de Grupo</th></tr>`;
+        let htmlL2 = `<tr>`;
+        if (todasColsTrabGrp.length > 0) {
+            todasColsTrabGrp.forEach(c => htmlL2 += `<th>${c}</th>`);
+        } else {
+            htmlL2 += `<th>Geral</th>`;
+        }
+        htmlL2 += `</tr>`;
+        theadTrabGrp.innerHTML = htmlL1 + htmlL2;
+    }
 
     if (tbodyResumo) tbodyResumo.innerHTML = "";
     if (tbodyPresenca) tbodyPresenca.innerHTML = "";
@@ -573,7 +631,7 @@ function recarregarDadosDocente() {
     if (tbodyTrabGrp) tbodyTrabGrp.innerHTML = "";
     if (selectApagar) selectApagar.innerHTML = "";
 
-    filtrados.forEach(est => {
+    filtrados.forEach((est, index) => {
         est.trabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais");
         est.trabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo");
 
@@ -592,51 +650,163 @@ function recarregarDadosDocente() {
             </tr>`;
         }
 
-        // Tabela Presenças Individual
-        let rowPresenca = `<td>${est.id}</td><td>${est.nome}</td>`;
-        if (colsPresenca.length > 0) {
-            colsPresenca.forEach(col => {
-                const chaveKey = "pres_" + col;
-                const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
-                rowPresenca += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowPresenca += `<td>${formatarNota(est.presenca)}</td>`;
-        }
-        if (tbodyPresenca) tbodyPresenca.innerHTML += `<tr>${rowPresenca}</tr>`;
+        const colsCadeiraPres = obterColunasCadeira(est.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(est.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(est.cadeira, "Trabalhos de Grupo");
 
-        // Tabela Trabalhos Individuais
-        let rowTrabInd = `<td>${est.id}</td><td>${est.nome}</td>`;
-        if (colsTrabInd.length > 0) {
-            colsTrabInd.forEach(col => {
-                const chaveKey = "indiv_" + col;
-                const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
-                rowTrabInd += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowTrabInd += `<td>---</td>`;
-        }
-        if (tbodyTrabInd) tbodyTrabInd.innerHTML += `<tr>${rowTrabInd}</tr>`;
+        // --- RENDERIZAÇÃO EXATA COM LINHA INTERCALADA DE DATAS POR U.C. (Como na imagem) ---
 
-        // Tabela Trabalhos de Grupo
-        let rowTrabGrp = `<td>${est.id}</td><td>${est.nome}</td>`;
-        if (colsTrabGrp.length > 0) {
-            colsTrabGrp.forEach(col => {
-                const chaveKey = "grp_" + col;
-                const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
-                rowTrabGrp += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowTrabGrp += `<td>---</td>`;
+        // 1. Presenças
+        if (tbodyPresenca) {
+            let linhaDatasP = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="3" style="border-right: none;"></td>`;
+            if (todasColsPresenca.length > 0) {
+                todasColsPresenca.forEach(colGlobal => {
+                    if (colsCadeiraPres.includes(colGlobal)) {
+                        linhaDatasP += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasP += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasP += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasP += `</tr>`;
+
+            let rowPresenca = `<tr><td>${est.id}</td><td>${est.nome}</td><td>${est.cadeira || 'Geral'}</td>`;
+            if (todasColsPresenca.length > 0) {
+                todasColsPresenca.forEach(colGlobal => {
+                    if (colsCadeiraPres.includes(colGlobal)) {
+                        const chaveKey = "pres_" + colGlobal;
+                        const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
+                        rowPresenca += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowPresenca += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowPresenca += `<td style="text-align: center;">${formatarNota(est.presenca)}</td>`;
+            }
+            rowPresenca += `</tr>`;
+
+            tbodyPresenca.innerHTML += linhaDatasP + rowPresenca;
         }
-        if (tbodyTrabGrp) tbodyTrabGrp.innerHTML += `<tr>${rowTrabGrp}</tr>`;
+
+        // 2. Trabalhos Individuais
+        if (tbodyTrabInd) {
+            let linhaDatasTI = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="3" style="border-right: none;"></td>`;
+            if (todasColsTrabInd.length > 0) {
+                todasColsTrabInd.forEach(colGlobal => {
+                    if (colsCadeiraTI.includes(colGlobal)) {
+                        linhaDatasTI += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasTI += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasTI += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasTI += `</tr>`;
+
+            let rowTrabInd = `<tr><td>${est.id}</td><td>${est.nome}</td><td>${est.cadeira || 'Geral'}</td>`;
+            if (todasColsTrabInd.length > 0) {
+                todasColsTrabInd.forEach(colGlobal => {
+                    if (colsCadeiraTI.includes(colGlobal)) {
+                        const chaveKey = "indiv_" + colGlobal;
+                        const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
+                        rowTrabInd += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowTrabInd += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowTrabInd += `<td style="text-align: center;">---</td>`;
+            }
+            rowTrabInd += `</tr>`;
+
+            tbodyTrabInd.innerHTML += linhaDatasTI + rowTrabInd;
+        }
+
+        // 3. Trabalhos de Grupo
+        if (tbodyTrabGrp) {
+            let linhaDatasTG = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="3" style="border-right: none;"></td>`;
+            if (todasColsTrabGrp.length > 0) {
+                todasColsTrabGrp.forEach(colGlobal => {
+                    if (colsCadeiraTG.includes(colGlobal)) {
+                        linhaDatasTG += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasTG += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasTG += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasTG += `</tr>`;
+
+            let rowTrabGrp = `<tr><td>${est.id}</td><td>${est.nome}</td><td>${est.cadeira || 'Geral'}</td>`;
+            if (todasColsTrabGrp.length > 0) {
+                todasColsTrabGrp.forEach(colGlobal => {
+                    if (colsCadeiraTG.includes(colGlobal)) {
+                        const chaveKey = "grp_" + colGlobal;
+                        const val = (est.subNotas && est.subNotas[chaveKey] !== undefined) ? est.subNotas[chaveKey] : "---";
+                        rowTrabGrp += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowTrabGrp += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowTrabGrp += `<td style="text-align: center;">---</td>`;
+            }
+            rowTrabGrp += `</tr>`;
+
+            tbodyTrabGrp.innerHTML += linhaDatasTG + rowTrabGrp;
+        }
 
         if (selectApagar) {
-            selectApagar.innerHTML += `<option value="${est.id}">${est.id} - ${est.nome}</option>`;
+            selectApagar.innerHTML += `<option value="${est.id}">${est.id} - ${est.nome} (${est.cadeira || 'Geral'})</option>`;
         }
     });
 
     renderizarGraficoTurma(filtrados);
+}
+
+// CONFIGURAR AUTO-PREENCHIMENTO INTELIGENTE AO REGISTAR ESTUDANTE
+function configurarEventosAutopreenchimento() {
+    const inputId = document.getElementById('ce-id');
+    const inputNome = document.getElementById('ce-nome');
+    const inputSenha = document.getElementById('ce-senha');
+
+    if (!inputId || !inputNome || !inputSenha) return;
+
+    inputId.addEventListener('input', () => {
+        const idVal = inputId.value.trim();
+        const existente = pautaEstado.estudantes.find(e => e.id === idVal);
+        if (existente) {
+            inputNome.value = existente.nome;
+            inputSenha.value = existente.senha;
+            inputNome.readOnly = true;
+            inputSenha.readOnly = true;
+        } else {
+            inputNome.readOnly = false;
+            inputSenha.readOnly = false;
+        }
+    });
+
+    inputNome.addEventListener('input', () => {
+        const nomeVal = inputNome.value.trim().toLowerCase();
+        const existente = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nomeVal);
+        if (existente) {
+            inputId.value = existente.id;
+            inputSenha.value = existente.senha;
+            inputId.readOnly = true;
+            inputSenha.readOnly = true;
+        } else {
+            inputId.readOnly = false;
+            inputSenha.readOnly = false;
+        }
+    });
 }
 
 // REGISTAR ESTUDANTE
@@ -660,13 +830,21 @@ async function registarNovoEstudante() {
         return;
     }
 
-    if (pautaEstado.estudantes.some(e => e.id === id)) {
-        alert("Já existe um estudante com este ID.");
+    const duplicadoExato = pautaEstado.estudantes.some(e =>
+        e.id === id && e.curso === curso && (e.cadeira || '') === (cadeira || '') && (e.ano || '') === (ano || '')
+    );
+
+    if (duplicadoExato) {
+        alert("Este estudante já se encontra registado nesta mesma Unidade Curricular, Curso e Ano Letivo.");
         return;
     }
 
+    const existenteGlobal = pautaEstado.estudantes.find(e => e.id === id);
+    const nomeOficial = existenteGlobal ? existenteGlobal.nome : nome;
+    const senhaOficial = existenteGlobal ? existenteGlobal.senha : senha;
+
     pautaEstado.estudantes.push({
-        id, senha, nome, cadeira, estatuto, curso, ano,
+        id, senha: senhaOficial, nome: nomeOficial, cadeira, estatuto, curso, ano,
         presenca: "", trabInd: "", trabGrp: "", teste1: "", teste2: "", exame: "", notaProf: "", subNotas: {}, situacao: "Pendente"
     });
 
@@ -678,6 +856,10 @@ async function registarNovoEstudante() {
     document.getElementById('ce-nome').value = "";
     document.getElementById('ce-cadeira').value = "";
 
+    document.getElementById('ce-nome').readOnly = false;
+    document.getElementById('ce-senha').readOnly = false;
+    document.getElementById('ce-id').readOnly = false;
+
     recarregarDadosDocente();
 }
 
@@ -685,10 +867,10 @@ async function executarApagarEstudante() {
     const idApagar = document.getElementById('select-apagar-estudante').value;
     if (!idApagar) return;
 
-    if (confirm("Tem certeza que deseja apagar este estudante?")) {
+    if (confirm("Tem certeza que deseja apagar este registo de estudante?")) {
         pautaEstado.estudantes = pautaEstado.estudantes.filter(e => e.id !== idApagar);
         await salvarNaNuvem();
-        alert("Estudante apagado.");
+        alert("Registo apagado.");
         recarregarDadosDocente();
     }
 }
@@ -701,14 +883,67 @@ function carregarSelectEstudantesAtualizar() {
 
     if (!selectEst) return;
     selectEst.innerHTML = "";
-    filtrados.forEach(est => {
-        selectEst.innerHTML += `<option value="${est.id}">${est.id} - ${est.nome}</option>`;
+
+    const idsUnicos = [...new Set(filtrados.map(e => e.id))];
+    idsUnicos.forEach(id => {
+        const estRef = filtrados.find(e => e.id === id);
+        selectEst.innerHTML += `<option value="${id}">${id} - ${estRef.nome}</option>`;
     });
 
+    atualizarSelectCadeirasAtualizacao();
     controlarCamposAtualizacao();
 }
 
+function atualizarSelectCadeirasAtualizacao() {
+    const idEst = document.getElementById('act-estudante-id').value;
+    const cursoSel = document.getElementById('docente-curso-global').value;
+    const registosEst = pautaEstado.estudantes.filter(e => e.id === idEst && e.curso === cursoSel);
+
+    let containerCadeira = document.getElementById('grupo-select-cadeira-act');
+    if (!containerCadeira) {
+        const secaoAtualizar = document.getElementById('subseccao-actualizar');
+        if (!secaoAtualizar) return;
+        containerCadeira = document.createElement('div');
+        containerCadeira.id = 'grupo-select-cadeira-act';
+        containerCadeira.className = 'pauta-form-group';
+        containerCadeira.style.marginTop = '15px';
+        containerCadeira.innerHTML = `
+            <label>Selecione a Unidade Curricular (Cadeira) para atualizar:</label>
+            <select id="act-cadeira-alvo" class="pauta-input" onchange="preencherCamposDadosGerais(); atualizarValorInputNota();"></select>
+        `;
+        const primeiroGrupo = secaoAtualizar.querySelector('.pauta-form-group');
+        if (primeiroGrupo) {
+            primeiroGrupo.parentNode.insertBefore(containerCadeira, primeiroGrupo.nextSibling);
+        } else {
+            secaoAtualizar.appendChild(containerCadeira);
+        }
+    }
+
+    const selectCadeiraAlvo = document.getElementById('act-cadeira-alvo');
+    if (selectCadeiraAlvo) {
+        selectCadeiraAlvo.innerHTML = "";
+        registosEst.forEach(reg => {
+            const nomeCid = reg.cadeira || 'Geral';
+            selectCadeiraAlvo.innerHTML += `<option value="${nomeCid}">${nomeCid} (${reg.ano || 'Geral'})</option>`;
+        });
+    }
+}
+
+function obterRegistoAtualSelecionado() {
+    const idEst = document.getElementById('act-estudante-id').value;
+    const cursoSel = document.getElementById('docente-curso-global').value;
+    const selectCadeiraAlvo = document.getElementById('act-cadeira-alvo');
+    const cadeiraSel = selectCadeiraAlvo ? selectCadeiraAlvo.value : "";
+
+    const registos = pautaEstado.estudantes.filter(e => e.id === idEst && e.curso === cursoSel);
+    if (registos.length === 0) return null;
+
+    let reg = registos.find(e => (e.cadeira || 'Geral') === cadeiraSel);
+    return reg || registos[0];
+}
+
 function controlarCamposAtualizacao() {
+    atualizarSelectCadeirasAtualizacao();
     const tipoSecao = document.getElementById('act-secao-tipo').value;
     const grupoSubNota = document.getElementById('grupo-sub-nota');
     const grupoSubColuna = document.getElementById('grupo-sub-coluna');
@@ -730,17 +965,18 @@ function controlarCamposAtualizacao() {
 }
 
 function criarContainerDadosGerais() {
-    // Procura o container principal da sub-secção
     const secaoAtualizar = document.getElementById('subseccao-actualizar');
     if (!secaoAtualizar) return null;
 
-    // Evita duplicar o container caso já exista
     let div = document.getElementById('grupo-dados-gerais');
     if (div) div.remove();
 
+    const cursosUnicos = [...new Set(pautaEstado.estudantes.map(e => e.curso).filter(Boolean))];
+    const estatutosUnicos = [...new Set(pautaEstado.estudantes.map(e => e.estatuto).filter(Boolean))];
+    const anosUnicos = [...new Set(pautaEstado.estudantes.map(e => e.ano).filter(Boolean))];
+
     div = document.createElement('div');
     div.id = 'grupo-dados-gerais';
-    // Usar a mesma classe de grelha que o resto do formulário
     div.className = 'pauta-grid-3col';
     div.style.marginTop = '20px';
 
@@ -751,8 +987,10 @@ function criarContainerDadosGerais() {
             <input type="text" id="act-dg-nome" class="pauta-input" placeholder="Nome Completo">
         </div>
         <div class="pauta-form-group">
-            <label>Curso(s):</label>
-            <input type="text" id="act-dg-curso" class="pauta-input" placeholder="Ex: Biologia - Química">
+            <label>Curso:</label>
+            <select id="act-dg-curso" class="pauta-input">
+                ${cursosUnicos.map(c => `<option value="${c}">${c}</option>`).join('')}
+            </select>
         </div>
         <div class="pauta-form-group">
             <label>Unidade Curricular:</label>
@@ -760,11 +998,15 @@ function criarContainerDadosGerais() {
         </div>
         <div class="pauta-form-group">
             <label>Estatuto:</label>
-            <input type="text" id="act-dg-estatuto" class="pauta-input" placeholder="Estatuto">
+            <select id="act-dg-estatuto" class="pauta-input">
+                ${estatutosUnicos.map(e => `<option value="${e}">${e}</option>`).join('')}
+            </select>
         </div>
         <div class="pauta-form-group">
             <label>Ano Letivo:</label>
-            <input type="text" id="act-dg-ano" class="pauta-input" placeholder="Ano Letivo">
+            <select id="act-dg-ano" class="pauta-input">
+                ${anosUnicos.map(a => `<option value="${a}">${a}</option>`).join('')}
+            </select>
         </div>
     </div>
     `;
@@ -774,8 +1016,7 @@ function criarContainerDadosGerais() {
 }
 
 function preencherCamposDadosGerais() {
-    const idEst = document.getElementById('act-estudante-id').value;
-    const est = pautaEstado.estudantes.find(e => e.id === idEst);
+    const est = obterRegistoAtualSelecionado();
     if (!est) return;
 
     if (document.getElementById('act-dg-nome')) {
@@ -791,8 +1032,8 @@ function atualizarOpcoesNotaAtualizacao() {
     const tipoNota = document.getElementById('act-nota-tipo').value;
     const grupoSubColuna = document.getElementById('grupo-sub-coluna');
     const selectSub = document.getElementById('act-subcoluna-select');
+    const est = obterRegistoAtualSelecionado();
 
-    // Verifica se a nota selecionada requer sub-coluna (Presenças ou Trabalhos)
     const requerSubColuna = (tipoNota === "TrabalhosIndividuais" || tipoNota === "TrabalhoGrupo" || tipoNota === "Presenca");
 
     if (requerSubColuna && grupoSubColuna) {
@@ -801,10 +1042,10 @@ function atualizarOpcoesNotaAtualizacao() {
         if (selectSub) {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
-            let colunas = pautaEstado.planilhasColunas[nomeCategoria] || [];
+            let colunas = obterColunasCadeira(est ? est.cadeira : "Geral", nomeCategoria);
 
             if (colunas.length === 0) {
-                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada --</option>`;
+                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada para esta U.C. --</option>`;
             } else {
                 colunas.forEach(col => {
                     selectSub.innerHTML += `<option value="${col}">${col}</option>`;
@@ -819,10 +1060,9 @@ function atualizarOpcoesNotaAtualizacao() {
 }
 
 function atualizarValorInputNota() {
-    const idEst = document.getElementById('act-estudante-id').value;
     const tipoSecao = document.getElementById('act-secao-tipo').value;
     const inputVal = document.getElementById('act-novo-valor');
-    const est = pautaEstado.estudantes.find(e => e.id === idEst);
+    const est = obterRegistoAtualSelecionado();
     if (!est) return;
 
     if (tipoSecao === "dados") {
@@ -852,15 +1092,31 @@ function atualizarValorInputNota() {
 async function executarAtualizacaoEstudante() {
     const idEst = document.getElementById('act-estudante-id').value;
     const tipoSecao = document.getElementById('act-secao-tipo').value;
-    const est = pautaEstado.estudantes.find(e => e.id === idEst);
+    const est = obterRegistoAtualSelecionado();
     if (!est) return;
 
     if (tipoSecao === "dados") {
-        est.nome = document.getElementById('act-dg-nome').value.trim();
-        est.curso = document.getElementById('act-dg-curso').value.trim();
-        est.cadeira = document.getElementById('act-dg-cadeira').value.trim();
-        est.estatuto = document.getElementById('act-dg-estatuto').value.trim();
-        est.ano = document.getElementById('act-dg-ano').value.trim();
+        const novoNome = document.getElementById('act-dg-nome').value.trim();
+        const novoCurso = document.getElementById('act-dg-curso').value;
+        const novaCadeira = document.getElementById('act-dg-cadeira').value.trim();
+        const novoEstatuto = document.getElementById('act-dg-estatuto').value;
+        const novoAno = document.getElementById('act-dg-ano').value;
+
+        if (!novoNome) {
+            alert("O nome não pode estar vazio.");
+            return;
+        }
+
+        pautaEstado.estudantes.forEach(e => {
+            if (e.id === idEst) {
+                e.nome = novoNome;
+            }
+        });
+
+        est.curso = novoCurso;
+        est.cadeira = novaCadeira;
+        est.estatuto = novoEstatuto;
+        est.ano = novoAno;
     } else {
         const novoValor = document.getElementById('act-novo-valor').value.trim();
         const tipoNota = document.getElementById('act-nota-tipo').value;
@@ -891,25 +1147,18 @@ async function executarAtualizacaoEstudante() {
     recarregarDadosDocente();
 }
 
-// ================= PAINEL ESTUDANTE =================
+// ================= PAINEL ESTUDANTE (Com linhas intercaladas idênticas) =================
 function entrarPainelEstudante(estudante) {
     document.getElementById('pauta-login-section').classList.add('pauta-hidden');
     document.getElementById('vista-docente').classList.add('pauta-hidden');
     document.getElementById('vista-estudante').classList.remove('pauta-hidden');
 
-    estudante.trabInd = calcularMediaTrabalhos(estudante, "Trabalhos Individuais");
-    estudante.trabGrp = calcularMediaTrabalhos(estudante, "Trabalhos de Grupo");
-    const notaPresCalc = calcularNotaPresenca(estudante);
-    if (notaPresCalc !== null) estudante.presenca = notaPresCalc;
-
-    const avaliacao = calcularSituacaoEstudante(estudante);
-    estudante.situacao = avaliacao.texto;
-
-    document.getElementById('est-lbl-nome').textContent = estudante.nome;
-
-    // Mapear cursos e anos letivos associados a este ID de estudante
     const registosEstudante = pautaEstado.estudantes.filter(e => e.id === estudante.id);
-    const cursosFormatados = registosEstudante.map(e => `${e.curso || 'Geral'} (${e.ano || '2025/2026'})`).join(' - ');
+    const primeiroRegisto = registosEstudante[0] || estudante;
+
+    document.getElementById('est-lbl-nome').textContent = primeiroRegisto.nome;
+
+    const cursosFormatados = registosEstudante.map(e => `${e.curso || 'Geral'} - ${e.cadeira || 'Geral'} (${e.ano || '2025/2026'})`).join(' | ');
 
     const elemCurso = document.getElementById('est-lbl-curso');
     if (elemCurso) {
@@ -920,116 +1169,213 @@ function entrarPainelEstudante(estudante) {
         elemCurso.style.overflowWrap = 'break-word';
     }
 
-    document.getElementById('est-lbl-id').textContent = estudante.id;
+    document.getElementById('est-lbl-id').textContent = primeiroRegisto.id;
 
-    // 1. Tabela Resumo Global do Estudante (sem colunas de Nome e Curso)
+    // Cabeçalho da Tabela Resumo Global
     const theadEstResumo = document.getElementById('thead-estudante-resumo') || document.querySelector('#tabela-estudante-resumo').parentElement.querySelector('thead');
     if (theadEstResumo) {
         theadEstResumo.innerHTML = `<tr>
-            <th>ID</th><th>U.C.</th><th>Estatuto</th><th>Ano Letivo</th>
+            <th>ID</th><th>Curso</th><th>U.C.</th><th>Estatuto</th><th>Ano Letivo</th>
             <th>Presença</th><th>Trab. Ind.</th><th>Trab. Grupo</th>
             <th>1º Teste</th><th>2º Teste</th><th>Exame</th><th>Nota Prof.</th><th>Situação</th>
         </tr>`;
     }
 
-    document.getElementById('tabela-estudante-resumo').innerHTML = `<tr>
-        <td>${estudante.id}</td><td>${estudante.cadeira || '-'}</td><td>${estudante.estatuto}</td><td>${estudante.ano || '2025-2026'}</td>
-        <td>${formatarNota(estudante.presenca)}</td><td>${formatarNota(estudante.trabInd)}</td><td>${formatarNota(estudante.trabGrp)}</td>
-        <td>${formatarNota(estudante.teste1)}</td><td>${formatarNota(estudante.teste2)}</td><td>${formatarNota(estudante.exame)}</td><td>${formatarNota(estudante.notaProf)}</td><td><strong>${estudante.situacao}</strong></td>
-    </tr>`;
-
-    const colsPresenca = pautaEstado.planilhasColunas["Presenças"] || [];
-    const colsTrabInd = pautaEstado.planilhasColunas["Trabalhos Individuais"] || [];
-    const colsTrabGrp = pautaEstado.planilhasColunas["Trabalhos de Grupo"] || [];
-
-    // Tabela Presenças (Apenas ID e U.C. fixos)
-    const theadEstPresenca = document.getElementById('thead-estudante-presenca');
+    const tbodyEstResumo = document.getElementById('tabela-estudante-resumo');
     const tbodyEstPresenca = document.getElementById('tabela-estudante-presenca');
+    const tbodyEstTrabInd = document.getElementById('tabela-estudante-trabind');
+    const tbodyEstTrabGrp = document.getElementById('tabela-estudante-trabgrp');
+
+    if (tbodyEstResumo) tbodyEstResumo.innerHTML = "";
+    if (tbodyEstPresenca) tbodyEstPresenca.innerHTML = "";
+    if (tbodyEstTrabInd) tbodyEstTrabInd.innerHTML = "";
+    if (tbodyEstTrabGrp) tbodyEstTrabGrp.innerHTML = "";
+
+    let todasColsPresenca = [];
+    let todasColsTrabInd = [];
+    let todasColsTrabGrp = [];
+
+    registosEstudante.forEach(reg => {
+        obterColunasCadeira(reg.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(reg.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(reg.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+    });
+
+    // --- CABEÇALHOS ESTUDANTE UNIFICADOS ---
+    const theadEstPresenca = document.getElementById('thead-estudante-presenca');
     if (theadEstPresenca) {
-        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${colsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${todasColsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
         let htmlL2 = `<tr>`;
-        if (colsPresenca.length > 0) {
-            colsPresenca.forEach(c => htmlL2 += `<th>${c}</th>`);
+        if (todasColsPresenca.length > 0) {
+            todasColsPresenca.forEach(c => htmlL2 += `<th>${c}</th>`);
         } else {
-            htmlL2 += `<th>Presença Geral</th>`;
+            htmlL2 += `<th>Geral</th>`;
         }
         htmlL2 += `</tr>`;
         theadEstPresenca.innerHTML = htmlL1 + htmlL2;
     }
-    if (tbodyEstPresenca) {
-        let rowP = `<td>${estudante.id}</td><td>${estudante.cadeira || '-'}</td>`;
-        if (colsPresenca.length > 0) {
-            colsPresenca.forEach(col => {
-                const chaveKey = "pres_" + col;
-                const val = (estudante.subNotas && estudante.subNotas[chaveKey] !== undefined) ? estudante.subNotas[chaveKey] : "---";
-                rowP += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowP += `<td>${formatarNota(estudante.presenca)}</td>`;
-        }
-        tbodyEstPresenca.innerHTML = `<tr>${rowP}</tr>`;
-    }
 
-    // Tabela Trabalhos Individuais (Apenas ID e U.C. fixos)
     const theadEstTrabInd = document.getElementById('thead-estudante-trabind');
-    const tbodyEstTrabInd = document.getElementById('tabela-estudante-trabind');
     if (theadEstTrabInd) {
-        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${colsTrabInd.length || 1}" style="text-align:center;">Trabalhos Individuais</th></tr>`;
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabInd.length || 1}" style="text-align:center;">Trabalhos Individuais</th></tr>`;
         let htmlL2 = `<tr>`;
-        if (colsTrabInd.length > 0) {
-            colsTrabInd.forEach(c => htmlL2 += `<th>${c}</th>`);
+        if (todasColsTrabInd.length > 0) {
+            todasColsTrabInd.forEach(c => htmlL2 += `<th>${c}</th>`);
         } else {
-            htmlL2 += `<th>Trabalho Ind.</th>`;
+            htmlL2 += `<th>Geral</th>`;
         }
         htmlL2 += `</tr>`;
         theadEstTrabInd.innerHTML = htmlL1 + htmlL2;
     }
-    if (tbodyEstTrabInd) {
-        let rowTI = `<td>${estudante.id}</td><td>${estudante.cadeira || '-'}</td>`;
-        if (colsTrabInd.length > 0) {
-            colsTrabInd.forEach(col => {
-                const chaveKey = "indiv_" + col;
-                const val = (estudante.subNotas && estudante.subNotas[chaveKey] !== undefined) ? estudante.subNotas[chaveKey] : "---";
-                rowTI += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowTI += `<td>---</td>`;
-        }
-        tbodyEstTrabInd.innerHTML = `<tr>${rowTI}</tr>`;
-    }
 
-    // Tabela Trabalhos de Grupo (Apenas ID e U.C. fixos)
     const theadEstTrabGrp = document.getElementById('thead-estudante-trabgrp');
-    const tbodyEstTrabGrp = document.getElementById('tabela-estudante-trabgrp');
     if (theadEstTrabGrp) {
-        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${colsTrabGrp.length || 1}" style="text-align:center;">Trabalhos de Grupo</th></tr>`;
+        let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabGrp.length || 1}" style="text-align:center;">Trabalhos de Grupo</th></tr>`;
         let htmlL2 = `<tr>`;
-        if (colsTrabGrp.length > 0) {
-            colsTrabGrp.forEach(c => htmlL2 += `<th>${c}</th>`);
+        if (todasColsTrabGrp.length > 0) {
+            todasColsTrabGrp.forEach(c => htmlL2 += `<th>${c}</th>`);
         } else {
-            htmlL2 += `<th>Trabalho Grupo</th>`;
+            htmlL2 += `<th>Geral</th>`;
         }
         htmlL2 += `</tr>`;
         theadEstTrabGrp.innerHTML = htmlL1 + htmlL2;
     }
-    if (tbodyEstTrabGrp) {
-        let rowTG = `<td>${estudante.id}</td><td>${estudante.cadeira || '-'}</td>`;
-        if (colsTrabGrp.length > 0) {
-            colsTrabGrp.forEach(col => {
-                const chaveKey = "grp_" + col;
-                const val = (estudante.subNotas && estudante.subNotas[chaveKey] !== undefined) ? estudante.subNotas[chaveKey] : "---";
-                rowTG += `<td>${formatarNota(val)}</td>`;
-            });
-        } else {
-            rowTG += `<td>---</td>`;
-        }
-        tbodyEstTrabGrp.innerHTML = `<tr>${rowTG}</tr>`;
-    }
 
-    renderizarGraficoEstudante(estudante);
+    registosEstudante.forEach(reg => {
+        reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais");
+        reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo");
+        const notaPresCalc = calcularNotaPresenca(reg);
+        if (notaPresCalc !== null) reg.presenca = notaPresCalc;
+
+        const avaliacao = calcularSituacaoEstudante(reg);
+        reg.situacao = avaliacao.texto;
+
+        // 1. Tabela Resumo
+        if (tbodyEstResumo) {
+            tbodyEstResumo.innerHTML += `<tr>
+                <td>${reg.id}</td><td>${reg.curso || '-'}</td><td>${reg.cadeira || '-'}</td><td>${reg.estatuto}</td><td>${reg.ano || '2025-2026'}</td>
+                <td>${formatarNota(reg.presenca)}</td><td>${formatarNota(reg.trabInd)}</td><td>${formatarNota(reg.trabGrp)}</td>
+                <td>${formatarNota(reg.teste1)}</td><td>${formatarNota(reg.teste2)}</td><td>${formatarNota(reg.exame)}</td><td>${formatarNota(reg.notaProf)}</td><td><strong>${reg.situacao}</strong></td>
+            </tr>`;
+        }
+
+        const colsCadeiraPres = obterColunasCadeira(reg.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(reg.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(reg.cadeira, "Trabalhos de Grupo");
+
+        // 2. Presenças por U.C. (Estudante) com linha de datas intercalada
+        if (tbodyEstPresenca) {
+            let linhaDatasP = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="2" style="border-right: none;"></td>`;
+            if (todasColsPresenca.length > 0) {
+                todasColsPresenca.forEach(colGlobal => {
+                    if (colsCadeiraPres.includes(colGlobal)) {
+                        linhaDatasP += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasP += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasP += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasP += `</tr>`;
+
+            let rowP = `<tr><td>${reg.id}</td><td>${reg.cadeira || 'Geral'}</td>`;
+            if (todasColsPresenca.length > 0) {
+                todasColsPresenca.forEach(colGlobal => {
+                    if (colsCadeiraPres.includes(colGlobal)) {
+                        const chaveKey = "pres_" + colGlobal;
+                        const val = (reg.subNotas && reg.subNotas[chaveKey] !== undefined) ? reg.subNotas[chaveKey] : "---";
+                        rowP += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowP += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowP += `<td style="text-align: center;">${formatarNota(reg.presenca)}</td>`;
+            }
+            rowP += `</tr>`;
+
+            tbodyEstPresenca.innerHTML += linhaDatasP + rowP;
+        }
+
+        // 3. Trabalhos Individuais por U.C. (Estudante) com linha de datas intercalada
+        if (tbodyEstTrabInd) {
+            let linhaDatasTI = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="2" style="border-right: none;"></td>`;
+            if (todasColsTrabInd.length > 0) {
+                todasColsTrabInd.forEach(colGlobal => {
+                    if (colsCadeiraTI.includes(colGlobal)) {
+                        linhaDatasTI += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasTI += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasTI += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasTI += `</tr>`;
+
+            let rowTI = `<tr><td>${reg.id}</td><td>${reg.cadeira || 'Geral'}</td>`;
+            if (todasColsTrabInd.length > 0) {
+                todasColsTrabInd.forEach(colGlobal => {
+                    if (colsCadeiraTI.includes(colGlobal)) {
+                        const chaveKey = "indiv_" + colGlobal;
+                        const val = (reg.subNotas && reg.subNotas[chaveKey] !== undefined) ? reg.subNotas[chaveKey] : "---";
+                        rowTI += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowTI += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowTI += `<td style="text-align: center;">---</td>`;
+            }
+            rowTI += `</tr>`;
+
+            tbodyEstTrabInd.innerHTML += linhaDatasTI + rowTI;
+        }
+
+        // 4. Trabalhos de Grupo por U.C. (Estudante) com linha de datas intercalada
+        if (tbodyEstTrabGrp) {
+            let linhaDatasTG = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
+                <td colspan="2" style="border-right: none;"></td>`;
+            if (todasColsTrabGrp.length > 0) {
+                todasColsTrabGrp.forEach(colGlobal => {
+                    if (colsCadeiraTG.includes(colGlobal)) {
+                        linhaDatasTG += `<td style="font-size: 0.9em; text-align: center;">${colGlobal}</td>`;
+                    } else {
+                        linhaDatasTG += `<td style="font-size: 0.9em; text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                linhaDatasTG += `<td style="font-size: 0.9em; text-align: center;">Geral</td>`;
+            }
+            linhaDatasTG += `</tr>`;
+
+            let rowTG = `<tr><td>${reg.id}</td><td>${reg.cadeira || 'Geral'}</td>`;
+            if (todasColsTrabGrp.length > 0) {
+                todasColsTrabGrp.forEach(colGlobal => {
+                    if (colsCadeiraTG.includes(colGlobal)) {
+                        const chaveKey = "grp_" + colGlobal;
+                        const val = (reg.subNotas && reg.subNotas[chaveKey] !== undefined) ? reg.subNotas[chaveKey] : "---";
+                        rowTG += `<td style="text-align: center;">${formatarNota(val)}</td>`;
+                    } else {
+                        rowTG += `<td style="text-align: center; color: #cbd5e1;">-</td>`;
+                    }
+                });
+            } else {
+                rowTG += `<td style="text-align: center;">---</td>`;
+            }
+            rowTG += `</tr>`;
+
+            tbodyEstTrabGrp.innerHTML += linhaDatasTG + rowTG;
+        }
+    });
+
+    renderizarGraficoEstudante(registosEstudante);
 }
 
-// GRÁFICOS (Chart.js) - Leitura direta da propriedade numérica .valor de calcularSituacaoEstudante(e)
+// GRÁFICOS (Chart.js)
 function renderizarGraficoTurma(estudantes) {
     const ctx = document.getElementById('chart-docente-turma').getContext('2d');
     if (graficoTurmaInstancia) graficoTurmaInstancia.destroy();
@@ -1037,12 +1383,10 @@ function renderizarGraficoTurma(estudantes) {
     const dadosNotas = estudantes.map(e => {
         const aval = calcularSituacaoEstudante(e);
 
-        // 1. Tentar obter diretamente a propriedade numérica retornada
         if (aval && typeof aval.valor === 'number' && !isNaN(aval.valor)) {
             return aval.valor;
         }
 
-        // 2. Tentar extrair valor numérico de dentro da string de texto, ex: "Aprovado(a) (11)"
         if (aval && aval.texto) {
             const match = aval.texto.match(/\((\d+(\.\d+)?)\)/);
             if (match) {
@@ -1051,7 +1395,6 @@ function renderizarGraficoTurma(estudantes) {
             }
         }
 
-        // 3. Fallback para nota de exame ou 0
         const notaEx = parseNota(e.exame);
         return notaEx !== null ? notaEx : 0;
     });
@@ -1083,31 +1426,59 @@ function renderizarGraficoTurma(estudantes) {
     });
 }
 
-function renderizarGraficoEstudante(estudante) {
+function renderizarGraficoEstudante(registos) {
     const ctx = document.getElementById('chart-estudante-notas').getContext('2d');
     if (graficoEstudanteInstancia) graficoEstudanteInstancia.destroy();
+
+    const paletaCores = [
+        { bg: 'rgba(22, 163, 74, 0.2)', border: 'rgba(16, 185, 129, 1)' },   // Verde
+        { bg: 'rgba(37, 99, 235, 0.2)', border: 'rgba(37, 99, 235, 1)' },   // Azul
+        { bg: 'rgba(234, 179, 8, 0.2)', border: 'rgba(202, 138, 4, 1)' },    // Amarelo/Dourado
+        { bg: 'rgba(239, 68, 68, 0.2)', border: 'rgba(220, 38, 38, 1)' },    // Vermelho
+        { bg: 'rgba(168, 85, 247, 0.2)', border: 'rgba(147, 51, 234, 1)' },   // Roxo
+        { bg: 'rgba(236, 72, 153, 0.2)', border: 'rgba(219, 39, 119, 1)' }    // Rosa
+    ];
+
+    const listaRegs = Array.isArray(registos) ? registos : [registos];
+
+    const datasets = listaRegs.map((reg, index) => {
+        const cor = paletaCores[index % paletaCores.length];
+        const nomeCadeira = reg.cadeira || 'Geral';
+        const nomeCurso = reg.curso || '';
+
+        return {
+            label: `${nomeCadeira} (${nomeCurso})`,
+            data: [
+                parseNota(reg.presenca) || 0,
+                parseNota(reg.trabInd) || 0,
+                parseNota(reg.trabGrp) || 0,
+                parseNota(reg.teste1) || 0,
+                parseNota(reg.teste2) || 0,
+                parseNota(reg.exame) || 0,
+                parseNota(reg.notaProf) || 0
+            ],
+            backgroundColor: cor.bg,
+            borderColor: cor.border,
+            borderWidth: 2
+        };
+    });
 
     graficoEstudanteInstancia = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: ['Presença', 'Trab. Ind.', 'Trab. Grupo', '1º Teste', '2º Teste', 'Exame', 'Nota Prof.'],
-            datasets: [{
-                label: estudante.nome,
-                data: [
-                    parseNota(estudante.presenca) || 0,
-                    parseNota(estudante.trabInd) || 0,
-                    parseNota(estudante.trabGrp) || 0,
-                    parseNota(estudante.teste1) || 0,
-                    parseNota(estudante.teste2) || 0,
-                    parseNota(estudante.exame) || 0,
-                    parseNota(estudante.notaProf) || 0
-                ],
-                backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                borderColor: 'rgba(16, 185, 129, 1)',
-                borderWidth: 2
-            }]
+            datasets: datasets
         },
-        options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 20 } } }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 20
+                }
+            }
+        }
     });
 }
 
@@ -1123,6 +1494,9 @@ document.addEventListener("DOMContentLoaded", () => {
         selectCurso.addEventListener('change', () => {
             if (document.getElementById('docente-acao-select').value === "percentagens") {
                 carregarCamposPercentagensAtuais();
+            }
+            if (document.getElementById('docente-acao-select').value === "planilha") {
+                atualizarSelectCadeirasGestaoPlanilhas();
             }
             recarregarDadosDocente();
         });
@@ -1147,6 +1521,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selectEstudanteId) {
         selectEstudanteId.addEventListener('change', () => {
+            atualizarSelectCadeirasAtualizacao();
             if (document.getElementById('act-secao-tipo').value === "dados") {
                 preencherCamposDadosGerais();
             } else {
