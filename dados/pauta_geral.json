@@ -109,6 +109,24 @@
       "notaProf": "",
       "subNotas": {},
       "situacao": "Pendente"
+    },
+    {
+      "id": "20260101",
+      "senha": "1234",
+      "nome": "Emilly Sousa do Nacimento",
+      "cadeira": "Estatística III",
+      "estatuto": "Repetente",
+      "curso": "matematica",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunas": {
