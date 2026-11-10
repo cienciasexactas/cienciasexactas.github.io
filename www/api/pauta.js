@@ -30,7 +30,7 @@ export default async function handler(req, res) {
             if (respostaGh.status === 404) {
                 return res.status(200).json({
                     estudantes: [],
-                    planilhasColunas: { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
+                    planilhasColunasPorCadeira: {},
                     percentagens: {}
                 });
             }
@@ -43,24 +43,29 @@ export default async function handler(req, res) {
             const conteudoDecodificado = Buffer.from(dadosFicheiro.content, 'base64').toString('utf8');
             const jsonDados = JSON.parse(conteudoDecodificado);
 
+            // Garante compatibilidade caso o JSON antigo use 'planilhasColunas'
+            const colunasPorCadeira = jsonDados.planilhasColunasPorCadeira || jsonDados.planilhasColunas || {};
+
             return res.status(200).json({
                 estudantes: jsonDados.estudantes || [],
-                planilhasColunas: jsonDados.planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
+                planilhasColunasPorCadeira: colunasPorCadeira,
                 percentagens: jsonDados.percentagens || {}
             });
         }
 
         // MÉTODO POST: Atualizar/Guardar os dados no GitHub (pessoal)
         if (req.method === 'POST') {
-            const { estudantes, planilhasColunas, percentagens } = req.body;
+            const { estudantes, planilhasColunasPorCadeira, planilhasColunas, percentagens } = req.body;
 
             if (!estudantes) {
                 return res.status(400).json({ error: 'Dados de estudantes obrigatórios.' });
             }
 
+            const colunasParaGuardar = planilhasColunasPorCadeira || planilhasColunas || {};
+
             const dadosParaGuardar = {
                 estudantes,
-                planilhasColunas: planilhasColunas || { "Presenças": [], "Trabalhos Individuais": [], "Trabalhos de Grupo": [] },
+                planilhasColunasPorCadeira: colunasParaGuardar,
                 percentagens: percentagens || {}
             };
 
@@ -75,7 +80,7 @@ export default async function handler(req, res) {
             }
 
             const payload = {
-                message: "Atualização automática de pautas e percentagens via painel Vercel",
+                message: "Atualização automática de pautas e colunas por cadeira via painel Vercel",
                 content: novoConteudoBase64,
                 sha: fileSha
             };
