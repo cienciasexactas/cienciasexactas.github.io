@@ -7,9 +7,12 @@ let pautaEstado = {
     percentagens: {}
 };
 
-// Obter colunas da planilha para uma determinada U.C.
-function obterColunasCadeira(cadeira, categoria) {
-    const cid = cadeira || "Geral";
+// Obter colunas da planilha isoladas por Curso e Cadeira (U.C.)
+function obterColunasCadeira(curso, cadeira, categoria) {
+    const cursoKey = curso || "Geral";
+    const cadeiraKey = cadeira || "Geral";
+    const cid = `${cursoKey}___${cadeiraKey}`;
+    
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
             "Presenças": [],
@@ -44,10 +47,11 @@ function formatarNota(val) {
     return parsed !== null ? val : "---";
 }
 
-// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C.
+// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C. e Curso
 function calcularMediaTrabalhos(est, categoria) {
+    const curso = est.curso || "Geral";
     const cadeira = est.cadeira || "Geral";
-    const colunas = obterColunasCadeira(cadeira, categoria);
+    const colunas = obterColunasCadeira(curso, cadeira, categoria);
     if (colunas.length === 0) return null;
 
     let soma = 0;
@@ -68,10 +72,11 @@ function calcularMediaTrabalhos(est, categoria) {
     return parseFloat((soma / contador).toFixed(2));
 }
 
-// CÁLCULO DE PRESENÇAS BASEADO EM P e F -> (P / (P + F)) * 20 por U.C.
+// CÁLCULO DE PRESENÇAS BASEADO EM P e F por U.C. e Curso
 function calcularNotaPresenca(est) {
+    const curso = est.curso || "Geral";
     const cadeira = est.cadeira || "Geral";
-    const colunas = obterColunasCadeira(cadeira, "Presenças");
+    const colunas = obterColunasCadeira(curso, cadeira, "Presenças");
     if (colunas.length === 0) {
         return parseNota(est.presenca);
     }
@@ -318,7 +323,7 @@ function mudarSecaoDocenteDinamica() {
     }
 }
 
-// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira) =================
+// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira) E CURSO =================
 function inicializarGestaoPlanilhas() {
     atualizarSelectCadeirasGestaoPlanilhas();
     carregarSelectPlanilhas();
@@ -368,6 +373,7 @@ function carregarSelectPlanilhas() {
 }
 
 function carregarColunasDaPlanilha() {
+    const cursoSel = document.getElementById('docente-curso-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
@@ -377,7 +383,7 @@ function carregarColunasDaPlanilha() {
     selectColuna.innerHTML = '<option value="" selected disabled>-- Selecione uma coluna --</option>';
 
     if (nomePlanilha) {
-        const colunas = obterColunasCadeira(cadeiraSel, nomePlanilha);
+        const colunas = obterColunasCadeira(cursoSel, cadeiraSel, nomePlanilha);
         colunas.forEach(coluna => {
             selectColuna.innerHTML += `<option value="${coluna}">${coluna}</option>`;
         });
@@ -393,11 +399,16 @@ function preencherNomeColunaEdicao() {
 }
 
 async function adicionarColunaNaPlanilha() {
+    const cursoSel = document.getElementById('docente-curso-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const nomeColuna = document.getElementById('gp-nome-coluna').value.trim();
 
+    if (!cursoSel) {
+        alert("Por favor, selecione um curso globalmente primeiro.");
+        return;
+    }
     if (!nomePlanilha) {
         alert("Por favor, selecione primeiro uma categoria (ex: Presenças).");
         return;
@@ -407,28 +418,30 @@ async function adicionarColunaNaPlanilha() {
         return;
     }
 
-    if (!pautaEstado.planilhasColunasPorCadeira[cadeiraSel]) {
-        pautaEstado.planilhasColunasPorCadeira[cadeiraSel] = {
+    const cid = `${cursoSel}___${cadeiraSel}`;
+    if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
+        pautaEstado.planilhasColunasPorCadeira[cid] = {
             "Presenças": [],
             "Trabalhos Individuais": [],
             "Trabalhos de Grupo": []
         };
     }
 
-    if (pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].includes(nomeColuna)) {
-        alert("Esta coluna já existe nesta categoria para esta Unidade Curricular.");
+    if (pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].includes(nomeColuna)) {
+        alert("Esta coluna já existe nesta categoria para este curso e Unidade Curricular.");
         return;
     }
 
-    pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].push(nomeColuna);
+    pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].push(nomeColuna);
     await salvarNaNuvem();
-    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" (${cadeiraSel}) com sucesso!`);
+    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" (${cadeiraSel} - ${cursoSel}) com sucesso!`);
     document.getElementById('gp-nome-coluna').value = "";
     carregarColunasDaPlanilha();
     recarregarDadosDocente();
 }
 
 async function atualizarNomeColuna() {
+    const cursoSel = document.getElementById('docente-curso-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
@@ -444,7 +457,8 @@ async function atualizarNomeColuna() {
         return;
     }
 
-    const colunas = pautaEstado.planilhasColunasPorCadeira[cadeiraSel]?.[nomePlanilha] || [];
+    const cid = `${cursoSel}___${cadeiraSel}`;
+    const colunas = pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha] || [];
     const index = colunas.indexOf(colunaAntiga);
     if (index !== -1) {
         colunas[index] = novoNomeColuna;
@@ -457,6 +471,7 @@ async function atualizarNomeColuna() {
 }
 
 async function eliminarColunaDaPlanilha() {
+    const cursoSel = document.getElementById('docente-curso-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
@@ -468,9 +483,10 @@ async function eliminarColunaDaPlanilha() {
     }
 
     if (confirm(`Tem a certeza que deseja eliminar a coluna "${colunaSel}"?`)) {
-        if (pautaEstado.planilhasColunasPorCadeira[cadeiraSel]?.[nomePlanilha]) {
-            pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha] =
-                pautaEstado.planilhasColunasPorCadeira[cadeiraSel][nomePlanilha].filter(c => c !== colunaSel);
+        const cid = `${cursoSel}___${cadeiraSel}`;
+        if (pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha]) {
+            pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha] =
+                pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].filter(c => c !== colunaSel);
         }
         await salvarNaNuvem();
         alert("Coluna eliminada.");
@@ -549,7 +565,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Com linhas de datas intercaladas exatamente como na imagem)
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -575,18 +591,16 @@ function recarregarDadosDocente() {
 
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
 
-    // Recolher todas as colunas existentes para construir as colunas globais da grelha
     let todasColsPresenca = [];
     let todasColsTrabInd = [];
     let todasColsTrabGrp = [];
 
     filtrados.forEach(e => {
-        obterColunasCadeira(e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        obterColunasCadeira(e.curso, e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(e.curso, e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(e.curso, e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
-    // --- 1. CABEÇALHO PRESENÇAS UNIFICADO ---
     if (theadPresenca) {
         let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
         let htmlL2 = `<tr>`;
@@ -599,7 +613,6 @@ function recarregarDadosDocente() {
         theadPresenca.innerHTML = htmlL1 + htmlL2;
     }
 
-    // --- 2. CABEÇALHO TRABALHOS INDIVIDUAIS UNIFICADO ---
     if (theadTrabInd) {
         let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabInd.length || 1}" style="text-align:center;">Trabalhos Individuais</th></tr>`;
         let htmlL2 = `<tr>`;
@@ -612,7 +625,6 @@ function recarregarDadosDocente() {
         theadTrabInd.innerHTML = htmlL1 + htmlL2;
     }
 
-    // --- 3. CABEÇALHO TRABALHOS DE GRUPO UNIFICADO ---
     if (theadTrabGrp) {
         let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">Nome</th><th rowspan="2">U.C.</th><th colspan="${todasColsTrabGrp.length || 1}" style="text-align:center;">Trabalhos de Grupo</th></tr>`;
         let htmlL2 = `<tr>`;
@@ -631,7 +643,7 @@ function recarregarDadosDocente() {
     if (tbodyTrabGrp) tbodyTrabGrp.innerHTML = "";
     if (selectApagar) selectApagar.innerHTML = "";
 
-    filtrados.forEach((est, index) => {
+    filtrados.forEach((est) => {
         est.trabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais");
         est.trabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo");
 
@@ -641,7 +653,6 @@ function recarregarDadosDocente() {
         const avaliacao = calcularSituacaoEstudante(est);
         est.situacao = avaliacao.texto;
 
-        // Tabela Resumo Geral
         if (tbodyResumo) {
             tbodyResumo.innerHTML += `<tr>
                 <td>${est.id}</td><td>${est.nome}</td><td>${est.curso}</td><td>${est.cadeira || '-'}</td><td>${est.estatuto}</td><td>${est.ano || anoSel}</td>
@@ -650,11 +661,9 @@ function recarregarDadosDocente() {
             </tr>`;
         }
 
-        const colsCadeiraPres = obterColunasCadeira(est.cadeira, "Presenças");
-        const colsCadeiraTI = obterColunasCadeira(est.cadeira, "Trabalhos Individuais");
-        const colsCadeiraTG = obterColunasCadeira(est.cadeira, "Trabalhos de Grupo");
-
-        // --- RENDERIZAÇÃO EXATA COM LINHA INTERCALADA DE DATAS POR U.C. (Como na imagem) ---
+        const colsCadeiraPres = obterColunasCadeira(est.curso, est.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(est.curso, est.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(est.curso, est.cadeira, "Trabalhos de Grupo");
 
         // 1. Presenças
         if (tbodyPresenca) {
@@ -786,8 +795,8 @@ function configurarEventosAutopreenchimento() {
         if (existente) {
             inputNome.value = existente.nome;
             inputSenha.value = existente.senha;
-            inputNome.readOnly = true; // Nome bloqueado
-            inputSenha.readOnly = true; // Senha bloqueada
+            inputNome.readOnly = true;
+            inputSenha.readOnly = true;
         } else {
             inputNome.readOnly = false;
             inputSenha.readOnly = false;
@@ -800,8 +809,8 @@ function configurarEventosAutopreenchimento() {
         if (existente) {
             inputId.value = existente.id;
             inputSenha.value = existente.senha;
-            inputId.readOnly = true; // ID bloqueado
-            inputSenha.readOnly = true; // Senha bloqueada
+            inputId.readOnly = true;
+            inputSenha.readOnly = true;
         } else {
             inputId.readOnly = false;
             inputSenha.readOnly = false;
@@ -809,7 +818,7 @@ function configurarEventosAutopreenchimento() {
     });
 }
 
-// REGISTAR ESTUDANTE COM CONSISTÊNCIA GLOBAL DE ID E NOME
+// REGISTAR ESTUDANTE
 async function registarNovoEstudante() {
     const curso = document.getElementById('docente-curso-global').value;
     const ano = document.getElementById('docente-ano-global').value;
@@ -830,20 +839,18 @@ async function registarNovoEstudante() {
         return;
     }
 
-    // Validação de consistência: ID não pode pertencer a outro nome, nem nome a outro ID
     const conflitoId = pautaEstado.estudantes.find(e => e.id === id && e.nome.toLowerCase() !== nome.toLowerCase());
     const conflitoNome = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nome.toLowerCase() && e.id !== id);
 
     if (conflitoId) {
-        alert(`⚠️ O ID "${id}" já pertence a outro estudante (${conflitoId.nome}). O ID e o Nome devem ser consistentes.`);
+        alert(`⚠️ O ID "${id}" já pertence a outro estudante (${conflitoId.nome}).`);
         return;
     }
     if (conflitoNome) {
-        alert(`⚠️ O Nome "${nome}" já está associado ao ID (${conflitoNome.id}). O ID e o Nome devem ser consistentes.`);
+        alert(`⚠️ O Nome "${nome}" já está associado ao ID (${conflitoNome.id}).`);
         return;
     }
 
-    // Verificar se já existe exatamente na mesma U.C., Curso e Ano
     const duplicadoExato = pautaEstado.estudantes.some(e =>
         e.id === id && e.curso === curso && (e.cadeira || '') === (cadeira || '') && (e.ano || '') === (ano || '')
     );
@@ -863,7 +870,7 @@ async function registarNovoEstudante() {
     });
 
     await salvarNaNuvem();
-    alert("✅ Estudante registado com sucesso na nova Unidade Curricular/Curso!");
+    alert("✅ Estudante registado com sucesso!");
 
     document.getElementById('ce-id').value = "";
     document.getElementById('ce-senha').value = "";
@@ -1056,10 +1063,10 @@ function atualizarOpcoesNotaAtualizacao() {
         if (selectSub) {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
-            let colunas = obterColunasCadeira(est ? est.cadeira : "Geral", nomeCategoria);
+            let colunas = obterColunasCadeira(est ? est.curso : "Geral", est ? est.cadeira : "Geral", nomeCategoria);
 
             if (colunas.length === 0) {
-                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada para esta U.C. --</option>`;
+                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada para esta U.C. neste curso --</option>`;
             } else {
                 colunas.forEach(col => {
                     selectSub.innerHTML += `<option value="${col}">${col}</option>`;
@@ -1161,7 +1168,7 @@ async function executarAtualizacaoEstudante() {
     recarregarDadosDocente();
 }
 
-// ================= PAINEL ESTUDANTE (Com linhas intercaladas idênticas) =================
+// ================= PAINEL ESTUDANTE =================
 function entrarPainelEstudante(estudante) {
     document.getElementById('pauta-login-section').classList.add('pauta-hidden');
     document.getElementById('vista-docente').classList.add('pauta-hidden');
@@ -1185,7 +1192,6 @@ function entrarPainelEstudante(estudante) {
 
     document.getElementById('est-lbl-id').textContent = primeiroRegisto.id;
 
-    // Cabeçalho da Tabela Resumo Global
     const theadEstResumo = document.getElementById('thead-estudante-resumo') || document.querySelector('#tabela-estudante-resumo').parentElement.querySelector('thead');
     if (theadEstResumo) {
         theadEstResumo.innerHTML = `<tr>
@@ -1210,12 +1216,11 @@ function entrarPainelEstudante(estudante) {
     let todasColsTrabGrp = [];
 
     registosEstudante.forEach(reg => {
-        obterColunasCadeira(reg.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(reg.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(reg.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        obterColunasCadeira(reg.curso, reg.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
-    // --- CABEÇALHOS ESTUDANTE UNIFICADOS ---
     const theadEstPresenca = document.getElementById('thead-estudante-presenca');
     if (theadEstPresenca) {
         let htmlL1 = `<tr><th rowspan="2">ID</th><th rowspan="2">U.C.</th><th colspan="${todasColsPresenca.length || 1}" style="text-align:center;">Presenças</th></tr>`;
@@ -1264,7 +1269,6 @@ function entrarPainelEstudante(estudante) {
         const avaliacao = calcularSituacaoEstudante(reg);
         reg.situacao = avaliacao.texto;
 
-        // 1. Tabela Resumo
         if (tbodyEstResumo) {
             tbodyEstResumo.innerHTML += `<tr>
                 <td>${reg.id}</td><td>${reg.curso || '-'}</td><td>${reg.cadeira || '-'}</td><td>${reg.estatuto}</td><td>${reg.ano || '2025-2026'}</td>
@@ -1273,11 +1277,10 @@ function entrarPainelEstudante(estudante) {
             </tr>`;
         }
 
-        const colsCadeiraPres = obterColunasCadeira(reg.cadeira, "Presenças");
-        const colsCadeiraTI = obterColunasCadeira(reg.cadeira, "Trabalhos Individuais");
-        const colsCadeiraTG = obterColunasCadeira(reg.cadeira, "Trabalhos de Grupo");
+        const colsCadeiraPres = obterColunasCadeira(reg.curso, reg.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos de Grupo");
 
-        // 2. Presenças por U.C. (Estudante) com linha de datas intercalada
         if (tbodyEstPresenca) {
             let linhaDatasP = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
                 <td colspan="2" style="border-right: none;"></td>`;
@@ -1313,7 +1316,6 @@ function entrarPainelEstudante(estudante) {
             tbodyEstPresenca.innerHTML += linhaDatasP + rowP;
         }
 
-        // 3. Trabalhos Individuais por U.C. (Estudante) com linha de datas intercalada
         if (tbodyEstTrabInd) {
             let linhaDatasTI = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
                 <td colspan="2" style="border-right: none;"></td>`;
@@ -1349,7 +1351,6 @@ function entrarPainelEstudante(estudante) {
             tbodyEstTrabInd.innerHTML += linhaDatasTI + rowTI;
         }
 
-        // 4. Trabalhos de Grupo por U.C. (Estudante) com linha de datas intercalada
         if (tbodyEstTrabGrp) {
             let linhaDatasTG = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
                 <td colspan="2" style="border-right: none;"></td>`;
@@ -1445,12 +1446,12 @@ function renderizarGraficoEstudante(registos) {
     if (graficoEstudanteInstancia) graficoEstudanteInstancia.destroy();
 
     const paletaCores = [
-        { bg: 'rgba(22, 163, 74, 0.2)', border: 'rgba(16, 185, 129, 1)' },   // Verde
-        { bg: 'rgba(37, 99, 235, 0.2)', border: 'rgba(37, 99, 235, 1)' },   // Azul
-        { bg: 'rgba(234, 179, 8, 0.2)', border: 'rgba(202, 138, 4, 1)' },    // Amarelo/Dourado
-        { bg: 'rgba(239, 68, 68, 0.2)', border: 'rgba(220, 38, 38, 1)' },    // Vermelho
-        { bg: 'rgba(168, 85, 247, 0.2)', border: 'rgba(147, 51, 234, 1)' },   // Roxo
-        { bg: 'rgba(236, 72, 153, 0.2)', border: 'rgba(219, 39, 119, 1)' }    // Rosa
+        { bg: 'rgba(22, 163, 74, 0.2)', border: 'rgba(16, 185, 129, 1)' },
+        { bg: 'rgba(37, 99, 235, 0.2)', border: 'rgba(37, 99, 235, 1)' },
+        { bg: 'rgba(234, 179, 8, 0.2)', border: 'rgba(202, 138, 4, 1)' },
+        { bg: 'rgba(239, 68, 68, 0.2)', border: 'rgba(220, 38, 38, 1)' },
+        { bg: 'rgba(168, 85, 247, 0.2)', border: 'rgba(147, 51, 234, 1)' },
+        { bg: 'rgba(236, 72, 153, 0.2)', border: 'rgba(219, 39, 119, 1)' }
     ];
 
     const listaRegs = Array.isArray(registos) ? registos : [registos];
