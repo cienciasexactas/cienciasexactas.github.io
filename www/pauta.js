@@ -214,28 +214,39 @@ async function inicializarSistemaPauta() {
 
 // Sincronização com a nuvem
 async function salvarNaNuvem() {
+    const dadosParaSalvar = {
+        estudantes: pautaEstado.estudantes,
+        planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
+        percentagens: pautaEstado.percentagens
+    };
+
+    // 1. Salvar localmente no navegador
     try {
-        localStorage.setItem('pautaEstadoGlobal', JSON.stringify({
-            estudantes: pautaEstado.estudantes,
-            planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
-            percentagens: pautaEstado.percentagens
-        }));
+        localStorage.setItem('pautaEstadoGlobal', JSON.stringify(dadosParaSalvar));
     } catch (e) {
         console.error("Erro ao salvar localmente:", e);
     }
 
+    // 2. Enviar para a nuvem com validação rigorosa de resposta
     try {
-        await fetch('https://api-cienciasexactas.vercel.app/api/pauta', {
+        const resposta = await fetch('https://api-cienciasexactas.vercel.app/api/pauta', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                estudantes: pautaEstado.estudantes,
-                planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
-                percentagens: pautaEstado.percentagens
-            })
+            body: JSON.stringify(dadosParaSalvar)
         });
+
+        if (!resposta.ok) {
+            const erroJson = await resposta.json().catch(() => ({}));
+            console.error("Erro retornado pelo servidor:", erroJson);
+            alert("⚠️ AVISO: As alterações foram guardadas neste computador, mas FALHARAM ao sincronizar com a nuvem (GitHub/Vercel): " + (erroJson.error || "Erro desconhecido no servidor."));
+            return false;
+        }
+        
+        return true;
     } catch (erro) {
-        console.error("Erro ao sincronizar com a nuvem:", erro);
+        console.error("Erro de rede ao sincronizar com a nuvem:", erro);
+        alert("⚠️ AVISO: Sem ligação à internet ou erro de rede. Os dados foram salvos apenas localmente.");
+        return false;
     }
 }
 
