@@ -335,8 +335,8 @@
       "curso": "enfermagem-a",
       "ano": "2026-2027",
       "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -376,7 +376,9 @@
     },
     "Bioestatística": {
       "Presenças": [],
-      "Trabalhos Individuais": [],
+      "Trabalhos Individuais": [
+        "Trabalho I"
+      ],
       "Trabalhos de Grupo": []
     }
   },
