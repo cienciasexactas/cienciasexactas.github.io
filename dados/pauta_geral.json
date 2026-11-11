@@ -386,5 +386,12 @@
       ]
     }
   },
-  "percentagens": {}
+  "percentagens": {
+    "enfermagem-a_2026-2027_Bioestatística": {
+      "presenca": 0.1,
+      "testes": 0.6,
+      "trabInd": 0.3,
+      "trabGrp": 0
+    }
+  }
 }
