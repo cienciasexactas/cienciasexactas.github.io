@@ -235,6 +235,24 @@
       "notaProf": "",
       "subNotas": {},
       "situacao": "Pendente"
+    },
+    {
+      "id": "ENF3001",
+      "senha": "N3E1",
+      "nome": "Arianne do Espírito Santo Soares",
+      "cadeira": "Bioestatística",
+      "estatuto": "Novo",
+      "curso": "enfermagem-a",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
