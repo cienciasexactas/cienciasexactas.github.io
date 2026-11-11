@@ -11,7 +11,7 @@ let pautaEstado = {
 function obterColunasCadeira(curso, cadeira, categoria) {
     const cursoKey = curso || "Geral";
     const cadeiraKey = cadeira || "Geral";
-    const cid = `${cursoKey}___${cadeiraKey}`;
+    const cid = `${cursoKey}_${cadeiraKey}`;
     
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
@@ -429,7 +429,7 @@ async function adicionarColunaNaPlanilha() {
         return;
     }
 
-    const cid = `${cursoSel}___${cadeiraSel}`;
+    const cid = `${cursoSel}_${cadeiraSel}`;
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
             "Presenças": [],
@@ -468,7 +468,7 @@ async function atualizarNomeColuna() {
         return;
     }
 
-    const cid = `${cursoSel}___${cadeiraSel}`;
+    const cid = `${cursoSel}_${cadeiraSel}`;
     const colunas = pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha] || [];
     const index = colunas.indexOf(colunaAntiga);
     if (index !== -1) {
@@ -494,7 +494,7 @@ async function eliminarColunaDaPlanilha() {
     }
 
     if (confirm(`Tem a certeza que deseja eliminar a coluna "${colunaSel}"?`)) {
-        const cid = `${cursoSel}___${cadeiraSel}`;
+        const cid = `${cursoSel}_${cadeiraSel}`;
         if (pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha]) {
             pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha] =
                 pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].filter(c => c !== colunaSel);
