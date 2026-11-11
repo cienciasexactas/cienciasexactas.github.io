@@ -245,6 +245,24 @@
       "curso": "enfermagem-a",
       "ano": "2026-2027",
       "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
+    },
+    {
+      "id": "ENF3002",
+      "senha": "E0N2",
+      "nome": "Cláudia Sousa da Costa",
+      "cadeira": "Bioestatística",
+      "estatuto": "Novo",
+      "curso": "enfermagem-a",
+      "ano": "2026-2027",
+      "presenca": "",
       "trabInd": "",
       "trabGrp": "",
       "teste1": "",
@@ -280,6 +298,11 @@
       "Trabalhos de Grupo": []
     },
     "Estatística MQQ": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "Bioestatística": {
       "Presenças": [],
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
