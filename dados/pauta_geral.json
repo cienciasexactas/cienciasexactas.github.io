@@ -1972,66 +1972,183 @@
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
     },
-    "Estatística II": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
-    },
-    "Estatística III": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
-    },
-    "Seminário I": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
-    },
-    "Estatística MQQ": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
-    },
-    "Bioestatística": {
+    "educacao-infancia_Fundamento de Matemática I": {
       "Presenças": [
-        "02/11/2026"
+        "02/11/2026",
+        "04/11/2026",
+        "09/11/2026",
+        "11/11/2026",
+        "16/11/2026",
+        "18/11/2026",
+        "23/11/2026",
+        "25/11/2026",
+        "30/11/2026",
+        "02/12/2026",
+        "07/12/2026",
+        "09/12/2026",
+        "14/12/2026",
+        "16/12/2026",
+        "21/12/2026",
+        "23/12/2026",
+        "28/12/2026",
+        "30/12/2026",
+        "04/01/2027",
+        "06/01/2027",
+        "11/01/2027",
+        "13/01/2027"
       ],
       "Trabalhos Individuais": [
-        "Trabalho I"
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V",
+        "Trabalho VI",
+        "Trabalho VII",
+        "Trabalho VIII",
+        "Trabalho IX",
+        "Trabalho X"
       ],
       "Trabalhos de Grupo": [
-        "Trabalho I"
-      ]
-    },
-    "educacao-infancia___Fundamento de Matemática I": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
-    },
-    "enfermagem-a___Bioestatística": {
-      "Presenças": [
-        "02/11/2026"
-      ],
-      "Trabalhos Individuais": [
-        "Trabalho I"
-      ],
-      "Trabalhos de Grupo": [
-        "Trabalho I"
-      ]
-    },
-    "cienciasnaturais___Estatística MQQ": {
-      "Presenças": [],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": [
-        "Trabalho I"
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V"
       ]
     },
     "enfermagem-b_Bioestatística": {
       "Presenças": [
-        "02/11/2026"
+        "02/11/2026",
+        "05/11/2026",
+        "09/11/2026",
+        "12/11/2026",
+        "16/11/2026",
+        "19/11/2026",
+        "23/11/2026",
+        "26/11/2026",
+        "30/11/2026",
+        "03/12/2026",
+        "10/12/2026",
+        "14/12/2026",
+        "17/12/2026",
+        "21/12/2026",
+        "24/12/2026",
+        "28/12/2026",
+        "31/12/2026",
+        "04/01/2027",
+        "07/01/2027",
+        "11/01/2027",
+        "14/01/2027"
       ],
-      "Trabalhos Individuais": [],
-      "Trabalhos de Grupo": []
+      "Trabalhos Individuais": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V",
+        "Trabalho VI",
+        "Trabalho VII",
+        "Trabalho VIII",
+        "Trabalho IX",
+        "Trabalho X"
+      ],
+      "Trabalhos de Grupo": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V"
+      ]
+    },
+    "enfermagem-a_Bioestatística": {
+      "Presenças": [
+        "04/11/2026",
+        "06/11/2026",
+        "11/11/2026",
+        "13/11/2026",
+        "18/11/2026",
+        "20/11/2026",
+        "25/11/2026",
+        "27/11/2026",
+        "02/12/2026",
+        "04/12/2026",
+        "09/12/2026",
+        "11/12/2026",
+        "16/12/2026",
+        "18/12/2026",
+        "23/12/2026",
+        "25/12/2026",
+        "30/12/2026",
+        "01/01/2027",
+        "06/01/2027",
+        "08/01/2027",
+        "13/01/2027",
+        "15/01/2027"
+      ],
+      "Trabalhos Individuais": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V",
+        "Trabalho VI",
+        "Trabalho VII",
+        "Trabalho VIII",
+        "Trabalho IX",
+        "Trabalho X"
+      ],
+      "Trabalhos de Grupo": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V"
+      ]
+    },
+    "cienciasnaturais_Estatística MQQ": {
+      "Presenças": [
+        "02/11/2026",
+        "05/11/2026",
+        "09/11/2026",
+        "12/11/2026",
+        "16/11/2026",
+        "19/11/2026",
+        "23/11/2026",
+        "26/11/2026",
+        "30/11/2026",
+        "03/12/2026",
+        "10/12/2026",
+        "14/12/2026",
+        "17/12/2026",
+        "21/12/2026",
+        "24/12/2026",
+        "28/12/2026",
+        "31/12/2026",
+        "04/01/2027",
+        "07/01/2027",
+        "11/01/2027",
+        "14/01/2027"
+      ],
+      "Trabalhos Individuais": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V",
+        "Trabalho VI",
+        "Trabalho VII",
+        "Trabalho VIII",
+        "Trabalho IX",
+        "Trabalho X"
+      ],
+      "Trabalhos de Grupo": [
+        "Trabalho I",
+        "Trabalho II",
+        "Trabalho III",
+        "Trabalho IV",
+        "Trabalho V"
+      ]
     }
   },
   "percentagens": {
