@@ -16,6 +16,7 @@ permissions:
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -30,35 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-<<<<<<< HEAD
-        with:
-          persist-credentials: false
-=======
-
-      - name: Verificar se a pasta www existe
-        run: |
-          if [ -d "./www" ]; then
-            echo "Pasta www encontrada com sucesso."
-            ls -la ./www
-          else
-            echo "Erro: A pasta www não foi encontrada!"
-            exit 1
-          fi
->>>>>>> 25474bd4859ba2e1b5fb35014abae99911cb5ae5
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-<<<<<<< HEAD
-          # Mantém a pasta www, mas garante que o upload apanha todos os assets estáticos necessários
-=======
-          # Aponta explicitamente para a pasta www onde estão os ficheiros
->>>>>>> 25474bd4859ba2e1b5fb35014abae99911cb5ae5
+          # Upload entire repository
           path: './www'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
