@@ -2741,7 +2741,7 @@
                 
                 <div class="equacao" id="equacao-33">
                     \begin{equation} 
-                    \chi^2 = \sum_{i=1}^{I} \sum_{j=1}^{J} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+                    \chi^2 = \sum_{i=1}^{I} \sum_{j=1}^{J} \frac{(O_{ij} - E_{ij})^2}{E_{ij}} \sim \chi^2 _{(I-1)\cdot(J-1);1-\alpha}
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
@@ -2825,6 +2825,12 @@
                     \chi^2 = \sum_{i=1}^{I} \sum_{j=1}^{J} \frac{(O_{ij} - E_{ij})^2}{E_{ij}} = 15{}{,}861
                     \end{equation}
                 </div>
+
+                Clique para consultar a <a href="Tabela Qui-Quadrado.pdf" class="embed-link" data-doc="Tabela Qui-Quadrado">Tabela Qui-Quadrado</a> e/ou faça o download do arquivo para utilizá-la sempre que precisar nos seus cálculos.
+
+                Para verificar a existência de associação entre a operadora e o nível de satisfação, recorre-se ao teste de qui-quadrado, comparando o valor da estatística calculada com o respetivo valor crítico, onde obteve-se $15{,}861=\chi^2>\chi^2_{\text{crítico}} = 9{,}488$.
+                
+                Deste modo, <i>conclui-se que existe evidência estatística significativa de que o nível de satisfação depende da operadora de saúde</i>, confirmando-se assim a existência de uma associação estatisticamente relevante entre as duas variáveis.
 
                 As principais medidas de associação fundamentadas na estatística qui-quadrado ($\chi^2$) são o coeficiente Phi, o $V$ de Cramer e o coeficiente de contingência ($C$), todas aplicadas a variáveis qualitativas nominais.  
                 
@@ -3082,7 +3088,7 @@
                 
                 <div class="equacao" id="equacao-40">
                     \begin{equation} 
-                    Z = \sqrt{\frac{n - 3}{1,06}} \cdot F(R_{\text{Spearman}}) \sim N(0, 1)
+                    Z = \sqrt{\frac{n - 3}{1,06}} \cdot F(r_{sp}) \sim N(0, 1)
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
@@ -3091,10 +3097,14 @@
                 
                 <div class="equacao" id="equacao-40-1">
                     \begin{equation} 
-                    F(r) = \frac{1}{2} \ln \left( \frac{1 + r}{1 - r} \right)
+                    F(r_{sp}) = \frac{1}{2} \ln \left( \frac{1 + r_{sp}}{1 - r_{sp}} \right)
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
+
+                Clique para consultar a <a href="Tabela da Normal Padrão.pdf" class="embed-link" data-doc="Tabela Normal Padrão">Tabela da Normal Padrão</a> e/ou faça o download do arquivo para utilizá-la sempre que precisar nos seus cálculos.
+
+                Com base nos dados do <a href="#exemplo-15"></a>, a estatística $2{,}54=Z>Z_{\text{crítico}} 1{,}96$. Logo, <i>conclui-se que existe uma correlação positiva estatisticamente significativa entre as notas das unidades curriculares de Simulação e Finanças</i>.
 
             </div>
         </section>
@@ -3245,7 +3255,7 @@
                     <span class="rotulo-equacao"></span>
                 </div>
 
-                <div id="exercicio-25" class="bloco-exemplo">
+                <div id="exercicio-25" class="bloco-exercicio">
                     <span class="rotulo-exemplo"></span>: Considere os dados do <a href="#exercicio-24"></a>. Calcule e classifique a correlação existente entre as duas variáveis.
                 </div>
 
@@ -3270,6 +3280,11 @@
                     \end{equation}
                     <span class="rotulo-equacao"></span>
                 </div>
+
+                Clique para consultar a <a href="Tabela da t-Student.pdf" class="embed-link" data-doc="Tabela Normal Padrão">Tabela da t-Student</a> e/ou faça o download do arquivo para utilizá-la sempre que precisar nos seus cálculos.
+                
+                Com base nos dados do <a href="#exercicio-25"></a>, a estatística $1{,}179=T < T_{\text{crítico}}2{,}447$. Logo, <i>conclui-se não existe evidência estatística suficiente para afirmar que o tempo de estudo semanal influencia linearmente e de forma significativa o desempenho dos estudantes na prova final.</i> Embora haja uma correlação positiva na amostra, ela não é estatisticamente diferente de zero neste caso.
+
                 
                 Nota-se que a significância do coeficiente $R$ depende exclusivamente do seu valor absoluto e do tamanho da amostra $n$. O resultado torna-se estatisticamente mais significante quanto maior for o valor absoluto de $R$ (visto que $\vert{}\rho\vert{} \to 1$ faz com que o denominador $\sqrt{1 - \rho^2}$ se aproxime de zero, elevando o valor de $T$ para $\pm\infty$) ou quanto maior for a dimensão amostral $n$ (pois o aumento de $n$ amplia diretamente a magnitude de $T$).
                 
