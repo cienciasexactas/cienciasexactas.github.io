@@ -4208,10 +4208,10 @@
       "trabGrp": 0.30
     },
     "educacao-infancia_2026-2027_Fundamento de Matemática I": {
-      "presenca": 0.05,
-      "testes": 0.60,
+      "presenca": 0.10,
+      "testes": 0.50,
       "trabInd": 0.20,
-      "trabGrp": 0.15
+      "trabGrp": 0.25
     }
   }
 
