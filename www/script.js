@@ -486,16 +486,11 @@ window.trocarIdioma = function (codigoIdioma) {
 // 5. MODAL DE VISUALIZAÇÃO DE DOCUMENTOS (PDF / PREVIEW) - ISOLADO
 // ============================================================================
 function abrirPreviewModal(docUrl, titulo) {
-  // 1. Obtém sempre a URL real e absoluta do ficheiro no GitHub Raw
+  // 1. Resolve a URL corretamente baseada no diretório atual (compatível com GitHub Pages)
   let urlReal = docUrl;
-  if (!urlReal || (!urlReal.startsWith('http://') && !urlReal.startsWith('https://'))) {
-    const caminhoLimpo = urlReal.startsWith('/') ? urlReal.substring(1) : urlReal;
-    urlReal = `https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/${caminhoLimpo}`;
-  } else if (urlReal.includes('cienciasexactas.github.io') && !urlReal.includes('raw.githubusercontent.com')) {
-    try {
-      const urlObj = new URL(urlReal);
-      urlReal = `https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main${urlObj.pathname}`;
-    } catch (e) { }
+  if (!urlReal.startsWith('http://') && !urlReal.startsWith('https://')) {
+    const baseHref = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+    urlReal = new URL(docUrl, baseHref).href;
   }
 
   let modal = document.getElementById('pdf-preview-modal');
@@ -540,10 +535,9 @@ function abrirPreviewModal(docUrl, titulo) {
   // Define o título do modal
   document.getElementById('pdf-modal-title').textContent = titulo;
 
-  // 2. Configura o botão de download para forçar o download direto via Blob
+  // 2. Configura o botão de download com suporte a Blob e extensão dinâmica correta
   const btnDownload = document.getElementById('pdf-modal-download-btn');
   if (btnDownload) {
-    // Remove eventos anteriores para evitar duplicação
     const novoBtn = btnDownload.cloneNode(true);
     btnDownload.parentNode.replaceChild(novoBtn, btnDownload);
 
@@ -561,7 +555,14 @@ function abrirPreviewModal(docUrl, titulo) {
 
         const a = document.createElement('a');
         a.href = blobUrl;
-        a.download = titulo || urlReal.split('/').pop().split('?')[0];
+
+        // Extrai a extensão real do ficheiro e define o nome corretamente
+        const extensaoReal = urlReal.split('.').pop().toLowerCase().split('?')[0];
+        let nomeFicheiro = titulo 
+          ? (titulo.toLowerCase().endsWith('.' + extensaoReal) ? titulo : `${titulo}.${extensaoReal}`) 
+          : urlReal.split('/').pop().split('?')[0];
+
+        a.download = nomeFicheiro;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -577,7 +578,7 @@ function abrirPreviewModal(docUrl, titulo) {
   }
 
   const container = document.getElementById('pdf-modal-body-content');
-  const extensao = urlReal.split('.').pop().toLowerCase();
+  const extensao = urlReal.split('.').pop().toLowerCase().split('?')[0];
   const eDocumentoOffice = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'].includes(extensao);
 
   if (eDocumentoOffice) {
@@ -592,10 +593,8 @@ function abrirPreviewModal(docUrl, titulo) {
               </div>
           `;
     }
-  } else if (extensao === 'pdf') {
-    const googleViewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(urlReal)}&embedded=true`;
-    container.innerHTML = `<iframe src="${googleViewerUrl}" style="width: 100%; height: 100%; border: none; background: #fff;"></iframe>`;
   } else {
+    // Utiliza o visualizador nativo do browser (ótimo para PDFs e outros suportados)
     container.innerHTML = `<iframe src="${urlReal}" style="width: 100%; height: 100%; border: none; background: #fff;"></iframe>`;
   }
 
