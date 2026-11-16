@@ -3500,7 +3500,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3510,7 +3510,7 @@
       "subNotas": {
         "pres_04/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2002",
@@ -3527,7 +3527,9 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
