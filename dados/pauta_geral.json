@@ -1979,7 +1979,9 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2946,7 +2948,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2956,7 +2958,7 @@
       "subNotas": {
         "pres_04/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2EMP002",
