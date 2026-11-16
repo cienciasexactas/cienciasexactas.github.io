@@ -1070,7 +1070,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1080,7 +1080,7 @@
       "subNotas": {
         "pres_02/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS002",
@@ -2483,7 +2483,9 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
