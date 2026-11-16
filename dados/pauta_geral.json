@@ -16,7 +16,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
       },
       "situacao": "Exame (2)"
     },
@@ -35,7 +38,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -53,7 +61,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -71,7 +84,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -89,7 +107,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -107,7 +130,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -125,7 +153,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -143,7 +176,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -161,7 +199,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -179,7 +222,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -197,7 +245,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -215,7 +268,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -233,7 +291,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -251,7 +314,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -269,7 +337,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -287,7 +360,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -305,7 +383,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -323,7 +406,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -341,7 +429,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -359,7 +452,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -377,7 +475,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -395,7 +498,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -413,7 +521,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -431,7 +544,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -449,7 +567,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -467,7 +590,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -485,7 +613,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -504,7 +637,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_02/11/2026": "P"
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
       },
       "situacao": "Exame (2)"
     },
@@ -523,7 +659,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -541,7 +682,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -559,7 +705,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -577,7 +728,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -595,7 +751,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -613,7 +774,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -631,7 +797,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -649,7 +820,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -667,7 +843,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -685,7 +866,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -703,7 +889,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -721,7 +912,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -739,7 +935,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -757,7 +958,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -775,7 +981,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -793,7 +1004,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -811,7 +1027,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -829,7 +1050,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -847,7 +1073,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -865,7 +1096,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -883,7 +1119,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -901,7 +1142,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -919,7 +1165,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -937,7 +1188,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -955,7 +1211,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -973,7 +1234,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -991,7 +1257,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1009,7 +1280,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1027,7 +1303,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1045,7 +1326,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1063,7 +1349,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1082,7 +1373,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_02/11/2026": "P"
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
       },
       "situacao": "Exame (4)"
     },
@@ -1101,7 +1395,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1119,7 +1418,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1137,7 +1441,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1155,7 +1464,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1173,7 +1487,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1191,7 +1510,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1209,7 +1533,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1227,7 +1556,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1245,7 +1579,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1263,7 +1602,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1281,7 +1625,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1299,7 +1648,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1317,7 +1671,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1335,7 +1694,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1353,7 +1717,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1371,7 +1740,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1389,7 +1763,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1407,7 +1786,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1425,7 +1809,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1443,7 +1832,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1461,7 +1855,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1479,7 +1878,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1497,7 +1901,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1515,7 +1924,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1533,12 +1947,17 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
       "id": "EB4CNS027",
-      "senha": "PENDENTE",
+      "senha": "B0N5",
       "nome": "Yara Boa Morte Cravid",
       "cadeira": "Estatística MQQ",
       "estatuto": "Novo",
@@ -1551,7 +1970,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1570,7 +1994,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_02/11/2026": "P"
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
       },
       "situacao": "Pendente"
     },
@@ -1589,7 +2016,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1607,7 +2039,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1625,7 +2062,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1643,7 +2085,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1661,7 +2108,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1679,7 +2131,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1697,7 +2154,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1715,7 +2177,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1733,7 +2200,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1751,7 +2223,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1769,7 +2246,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1787,7 +2269,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1805,7 +2292,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1823,7 +2315,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1841,7 +2338,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1859,7 +2361,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1877,7 +2384,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1895,7 +2407,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1913,7 +2430,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1931,7 +2453,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1949,7 +2476,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1967,7 +2499,104 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "ED1INF024",
+      "senha": "NI03",
+      "nome": "Ernestina Dias Barata Neto",
+      "cadeira": "Fundamento de Matemática I",
+      "estatuto": "Repetente",
+      "curso": "educacao-infancia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "ED1INF025",
+      "senha": "FI98",
+      "nome": "Jucimila Gina",
+      "cadeira": "Fundamento de Matemática I",
+      "estatuto": "Repetente",
+      "curso": "educacao-infancia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "ED1INF026",
+      "senha": "EN65",
+      "nome": "Availse Camblé",
+      "cadeira": "Fundamento de Matemática I",
+      "estatuto": "Repetente",
+      "curso": "educacao-infancia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "ED1INF027",
+      "senha": "DN14",
+      "nome": "Lúcia dos Ramos Bolfim",
+      "cadeira": "Fundamento de Matemática I",
+      "estatuto": "Repetente",
+      "curso": "educacao-infancia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_04/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_11/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -1986,7 +2615,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (1)"
     },
@@ -2005,7 +2637,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2023,7 +2660,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2041,7 +2683,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2059,7 +2706,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2077,7 +2729,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2095,7 +2752,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2113,7 +2775,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2131,7 +2798,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2149,7 +2821,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2167,7 +2844,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2185,7 +2867,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2203,7 +2890,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2221,7 +2913,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2239,7 +2936,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2257,7 +2959,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2275,7 +2982,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2293,7 +3005,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2311,7 +3028,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2329,7 +3051,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2347,7 +3074,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2365,7 +3097,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2383,7 +3120,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2401,7 +3143,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2419,7 +3166,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2437,7 +3189,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2455,7 +3212,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2463,7 +3225,7 @@
       "senha": "2DA9",
       "nome": "Nira Barbosa Neto",
       "cadeira": "Cálculo Econométrico",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
       "presenca": "",
@@ -2473,7 +3235,35 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "GES2SAUD029",
+      "senha": "A6U7",
+      "nome": "Vanderley Quaresma Dias Tavares",
+      "cadeira": "Cálculo Econométrico",
+      "estatuto": "Repetente",
+      "curso": "gestao-iscgvsm",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "F",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2492,7 +3282,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (2)"
     },
@@ -2511,7 +3304,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2529,7 +3327,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2547,7 +3350,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2565,7 +3373,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2583,7 +3396,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2601,7 +3419,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2619,7 +3442,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2637,7 +3465,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2655,7 +3488,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2673,7 +3511,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2691,7 +3534,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2709,7 +3557,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2717,7 +3570,7 @@
       "senha": "2EO7",
       "nome": "Kely do Amaral Ramos Silvestre",
       "cadeira": "Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
       "presenca": "",
@@ -2727,7 +3580,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2745,7 +3603,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2763,7 +3626,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2781,7 +3649,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2799,7 +3672,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2817,7 +3695,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2835,7 +3718,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2853,7 +3741,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2861,7 +3754,7 @@
       "senha": "22NN",
       "nome": "Wany dos Ramos D´Apresentação",
       "cadeira": "Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
       "presenca": "",
@@ -2871,7 +3764,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2889,7 +3787,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2907,7 +3810,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2915,7 +3823,7 @@
       "senha": "O1N0",
       "nome": "Inelcio Viana do Sacramento Veloso",
       "cadeira": "Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
       "presenca": "",
@@ -2925,7 +3833,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2933,7 +3846,7 @@
       "senha": "01N0",
       "nome": "Wilhan Pereira das Neves",
       "cadeira": "Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
       "presenca": "",
@@ -2943,7 +3856,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_04/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_11/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2962,7 +3880,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (1)"
     },
@@ -2981,7 +3902,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -2999,7 +3925,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3017,7 +3948,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3035,7 +3971,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3053,7 +3994,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3071,7 +4017,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3089,7 +4040,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3107,7 +4063,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3125,7 +4086,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3143,7 +4109,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3161,7 +4132,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3179,7 +4155,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3197,7 +4178,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3215,7 +4201,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3233,7 +4224,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3251,7 +4247,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3269,7 +4270,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3287,7 +4293,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3305,7 +4316,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3323,7 +4339,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3341,7 +4362,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3359,7 +4385,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3377,7 +4408,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3395,7 +4431,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3413,7 +4454,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3431,7 +4477,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3449,7 +4500,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3467,7 +4523,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3485,7 +4546,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3503,7 +4569,81 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "GES2EMP032",
+      "senha": "C8E2",
+      "nome": "Júlia Luís da Costa Afonso",
+      "cadeira": "Estatística I",
+      "estatuto": "Repetente",
+      "curso": "gestao-empresa",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "GES2EMP033",
+      "senha": "PG00",
+      "nome": "Anisaquilde da Mata",
+      "cadeira": "Estatística I",
+      "estatuto": "Repetente",
+      "curso": "gestao-empresa",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "GES2EMP034",
+      "senha": "PG00",
+      "nome": "Fábio Chantre",
+      "cadeira": "Estatística I",
+      "estatuto": "Repetente",
+      "curso": "gestao-empresa",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "F"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3522,7 +4662,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (2)"
     },
@@ -3542,7 +4685,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (2)"
     },
@@ -3562,7 +4708,10 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "P"
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
       },
       "situacao": "Exame (2)"
     },
@@ -3581,7 +4730,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3599,7 +4753,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3607,7 +4766,7 @@
       "senha": "I1O0",
       "nome": "Elizete Ribeiro Lima Tavares",
       "cadeira": "Probabilidade & Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
       "presenca": "",
@@ -3617,7 +4776,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3635,7 +4799,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3653,7 +4822,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3671,7 +4845,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3689,7 +4868,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3707,7 +4891,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3725,7 +4914,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3743,7 +4937,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3761,7 +4960,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3779,7 +4983,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3797,7 +5006,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3815,7 +5029,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3823,7 +5042,7 @@
       "senha": "I1O2",
       "nome": "Teresa Martins Lopes Barros",
       "cadeira": "Probabilidade & Estatística I",
-      "estatuto": "Novo",
+      "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
       "presenca": "",
@@ -3833,7 +5052,12 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     },
     {
@@ -3851,7 +5075,81 @@
       "teste2": "",
       "exame": "",
       "notaProf": "",
-      "subNotas": {},
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "BIO2020",
+      "senha": "B1I0",
+      "nome": "Carla Camblé Dos Santos Nogueira",
+      "cadeira": "Probabilidade & Estatística I",
+      "estatuto": "Repetente",
+      "curso": "biologia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "BIO2021",
+      "senha": "O1I1",
+      "nome": "Aleksander Afonso Ceita dos Ramos",
+      "cadeira": "Probabilidade & Estatística I",
+      "estatuto": "Repetente",
+      "curso": "biologia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
+      "situacao": "Pendente"
+    },
+    {
+      "id": "BIO2022",
+      "senha": "I0B1",
+      "nome": "Carlos Rosário dos Santos",
+      "cadeira": "Probabilidade & Estatística I",
+      "estatuto": "Repetente",
+      "curso": "biologia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
+        "pres_10/11/2026": "P",
+        "pres_13/11/2026": "P"
+      },
       "situacao": "Pendente"
     }
   ],
@@ -4203,9 +5501,9 @@
     },
     "gestao-empresa_2026-2027_Estatística I": {
       "presenca": 0.05,
-      "testes": 0.6,
-      "trabInd": 0.2,
-      "trabGrp": 0.15
+      "testes": 0.50,
+      "trabInd": 0.10,
+      "trabGrp": 0.35
     },
     "biologia_2026-2027_Probabilidade & Estatística I": {
       "presenca": 0.1,
