@@ -1365,6 +1365,30 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
+      "presenca": 15,
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_02/11/2026": "P",
+        "pres_05/11/2026": "P",
+        "pres_09/11/2026": "P",
+        "pres_12/11/2026": "F",
+        "pres_16/11/2026": "P"
+      },
+      "situacao": "Exame (3)"
+    },
+    {
+      "id": "EB4CNS002",
+      "senha": "S9A1",
+      "nome": "Alzeza Rosa Vera Cruz e Silva",
+      "cadeira": "Estatística MQQ",
+      "estatuto": "Novo",
+      "curso": "cienciasnaturais",
+      "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
@@ -1376,32 +1400,9 @@
         "pres_02/11/2026": "P",
         "pres_05/11/2026": "P",
         "pres_09/11/2026": "P",
-        "pres_12/11/2026": "F"
-      },
-      "situacao": "Exame (4)"
-    },
-    {
-      "id": "EB4CNS002",
-      "senha": "S9A1",
-      "nome": "Alzeza Rosa Vera Cruz e Silva",
-      "cadeira": "Estatística MQQ",
-      "estatuto": "Novo",
-      "curso": "cienciasnaturais",
-      "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": null,
-      "trabGrp": null,
-      "teste1": "",
-      "teste2": "",
-      "exame": "",
-      "notaProf": "",
-      "subNotas": {
-        "pres_02/11/2026": "P",
-        "pres_05/11/2026": "P",
-        "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS003",
@@ -1411,7 +1412,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1424,7 +1425,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS004",
@@ -1434,7 +1435,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1447,7 +1448,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS005",
@@ -1457,7 +1458,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1470,7 +1471,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS006",
@@ -1480,7 +1481,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1493,7 +1494,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS007",
@@ -1503,7 +1504,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1516,7 +1517,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS008",
@@ -1526,7 +1527,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1539,7 +1540,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS009",
@@ -1549,7 +1550,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1562,7 +1563,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS010",
@@ -1572,7 +1573,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1585,7 +1586,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS011",
@@ -1595,7 +1596,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1608,7 +1609,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS012",
@@ -1618,7 +1619,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1631,7 +1632,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS013",
@@ -1641,7 +1642,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1654,7 +1655,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS014",
@@ -1664,7 +1665,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1677,7 +1678,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "EB4CNS015",
@@ -1687,7 +1688,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1700,7 +1701,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "EB4CNS016",
@@ -1710,7 +1711,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1723,7 +1724,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS017",
@@ -1733,7 +1734,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1746,7 +1747,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "EB4CNS018",
@@ -1756,7 +1757,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1769,7 +1770,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS019",
@@ -1779,7 +1780,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1792,7 +1793,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS020",
@@ -1802,7 +1803,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1815,7 +1816,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "EB4CNS021",
@@ -1825,7 +1826,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1838,7 +1839,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS022",
@@ -1848,7 +1849,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1861,7 +1862,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS023",
@@ -1871,7 +1872,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1884,7 +1885,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "EB4CNS024",
@@ -1894,7 +1895,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1907,7 +1908,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS025",
@@ -1917,7 +1918,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1930,7 +1931,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS026",
@@ -1940,7 +1941,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1953,7 +1954,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS027",
@@ -1963,7 +1964,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1976,7 +1977,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     },
     {
       "id": "ED1INF001",
@@ -1986,7 +1987,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1999,7 +2000,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF002",
@@ -2009,7 +2010,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2022,7 +2023,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF003",
@@ -2032,7 +2033,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2045,7 +2046,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF004",
@@ -2055,7 +2056,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2068,7 +2069,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF005",
@@ -2078,7 +2079,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2091,7 +2092,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF006",
@@ -2101,7 +2102,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2114,7 +2115,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF007",
@@ -2124,7 +2125,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2137,7 +2138,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF008",
@@ -2147,7 +2148,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2160,7 +2161,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF009",
@@ -2170,7 +2171,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2183,7 +2184,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF010",
@@ -2193,7 +2194,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2206,7 +2207,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF011",
@@ -2216,7 +2217,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2229,7 +2230,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF012",
@@ -2239,7 +2240,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2252,7 +2253,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF013",
@@ -2262,7 +2263,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2275,7 +2276,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF014",
@@ -2285,7 +2286,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2298,7 +2299,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF015",
@@ -2308,7 +2309,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2321,7 +2322,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF016",
@@ -2331,7 +2332,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2344,7 +2345,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF017",
@@ -2354,7 +2355,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2367,7 +2368,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF018",
@@ -2377,7 +2378,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2390,7 +2391,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF019",
@@ -2400,7 +2401,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2413,7 +2414,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF020",
@@ -2423,7 +2424,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2436,7 +2437,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF021",
@@ -2446,7 +2447,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 15,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2459,7 +2460,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "F"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF022",
@@ -2469,7 +2470,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2482,7 +2483,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF023",
@@ -2492,7 +2493,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2505,7 +2506,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF024",
@@ -2515,7 +2516,7 @@
       "estatuto": "Repetente",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2528,7 +2529,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF025",
@@ -2538,7 +2539,7 @@
       "estatuto": "Repetente",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2551,7 +2552,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF026",
@@ -2561,7 +2562,7 @@
       "estatuto": "Repetente",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2574,7 +2575,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF027",
@@ -2584,7 +2585,7 @@
       "estatuto": "Repetente",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2597,7 +2598,7 @@
         "pres_09/11/2026": "P",
         "pres_11/11/2026": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "GES2SAUD001",
@@ -5501,8 +5502,8 @@
     },
     "gestao-empresa_2026-2027_Estatística I": {
       "presenca": 0.05,
-      "testes": 0.50,
-      "trabInd": 0.10,
+      "testes": 0.5,
+      "trabInd": 0.1,
       "trabGrp": 0.35
     },
     "biologia_2026-2027_Probabilidade & Estatística I": {
