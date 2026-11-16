@@ -1365,7 +1365,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 16,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1400,7 +1400,8 @@
         "pres_02/11/2026": "P",
         "pres_05/11/2026": "P",
         "pres_09/11/2026": "P",
-        "pres_12/11/2026": "P"
+        "pres_12/11/2026": "P",
+        "pres_16/11/2026": "P"
       },
       "situacao": "Exame (4)"
     },
