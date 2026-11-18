@@ -2309,7 +2309,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 16,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2338,7 +2338,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS002",
@@ -2816,7 +2816,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2845,7 +2845,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS015",
@@ -2855,7 +2855,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2884,7 +2884,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS016",
@@ -2933,7 +2933,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2962,7 +2962,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS018",
@@ -2972,7 +2972,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 16,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3001,7 +3001,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS019",
@@ -3050,7 +3050,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3079,7 +3079,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS021",
@@ -3167,7 +3167,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3196,7 +3196,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS024",
@@ -3284,7 +3284,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3323,7 +3323,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3352,7 +3352,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "ED1INF001",
@@ -5585,7 +5585,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5614,7 +5614,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2003",
@@ -5624,7 +5624,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5653,7 +5653,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2004",
@@ -5663,7 +5663,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5675,7 +5675,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5692,7 +5692,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2005",
@@ -5702,7 +5702,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5714,7 +5714,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5731,7 +5731,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2006",
@@ -5741,7 +5741,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5770,7 +5770,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2007",
@@ -5780,7 +5780,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5809,7 +5809,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2008",
@@ -5819,7 +5819,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5848,7 +5848,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2009",
@@ -5858,7 +5858,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5887,7 +5887,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2010",
@@ -5897,7 +5897,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5926,7 +5926,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2011",
@@ -5936,7 +5936,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5948,7 +5948,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5965,7 +5965,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2012",
@@ -5975,7 +5975,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6004,7 +6004,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2013",
@@ -6014,7 +6014,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6025,8 +6025,8 @@
         "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
-        "pres_13/11/2026": "P",
-        "pres_18/11/2026": "P",
+        "pres_13/11/2026": "F",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -6043,7 +6043,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2014",
@@ -6053,7 +6053,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6082,7 +6082,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2015",
@@ -6092,7 +6092,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6121,7 +6121,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2016",
@@ -6131,7 +6131,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6160,7 +6160,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2017",
@@ -6170,7 +6170,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6182,7 +6182,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -6199,7 +6199,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2018",
@@ -6209,7 +6209,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6238,7 +6238,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2019",
@@ -6248,7 +6248,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6277,7 +6277,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2020",
@@ -6287,7 +6287,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6316,7 +6316,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2021",
@@ -6326,7 +6326,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6355,7 +6355,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2022",
@@ -6365,7 +6365,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6377,7 +6377,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -6394,7 +6394,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2023",
@@ -6404,7 +6404,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6416,7 +6416,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -6433,7 +6433,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2024",
@@ -6443,7 +6443,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6472,7 +6472,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2025",
@@ -6482,7 +6482,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6511,7 +6511,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2026",
@@ -6521,7 +6521,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6533,7 +6533,7 @@
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
-        "pres_18/11/2026": "P",
+        "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -6550,7 +6550,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "GES2EMP001",
@@ -8735,6 +8735,24 @@
         "pres_22/01/2027": "P"
       },
       "situacao": "Pendente"
+    },
+    {
+      "id": "ECON2014",
+      "senha": "2EO7",
+      "nome": "Kely do Amaral Ramos Silvestre",
+      "cadeira": "Estatística I",
+      "estatuto": "Novo",
+      "curso": "economia",
+      "ano": "2025-2026",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
@@ -8762,10 +8780,6 @@
         "09/12/2026",
         "14/12/2026",
         "16/12/2026",
-        "21/12/2026",
-        "23/12/2026",
-        "28/12/2026",
-        "30/12/2026",
         "04/01/2027",
         "06/01/2027",
         "11/01/2027",
@@ -8801,10 +8815,6 @@
         "10/12/2026",
         "14/12/2026",
         "17/12/2026",
-        "21/12/2026",
-        "24/12/2026",
-        "28/12/2026",
-        "31/12/2026",
         "04/01/2027",
         "07/01/2027",
         "11/01/2027",
@@ -8842,10 +8852,6 @@
         "11/12/2026",
         "16/12/2026",
         "18/12/2026",
-        "23/12/2026",
-        "25/12/2026",
-        "30/12/2026",
-        "01/01/2027",
         "06/01/2027",
         "08/01/2027",
         "13/01/2027",
@@ -8883,10 +8889,6 @@
         "11/12/2026",
         "16/12/2026",
         "18/12/2026",
-        "23/12/2026",
-        "25/12/2026",
-        "30/12/2026",
-        "01/01/2027",
         "06/01/2027",
         "08/01/2027",
         "13/01/2027",
@@ -8905,28 +8907,25 @@
     },
     "gestao-iscgvsm_2026-2027_cálculo_econométrico": {
       "Presenças": [
-        "04/11/2026",
+        "03/11/2026",
         "06/11/2026",
-        "11/11/2026",
+        "10/11/2026",
         "13/11/2026",
-        "18/11/2026",
+        "17/11/2026",
         "20/11/2026",
-        "25/11/2026",
+        "24/11/2026",
         "27/11/2026",
-        "02/12/2026",
+        "01/12/2026",
         "04/12/2026",
-        "09/12/2026",
+        "08/12/2026",
         "11/12/2026",
-        "16/12/2026",
+        "15/12/2026",
         "18/12/2026",
-        "23/12/2026",
-        "25/12/2026",
-        "30/12/2026",
-        "01/01/2027",
-        "06/01/2027",
+        "05/01/2027",
         "08/01/2027",
-        "13/01/2027",
-        "15/01/2027"
+        "12/01/2027",
+        "15/01/2027",
+        "19/01/2027"
       ],
       "Trabalhos Individuais": [
         "Trabalho I",
@@ -8948,28 +8947,25 @@
     },
     "biologia_2026-2027_probabilidade_&_estatística_i": {
       "Presenças": [
-        "04/11/2026",
+        "03/11/2026",
         "06/11/2026",
-        "11/11/2026",
+        "10/11/2026",
         "13/11/2026",
-        "18/11/2026",
+        "17/11/2026",
         "20/11/2026",
-        "25/11/2026",
+        "24/11/2026",
         "27/11/2026",
-        "02/12/2026",
+        "01/12/2026",
         "04/12/2026",
-        "09/12/2026",
+        "08/12/2026",
         "11/12/2026",
-        "16/12/2026",
+        "15/12/2026",
         "18/12/2026",
-        "23/12/2026",
-        "25/12/2026",
-        "30/12/2026",
-        "01/01/2027",
-        "06/01/2027",
+        "05/01/2027",
         "08/01/2027",
-        "13/01/2027",
-        "15/01/2027"
+        "12/01/2027",
+        "15/01/2027",
+        "19/01/2027"
       ],
       "Trabalhos Individuais": [
         "Trabalho I",
@@ -8991,28 +8987,25 @@
     },
     "gestao-empresa_2026-2027_estatística_i": {
       "Presenças": [
-        "04/11/2026",
+        "03/11/2026",
         "06/11/2026",
-        "11/11/2026",
+        "10/11/2026",
         "13/11/2026",
-        "18/11/2026",
+        "17/11/2026",
         "20/11/2026",
-        "25/11/2026",
+        "24/11/2026",
         "27/11/2026",
-        "02/12/2026",
+        "01/12/2026",
         "04/12/2026",
-        "09/12/2026",
+        "08/12/2026",
         "11/12/2026",
-        "16/12/2026",
+        "15/12/2026",
         "18/12/2026",
-        "23/12/2026",
-        "25/12/2026",
-        "30/12/2026",
-        "01/01/2027",
-        "06/01/2027",
+        "05/01/2027",
         "08/01/2027",
-        "13/01/2027",
-        "15/01/2027"
+        "12/01/2027",
+        "15/01/2027",
+        "19/01/2027"
       ],
       "Trabalhos Individuais": [
         "Trabalho I",
@@ -9040,10 +9033,6 @@
         "10/12/2026",
         "14/12/2026",
         "17/12/2026",
-        "21/12/2026",
-        "24/12/2026",
-        "28/12/2026",
-        "31/12/2026",
         "04/01/2027",
         "07/01/2027",
         "11/01/2027",
@@ -9066,49 +9055,49 @@
     }
   },
   "percentagens": {
-    "enfermagem-a_2026-2027_Bioestatística": {
+    "enfermagem-a_2026-2027_bioestatística": {
       "presenca": 0.1,
       "testes": 0.6,
       "trabInd": 0.3,
       "trabGrp": 0
     },
-    "enfermagem-b_2026-2027_Bioestatística": {
+    "enfermagem-b_2026-2027_bioestatística": {
       "presenca": 0.1,
       "testes": 0.6,
       "trabInd": 0.3,
       "trabGrp": 0
     },
-    "gestao-empresa_2026-2027_Estatística I": {
+    "gestao-empresa_2026-2027_estatística_i": {
       "presenca": 0.05,
       "testes": 0.5,
       "trabInd": 0.1,
       "trabGrp": 0.35
     },
-    "biologia_2026-2027_Probabilidade & Estatística I": {
+    "biologia_2026-2027_probabilidade_&_estatística_i": {
       "presenca": 0.1,
       "testes": 0.6,
       "trabInd": 0.3,
       "trabGrp": 0
     },
-    "cienciasnaturais_2026-2027_Estatística MQQ": {
+    "cienciasnaturais_2026-2027_estatística_mqq": {
       "presenca": 0.2,
       "testes": 0,
       "trabInd": 0.25,
       "trabGrp": 0.55
     },
-    "gestao-iscgvsm_2026-2027_Cálculo Econométrico": {
+    "gestao-iscgvsm_2026-2027_cálculo_econométrico": {
       "presenca": 0.05,
       "testes": 0.6,
       "trabInd": 0.2,
       "trabGrp": 0.15
     },
-    "economia_2026-2027_Estatística I": {
+    "economia_2026-2027_estatística_i": {
       "presenca": 0.1,
       "testes": 0.5,
       "trabInd": 0.1,
       "trabGrp": 0.3
     },
-    "educacao-infancia_2026-2027_Fundamento de Matemática I": {
+    "educacao-infancia_2026-2027_fundamento_de_matemática_i": {
       "presenca": 0.1,
       "testes": 0.5,
       "trabInd": 0.2,
