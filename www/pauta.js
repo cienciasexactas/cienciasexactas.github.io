@@ -27,7 +27,7 @@ function obterColunasCadeira(curso, ano, cadeira, categoria) {
     return pautaEstado.planilhasColunasPorCadeira[cid][categoria] || [];
 }
 
-// Obter percentagens configuradas (com fallback seguro para evitar notas zero)
+// Obter percentagens configuradas (com fallback seguro para evitar notas zero).
 function obterPercentagens(curso, ano, cadeira) {
     const cursoKey = curso ? String(curso).trim().toLowerCase() : "geral";
     const anoKey = ano ? String(ano).trim().toLowerCase() : "geral";
