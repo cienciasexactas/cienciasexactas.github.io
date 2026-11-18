@@ -306,6 +306,7 @@ function entrarPainelDocente() {
     recarregarDadosDocente();
 }
 
+// 1. Garante que os eventos de autopreenchimento são ativados sempre que abrir a secção de criar estudante
 function mudarSecaoDocenteDinamica() {
     const acao = document.getElementById('docente-acao-select').value;
     const cursoSel = document.getElementById('docente-curso-global').value;
@@ -328,6 +329,7 @@ function mudarSecaoDocenteDinamica() {
         recarregarDadosDocente();
     } else if (acao === "criar-estudante") {
         document.getElementById('subseccao-criar-estudante').classList.remove('pauta-hidden');
+        configurarEventosAutopreenchimento(); // Garante ligação ativa dos inputs
     } else if (acao === "actualizar") {
         document.getElementById('subseccao-actualizar').classList.remove('pauta-hidden');
         controlarCamposAtualizacao();
@@ -817,45 +819,117 @@ function recarregarDadosDocente() {
 }
 
 // ================= AUTO-PREENCHIMENTO INTELIGENTE (CHAVE MESTRA ID / NOME) =================
+// 2. Autopreenchimento completo por ID ou Nome (ignorando maiúsculas/minúsculas)
 function configurarEventosAutopreenchimento() {
     const inputId = document.getElementById('ce-id');
     const inputNome = document.getElementById('ce-nome');
     const inputSenha = document.getElementById('ce-senha');
+    const inputCadeira = document.getElementById('ce-cadeira');
+    const selectEstatuto = document.getElementById('ce-estatuto');
+    const selectCursoGlobal = document.getElementById('docente-curso-global');
+    const selectAnoGlobal = document.getElementById('docente-ano-global');
 
     if (!inputId || !inputNome || !inputSenha) return;
 
-    // Se preencher pelo ID: auto-carrega e bloqueia a Senha e o Nome oficiais do estudante
+    // Evita registar ouvintes duplicados se a função for chamada várias vezes
+    if (inputId.dataset.autoConfigurado === "true") return;
+    inputId.dataset.autoConfigurado = "true";
+
+    // Preenchimento a partir do ID
     inputId.addEventListener('input', () => {
-        const idVal = inputId.value.trim();
-        const existente = pautaEstado.estudantes.find(e => e.id === idVal);
+        if (inputId.readOnly) return; // Ignora se foi preenchido pelo Nome
+
+        const idVal = inputId.value.trim().toLowerCase();
+        if (!idVal) {
+            desbloquearELimparCamposEstudante('id');
+            return;
+        }
+
+        // Procura o registo mais recente deste ID (ignorando maiúsculas/minúsculas)
+        const registos = pautaEstado.estudantes.filter(e => String(e.id).trim().toLowerCase() === idVal);
+        const existente = registos[registos.length - 1];
+
         if (existente) {
-            inputNome.value = existente.nome;
-            inputSenha.value = existente.senha;
+            inputNome.value = existente.nome || "";
+            inputSenha.value = existente.senha || "";
+            
+            // Bloqueia Nome e Senha
             inputNome.readOnly = true;
             inputSenha.readOnly = true;
+            inputNome.style.backgroundColor = "#f1f5f9";
+            inputSenha.style.backgroundColor = "#f1f5f9";
+
+            // Carrega os restantes campos (mantendo-os editáveis para o novo contexto)
+            if (inputCadeira && existente.cadeira) inputCadeira.value = existente.cadeira;
+            if (selectEstatuto && existente.estatuto) selectEstatuto.value = existente.estatuto;
+            if (selectCursoGlobal && existente.curso) selectCursoGlobal.value = existente.curso;
+            if (selectAnoGlobal && existente.ano) selectAnoGlobal.value = existente.ano;
         } else {
-            inputNome.readOnly = false;
-            inputSenha.readOnly = false;
+            desbloquearELimparCamposEstudante('id');
         }
     });
 
-    // Se preencher pelo Nome: auto-carrega e bloqueia o ID e a Senha oficiais do estudante
+    // Preenchimento a partir do Nome
     inputNome.addEventListener('input', () => {
+        if (inputNome.readOnly) return; // Ignora se foi preenchido pelo ID
+
         const nomeVal = inputNome.value.trim().toLowerCase();
-        const existente = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nomeVal);
+        if (!nomeVal) {
+            desbloquearELimparCamposEstudante('nome');
+            return;
+        }
+
+        // Procura o registo mais recente deste Nome (ignorando maiúsculas/minúsculas)
+        const registos = pautaEstado.estudantes.filter(e => String(e.nome).trim().toLowerCase() === nomeVal);
+        const existente = registos[registos.length - 1];
+
         if (existente) {
-            inputId.value = existente.id;
-            inputSenha.value = existente.senha;
+            inputId.value = existente.id || "";
+            inputSenha.value = existente.senha || "";
+
+            // Bloqueia ID e Senha
             inputId.readOnly = true;
             inputSenha.readOnly = true;
+            inputId.style.backgroundColor = "#f1f5f9";
+            inputSenha.style.backgroundColor = "#f1f5f9";
+
+            // Carrega os restantes campos (mantendo-os editáveis para o novo contexto)
+            if (inputCadeira && existente.cadeira) inputCadeira.value = existente.cadeira;
+            if (selectEstatuto && existente.estatuto) selectEstatuto.value = existente.estatuto;
+            if (selectCursoGlobal && existente.curso) selectCursoGlobal.value = existente.curso;
+            if (selectAnoGlobal && existente.ano) selectAnoGlobal.value = existente.ano;
         } else {
-            inputId.readOnly = false;
-            inputSenha.readOnly = false;
+            desbloquearELimparCamposEstudante('nome');
         }
     });
 }
 
+// Auxiliar para restaurar os campos caso o docente apague o ID/Nome ou digite um novo estudante
+function desbloquearELimparCamposEstudante(origem) {
+    const inputId = document.getElementById('ce-id');
+    const inputNome = document.getElementById('ce-nome');
+    const inputSenha = document.getElementById('ce-senha');
+
+    if (origem === 'id' && inputNome.readOnly) {
+        inputNome.value = "";
+        inputSenha.value = "";
+    }
+    if (origem === 'nome' && inputId.readOnly) {
+        inputId.value = "";
+        inputSenha.value = "";
+    }
+
+    inputId.readOnly = false;
+    inputNome.readOnly = false;
+    inputSenha.readOnly = false;
+
+    inputId.style.backgroundColor = "";
+    inputNome.style.backgroundColor = "";
+    inputSenha.style.backgroundColor = "";
+}
+
 // REGISTAR ESTUDANTE (Permite adicionar novas cadeiras/cursos ao mesmo estudante existente)
+// 3. Registar estudante respeitando a chave mestra (ID + Nome oficiais)
 async function registarNovoEstudante() {
     const curso = document.getElementById('docente-curso-global').value;
     const ano = document.getElementById('docente-ano-global').value;
@@ -865,33 +939,42 @@ async function registarNovoEstudante() {
         return;
     }
 
-    const id = document.getElementById('ce-id').value.trim();
-    const senha = document.getElementById('ce-senha').value.trim();
-    const nome = document.getElementById('ce-nome').value.trim();
+    const idInput = document.getElementById('ce-id').value.trim();
+    const senhaInput = document.getElementById('ce-senha').value.trim();
+    const nomeInput = document.getElementById('ce-nome').value.trim();
     const cadeira = document.getElementById('ce-cadeira').value.trim();
     const estatuto = document.getElementById('ce-estatuto').value;
 
-    if (!id || !senha || !nome) {
+    if (!idInput || !senhaInput || !nomeInput) {
         alert("Preencha os campos obrigatórios: ID, Senha e Nome.");
         return;
     }
 
-    // Validação de cruzamento de dados (Garante consistência de ID e Nome caso já exista)
-    const conflitoId = pautaEstado.estudantes.find(e => e.id === id && e.nome.toLowerCase() !== nome.toLowerCase());
-    const conflitoNome = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nome.toLowerCase() && e.id !== id);
+    // Verifica conflitos ignorando maiúsculas/minúsculas
+    const conflitoId = pautaEstado.estudantes.find(
+        e => String(e.id).trim().toLowerCase() === idInput.toLowerCase() &&
+             String(e.nome).trim().toLowerCase() !== nomeInput.toLowerCase()
+    );
+    const conflitoNome = pautaEstado.estudantes.find(
+        e => String(e.nome).trim().toLowerCase() === nomeInput.toLowerCase() &&
+             String(e.id).trim().toLowerCase() !== idInput.toLowerCase()
+    );
 
     if (conflitoId) {
-        alert(`⚠️ O ID "${id}" já pertence a outro estudante (${conflitoId.nome}).`);
+        alert(`⚠️ O ID "${idInput}" já pertence a outro estudante (${conflitoId.nome}).`);
         return;
     }
     if (conflitoNome) {
-        alert(`⚠️ O Nome "${nome}" já está associado ao ID (${conflitoNome.id}).`);
+        alert(`⚠️ O Nome "${nomeInput}" já está associado ao ID (${conflitoNome.id}).`);
         return;
     }
 
-    // Verifica se já está inscrito exatamente na mesma cadeira/curso/ano
+    // Impede duplicação exata no mesmo Curso + Ano + Cadeira
     const duplicadoExato = pautaEstado.estudantes.some(e =>
-        e.id === id && e.curso === curso && (e.cadeira || '') === (cadeira || '') && (e.ano || '') === (ano || '')
+        String(e.id).trim().toLowerCase() === idInput.toLowerCase() &&
+        String(e.curso).trim().toLowerCase() === curso.trim().toLowerCase() &&
+        String(e.cadeira || '').trim().toLowerCase() === cadeira.toLowerCase() &&
+        String(e.ano || '').trim().toLowerCase() === ano.trim().toLowerCase()
     );
 
     if (duplicadoExato) {
@@ -899,28 +982,32 @@ async function registarNovoEstudante() {
         return;
     }
 
-    // Reaproveita os dados oficiais caso já exista no sistema
-    const existenteGlobal = pautaEstado.estudantes.find(e => e.id === id);
-    const nomeOficial = existenteGlobal ? existenteGlobal.nome : nome;
-    const senhaOficial = existenteGlobal ? existenteGlobal.senha : senha;
+    // Mantém sempre o ID, Nome e Senha exatos do cadastro original
+    const existenteGlobal = pautaEstado.estudantes.find(e => String(e.id).trim().toLowerCase() === idInput.toLowerCase());
+    const idOficial = existenteGlobal ? existenteGlobal.id : idInput;
+    const nomeOficial = existenteGlobal ? existenteGlobal.nome : nomeInput;
+    const senhaOficial = existenteGlobal ? existenteGlobal.senha : senhaInput;
 
-    // Regista a nova associação (novo curso/cadeira/ano) para o mesmo ID e Senha
     pautaEstado.estudantes.push({
-        id, senha: senhaOficial, nome: nomeOficial, cadeira, estatuto, curso, ano,
+        id: idOficial,
+        senha: senhaOficial,
+        nome: nomeOficial,
+        cadeira,
+        estatuto,
+        curso,
+        ano,
         presenca: "", trabInd: "", trabGrp: "", teste1: "", teste2: "", exame: "", notaProf: "", subNotas: {}, situacao: "Pendente"
     });
 
     await salvarNaNuvem();
-    alert("✅ Estudante registado com sucesso na nova Unidade Curricular/Curso!");
+    alert("✅ Estudante registado com sucesso!");
 
+    // Limpa e desbloqueia o formulário para o próximo registo
     document.getElementById('ce-id').value = "";
     document.getElementById('ce-senha').value = "";
     document.getElementById('ce-nome').value = "";
     document.getElementById('ce-cadeira').value = "";
-
-    document.getElementById('ce-nome').readOnly = false;
-    document.getElementById('ce-senha').readOnly = false;
-    document.getElementById('ce-id').readOnly = false;
+    desbloquearELimparCamposEstudante('ambos');
 
     recarregarDadosDocente();
 }
