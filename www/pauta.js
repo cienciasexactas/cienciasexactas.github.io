@@ -1268,6 +1268,7 @@ async function executarAtualizacaoMassa() {
 }
 
 // ================= PAINEL ESTUDANTE =================
+// ================= PAINEL ESTUDANTE CORRIGIDO E ROBUSTO =================
 function entrarPainelEstudante(estudante) {
     document.getElementById('pauta-login-section').classList.add('pauta-hidden');
     document.getElementById('vista-docente').classList.add('pauta-hidden');
@@ -1291,7 +1292,7 @@ function entrarPainelEstudante(estudante) {
 
     document.getElementById('est-lbl-id').textContent = primeiroRegisto.id;
 
-    const theadEstResumo = document.getElementById('thead-estudante-resumo') || document.querySelector('#tabela-estudante-resumo').parentElement.querySelector('thead');
+    const theadEstResumo = document.getElementById('thead-estudante-resumo') || document.querySelector('#tabela-estudante-resumo')?.parentElement.querySelector('thead');
     if (theadEstResumo) {
         theadEstResumo.innerHTML = `<tr>
             <th>ID</th><th>Curso</th><th>U.C.</th><th>Estatuto</th><th>Ano Letivo</th>
@@ -1300,10 +1301,25 @@ function entrarPainelEstudante(estudante) {
         </tr>`;
     }
 
-    const tbodyEstResumo = document.getElementById('tabela-estudante-resumo');
-    const tbodyEstPresenca = document.getElementById('tabela-estudante-presenca');
-    const tbodyEstTrabInd = document.getElementById('tabela-estudante-trabind');
-    const tbodyEstTrabGrp = document.getElementById('tabela-estudante-trabgrp');
+    // Função auxiliar robusta para obter ou criar o tbody corretamente
+    function obterTbodySeguro(idElemento) {
+        let el = document.getElementById(idElemento);
+        if (!el) return null;
+        if (el.tagName.toLowerCase() === 'table') {
+            let tbody = el.querySelector('tbody');
+            if (!tbody) {
+                tbody = document.createElement('tbody');
+                el.appendChild(tbody);
+            }
+            return tbody;
+        }
+        return el;
+    }
+
+    const tbodyEstResumo = obterTbodySeguro('tabela-estudante-resumo');
+    const tbodyEstPresenca = obterTbodySeguro('tabela-estudante-presenca');
+    const tbodyEstTrabInd = obterTbodySeguro('tabela-estudante-trabind');
+    const tbodyEstTrabGrp = obterTbodySeguro('tabela-estudante-trabgrp');
 
     if (tbodyEstResumo) tbodyEstResumo.innerHTML = "";
     if (tbodyEstPresenca) tbodyEstPresenca.innerHTML = "";
@@ -1364,7 +1380,7 @@ function entrarPainelEstudante(estudante) {
         reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais", reg.curso);
         reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo", reg.curso);
         const notaPresCalc = calcularNotaPresenca(reg, reg.curso);
-        if (notaPresCalc !== null) reg.presenca = notaPresencaCalc;
+        if (notaPresCalc !== null) reg.presenca = notaPresCalc;
 
         const avaliacao = calcularSituacaoEstudante(reg, reg.curso);
         reg.situacao = avaliacao.texto;
