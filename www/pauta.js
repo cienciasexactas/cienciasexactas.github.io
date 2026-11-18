@@ -928,8 +928,23 @@ function desbloquearELimparCamposEstudante(origem) {
     inputSenha.style.backgroundColor = "";
 }
 
-// REGISTAR ESTUDANTE (Permite adicionar novas cadeiras/cursos ao mesmo estudante existente)
-// 3. Registar estudante respeitando a chave mestra (ID + Nome oficiais)
+// REGISTAR ESTUDANTE (respeitando a chave mestra (ID + Nome oficiais)
+// Auxiliar para converter a string da coluna (ex: "04/11/2026") num timestamp de meia-noite para comparação
+function parseDataColuna(colStr) {
+    if (!colStr) return null;
+    const partes = String(colStr).trim().split('/');
+    if (partes.length === 3) {
+        const dia = parseInt(partes[0], 10);
+        const mes = parseInt(partes[1], 10) - 1; // Meses em JS começam em 0
+        const ano = parseInt(partes[2], 10);
+        const d = new Date(ano, mes, dia);
+        return isNaN(d.getTime()) ? null : d.setHours(0, 0, 0, 0);
+    }
+    const d = new Date(colStr);
+    return isNaN(d.getTime()) ? null : d.setHours(0, 0, 0, 0);
+}
+
+// REGISTAR ESTUDANTE COM HERANÇA AUTOMÁTICA DE COLUNAS E FALTAS RETROATIVAS
 async function registarNovoEstudante() {
     const curso = document.getElementById('docente-curso-global').value;
     const ano = document.getElementById('docente-ano-global').value;
@@ -950,7 +965,7 @@ async function registarNovoEstudante() {
         return;
     }
 
-    // Verifica conflitos ignorando maiúsculas/minúsculas
+    // Validações de conflito e duplicados
     const conflitoId = pautaEstado.estudantes.find(
         e => String(e.id).trim().toLowerCase() === idInput.toLowerCase() &&
              String(e.nome).trim().toLowerCase() !== nomeInput.toLowerCase()
@@ -969,7 +984,6 @@ async function registarNovoEstudante() {
         return;
     }
 
-    // Impede duplicação exata no mesmo Curso + Ano + Cadeira
     const duplicadoExato = pautaEstado.estudantes.some(e =>
         String(e.id).trim().toLowerCase() === idInput.toLowerCase() &&
         String(e.curso).trim().toLowerCase() === curso.trim().toLowerCase() &&
@@ -982,11 +996,42 @@ async function registarNovoEstudante() {
         return;
     }
 
-    // Mantém sempre o ID, Nome e Senha exatos do cadastro original
     const existenteGlobal = pautaEstado.estudantes.find(e => String(e.id).trim().toLowerCase() === idInput.toLowerCase());
     const idOficial = existenteGlobal ? existenteGlobal.id : idInput;
     const nomeOficial = existenteGlobal ? existenteGlobal.nome : nomeInput;
     const senhaOficial = existenteGlobal ? existenteGlobal.senha : senhaInput;
+
+    // =========================================================================
+    // HERANÇA AUTOMÁTICA DE COLUNAS DOS COLEGAS DA MESMA CADEIRA/CURSO/ANO
+    // =========================================================================
+    let subNotasGeradas = {};
+    const timestampCriacao = new Date().setHours(0, 0, 0, 0); // Data de hoje (início do dia)
+
+    // Obter colunas já criadas para esta Cadeira/Curso/Ano
+    const colsPresenca = obterColunasCadeira(curso, ano, cadeira, "Presenças");
+    const colsTrabInd = obterColunasCadeira(curso, ano, cadeira, "Trabalhos Individuais");
+    const colsTrabGrp = obterColunasCadeira(curso, ano, cadeira, "Trabalhos de Grupo");
+
+    // 1. Preencher Presenças: "F" se a aula for anterior ao dia de hoje, senão ""
+    colsPresenca.forEach(col => {
+        const timestampAula = parseDataColuna(col);
+        if (timestampAula !== null && timestampAula < timestampCriacao) {
+            subNotasGeradas["pres_" + col] = "F";
+        } else {
+            subNotasGeradas["pres_" + col] = "";
+        }
+    });
+
+    // 2. Preencher Trabalhos Individuais em branco
+    colsTrabInd.forEach(col => {
+        subNotasGeradas["indiv_" + col] = "";
+    });
+
+    // 3. Preencher Trabalhos de Grupo em branco
+    colsTrabGrp.forEach(col => {
+        subNotasGeradas["grp_" + col] = "";
+    });
+    // =========================================================================
 
     pautaEstado.estudantes.push({
         id: idOficial,
@@ -996,13 +1041,22 @@ async function registarNovoEstudante() {
         estatuto,
         curso,
         ano,
-        presenca: "", trabInd: "", trabGrp: "", teste1: "", teste2: "", exame: "", notaProf: "", subNotas: {}, situacao: "Pendente"
+        presenca: "", 
+        trabInd: "", 
+        trabGrp: "", 
+        teste1: "", 
+        teste2: "", 
+        exame: "", 
+        notaProf: "", 
+        subNotas: subNotasGeradas, // Já herda todas as colunas estruturadas!
+        dataCriacao: timestampCriacao,
+        situacao: "Pendente"
     });
 
     await salvarNaNuvem();
     alert("✅ Estudante registado com sucesso!");
 
-    // Limpa e desbloqueia o formulário para o próximo registo
+    // Limpar formulário
     document.getElementById('ce-id').value = "";
     document.getElementById('ce-senha').value = "";
     document.getElementById('ce-nome').value = "";
