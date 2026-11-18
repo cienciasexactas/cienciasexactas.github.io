@@ -1,4 +1,4 @@
-// ================= SCRIPT COMPLETO E INTEGRADO (pauta.js) =================
+// ================= SCRIPT COMPLETO, INTEGRADO E CORRIGIDO (pauta.js) =================
 
 let pautaEstado = {
     utilizadorAtual: null,
@@ -7,11 +7,15 @@ let pautaEstado = {
     percentagens: {}
 };
 
-// Obter colunas da planilha isoladas estritamente por Curso e Cadeira (U.C.)
-function obterColunasCadeira(curso, cadeira, categoria) {
-    const cursoKey = curso ? String(curso).trim() : "Geral";
-    const cadeiraKey = cadeira ? String(cadeira).trim() : "Geral";
-    const cid = `${cursoKey}_${cadeiraKey}`;
+// CORREÇÃO PRINCIPAL: Obter colunas da planilha isoladas estritamente por Curso, Ano e Cadeira (U.C.)
+// Inclui normalização (lowercase e remoção de espaços) para evitar conflitos entre cursos parecidos.
+function obterColunasCadeira(curso, ano, cadeira, categoria) {
+    const cursoKey = curso ? String(curso).trim().toLowerCase() : "geral";
+    const anoKey = ano ? String(ano).trim().toLowerCase() : "geral";
+    const cadeiraKey = cadeira ? String(cadeira).trim().toLowerCase() : "geral";
+    
+    // Chave composta única que agora diferencia por Curso + Ano + Cadeira
+    const cid = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
     
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
@@ -25,7 +29,11 @@ function obterColunasCadeira(curso, cadeira, categoria) {
 
 // Obter percentagens configuradas (com fallback seguro para evitar notas zero)
 function obterPercentagens(curso, ano, cadeira) {
-    const chave = `${curso}_${ano}_${cadeira || 'geral'}`;
+    const cursoKey = curso ? String(curso).trim().toLowerCase() : "geral";
+    const anoKey = ano ? String(ano).trim().toLowerCase() : "geral";
+    const cadeiraKey = cadeira ? String(cadeira).trim().toLowerCase() : "geral";
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
+
     if (pautaEstado.percentagens && pautaEstado.percentagens[chave]) {
         return pautaEstado.percentagens[chave];
     }
@@ -47,11 +55,13 @@ function formatarNota(val) {
     return parsed !== null ? val : "---";
 }
 
-// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C. e Curso
+// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C., Curso e Ano
 function calcularMediaTrabalhos(est, categoria, cursoOverride = null) {
     const curso = cursoOverride || est.curso || "Geral";
+    const ano = est.ano || "2025-2026";
     const cadeira = est.cadeira || "Geral";
-    const colunas = obterColunasCadeira(curso, cadeira, categoria);
+    
+    const colunas = obterColunasCadeira(curso, ano, cadeira, categoria);
     if (colunas.length === 0) return null;
 
     let soma = 0;
@@ -72,11 +82,13 @@ function calcularMediaTrabalhos(est, categoria, cursoOverride = null) {
     return parseFloat((soma / contador).toFixed(2));
 }
 
-// CÁLCULO DE PRESENÇAS BASEADO EM P e F por U.C. e Curso
+// CÁLCULO DE PRESENÇAS BASEADO EM P e F por U.C., Curso e Ano
 function calcularNotaPresenca(est, cursoOverride = null) {
     const curso = cursoOverride || est.curso || "Geral";
+    const ano = est.ano || "2025-2026";
     const cadeira = est.cadeira || "Geral";
-    const colunas = obterColunasCadeira(curso, cadeira, "Presenças");
+    
+    const colunas = obterColunasCadeira(curso, ano, cadeira, "Presenças");
     if (colunas.length === 0) {
         return parseNota(est.presenca);
     }
@@ -236,14 +248,13 @@ async function salvarNaNuvem() {
         if (!resposta.ok) {
             const erroJson = await resposta.json().catch(() => ({}));
             console.error("Erro retornado pelo servidor:", erroJson);
-            alert("⚠️ AVISO: As alterações foram guardadas neste computador, mas FALHARAM ao sincronizar com a nuvem (GitHub/Vercel): " + (erroJson.error || "Erro desconhecido no servidor."));
+            alert("⚠️ AVISO: As alterações foram guardadas neste computador, mas FALHARAM ao sincronizar com a nuvem: " + (erroJson.error || "Erro desconhecido."));
             return false;
         }
-        
         return true;
     } catch (erro) {
         console.error("Erro de rede ao sincronizar com a nuvem:", erro);
-        alert("⚠️ AVISO: Sem ligação à internet ou erro de rede. Os dados foram salvos apenas localmente.");
+        alert("⚠️ AVISO: Sem ligação à internet. Os dados foram salvos apenas localmente.");
         return false;
     }
 }
@@ -332,7 +343,7 @@ function mudarSecaoDocenteDinamica() {
     }
 }
 
-// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira) E CURSO =================
+// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira), CURSO E ANO =================
 function inicializarGestaoPlanilhas() {
     atualizarSelectCadeirasGestaoPlanilhas();
     carregarSelectPlanilhas();
@@ -384,16 +395,18 @@ function carregarSelectPlanilhas() {
 
 function carregarColunasDaPlanilha() {
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const selectColuna = document.getElementById('select-coluna-ativa');
+    
     if (!selectColuna) return;
 
     selectColuna.innerHTML = '<option value="" selected disabled>-- Selecione uma coluna --</option>';
 
     if (nomePlanilha) {
-        const colunas = obterColunasCadeira(cursoSel, cadeiraSel, nomePlanilha);
+        const colunas = obterColunasCadeira(cursoSel, anoSel, cadeiraSel, nomePlanilha);
         colunas.forEach(coluna => {
             selectColuna.innerHTML += `<option value="${coluna}">${coluna}</option>`;
         });
@@ -410,13 +423,14 @@ function preencherNomeColunaEdicao() {
 
 async function adicionarColunaNaPlanilha() {
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
     const nomeColuna = document.getElementById('gp-nome-coluna').value.trim();
 
-    if (!cursoSel) {
-        alert("Por favor, selecione um curso globalmente primeiro.");
+    if (!cursoSel || !anoSel) {
+        alert("Por favor, selecione um curso e ano letivo globalmente primeiro.");
         return;
     }
     if (!nomePlanilha) {
@@ -428,7 +442,7 @@ async function adicionarColunaNaPlanilha() {
         return;
     }
 
-    const cid = `${cursoSel}_${cadeiraSel}`;
+    const cid = `${cursoSel}_${anoSel}_${cadeiraSel}`.toLowerCase().replace(/\s+/g, '_');
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
             "Presenças": [],
@@ -438,13 +452,13 @@ async function adicionarColunaNaPlanilha() {
     }
 
     if (pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].includes(nomeColuna)) {
-        alert("Esta coluna já existe nesta categoria para este curso e Unidade Curricular.");
+        alert("Esta coluna já existe nesta categoria para este curso, ano e Unidade Curricular.");
         return;
     }
 
     pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].push(nomeColuna);
     await salvarNaNuvem();
-    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" (${cadeiraSel} - ${cursoSel}) com sucesso!`);
+    alert(`Coluna "${nomeColuna}" adicionada a "${nomePlanilha}" (${cadeiraSel} - ${cursoSel} - ${anoSel}) com sucesso!`);
     document.getElementById('gp-nome-coluna').value = "";
     carregarColunasDaPlanilha();
     recarregarDadosDocente();
@@ -452,6 +466,7 @@ async function adicionarColunaNaPlanilha() {
 
 async function atualizarNomeColuna() {
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
@@ -467,7 +482,7 @@ async function atualizarNomeColuna() {
         return;
     }
 
-    const cid = `${cursoSel}_${cadeiraSel}`;
+    const cid = `${cursoSel}_${anoSel}_${cadeiraSel}`.toLowerCase().replace(/\s+/g, '_');
     const colunas = pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha] || [];
     const index = colunas.indexOf(colunaAntiga);
     if (index !== -1) {
@@ -482,6 +497,7 @@ async function atualizarNomeColuna() {
 
 async function eliminarColunaDaPlanilha() {
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
     const selectCadeiraElem = document.getElementById('select-cadeira-planilha-ativa');
     const cadeiraSel = selectCadeiraElem ? selectCadeiraElem.value : "Geral";
     const nomePlanilha = document.getElementById('select-planilha-ativa').value;
@@ -493,7 +509,7 @@ async function eliminarColunaDaPlanilha() {
     }
 
     if (confirm(`Tem a certeza que deseja eliminar a coluna "${colunaSel}"?`)) {
-        const cid = `${cursoSel}_${cadeiraSel}`;
+        const cid = `${cursoSel}_${anoSel}_${cadeiraSel}`.toLowerCase().replace(/\s+/g, '_');
         if (pautaEstado.planilhasColunasPorCadeira[cid]?.[nomePlanilha]) {
             pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha] =
                 pautaEstado.planilhasColunasPorCadeira[cid][nomePlanilha].filter(c => c !== colunaSel);
@@ -525,7 +541,11 @@ function carregarCamposPercentagensAtuais() {
 
     const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const cadeiraSel = estExemplo ? (estExemplo.cadeira || "geral") : "geral";
-    const chave = `${cursoSel}_${anoSel}_${cadeiraSel}`;
+    
+    const cursoKey = cursoSel.trim().toLowerCase();
+    const anoKey = anoSel.trim().toLowerCase();
+    const cadeiraKey = cadeiraSel.trim().toLowerCase();
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
 
     if (pautaEstado.percentagens && pautaEstado.percentagens[chave]) {
         const pesos = pautaEstado.percentagens[chave];
@@ -552,7 +572,11 @@ async function guardarPercentagensCurso() {
 
     const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const cadeiraSel = estExemplo ? (estExemplo.cadeira || "geral") : "geral";
-    const chave = `${cursoSel}_${anoSel}_${cadeiraSel}`;
+    
+    const cursoKey = cursoSel.trim().toLowerCase();
+    const anoKey = anoSel.trim().toLowerCase();
+    const cadeiraKey = cadeiraSel.trim().toLowerCase();
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
 
     let pPresenca = parseFloat(document.getElementById('pc-presenca').value) || 0;
     let pTestes = parseFloat(document.getElementById('pc-testes').value) || 0;
@@ -575,7 +599,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso selecionado).
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso e ano selecionados).
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -601,18 +625,18 @@ function recarregarDadosDocente() {
 
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
 
-    // Dentro de recarregarDadosDocente():
     let todasColsPresenca = [];
     let todasColsTrabInd = [];
     let todasColsTrabGrp = [];
 
-    // Isolamento estrito: utiliza o cursoSel ativo para recolher as colunas corretas
+    // Isolamento estrito: utiliza o cursoSel e o anoSel ativo para recolher as colunas corretas
     filtrados.forEach(e => {
-        // Garante que busca as colunas específicas da cadeira e do curso atualizado
         const cadeiraAtual = e.cadeira || "Geral";
-        obterColunasCadeira(cursoSel, cadeiraAtual, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(cursoSel, cadeiraAtual, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(cursoSel, cadeiraAtual, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        const anoEstudante = e.ano || anoSel;
+        
+        obterColunasCadeira(cursoSel, anoEstudante, cadeiraAtual, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(cursoSel, anoEstudante, cadeiraAtual, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(cursoSel, anoEstudante, cadeiraAtual, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
     if (theadPresenca) {
@@ -675,9 +699,10 @@ function recarregarDadosDocente() {
             </tr>`;
         }
 
-        const colsCadeiraPres = obterColunasCadeira(cursoSel, est.cadeira, "Presenças");
-        const colsCadeiraTI = obterColunasCadeira(cursoSel, est.cadeira, "Trabalhos Individuais");
-        const colsCadeiraTG = obterColunasCadeira(cursoSel, est.cadeira, "Trabalhos de Grupo");
+        const anoEstudante = est.ano || anoSel;
+        const colsCadeiraPres = obterColunasCadeira(cursoSel, anoEstudante, est.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(cursoSel, anoEstudante, est.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(cursoSel, anoEstudante, est.cadeira, "Trabalhos de Grupo");
 
         // 1. Presenças
         if (tbodyPresenca) {
@@ -1095,18 +1120,13 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
 
-            // FILTRO ESTRITO: Recolhe apenas os estudantes do curso e ano ativos            
             const estudantesCursoAno = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
-
-            // Recolhe exclusivamente as cadeiras associadas a este curso e ano
             const cadeirasCursoAno = [...new Set(estudantesCursoAno.map(e => e.cadeira || "Geral"))];
             
             let colunasEncontradas = [];
             cadeirasCursoAno.forEach(cad => {
-                // Aqui é fundamental passar o cursoSel e a cadeira correta (cad)
-                const cols = obterColunasCadeira(cursoSel, cad, nomeCategoria);
+                const cols = obterColunasCadeira(cursoSel, anoSel, cad, nomeCategoria);
                 cols.forEach(c => {
-                    // Evita duplicados caso haja mais do que uma cadeira com o mesmo nome
                     if (!colunasEncontradas.includes(c)) colunasEncontradas.push(c);
                 });
             });
@@ -1125,7 +1145,6 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
 
     renderizarTabelaAtualizacaoMassa();
 }
-
 
 function renderizarTabelaAtualizacaoMassa() {
     const cursoSel = document.getElementById('docente-curso-global').value;
@@ -1146,7 +1165,7 @@ function renderizarTabelaAtualizacaoMassa() {
     let html = `
         <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 15px;">
             <h4 style="margin-top: 0; color: #1e293b;">📋 Lançamento em Massa (${tipoNota}${subCol ? ' - ' + subCol : ''})</h4>
-            <p style="font-size: 0.9em; color: #64748b; margin-bottom: 15px;">Insira os valores (ex: <b>P</b> ou <b>F</b> para presenças, ou notas numéricas de 0 a 20) para cada estudante e clique em 'Guardar Todos'.</p>
+            <p style="font-size: 0.9em; color: #64748b; margin-bottom: 15px;">Insira os valores para cada estudante e clique em 'Guardar Todos'.</p>
             
             <div style="max-height: 400px; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 6px; background: white;">
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
@@ -1294,9 +1313,10 @@ function entrarPainelEstudante(estudante) {
     let todasColsTrabGrp = [];
 
     registosEstudante.forEach(reg => {
-        obterColunasCadeira(reg.curso, reg.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        const anoReg = reg.ano || "2025-2026";
+        obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
     const theadEstPresenca = document.getElementById('thead-estudante-presenca');
@@ -1355,9 +1375,10 @@ function entrarPainelEstudante(estudante) {
             </tr>`;
         }
 
-        const colsCadeiraPres = obterColunasCadeira(reg.curso, reg.cadeira, "Presenças");
-        const colsCadeiraTI = obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos Individuais");
-        const colsCadeiraTG = obterColunasCadeira(reg.curso, reg.cadeira, "Trabalhos de Grupo");
+        const anoReg = reg.ano || "2025-2026";
+        const colsCadeiraPres = obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(reg.curso, anoReg, reg.cadeira, "Trabalhos de Grupo");
 
         if (tbodyEstPresenca) {
             let linhaDatasP = `<tr style="background-color: #f8fafc; font-weight: bold; color: #1e293b;">
