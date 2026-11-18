@@ -575,7 +575,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso selecionado)
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso selecionado).
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
