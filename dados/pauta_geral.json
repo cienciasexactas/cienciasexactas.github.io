@@ -2309,7 +2309,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 16,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2338,7 +2338,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS002",
@@ -2816,7 +2816,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2845,7 +2845,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS015",
@@ -2855,7 +2855,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2884,7 +2884,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS016",
@@ -2933,7 +2933,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2962,7 +2962,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS018",
@@ -2972,7 +2972,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 16,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3001,7 +3001,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS019",
@@ -3050,7 +3050,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3079,7 +3079,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS021",
@@ -3167,7 +3167,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3196,7 +3196,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "EB4CNS024",
@@ -3284,7 +3284,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3323,7 +3323,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 15,
+      "presenca": 18.82,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3352,7 +3352,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "ED1INF001",
@@ -5663,7 +5663,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5702,7 +5702,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5936,7 +5936,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6014,7 +6014,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6170,7 +6170,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6365,7 +6365,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6404,7 +6404,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6521,7 +6521,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
