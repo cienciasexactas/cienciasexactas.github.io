@@ -5585,7 +5585,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5614,7 +5614,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2003",
@@ -5624,7 +5624,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5653,7 +5653,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2004",
@@ -5663,7 +5663,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5692,7 +5692,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2005",
@@ -5702,7 +5702,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5731,7 +5731,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2006",
@@ -5741,7 +5741,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5770,7 +5770,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2007",
@@ -5780,7 +5780,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5809,7 +5809,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2008",
@@ -5819,7 +5819,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5848,7 +5848,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2009",
@@ -5858,7 +5858,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5887,7 +5887,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2010",
@@ -5897,7 +5897,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5926,7 +5926,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2011",
@@ -5936,7 +5936,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5965,7 +5965,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2012",
@@ -5975,7 +5975,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6004,7 +6004,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2013",
@@ -6014,7 +6014,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6025,7 +6025,7 @@
         "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
-        "pres_13/11/2026": "P",
+        "pres_13/11/2026": "F",
         "pres_18/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_25/11/2026": "P",
@@ -6043,7 +6043,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2014",
@@ -6053,7 +6053,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6082,7 +6082,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2015",
@@ -6092,7 +6092,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6121,7 +6121,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2016",
@@ -6131,7 +6131,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6160,7 +6160,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2017",
@@ -6170,7 +6170,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6199,7 +6199,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2018",
@@ -6209,7 +6209,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6238,7 +6238,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2019",
@@ -6248,7 +6248,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6277,7 +6277,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2020",
@@ -6287,7 +6287,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6316,7 +6316,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2021",
@@ -6326,7 +6326,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6355,7 +6355,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2022",
@@ -6365,7 +6365,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6394,7 +6394,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2023",
@@ -6404,7 +6404,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6433,7 +6433,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2024",
@@ -6443,7 +6443,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6472,7 +6472,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2025",
@@ -6482,7 +6482,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6511,7 +6511,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2026",
@@ -6521,7 +6521,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6550,46 +6550,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
-    },
-    {
-      "id": "ECON2027",
-      "senha": "4O8E",
-      "nome": "Arménio dos Santos Lima",
-      "cadeira": "Estatística I",
-      "estatuto": "Repetente",
-      "curso": "economia",
-      "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": null,
-      "trabGrp": null,
-      "teste1": "",
-      "teste2": "",
-      "exame": "",
-      "notaProf": "",
-      "subNotas": {
-        "pres_04/11/2026": "P",
-        "pres_06/11/2026": "P",
-        "pres_11/11/2026": "P",
-        "pres_13/11/2026": "P",
-        "pres_18/11/2026": "P",
-        "pres_20/11/2026": "P",
-        "pres_25/11/2026": "P",
-        "pres_27/11/2026": "P",
-        "pres_02/12/2026": "P",
-        "pres_04/12/2026": "P",
-        "pres_09/12/2026": "P",
-        "pres_11/12/2026": "P",
-        "pres_16/12/2026": "P",
-        "pres_18/12/2026": "P",
-        "pres_06/01/2027": "P",
-        "pres_08/01/2027": "P",
-        "pres_13/01/2027": "P",
-        "pres_15/01/2027": "P",
-        "pres_20/01/2027": "P",
-        "pres_22/01/2027": "P"
-      },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "GES2EMP001",
