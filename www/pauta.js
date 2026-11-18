@@ -1077,6 +1077,7 @@ async function executarAtualizacaoDadosEstudante() {
 
 function atualizarOpcoesNotaAtualizacaoMassa() {
     const tipoNota = document.getElementById('act-nota-tipo').value;
+    const grupoSubNota = document.getElementById('grupo-sub-nota');
     const grupoSubColuna = document.getElementById('grupo-sub-coluna');
     const selectSub = document.getElementById('act-subcoluna-select');
     const cursoSel = document.getElementById('docente-curso-global').value;
@@ -1091,13 +1092,18 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
             
+            // FILTRO ESTRITO: Recolhe apenas os estudantes do curso e ano ativos
             const estudantesCursoAno = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
+            
+            // Recolhe exclusivamente as cadeiras associadas a este curso e ano
             const cadeirasCursoAno = [...new Set(estudantesCursoAno.map(e => e.cadeira || "Geral"))];
             
             let colunasEncontradas = [];
             cadeirasCursoAno.forEach(cad => {
+                // Passa estritamente o cursoSel E a cadeira correspondente (cad)
                 const cols = obterColunasCadeira(cursoSel, cad, nomeCategoria);
                 cols.forEach(c => {
+                    // Evita duplicados caso haja mais do que uma cadeira com o mesmo nome
                     if (!colunasEncontradas.includes(c)) colunasEncontradas.push(c);
                 });
             });
