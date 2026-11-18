@@ -8735,6 +8735,24 @@
         "pres_22/01/2027": "P"
       },
       "situacao": "Pendente"
+    },
+    {
+      "id": "ECON2014",
+      "senha": "2EO7",
+      "nome": "Kely do Amaral Ramos Silvestre",
+      "cadeira": "Estatística I",
+      "estatuto": "Novo",
+      "curso": "economia",
+      "ano": "2025-2026",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
