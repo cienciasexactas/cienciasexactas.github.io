@@ -7,10 +7,10 @@ let pautaEstado = {
     percentagens: {}
 };
 
-// Obter colunas da planilha isoladas por Curso e Cadeira (U.C.)
+// Obter colunas da planilha isoladas estritamente por Curso e Cadeira (U.C.)
 function obterColunasCadeira(curso, cadeira, categoria) {
-    const cursoKey = curso || "Geral";
-    const cadeiraKey = cadeira || "Geral";
+    const cursoKey = curso ? String(curso).trim() : "Geral";
+    const cadeiraKey = cadeira ? String(cadeira).trim() : "Geral";
     const cid = `${cursoKey}_${cadeiraKey}`;
     
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
@@ -48,8 +48,8 @@ function formatarNota(val) {
 }
 
 // CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C. e Curso
-function calcularMediaTrabalhos(est, categoria) {
-    const curso = est.curso || "Geral";
+function calcularMediaTrabalhos(est, categoria, cursoOverride = null) {
+    const curso = cursoOverride || est.curso || "Geral";
     const cadeira = est.cadeira || "Geral";
     const colunas = obterColunasCadeira(curso, cadeira, categoria);
     if (colunas.length === 0) return null;
@@ -73,8 +73,8 @@ function calcularMediaTrabalhos(est, categoria) {
 }
 
 // CÁLCULO DE PRESENÇAS BASEADO EM P e F por U.C. e Curso
-function calcularNotaPresenca(est) {
-    const curso = est.curso || "Geral";
+function calcularNotaPresenca(est, cursoOverride = null) {
+    const curso = cursoOverride || est.curso || "Geral";
     const cadeira = est.cadeira || "Geral";
     const colunas = obterColunasCadeira(curso, cadeira, "Presenças");
     if (colunas.length === 0) {
@@ -102,10 +102,10 @@ function calcularNotaPresenca(est) {
 }
 
 // FÓRMULA DE CÁLCULO PONDERADO E SITUAÇÃO ACADÉMICA
-function calcularSituacaoEstudante(est) {
-    const mediaTrabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais");
-    const mediaTrabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo");
-    const notaPresencaCalc = calcularNotaPresenca(est);
+function calcularSituacaoEstudante(est, cursoOverride = null) {
+    const mediaTrabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais", cursoOverride);
+    const mediaTrabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo", cursoOverride);
+    const notaPresencaCalc = calcularNotaPresenca(est, cursoOverride);
 
     const camposNotas = ['teste1', 'teste2', 'exame', 'notaProf'];
     const temAlgumaNota = camposNotas.some(campo => parseNota(est[campo]) !== null) || mediaTrabInd !== null || mediaTrabGrp !== null || notaPresencaCalc !== null;
@@ -114,7 +114,7 @@ function calcularSituacaoEstudante(est) {
         return { texto: "Pendente", valor: "-" };
     }
 
-    const curso = est.curso;
+    const curso = cursoOverride || est.curso;
     const ano = est.ano || "2025-2026";
     const cadeira = est.cadeira || "geral";
     const pesos = obterPercentagens(curso, ano, cadeira);
@@ -575,7 +575,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso selecionado)
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -605,10 +605,11 @@ function recarregarDadosDocente() {
     let todasColsTrabInd = [];
     let todasColsTrabGrp = [];
 
+    // Isolamento estrito: utiliza o cursoSel ativo para recolher as colunas corretas
     filtrados.forEach(e => {
-        obterColunasCadeira(e.curso, e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(e.curso, e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(e.curso, e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        obterColunasCadeira(cursoSel, e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(cursoSel, e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(cursoSel, e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
     if (theadPresenca) {
@@ -654,13 +655,13 @@ function recarregarDadosDocente() {
     if (selectApagar) selectApagar.innerHTML = "";
 
     filtrados.forEach((est) => {
-        est.trabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais");
-        est.trabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo");
+        est.trabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais", cursoSel);
+        est.trabGrp = calcularMediaTrabalhos(est, "Trabalhos de Grupo", cursoSel);
 
-        const notaPresCalc = calcularNotaPresenca(est);
+        const notaPresCalc = calcularNotaPresenca(est, cursoSel);
         if (notaPresCalc !== null) est.presenca = notaPresCalc;
 
-        const avaliacao = calcularSituacaoEstudante(est);
+        const avaliacao = calcularSituacaoEstudante(est, cursoSel);
         est.situacao = avaliacao.texto;
 
         if (tbodyResumo) {
@@ -671,9 +672,9 @@ function recarregarDadosDocente() {
             </tr>`;
         }
 
-        const colsCadeiraPres = obterColunasCadeira(est.curso, est.cadeira, "Presenças");
-        const colsCadeiraTI = obterColunasCadeira(est.curso, est.cadeira, "Trabalhos Individuais");
-        const colsCadeiraTG = obterColunasCadeira(est.curso, est.cadeira, "Trabalhos de Grupo");
+        const colsCadeiraPres = obterColunasCadeira(cursoSel, est.cadeira, "Presenças");
+        const colsCadeiraTI = obterColunasCadeira(cursoSel, est.cadeira, "Trabalhos Individuais");
+        const colsCadeiraTG = obterColunasCadeira(cursoSel, est.cadeira, "Trabalhos de Grupo");
 
         // 1. Presenças
         if (tbodyPresenca) {
@@ -1004,7 +1005,6 @@ function carregarSelectEstudantesUnico() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
     
-    // FILTRO ESTRITO: Curso + Ano Letivo
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const selectEst = document.getElementById('act-estudante-id-unico');
     if (!selectEst) return;
@@ -1091,7 +1091,6 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
             
-            // FILTRO ESTRITO: Respeita estritamente o Curso, o Ano e as respetivas Unidades Curriculares (Cadeiras)
             const estudantesCursoAno = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
             const cadeirasCursoAno = [...new Set(estudantesCursoAno.map(e => e.cadeira || "Geral"))];
             
@@ -1129,7 +1128,6 @@ function renderizarTabelaAtualizacaoMassa() {
         return;
     }
 
-    // FILTRO ESTRITO: Apenas estudantes do Curso e Ano letivo selecionados
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const tipoNota = document.getElementById('act-nota-tipo').value;
     const selectSub = document.getElementById('act-subcoluna-select');
@@ -1331,12 +1329,12 @@ function entrarPainelEstudante(estudante) {
     }
 
     registosEstudante.forEach(reg => {
-        reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais");
-        reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo");
-        const notaPresCalc = calcularNotaPresenca(reg);
+        reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais", reg.curso);
+        reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo", reg.curso);
+        const notaPresCalc = calcularNotaPresenca(reg, reg.curso);
         if (notaPresCalc !== null) reg.presenca = notaPresencaCalc;
 
-        const avaliacao = calcularSituacaoEstudante(reg);
+        const avaliacao = calcularSituacaoEstudante(reg, reg.curso);
         reg.situacao = avaliacao.texto;
 
         if (tbodyEstResumo) {
