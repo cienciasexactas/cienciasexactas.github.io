@@ -7,14 +7,12 @@ let pautaEstado = {
     percentagens: {}
 };
 
-// CORREÇÃO PRINCIPAL: Obter colunas da planilha isoladas estritamente por Curso, Ano e Cadeira (U.C.)
-// Inclui normalização (lowercase e remoção de espaços) para evitar conflitos entre cursos parecidos.
+// Obter colunas da planilha isoladas estritamente por Curso, Ano e Cadeira (U.C.)
 function obterColunasCadeira(curso, ano, cadeira, categoria) {
     const cursoKey = curso ? String(curso).trim().toLowerCase() : "geral";
     const anoKey = ano ? String(ano).trim().toLowerCase() : "geral";
     const cadeiraKey = cadeira ? String(cadeira).trim().toLowerCase() : "geral";
     
-    // Chave composta única que agora diferencia por Curso + Ano + Cadeira
     const cid = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
     
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
@@ -27,7 +25,7 @@ function obterColunasCadeira(curso, ano, cadeira, categoria) {
     return pautaEstado.planilhasColunasPorCadeira[cid][categoria] || [];
 }
 
-// Obter percentagens configuradas (com fallback seguro para evitar notas zero).
+// Obter percentagens configuradas
 function obterPercentagens(curso, ano, cadeira) {
     const cursoKey = curso ? String(curso).trim().toLowerCase() : "geral";
     const anoKey = ano ? String(ano).trim().toLowerCase() : "geral";
@@ -55,7 +53,7 @@ function formatarNota(val) {
     return parsed !== null ? val : "---";
 }
 
-// CÁLCULO DA MÉDIA DE TRABALHOS (Individuais ou de Grupo) por U.C., Curso e Ano
+// CÁLCULO DA MÉDIA DE TRABALHOS
 function calcularMediaTrabalhos(est, categoria, cursoOverride = null) {
     const curso = cursoOverride || est.curso || "Geral";
     const ano = est.ano || "2025-2026";
@@ -82,7 +80,7 @@ function calcularMediaTrabalhos(est, categoria, cursoOverride = null) {
     return parseFloat((soma / contador).toFixed(2));
 }
 
-// CÁLCULO DE PRESENÇAS BASEADO EM P e F por U.C., Curso e Ano
+// CÁLCULO DE PRESENÇAS BASEADO EM P e F
 function calcularNotaPresenca(est, cursoOverride = null) {
     const curso = cursoOverride || est.curso || "Geral";
     const ano = est.ano || "2025-2026";
@@ -308,7 +306,6 @@ function entrarPainelDocente() {
     recarregarDadosDocente();
 }
 
-// VALIDAÇÃO E GESTÃO DINÂMICA DAS SUBSEÇÕES DO DOCENTE
 function mudarSecaoDocenteDinamica() {
     const acao = document.getElementById('docente-acao-select').value;
     const cursoSel = document.getElementById('docente-curso-global').value;
@@ -343,7 +340,7 @@ function mudarSecaoDocenteDinamica() {
     }
 }
 
-// ================= GESTÃO DE COLUNAS POR U.C. (Cadeira), CURSO E ANO =================
+// ================= GESTÃO DE COLUNAS POR U.C., CURSO E ANO =================
 function inicializarGestaoPlanilhas() {
     atualizarSelectCadeirasGestaoPlanilhas();
     carregarSelectPlanilhas();
@@ -599,7 +596,7 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (Estritamente isolado pelo curso e ano selecionados).
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -629,7 +626,6 @@ function recarregarDadosDocente() {
     let todasColsTrabInd = [];
     let todasColsTrabGrp = [];
 
-    // Isolamento estrito: utiliza o cursoSel e o anoSel ativo para recolher as colunas corretas
     filtrados.forEach(e => {
         const cadeiraAtual = e.cadeira || "Geral";
         const anoEstudante = e.ano || anoSel;
@@ -820,7 +816,7 @@ function recarregarDadosDocente() {
     renderizarGraficoTurma(filtrados);
 }
 
-// CONFIGURAR AUTO-PREENCHIMENTO INTELIGENTE E BLOQUEIO DE ID/NOME
+// ================= AUTO-PREENCHIMENTO INTELIGENTE (CHAVE MESTRA ID / NOME) =================
 function configurarEventosAutopreenchimento() {
     const inputId = document.getElementById('ce-id');
     const inputNome = document.getElementById('ce-nome');
@@ -828,6 +824,7 @@ function configurarEventosAutopreenchimento() {
 
     if (!inputId || !inputNome || !inputSenha) return;
 
+    // Se preencher pelo ID: auto-carrega e bloqueia a Senha e o Nome oficiais do estudante
     inputId.addEventListener('input', () => {
         const idVal = inputId.value.trim();
         const existente = pautaEstado.estudantes.find(e => e.id === idVal);
@@ -842,6 +839,7 @@ function configurarEventosAutopreenchimento() {
         }
     });
 
+    // Se preencher pelo Nome: auto-carrega e bloqueia o ID e a Senha oficiais do estudante
     inputNome.addEventListener('input', () => {
         const nomeVal = inputNome.value.trim().toLowerCase();
         const existente = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nomeVal);
@@ -857,7 +855,7 @@ function configurarEventosAutopreenchimento() {
     });
 }
 
-// REGISTAR ESTUDANTE
+// REGISTAR ESTUDANTE (Permite adicionar novas cadeiras/cursos ao mesmo estudante existente)
 async function registarNovoEstudante() {
     const curso = document.getElementById('docente-curso-global').value;
     const ano = document.getElementById('docente-ano-global').value;
@@ -878,6 +876,7 @@ async function registarNovoEstudante() {
         return;
     }
 
+    // Validação de cruzamento de dados (Garante consistência de ID e Nome caso já exista)
     const conflitoId = pautaEstado.estudantes.find(e => e.id === id && e.nome.toLowerCase() !== nome.toLowerCase());
     const conflitoNome = pautaEstado.estudantes.find(e => e.nome.toLowerCase() === nome.toLowerCase() && e.id !== id);
 
@@ -890,6 +889,7 @@ async function registarNovoEstudante() {
         return;
     }
 
+    // Verifica se já está inscrito exatamente na mesma cadeira/curso/ano
     const duplicadoExato = pautaEstado.estudantes.some(e =>
         e.id === id && e.curso === curso && (e.cadeira || '') === (cadeira || '') && (e.ano || '') === (ano || '')
     );
@@ -899,17 +899,19 @@ async function registarNovoEstudante() {
         return;
     }
 
+    // Reaproveita os dados oficiais caso já exista no sistema
     const existenteGlobal = pautaEstado.estudantes.find(e => e.id === id);
     const nomeOficial = existenteGlobal ? existenteGlobal.nome : nome;
     const senhaOficial = existenteGlobal ? existenteGlobal.senha : senha;
 
+    // Regista a nova associação (novo curso/cadeira/ano) para o mesmo ID e Senha
     pautaEstado.estudantes.push({
         id, senha: senhaOficial, nome: nomeOficial, cadeira, estatuto, curso, ano,
         presenca: "", trabInd: "", trabGrp: "", teste1: "", teste2: "", exame: "", notaProf: "", subNotas: {}, situacao: "Pendente"
     });
 
     await salvarNaNuvem();
-    alert("✅ Estudante registado com sucesso!");
+    alert("✅ Estudante registado com sucesso na nova Unidade Curricular/Curso!");
 
     document.getElementById('ce-id').value = "";
     document.getElementById('ce-senha').value = "";
