@@ -1268,7 +1268,6 @@ async function executarAtualizacaoMassa() {
 }
 
 // ================= PAINEL ESTUDANTE =================
-// ================= PAINEL ESTUDANTE CORRIGIDO E ROBUSTO =================
 function entrarPainelEstudante(estudante) {
     document.getElementById('pauta-login-section').classList.add('pauta-hidden');
     document.getElementById('vista-docente').classList.add('pauta-hidden');
