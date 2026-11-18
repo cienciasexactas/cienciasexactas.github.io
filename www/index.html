@@ -5143,49 +5143,39 @@
         </div>
 
         <!-- 1.2 SUB-SECÇÃO: ATUALIZAR EM CASCATA -->
-<div id="subseccao-actualizar" class="pauta-card pauta-hidden">
-    <h4>🔄 Atualização de Dados e Notas</h4>
-    <div class="pauta-grid-3col">
-        <div class="pauta-form-group">
-            <label>Selecionar Estudante:</label>
-            <select id="act-estudante-id" onchange="carregarDadosEstudanteParaAtualizar()"></select>
-        </div>
-        <div class="pauta-form-group">
+<div id="subseccao-actualizar" class="pauta-hidden">
+    <h3>🔄 Atualização de Dados e Notas</h3>
+    
+    <div class="pauta-form-row" style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
+        <div class="pauta-form-group" style="flex: 1;">
             <label>Seção a Atualizar:</label>
-            <select id="act-secao-tipo" onchange="controlarCamposAtualizacao()">
-                <option value="dados">Dados Gerais</option>
-                <option value="notas">Avaliações</option>
+            <select id="act-secao-tipo" class="pauta-input" onchange="controlarCamposAtualizacao()">
+                <option value="notas">Avaliações / Notas / Presenças</option>
+                <option value="dados">Dados Pessoais do Estudante</option>
             </select>
         </div>
-        <div class="pauta-form-group" style="display: flex; align-items: flex-end;">
-            <button class="pauta-btn pauta-btn-primary" onclick="executarAtualizacaoEstudante()" style="width: 100%;">✅ Confirmar Atualização</button>
+
+        <div class="pauta-form-group" style="flex: 1;" id="grupo-sub-nota">
+            <label>Tipo de Avaliação:</label>
+            <select id="act-nota-tipo" class="pauta-input" onchange="atualizarOpcoesNotaAtualizacaoMassa()">
+                <option value="Presenca">Presença</option>
+                <option value="TrabalhosIndividuais">Trabalhos Individuais</option>
+                <option value="TrabalhoGrupo">Trabalho de Grupo</option>
+                <option value="Teste1">1º Teste</option>
+                <option value="Teste2">2º Teste</option>
+                <option value="Exame">Exame</option>
+                <option value="NotaProfessor">Nota do Professor</option>
+            </select>
         </div>
-        <!-- Campos dinâmicos de notas (caso aplicável) -->
-        <!-- Campos dinâmicos de notas -->
-<div class="pauta-form-group" id="grupo-sub-nota" style="display:none;">
-    <label>Qual Nota Atualizar:</label>
-    <select id="act-nota-tipo" class="pauta-select" onchange="atualizarOpcoesNotaAtualizacao()">
-        <option value="Presenca">Presença</option>
-        <option value="TrabalhosIndividuais">Trabalhos Individuais</option>
-        <option value="TrabalhoGrupo">Trabalho de Grupo</option>
-        <option value="Teste1">1º Teste</option>
-        <option value="Teste2">2º Teste</option>
-        <option value="Exame">Exame</option>
-        <option value="NotaProfessor">Nota do Professor</option>
-    </select>
-</div>
 
-<!-- Sub-coluna (Ocupa a 2ª coluna da grelha quando ativa) -->
-<div class="pauta-form-group" id="grupo-sub-coluna" style="display:none;">
-    <label>Selecione a Sub-coluna Específica:</label>
-    <select id="act-subcoluna-select" class="pauta-select" onchange="atualizarValorInputNota()"></select>
-</div>
-
-<div class="pauta-form-group" id="grupo-input-valor" style="display:none;">
-    <label>Actualiza o Valor:</label>
-    <input type="text" id="act-novo-valor" class="pauta-input" placeholder="O valor atual carrega automaticamente">
-</div>
+        <div class="pauta-form-group" style="flex: 1; display: none;" id="grupo-sub-coluna">
+            <label>Sub-coluna Específica:</label>
+            <select id="act-subcoluna-select" class="pauta-input"></select>
+        </div>
     </div>
+
+    <!-- Onde o script vai injetar dinamicamente a tabela em massa ou os dados gerais -->
+    <div id="grupo-tabela-massa"></div>
 </div>
 
         <!-- 1.3 SUB-SECÇÃO: GERIR PLANILHAS E COLUNAS -->
