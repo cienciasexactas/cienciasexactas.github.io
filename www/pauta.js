@@ -601,15 +601,18 @@ function recarregarDadosDocente() {
 
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
 
+    // Dentro de recarregarDadosDocente():
     let todasColsPresenca = [];
     let todasColsTrabInd = [];
     let todasColsTrabGrp = [];
 
     // Isolamento estrito: utiliza o cursoSel ativo para recolher as colunas corretas
     filtrados.forEach(e => {
-        obterColunasCadeira(cursoSel, e.cadeira, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
-        obterColunasCadeira(cursoSel, e.cadeira, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
-        obterColunasCadeira(cursoSel, e.cadeira, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
+        // Garante que busca as colunas específicas da cadeira e do curso atualizado
+        const cadeiraAtual = e.cadeira || "Geral";
+        obterColunasCadeira(cursoSel, cadeiraAtual, "Presenças").forEach(c => { if (!todasColsPresenca.includes(c)) todasColsPresenca.push(c); });
+        obterColunasCadeira(cursoSel, cadeiraAtual, "Trabalhos Individuais").forEach(c => { if (!todasColsTrabInd.includes(c)) todasColsTrabInd.push(c); });
+        obterColunasCadeira(cursoSel, cadeiraAtual, "Trabalhos de Grupo").forEach(c => { if (!todasColsTrabGrp.includes(c)) todasColsTrabGrp.push(c); });
     });
 
     if (theadPresenca) {
@@ -1091,16 +1094,16 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
         if (selectSub) {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
-            
-            // FILTRO ESTRITO: Recolhe apenas os estudantes do curso e ano ativos
+
+            // FILTRO ESTRITO: Recolhe apenas os estudantes do curso e ano ativos            
             const estudantesCursoAno = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
-            
+
             // Recolhe exclusivamente as cadeiras associadas a este curso e ano
             const cadeirasCursoAno = [...new Set(estudantesCursoAno.map(e => e.cadeira || "Geral"))];
             
             let colunasEncontradas = [];
             cadeirasCursoAno.forEach(cad => {
-                // Passa estritamente o cursoSel E a cadeira correspondente (cad)
+                // Aqui é fundamental passar o cursoSel e a cadeira correta (cad)
                 const cols = obterColunasCadeira(cursoSel, cad, nomeCategoria);
                 cols.forEach(c => {
                     // Evita duplicados caso haja mais do que uma cadeira com o mesmo nome
@@ -1122,6 +1125,7 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
 
     renderizarTabelaAtualizacaoMassa();
 }
+
 
 function renderizarTabelaAtualizacaoMassa() {
     const cursoSel = document.getElementById('docente-curso-global').value;
