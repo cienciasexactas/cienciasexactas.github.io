@@ -12,7 +12,7 @@ function obterColunasCadeira(curso, cadeira, categoria) {
     const cursoKey = curso || "Geral";
     const cadeiraKey = cadeira || "Geral";
     const cid = `${cursoKey}_${cadeiraKey}`;
-
+    
     if (!pautaEstado.planilhasColunasPorCadeira[cid]) {
         pautaEstado.planilhasColunasPorCadeira[cid] = {
             "Presenças": [],
@@ -239,7 +239,7 @@ async function salvarNaNuvem() {
             alert("⚠️ AVISO: As alterações foram guardadas neste computador, mas FALHARAM ao sincronizar com a nuvem (GitHub/Vercel): " + (erroJson.error || "Erro desconhecido no servidor."));
             return false;
         }
-
+        
         return true;
     } catch (erro) {
         console.error("Erro de rede ao sincronizar com a nuvem:", erro);
@@ -340,7 +340,8 @@ function inicializarGestaoPlanilhas() {
 
 function atualizarSelectCadeirasGestaoPlanilhas() {
     const cursoSel = document.getElementById('docente-curso-global').value;
-    const estudantesCurso = pautaEstado.estudantes.filter(e => e.curso === cursoSel);
+    const anoSel = document.getElementById('docente-ano-global').value;
+    const estudantesCurso = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const cadeirasUnicas = [...new Set(estudantesCurso.map(e => e.cadeira || "Geral").filter(Boolean))];
 
     let selectCadeira = document.getElementById('select-cadeira-planilha-ativa');
@@ -522,7 +523,7 @@ function carregarCamposPercentagensAtuais() {
         return;
     }
 
-    const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel);
+    const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const cadeiraSel = estExemplo ? (estExemplo.cadeira || "geral") : "geral";
     const chave = `${cursoSel}_${anoSel}_${cadeiraSel}`;
 
@@ -549,7 +550,7 @@ async function guardarPercentagensCurso() {
         return;
     }
 
-    const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel);
+    const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const cadeiraSel = estExemplo ? (estExemplo.cadeira || "geral") : "geral";
     const chave = `${cursoSel}_${anoSel}_${cadeiraSel}`;
 
@@ -918,6 +919,7 @@ function controlarCamposAtualizacao() {
         if (grupoSubColuna) grupoSubColuna.style.display = "none";
         containerTabelaMassa.style.display = "none";
         containerDadosGerais.style.display = "block";
+        carregarSelectEstudantesUnico();
         preencherCamposDadosGerais();
     } else if (tipoSecao === "notas") {
         containerDadosGerais.style.display = "none";
@@ -1000,21 +1002,39 @@ function criarContainerDadosGerais() {
 
 function carregarSelectEstudantesUnico() {
     const cursoSel = document.getElementById('docente-curso-global').value;
-    const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel);
+    const anoSel = document.getElementById('docente-ano-global').value;
+    
+    // FILTRO ESTRITO: Curso + Ano Letivo
+    const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const selectEst = document.getElementById('act-estudante-id-unico');
     if (!selectEst) return;
 
     selectEst.innerHTML = "";
+    if (filtrados.length === 0) {
+        selectEst.innerHTML = `<option value="" disabled selected>-- Nenhum estudante neste curso e ano --</option>`;
+        preencherCamposDadosGerais();
+        return;
+    }
+
     filtrados.forEach(est => {
         selectEst.innerHTML += `<option value="${est.id}">${est.id} - ${est.nome} (${est.cadeira || 'Geral'})</option>`;
     });
+    preencherCamposDadosGerais();
 }
 
 function preencherCamposDadosGerais() {
     const idEst = document.getElementById('act-estudante-id-unico')?.value;
     const cursoSel = document.getElementById('docente-curso-global').value;
-    const est = pautaEstado.estudantes.find(e => e.id === idEst && e.curso === cursoSel);
-    if (!est) return;
+    const anoSel = document.getElementById('docente-ano-global').value;
+    
+    const est = pautaEstado.estudantes.find(e => e.id === idEst && e.curso === cursoSel && (e.ano === anoSel || !e.ano));
+    if (!est) {
+        if (document.getElementById('act-dg-nome')) {
+            document.getElementById('act-dg-nome').value = "";
+            document.getElementById('act-dg-cadeira').value = "";
+        }
+        return;
+    }
 
     if (document.getElementById('act-dg-nome')) {
         document.getElementById('act-dg-nome').value = est.nome || "";
@@ -1028,7 +1048,9 @@ function preencherCamposDadosGerais() {
 async function executarAtualizacaoDadosEstudante() {
     const idEst = document.getElementById('act-estudante-id-unico').value;
     const cursoSel = document.getElementById('docente-curso-global').value;
-    const est = pautaEstado.estudantes.find(e => e.id === idEst && e.curso === cursoSel);
+    const anoSel = document.getElementById('docente-ano-global').value;
+    
+    const est = pautaEstado.estudantes.find(e => e.id === idEst && e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     if (!est) return;
 
     const novoNome = document.getElementById('act-dg-nome').value.trim();
@@ -1058,6 +1080,7 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
     const grupoSubColuna = document.getElementById('grupo-sub-coluna');
     const selectSub = document.getElementById('act-subcoluna-select');
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
 
     const requerSubColuna = (tipoNota === "TrabalhosIndividuais" || tipoNota === "TrabalhoGrupo" || tipoNota === "Presenca");
 
@@ -1067,16 +1090,23 @@ function atualizarOpcoesNotaAtualizacaoMassa() {
         if (selectSub) {
             selectSub.innerHTML = "";
             let nomeCategoria = tipoNota === "Presenca" ? "Presenças" : (tipoNota === "TrabalhosIndividuais" ? "Trabalhos Individuais" : "Trabalhos de Grupo");
+            
+            // FILTRO ESTRITO: Respeita estritamente o Curso, o Ano e as respetivas Unidades Curriculares (Cadeiras)
+            const estudantesCursoAno = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
+            const cadeirasCursoAno = [...new Set(estudantesCursoAno.map(e => e.cadeira || "Geral"))];
+            
+            let colunasEncontradas = [];
+            cadeirasCursoAno.forEach(cad => {
+                const cols = obterColunasCadeira(cursoSel, cad, nomeCategoria);
+                cols.forEach(c => {
+                    if (!colunasEncontradas.includes(c)) colunasEncontradas.push(c);
+                });
+            });
 
-            // Buscar colunas da primeira cadeira encontrada ou geral
-            const estExemplo = pautaEstado.estudantes.find(e => e.curso === cursoSel);
-            const cadeiraSel = estExemplo ? (estExemplo.cadeira || "Geral") : "Geral";
-            let colunas = obterColunasCadeira(cursoSel, cadeiraSel, nomeCategoria);
-
-            if (colunas.length === 0) {
-                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada nas Planilhas --</option>`;
+            if (colunasEncontradas.length === 0) {
+                selectSub.innerHTML = `<option value="" disabled selected>-- Nenhuma coluna criada nas Planilhas para este curso/ano --</option>`;
             } else {
-                colunas.forEach(col => {
+                colunasEncontradas.forEach(col => {
                     selectSub.innerHTML += `<option value="${col}">${col}</option>`;
                 });
             }
@@ -1099,6 +1129,7 @@ function renderizarTabelaAtualizacaoMassa() {
         return;
     }
 
+    // FILTRO ESTRITO: Apenas estudantes do Curso e Ano letivo selecionados
     const filtrados = pautaEstado.estudantes.filter(e => e.curso === cursoSel && (e.ano === anoSel || !e.ano));
     const tipoNota = document.getElementById('act-nota-tipo').value;
     const selectSub = document.getElementById('act-subcoluna-select');
@@ -1123,7 +1154,7 @@ function renderizarTabelaAtualizacaoMassa() {
     `;
 
     if (filtrados.length === 0) {
-        html += `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">Nenhum estudante encontrado para este curso e ano.</td></tr>`;
+        html += `<tr><td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">Nenhum estudante encontrado para este curso e ano letivo.</td></tr>`;
     } else {
         filtrados.forEach(est => {
             let valorAtual = "";
@@ -1168,6 +1199,7 @@ function renderizarTabelaAtualizacaoMassa() {
 
 async function executarAtualizacaoMassa() {
     const cursoSel = document.getElementById('docente-curso-global').value;
+    const anoSel = document.getElementById('docente-ano-global').value;
     const tipoNota = document.getElementById('act-nota-tipo').value;
     const selectSub = document.getElementById('act-subcoluna-select');
     const subCol = selectSub ? selectSub.value : "";
@@ -1179,7 +1211,7 @@ async function executarAtualizacaoMassa() {
         const estCadeira = input.getAttribute('data-cadeira');
         const novoValor = input.value.trim();
 
-        const registos = pautaEstado.estudantes.filter(e => e.id === estId && e.curso === cursoSel && (e.cadeira || '') === estCadeira);
+        const registos = pautaEstado.estudantes.filter(e => e.id === estId && e.curso === cursoSel && (e.ano === anoSel || !e.ano) && (e.cadeira || '') === estCadeira);
 
         registos.forEach(est => {
             if (!est.subNotas) est.subNotas = {};
@@ -1302,7 +1334,7 @@ function entrarPainelEstudante(estudante) {
         reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais");
         reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo");
         const notaPresCalc = calcularNotaPresenca(reg);
-        if (notaPresCalc !== null) reg.presenca = notaPresCalc;
+        if (notaPresCalc !== null) reg.presenca = notaPresencaCalc;
 
         const avaliacao = calcularSituacaoEstudante(reg);
         reg.situacao = avaliacao.texto;
@@ -1545,13 +1577,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selectCurso) {
         selectCurso.addEventListener('change', () => {
-            if (document.getElementById('docente-acao-select').value === "percentagens") {
+            const acao = document.getElementById('docente-acao-select').value;
+            if (acao === "percentagens") {
                 carregarCamposPercentagensAtuais();
             }
-            if (document.getElementById('docente-acao-select').value === "planilha") {
+            if (acao === "planilha") {
                 atualizarSelectCadeirasGestaoPlanilhas();
             }
-            if (document.getElementById('docente-acao-select').value === "actualizar") {
+            if (acao === "actualizar") {
                 controlarCamposAtualizacao();
             }
             recarregarDadosDocente();
@@ -1560,8 +1593,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selectAno) {
         selectAno.addEventListener('change', () => {
-            if (document.getElementById('docente-acao-select').value === "percentagens") {
+            const acao = document.getElementById('docente-acao-select').value;
+            if (acao === "percentagens") {
                 carregarCamposPercentagensAtuais();
+            }
+            if (acao === "planilha") {
+                atualizarSelectCadeirasGestaoPlanilhas();
+            }
+            if (acao === "actualizar") {
+                controlarCamposAtualizacao();
             }
             recarregarDadosDocente();
         });
