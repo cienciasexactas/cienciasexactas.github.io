@@ -8749,10 +8749,10 @@
       "trabGrp": null,
       "teste1": "10",
       "teste2": "5",
-      "exame": "",
+      "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     }
   ],
   "planilhasColunasPorCadeira": {
