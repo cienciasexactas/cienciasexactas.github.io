@@ -8752,7 +8752,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Exame (4)"
+      "situacao": "Reprovado (4)"
     }
   ],
   "planilhasColunasPorCadeira": {
@@ -9107,6 +9107,12 @@
       "testes": 0.5,
       "trabInd": 0.2,
       "trabGrp": 0.2
+    },
+    "economia_2025-2026_estatística_i": {
+      "presenca": 0,
+      "testes": 1,
+      "trabInd": 0,
+      "trabGrp": 0
     }
   }
 }
