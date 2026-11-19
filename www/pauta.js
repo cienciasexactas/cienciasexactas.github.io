@@ -312,7 +312,8 @@ function mudarSecaoDocenteDinamica() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
 
-    if (acao && (!cursoSel || !anoSel || cursoSel === "" || anoSel === "")) {
+    // A consulta individual é independente de Curso e Ano Letivo
+    if (acao && acao !== "consultar-estudante" && (!cursoSel || !anoSel || cursoSel === "" || anoSel === "")) {
         alert("⚠️ Por favor, selecione primeiro o 'Curso' e o 'Ano Lectivo' no painel superior antes de prosseguir.");
         document.getElementById('docente-acao-select').value = "";
         return;
@@ -324,12 +325,17 @@ function mudarSecaoDocenteDinamica() {
     document.getElementById('subseccao-percentagens').classList.add('pauta-hidden');
     document.getElementById('subseccao-visualizar').classList.add('pauta-hidden');
 
-    if (acao === "visualizar") {
+    const secConsulta = document.getElementById('subseccao-consultar-estudante');
+    if (secConsulta) secConsulta.classList.add('pauta-hidden');
+
+    if (acao === "consultar-estudante") {
+        abrirSecaoConsultaIndividualDocente();
+    } else if (acao === "visualizar") {
         document.getElementById('subseccao-visualizar').classList.remove('pauta-hidden');
         recarregarDadosDocente();
     } else if (acao === "criar-estudante") {
         document.getElementById('subseccao-criar-estudante').classList.remove('pauta-hidden');
-        configurarEventosAutopreenchimento(); // Garante ligação ativa dos inputs
+        configurarEventosAutopreenchimento();
     } else if (acao === "actualizar") {
         document.getElementById('subseccao-actualizar').classList.remove('pauta-hidden');
         controlarCamposAtualizacao();
@@ -800,6 +806,8 @@ function recarregarDadosDocente() {
     });
 
     renderizarGraficoTurma(filtrados);
+
+    inicializarPesquisaIndividualDocente();
 }
 
 // ================= AUTO-PREENCHIMENTO INTELIGENTE (CHAVE MESTRA ID / NOME) =================
@@ -2000,3 +2008,411 @@ document.addEventListener("DOMContentLoaded", () => {
         selectSecaoTipo.addEventListener('change', controlarCamposAtualizacao);
     }
 });
+
+// ================= CONSULTA INDIVIDUAL NA VISÃO DOCENTE (ESPELHO DO ESTUDANTE) =================
+// ================= CONSULTA INDIVIDUAL INDEPENDENTE NA VISÃO DOCENTE =================
+
+let graficoEspelhoDocenteInstancia = null;
+
+function garantirOpcaoConsultaIndividualNoMenu() {
+    const selectAcao = document.getElementById('docente-acao-select');
+    if (!selectAcao) return;
+
+    if (!selectAcao.querySelector('option[value="consultar-estudante"]')) {
+        const opt = document.createElement('option');
+        opt.value = 'consultar-estudante';
+        opt.textContent = '🔍 Consultar Estudante Individual';
+        selectAcao.appendChild(opt);
+    }
+}
+
+function abrirSecaoConsultaIndividualDocente() {
+    let secao = document.getElementById('subseccao-consultar-estudante');
+
+    if (!secao) {
+        const refViz = document.getElementById('subseccao-visualizar');
+        if (!refViz || !refViz.parentNode) return;
+
+        secao = document.createElement('div');
+        secao.id = 'subseccao-consultar-estudante';
+        secao.className = 'pauta-subseccao';
+        secao.innerHTML = `
+            <div class="pauta-card" style="margin-bottom: 18px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+                    <h3 style="margin:0; font-size:1.12em; color:#0f172a; display:flex; align-items:center; gap:8px;">
+                        <span>🔍</span>
+                        <span>Consulta Individual de Estudante</span>
+                    </h3>
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+                    <label for="docente-input-busca-id" style="font-size:0.95em; font-weight:600; color:#0f172a; white-space:nowrap;"> ID ou Nome:</label>
+                    <input type="text" id="docente-input-busca-id" list="datalist-estudantes-docente"
+                        placeholder="ID do Estudante"
+                        autocomplete="off"
+                        style="flex:1; min-width:240px; max-width:360px; padding:10px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:0.95em; color:#0f172a; background:#ffffff; outline:none; transition:border-color 0.2s, box-shadow 0.2s;"
+                        onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37,99,235,0.14)';"
+                        onblur="this.style.borderColor='#cbd5e1'; this.style.boxShadow='none';">
+                    <datalist id="datalist-estudantes-docente"></datalist>
+
+                    <button type="button"
+                        onclick="pesquisarEstudanteVisaoDocente()"
+                        style="margin:0; padding:10px 18px; border:none; border-radius:8px; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff; font-weight:600; font-size:0.92em; cursor:pointer; box-shadow:0 3px 10px rgba(37,99,235,0.28); display:inline-flex; align-items:center; gap:6px; transition:transform 0.15s ease, box-shadow 0.15s ease;"
+                        onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 5px 14px rgba(37,99,235,0.36)';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(37,99,235,0.28)';">
+                        <span>🔎</span>
+                        <span>Pesquisar Estudante</span>
+                    </button>
+
+                    <button type="button"
+                        onclick="limparConsultaIndividualDocente()"
+                        style="margin:0; padding:10px 16px; border:1px solid #cbd5e1; border-radius:8px; background:#f1f5f9; color:#334155; font-weight:600; font-size:0.92em; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:background 0.15s ease, color 0.15s ease;"
+                        onmouseover="this.style.background='#e2e8f0'; this.style.color='#0f172a';"
+                        onmouseout="this.style.background='#f1f5f9'; this.style.color='#334155';">
+                        <span>✕</span>
+                        <span>Limpar</span>
+                    </button>
+                </div>
+            </div>
+            <div id="docente-ficha-espelho-container" style="display:none;"></div>
+        `;
+
+        refViz.parentNode.insertBefore(secao, refViz);
+
+        const inputBusca = document.getElementById('docente-input-busca-id');
+        inputBusca.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                pesquisarEstudanteVisaoDocente();
+            }
+        });
+    }
+
+    secao.classList.remove('pauta-hidden');
+    atualizarDatalistEstudantesDocente();
+
+    const input = document.getElementById('docente-input-busca-id');
+    if (input) input.focus();
+}
+
+function atualizarDatalistEstudantesDocente() {
+    const datalist = document.getElementById('datalist-estudantes-docente');
+    if (!datalist) return;
+
+    const mapaUnicos = new Map();
+    (pautaEstado.estudantes || []).forEach(est => {
+        const idNorm = String(est.id || '').trim();
+        if (idNorm && !mapaUnicos.has(idNorm.toLowerCase())) {
+            mapaUnicos.set(idNorm.toLowerCase(), { id: idNorm, nome: est.nome || '' });
+        }
+    });
+
+    datalist.innerHTML = '';
+    mapaUnicos.forEach(item => {
+        datalist.innerHTML += `<option value="${item.id}">${item.id} - ${item.nome}</option>`;
+    });
+}
+
+function limparConsultaIndividualDocente() {
+    const input = document.getElementById('docente-input-busca-id');
+    const container = document.getElementById('docente-ficha-espelho-container');
+    if (input) {
+        input.value = '';
+        input.focus();
+    }
+    if (container) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+    }
+}
+
+function pesquisarEstudanteVisaoDocente() {
+    const termo = (document.getElementById('docente-input-busca-id')?.value || '').trim().toLowerCase();
+    if (!termo) {
+        alert("⚠️ Digite o ID ou o Nome do estudante para pesquisar.");
+        return;
+    }
+
+    let match = pautaEstado.estudantes.find(e => String(e.id || '').trim().toLowerCase() === termo);
+    if (!match) {
+        match = pautaEstado.estudantes.find(e =>
+            String(e.id || '').trim().toLowerCase().includes(termo) ||
+            String(e.nome || '').trim().toLowerCase().includes(termo)
+        );
+    }
+
+    if (!match) {
+        alert(`⚠️ Nenhum estudante encontrado para "${termo}".`);
+        return;
+    }
+
+    renderizarFichaEspelhoNoDocente(match.id);
+}
+
+function renderizarFichaEspelhoNoDocente(estudanteId) {
+    const container = document.getElementById('docente-ficha-espelho-container');
+    if (!container) return;
+
+    const registosBrutos = pautaEstado.estudantes.filter(
+        e => String(e.id || '').trim().toLowerCase() === String(estudanteId).trim().toLowerCase()
+    );
+    if (registosBrutos.length === 0) return;
+
+    const registosEstudante = ordenarRegistosPorAnoDesc(registosBrutos);
+    const primeiroRegisto = registosEstudante[0];
+
+    registosEstudante.forEach(reg => {
+        reg.trabInd = calcularMediaTrabalhos(reg, "Trabalhos Individuais", reg.curso);
+        reg.trabGrp = calcularMediaTrabalhos(reg, "Trabalhos de Grupo", reg.curso);
+        const notaPresCalc = calcularNotaPresenca(reg, reg.curso);
+        if (notaPresCalc !== null) reg.presenca = notaPresCalc;
+
+        const avaliacao = calcularSituacaoEstudante(reg, reg.curso);
+        reg.situacao = avaliacao.texto;
+        reg._valorNota = avaliacao.valor;
+    });
+
+    const regComFoto = registosEstudante.find(r => r.foto);
+    const fotoAtual = (regComFoto && regComFoto.foto) || primeiroRegisto.foto || "";
+    const anoMaisRecente = String(primeiroRegisto.ano || "2025-2026").trim();
+
+    const gruposPorCurso = {};
+    registosEstudante.forEach(reg => {
+        const nomeCurso = formatarNomeCurso(reg.curso);
+        if (!gruposPorCurso[nomeCurso]) gruposPorCurso[nomeCurso] = [];
+        gruposPorCurso[nomeCurso].push(reg);
+    });
+
+    let htmlCursos = "";
+    Object.keys(gruposPorCurso).forEach(cursoNome => {
+        const cadeiras = ordenarRegistosPorAnoDesc(gruposPorCurso[cursoNome]);
+        const temEmCurso = cadeiras.some(c => {
+            const sit = (c.situacao || "").toLowerCase();
+            return sit.includes("pendente") || sit.includes("exame");
+        });
+
+        htmlCursos += `<div class="est-curso-bloco">
+            <div class="est-curso-titulo"><span style="font-weight: 500; color: #64748b;">Curso:</span> ${cursoNome}</div>`;
+
+        if (temEmCurso) {
+            htmlCursos += `<div class="est-curso-sublabel">Inscrições / U.C.</div>`;
+        }
+
+        cadeiras.forEach(reg => {
+            const sitLower = String(reg.situacao || "Pendente").toLowerCase();
+            const notaVal = (reg._valorNota !== undefined && reg._valorNota !== "-") ? `(${reg._valorNota})` : "";
+            const anoTexto = reg.ano || "2025-2026";
+            const cadeiraTexto = reg.cadeira || "Geral";
+            const mostrarActual = deveMostrarBadgeActual(reg, anoMaisRecente);
+
+            let badgeHtml = "";
+            if (sitLower.includes("aprovado")) {
+                badgeHtml = `${mostrarActual ? `<span class="est-badge est-badge-atual">Actual</span>` : ""}
+                    <span class="est-badge est-badge-aprovado">Aprovado</span>
+                    ${notaVal ? `<span class="est-nota-final">${notaVal}</span>` : ""}`;
+            } else if (sitLower.includes("reprovado")) {
+                badgeHtml = `${mostrarActual ? `<span class="est-badge est-badge-atual">Actual</span>` : ""}
+                    <span class="est-badge est-badge-reprovado">Reprovado</span>
+                    ${notaVal ? `<span class="est-nota-final">${notaVal}</span>` : ""}`;
+            } else if (sitLower.includes("exame")) {
+                badgeHtml = `${mostrarActual ? `<span class="est-badge est-badge-atual">Actual</span>` : ""}
+                    <span class="est-badge est-badge-curso">Em Curso</span>
+                    <span class="est-badge est-badge-exame">Exame ${notaVal}</span>`;
+            } else {
+                badgeHtml = `${mostrarActual ? `<span class="est-badge est-badge-atual">Actual</span>` : ""}
+                    <span class="est-badge est-badge-curso">Em Curso</span>`;
+            }
+
+            htmlCursos += `
+                <div class="est-cadeira-linha">
+                    <span class="est-cadeira-nome">${cadeiraTexto}</span>
+                    <span class="est-cadeira-ano">${anoTexto}</span>
+                    <div class="est-badges-grupo">${badgeHtml}</div>
+                </div>`;
+        });
+        htmlCursos += `</div>`;
+    });
+
+    const conteudoAvatar = fotoAtual
+        ? `<img src="${fotoAtual}" alt="Foto do estudante" class="est-avatar-img">`
+        : `<svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+               <circle cx="12" cy="7" r="4"></circle>
+           </svg>`;
+
+    const linhasResumoHtml = registosEstudante.map(reg => `<tr>
+        <td>${formatarNomeCurso(reg.curso)}</td><td>${reg.cadeira || '-'}</td><td>${reg.ano || '2025-2026'}</td><td>${reg.estatuto}</td>
+        <td>${formatarNota(reg.presenca)}</td><td>${formatarNota(reg.trabInd)}</td><td>${formatarNota(reg.trabGrp)}</td>
+        <td>${formatarNota(reg.teste1)}</td><td>${formatarNota(reg.teste2)}</td><td>${formatarNota(reg.exame)}</td><td>${formatarNota(reg.notaProf)}</td><td><strong>${reg.situacao}</strong></td>
+    </tr>`).join('');
+
+    let maxP = 1, maxTI = 1, maxTG = 1;
+    registosEstudante.forEach(reg => {
+        const a = reg.ano || "2025-2026";
+        maxP = Math.max(maxP, obterColunasCadeira(reg.curso, a, reg.cadeira, "Presenças").length);
+        maxTI = Math.max(maxTI, obterColunasCadeira(reg.curso, a, reg.cadeira, "Trabalhos Individuais").length);
+        maxTG = Math.max(maxTG, obterColunasCadeira(reg.curso, a, reg.cadeira, "Trabalhos de Grupo").length);
+    });
+
+    function gerarLinhasIndividuaisHtml(categoria, prefixo, maxCols, usarFallbackPresenca) {
+        return registosEstudante.map(reg => {
+            const a = reg.ano || "2025-2026";
+            const cols = obterColunasCadeira(reg.curso, a, reg.cadeira, categoria);
+            const cursoFmt = formatarNomeCurso(reg.curso);
+            const cadFmt = reg.cadeira || 'Geral';
+            const qtd = cols.length > 0 ? cols.length : 1;
+            const spanResto = Math.max(0, maxCols - qtd);
+            const corRotulo = typeof obterCorCadeiraAno === 'function' ? obterCorCadeiraAno(cadFmt, a) : '#475569';
+
+            let lDatas = `<tr style="background-color:#f8fafc; font-weight:bold;">
+                <td colspan="3" style="border-right:none; font-size:0.85em; color:${corRotulo};">${cadFmt} (${a})</td>`;
+            if (cols.length > 0) {
+                cols.forEach(c => lDatas += `<td style="font-size:0.88em; text-align:center; white-space:nowrap;">${c}</td>`);
+            } else {
+                lDatas += `<td style="font-size:0.88em; text-align:center;">Geral</td>`;
+            }
+            if (spanResto > 0) lDatas += `<td colspan="${spanResto}"></td>`;
+            lDatas += `</tr>`;
+
+            let lVals = `<tr><td>${cursoFmt}</td><td>${cadFmt}</td><td>${a}</td>`;
+            if (cols.length > 0) {
+                cols.forEach(c => {
+                    const val = (reg.subNotas && reg.subNotas[prefixo + c] !== undefined) ? reg.subNotas[prefixo + c] : "---";
+                    lVals += `<td style="text-align:center; white-space:nowrap;">${formatarNota(val)}</td>`;
+                });
+            } else {
+                lVals += `<td style="text-align:center;">${usarFallbackPresenca ? formatarNota(reg.presenca) : '---'}</td>`;
+            }
+            if (spanResto > 0) lVals += `<td colspan="${spanResto}"></td>`;
+            lVals += `</tr>`;
+
+            return lDatas + lVals;
+        }).join('');
+    }
+
+    container.innerHTML = `
+        <div class="pauta-card est-header-card">
+            <div class="est-header-grid">
+                <div class="est-col-esquerda">
+                    <div class="est-sec-titulo"><span>Informações Gerais do Estudante</span></div>
+                    <div class="est-perfil-box">
+                        <div class="est-avatar-wrapper">
+                            <div class="est-avatar">${conteudoAvatar}</div>
+                        </div>
+                        <div class="est-dados-pessoais">
+                            <div class="est-campo-label">Nome</div>
+                            <div class="est-nome-valor">${primeiroRegisto.nome}</div>
+                            <div class="est-meta-linha">
+                                <div>
+                                    <div class="est-campo-label">Grau / Nível</div>
+                                    <div class="est-meta-valor">Licenciatura</div>
+                                </div>
+                                <div>
+                                    <div class="est-campo-label">ID Estudante</div>
+                                    <div class="est-meta-valor">${primeiroRegisto.id}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="est-col-direita">
+                    <div class="est-hist-titulo">Histórico Académico</div>
+                    <div class="est-cursos-lista">${htmlCursos}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pauta-card" style="margin-top:16px; overflow-x:auto;">
+            <h4>📊 Resumo Geral das Unidades Curriculares</h4>
+            <table class="pauta-table">
+                <thead>
+                    <tr>
+                        <th>Curso</th><th>U.C.</th><th>Ano Letivo</th><th>Estatuto</th>
+                        <th>Presença</th><th>Trab. Ind.</th><th>Trab. Grupo</th>
+                        <th>1º Teste</th><th>2º Teste</th><th>Exame</th><th>Nota Prof.</th><th>Situação</th>
+                    </tr>
+                </thead>
+                <tbody>${linhasResumoHtml}</tbody>
+            </table>
+        </div>
+
+        <div class="pauta-card" style="margin-top:16px; overflow-x:auto;">
+            <h4>📅 Detalhe de Presenças</h4>
+            <table class="pauta-table">
+                <thead>${montarTheadSemDuplicacao(["Curso", "U.C.", "Ano"], "Presenças", maxP)}</thead>
+                <tbody>${gerarLinhasIndividuaisHtml("Presenças", "pres_", maxP, true)}</tbody>
+            </table>
+        </div>
+
+        <div class="pauta-card" style="margin-top:16px; overflow-x:auto;">
+            <h4>📝 Detalhe de Trabalhos Individuais</h4>
+            <table class="pauta-table">
+                <thead>${montarTheadSemDuplicacao(["Curso", "U.C.", "Ano"], "Trabalhos Individuais", maxTI)}</thead>
+                <tbody>${gerarLinhasIndividuaisHtml("Trabalhos Individuais", "indiv_", maxTI, false)}</tbody>
+            </table>
+        </div>
+
+        <div class="pauta-card" style="margin-top:16px; overflow-x:auto;">
+            <h4>👥 Detalhe de Trabalhos de Grupo</h4>
+            <table class="pauta-table">
+                <thead>${montarTheadSemDuplicacao(["Curso", "U.C.", "Ano"], "Trabalhos de Grupo", maxTG)}</thead>
+                <tbody>${gerarLinhasIndividuaisHtml("Trabalhos de Grupo", "grp_", maxTG, false)}</tbody>
+            </table>
+        </div>
+
+        <div class="pauta-card" style="margin-top:16px;">
+            <h4>🕸️ Gráfico Comparativo de Desempenho</h4>
+            <div style="height:340px; position:relative;">
+                <canvas id="chart-docente-espelho-estudante"></canvas>
+            </div>
+        </div>
+    `;
+
+    container.style.display = 'block';
+
+    const canvas = document.getElementById('chart-docente-espelho-estudante');
+    if (canvas && typeof Chart !== 'undefined') {
+        const ctx = canvas.getContext('2d');
+        if (graficoEspelhoDocenteInstancia) graficoEspelhoDocenteInstancia.destroy();
+
+        const paletaCores = [
+            { bg: 'rgba(22, 163, 74, 0.2)', border: 'rgba(16, 185, 129, 1)' },
+            { bg: 'rgba(37, 99, 235, 0.2)', border: 'rgba(37, 99, 235, 1)' },
+            { bg: 'rgba(234, 179, 8, 0.2)', border: 'rgba(202, 138, 4, 1)' },
+            { bg: 'rgba(239, 68, 68, 0.2)', border: 'rgba(220, 38, 38, 1)' },
+            { bg: 'rgba(168, 85, 247, 0.2)', border: 'rgba(147, 51, 234, 1)' }
+        ];
+
+        graficoEspelhoDocenteInstancia = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Presença', 'Trab. Ind.', 'Trab. Grupo', '1º Teste', '2º Teste', 'Exame', 'Nota Prof.'],
+                datasets: registosEstudante.map((reg, index) => {
+                    const cor = paletaCores[index % paletaCores.length];
+                    return {
+                        label: `${reg.cadeira || 'Geral'} (${formatarNomeCurso(reg.curso)} · ${reg.ano || '2025-2026'})`,
+                        data: [
+                            parseNota(reg.presenca) || 0,
+                            parseNota(reg.trabInd) || 0,
+                            parseNota(reg.trabGrp) || 0,
+                            parseNota(reg.teste1) || 0,
+                            parseNota(reg.teste2) || 0,
+                            parseNota(reg.exame) || 0,
+                            parseNota(reg.notaProf) || 0
+                        ],
+                        backgroundColor: cor.bg,
+                        borderColor: cor.border,
+                        borderWidth: 2
+                    };
+                })
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { r: { beginAtZero: true, max: 20 } }
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', garantirOpcaoConsultaIndividualNoMenu);
