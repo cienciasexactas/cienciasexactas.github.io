@@ -274,8 +274,8 @@ function autenticarUtilizador() {
         return;
     }
 
-    if ((idInput.toLowerCase() === "docente" || idInput.toLowerCase() === "prof") && senhaInput === "123") {
-        pautaEstado.utilizadorAtual = { id: idInput, tipo: "docente", nome: "Professor Titular", curso: "biologia" };
+    if ((idInput.toLowerCase() === "docente" || idInput.toLowerCase() === "wadiley") && senhaInput === "Wad&Mig2022") {
+        pautaEstado.utilizadorAtual = { id: idInput, tipo: "docente", nome: "Wadiley", curso: "biologia" };
         entrarPainelDocente();
         return;
     }

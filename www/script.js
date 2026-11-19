@@ -388,7 +388,6 @@ function subscreverNewsletter(event) {
 // ============================================================================
 // 4. TRADUÇÃO DINÂMICA (GOOGLE TRANSLATE) & IDIOMAS
 // ============================================================================
-
 /**
  * Callback de inicialização do widget do Google Translate.
  */
