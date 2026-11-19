@@ -2045,10 +2045,10 @@ function abrirSecaoConsultaIndividualDocente() {
                     </h3>
                 </div>
 
-                <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
-                    <label for="docente-input-busca-id" style="font-size:0.95em; font-weight:600; color:#0f172a; white-space:nowrap;"> ID ou Nome:</label>
+                <div style="margin-left: 12px; padding: 14px 16px; border-radius: 8px; background: #f4f5f7; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+                    <label for="docente-input-busca-id" style="font-size:0.95em; font-weight:600; color:#334155; white-space:nowrap;">ID ou Nome do Estudante:</label>
                     <input type="text" id="docente-input-busca-id" list="datalist-estudantes-docente"
-                        placeholder="ID do Estudante"
+                        placeholder="Digite o ID ou Nome do Estudante (ex: ECON2014 ou Wadiley ... "
                         autocomplete="off"
                         style="flex:1; min-width:240px; max-width:360px; padding:10px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:0.95em; color:#0f172a; background:#ffffff; outline:none; transition:border-color 0.2s, box-shadow 0.2s;"
                         onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37,99,235,0.14)';"
@@ -2061,7 +2061,7 @@ function abrirSecaoConsultaIndividualDocente() {
                         onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 5px 14px rgba(37,99,235,0.36)';"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(37,99,235,0.28)';">
                         <span>🔎</span>
-                        <span>Pesquisar Estudante</span>
+                        <span>Pesquisar</span>
                     </button>
 
                     <button type="button"
@@ -2070,7 +2070,7 @@ function abrirSecaoConsultaIndividualDocente() {
                         onmouseover="this.style.background='#e2e8f0'; this.style.color='#0f172a';"
                         onmouseout="this.style.background='#f1f5f9'; this.style.color='#334155';">
                         <span>✕</span>
-                        <span>Limpar</span>
+                        <span>Limpar Campo</span>
                     </button>
                 </div>
             </div>
