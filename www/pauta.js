@@ -1388,9 +1388,32 @@ function ordenarRegistosPorAnoDesc(registos) {
     });
 }
 
+// Formata o código/slug do curso para um nome legível de exibição
 function formatarNomeCurso(cursoStr) {
     const raw = String(cursoStr || "Geral").trim();
     if (!raw) return "Geral";
+
+    const mapaNomesCursos = {
+        "biologia": "Biologia",
+        "cienciasnaturais": "Ensino Básico - C. N. Sociais",
+        "matematica": "Matemática",
+        "economia": "Economia",
+        "gestao-empresa": "Gestão de Empresa",
+        "gestao-iscgvsm": "Gestão em Saúde - ISCSVSM",
+        "enfermagem-a": "Enfermagem - A",
+        "enfermagem-b": "Enfermagem - B",
+        "contabilidade": "Contabilidade",
+        "agronomia": "Agronomia",
+        "turismo": "Turismo",
+        "geografia": "Geografia",
+        "educacao-infancia": "Educação de Infância"
+    };
+
+    const chave = raw.toLowerCase();
+    if (mapaNomesCursos[chave]) {
+        return mapaNomesCursos[chave];
+    }
+
     return raw.charAt(0).toUpperCase() + raw.slice(1);
 }
 
@@ -1695,7 +1718,7 @@ function renderizarCabecalhoEstudante(primeiroRegisto, registosEstudante) {
         });
 
         htmlCursos += `<div class="est-curso-bloco">
-            <div class="est-curso-titulo">${cursoNome}</div>`;
+            <div class="est-curso-titulo"><span style="font-weight: 750; color: blue;">Curso:</span> ${cursoNome}</div>`;
 
         if (temEmCurso) {
             htmlCursos += `<div class="est-curso-sublabel">Inscrições / U.C.</div>`;
