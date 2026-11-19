@@ -306,7 +306,7 @@ function entrarPainelDocente() {
     recarregarDadosDocente();
 }
 
-// 1. Garante que os eventos de autopreenchimento são ativados sempre que abrir a secção de criar estudante
+// Garante que os eventos de autopreenchimento são ativados sempre que abrir a secção de criar estudante
 function mudarSecaoDocenteDinamica() {
     const acao = document.getElementById('docente-acao-select').value;
     const cursoSel = document.getElementById('docente-curso-global').value;
