@@ -201,7 +201,258 @@
 }
 
 /* Alturas consistentes */
-#ce-id, #ce-senha, #ce-nome, #ce-cadeira, #ce-estatuto, 
-#select-apagar-estudante, #act-novo-valor {
+#ce-id,
+#ce-senha,
+#ce-nome,
+#ce-cadeira,
+#ce-estatuto,
+#select-apagar-estudante,
+#act-novo-valor {
     height: 35px;
+}
+
+/* =========================================================
+   CABEÇALHO MODERNO DO PORTAL DO ESTUDANTE
+   ========================================================= */
+.est-header-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px 16px 28px;
+}
+
+.est-header-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.est-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Coluna Esquerda */
+.est-sec-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.est-perfil-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.est-avatar {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 50%;
+    background-color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.est-dados-pessoais {
+    display: flex;
+    flex-direction: column;
+}
+
+.est-campo-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.est-nome-valor {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.est-meta-linha {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.est-meta-valor {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+/* Coluna Direita - Histórico Académico */
+.est-hist-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 14px;
+}
+
+.est-curso-bloco {
+    margin-bottom: 16px;
+}
+
+.est-curso-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.est-curso-sublabel {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.est-cadeira-linha {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+.est-cadeira-nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.est-cadeira-ano {
+    font-size: 14px;
+    color: #475569;
+}
+
+.est-badges-grupo {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Badges de Estado */
+.est-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.est-badge-atual {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.est-badge-curso {
+    background-color: #0369a1;
+    color: #ffffff;
+}
+
+.est-badge-exame {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.est-badge-aprovado {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.est-badge-reprovado {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.est-nota-final {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.est-header-rodape {
+    text-align: right;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .est-header-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.est-avatar-wrapper {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    min-width: 88px;
+    margin-top: 4px;
+}
+
+.est-avatar {
+    width: 88px;
+    height: 88px;
+    min-width: 88px;
+    border-radius: 50%;
+    background-color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+}
+
+.est-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.est-avatar-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+.est-avatar-btn:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.06);
 }
