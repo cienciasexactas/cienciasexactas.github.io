@@ -8005,7 +8005,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8034,7 +8034,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2005",
@@ -8044,7 +8044,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8073,7 +8073,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2006",
@@ -8083,7 +8083,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8112,7 +8112,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2007",
@@ -8122,7 +8122,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8151,7 +8151,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2008",
@@ -8161,7 +8161,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8190,7 +8190,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2009",
@@ -8200,7 +8200,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8229,7 +8229,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2010",
@@ -8239,7 +8239,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8268,7 +8268,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2011",
@@ -8278,7 +8278,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8307,7 +8307,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2012",
@@ -8317,7 +8317,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8346,7 +8346,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2013",
@@ -8356,7 +8356,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8385,7 +8385,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2014",
@@ -8395,7 +8395,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8424,7 +8424,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2015",
@@ -8434,7 +8434,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8463,7 +8463,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2016",
@@ -8473,7 +8473,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8502,7 +8502,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2017",
@@ -8512,7 +8512,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8541,7 +8541,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2018",
@@ -8551,7 +8551,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8580,7 +8580,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2019",
@@ -8590,7 +8590,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8619,7 +8619,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2020",
@@ -8629,7 +8629,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8658,7 +8658,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2021",
@@ -8668,7 +8668,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8697,7 +8697,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2022",
@@ -8707,7 +8707,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8736,7 +8736,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ECON2014",
@@ -9058,7 +9058,9 @@
       ]
     },
     "economia_2025-2026_estatística_i": {
-      "Presenças": [],
+      "Presenças": [
+        "10/10/2025"
+      ],
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
     }
