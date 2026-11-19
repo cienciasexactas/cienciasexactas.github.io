@@ -8748,11 +8748,11 @@
       "trabInd": null,
       "trabGrp": null,
       "teste1": "10",
-      "teste2": "",
+      "teste2": "5",
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Pendente"
+      "situacao": "Exame (3)"
     }
   ],
   "planilhasColunasPorCadeira": {
