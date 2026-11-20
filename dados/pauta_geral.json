@@ -8795,7 +8795,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (3)",
+      "situacao": "Reprovado (4)",
       "_valorNota": 8
     },
     {
@@ -10639,6 +10639,12 @@
       "testes": 0.8,
       "trabInd": 0,
       "trabGrp": 0.2
+    },
+    "biologia_2025-2026_probabilidade_&_estatística_ii": {
+      "presenca": 0,
+      "testes": 1,
+      "trabInd": 0,
+      "trabGrp": 0
     }
   }
 }
