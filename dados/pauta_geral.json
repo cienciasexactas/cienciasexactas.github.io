@@ -10088,7 +10088,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Exame (5)",
+      "situacao": "Aprovado(a) (10)",
       "_valorNota": 8
     },
     {
@@ -10143,9 +10143,9 @@
       "teste1": "10",
       "teste2": "9.5",
       "exame": "",
-      "notaProf": "",
+      "notaProf": "2",
       "subNotas": {},
-      "situacao": "Exame (5)",
+      "situacao": "Aprovado(a) (10)",
       "_valorNota": 8
     },
     {
