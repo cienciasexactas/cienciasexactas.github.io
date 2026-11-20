@@ -604,6 +604,254 @@ async function guardarPercentagensCurso() {
     recarregarDadosDocente();
 }
 
+// ================= SELEÇÃO E GUARDA DE PERCENTAGENS POR UNIDADE CURRICULAR (U.C.) =================
+// ================= SELEÇÃO E GUARDA DE PERCENTAGENS POR UNIDADE CURRICULAR (U.C.) =================
+function atualizarSelectUCPonderacaoPauta3() {
+    const subSec = document.getElementById('subseccao-percentagens');
+    const cursoSel = document.getElementById('docente-curso-global')?.value;
+    const anoSel = document.getElementById('docente-ano-global')?.value;
+    if (!subSec || !cursoSel || !anoSel) return;
+
+    const wrapperAntigo = document.getElementById('pauta3-wrapper-uc-perc');
+    if (wrapperAntigo) wrapperAntigo.remove();
+
+    const inputPresenca = document.getElementById('pc-presenca');
+    const btnGuardar = subSec.querySelector('button[onclick*="guardarPercentagens"]');
+    const grelha = inputPresenca?.closest('.pauta-form-row, .pauta-grid-3col') || inputPresenca?.parentElement?.parentElement;
+
+    if (grelha) {
+        grelha.style.display = 'grid';
+        grelha.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))';
+        grelha.style.gap = '16px';
+        grelha.style.alignItems = 'end';
+    }
+
+    let campoUC = document.getElementById('pauta3-campo-uc-grid');
+    if (!campoUC) {
+        campoUC = document.createElement('div');
+        campoUC.id = 'pauta3-campo-uc-grid';
+        campoUC.className = 'pauta-form-group';
+        campoUC.innerHTML = `
+            <label for="pauta3-select-uc-perc">Unidade Curricular (U.C.):</label>
+            <select id="pauta3-select-uc-perc" class="pauta-input" onchange="carregarPercentagensPorUCSelecionada()">
+                <option value="" disabled selected>-- Selecione a U.C. --</option>
+            </select>
+        `;
+    }
+
+    // Coloca o seletor dentro da grelha antes de Guardar Percentagens (ou antes de % Presença)
+    if (grelha && campoUC.parentElement !== grelha) {
+        const alvoBtn = btnGuardar?.closest('.pauta-form-group') || btnGuardar;
+        if (alvoBtn && alvoBtn.parentElement === grelha) {
+            grelha.insertBefore(campoUC, alvoBtn);
+        } else {
+            grelha.appendChild(campoUC);
+        }
+    }
+
+    if (btnGuardar) {
+        btnGuardar.setAttribute('onclick', 'guardarPercentagensPorUCSelecionada()');
+    }
+
+    const selectUC = document.getElementById('pauta3-select-uc-perc');
+    if (!selectUC) return;
+
+    const cursoKey = cursoSel.trim().toLowerCase();
+    const anoKey = anoSel.trim().toLowerCase();
+    const ucsSet = new Set();
+
+    pautaEstado.estudantes.forEach(e => {
+        const mesmoCurso = String(e.curso || '').trim().toLowerCase() === cursoKey;
+        const mesmoAno = !e.ano || String(e.ano || '').trim().toLowerCase() === anoKey;
+        const uc = String(e.cadeira || '').trim();
+        if (mesmoCurso && mesmoAno && uc) {
+            ucsSet.add(uc);
+        }
+    });
+
+    Object.keys(pautaEstado.percentagens || {}).forEach(chave => {
+        const partes = chave.split('_');
+        if (partes.length >= 3 && partes[0] === cursoKey && partes[1] === anoKey) {
+            const ucChave = partes.slice(2).join('_');
+            const existente = Array.from(ucsSet).find(x => x.trim().toLowerCase().replace(/\s+/g, '_') === ucChave);
+            ucsSet.add(existente || ucChave);
+        }
+    });
+
+    const anterior = selectUC.value;
+    selectUC.innerHTML = '<option value="" disabled selected>-- Selecione a U.C. --</option>';
+
+    Array.from(ucsSet).sort((a, b) => a.localeCompare(b, 'pt')).forEach(uc => {
+        selectUC.innerHTML += `<option value="${uc}">${uc}</option>`;
+    });
+
+    if (anterior && Array.from(selectUC.options).some(o => o.value === anterior)) {
+        selectUC.value = anterior;
+    } else if (selectUC.options.length === 2) {
+        selectUC.selectedIndex = 1;
+    }
+
+    carregarPercentagensPorUCSelecionada();
+}
+
+function carregarPercentagensPorUCSelecionada() {
+    const cursoSel = document.getElementById('docente-curso-global')?.value;
+    const anoSel = document.getElementById('docente-ano-global')?.value;
+    const ucSel = document.getElementById('pauta3-select-uc-perc')?.value;
+
+    const inputPresenca = document.getElementById('pc-presenca');
+    const inputTestes = document.getElementById('pc-testes');
+    const inputTrabInd = document.getElementById('pc-trabind');
+    const inputTrabGrp = document.getElementById('pc-trabgrp');
+
+    const limparCampos = () => {
+        if (inputPresenca) inputPresenca.value = "";
+        if (inputTestes) inputTestes.value = "";
+        if (inputTrabInd) inputTrabInd.value = "";
+        if (inputTrabGrp) inputTrabGrp.value = "";
+    };
+
+    if (!cursoSel || !anoSel || !ucSel) {
+        limparCampos();
+        return;
+    }
+
+    const cursoKey = cursoSel.trim().toLowerCase();
+    const anoKey = anoSel.trim().toLowerCase();
+    const cadeiraKey = ucSel.trim().toLowerCase();
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
+
+    const pesos = pautaEstado.percentagens && pautaEstado.percentagens[chave];
+    if (pesos) {
+        if (inputPresenca) inputPresenca.value = pesos.presenca > 0 ? pesos.presenca * 100 : "";
+        if (inputTestes) inputTestes.value = pesos.testes > 0 ? pesos.testes * 100 : "";
+        if (inputTrabInd) inputTrabInd.value = pesos.trabInd > 0 ? pesos.trabInd * 100 : "";
+        if (inputTrabGrp) inputTrabGrp.value = pesos.trabGrp > 0 ? pesos.trabGrp * 100 : "";
+    } else {
+        limparCampos();
+    }
+}
+
+async function guardarPercentagensPorUCSelecionada() {
+    const cursoSel = document.getElementById('docente-curso-global')?.value;
+    const anoSel = document.getElementById('docente-ano-global')?.value;
+    const ucSel = document.getElementById('pauta3-select-uc-perc')?.value;
+
+    if (!cursoSel || !anoSel || !ucSel) {
+        alert("⚠️ Selecione o Curso, o Ano Letivo e a Unidade Curricular (U.C.).");
+        return;
+    }
+
+    const cursoKey = cursoSel.trim().toLowerCase();
+    const anoKey = anoSel.trim().toLowerCase();
+    const cadeiraKey = ucSel.trim().toLowerCase();
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
+
+    let pPresenca = parseFloat(document.getElementById('pc-presenca').value) || 0;
+    let pTestes = parseFloat(document.getElementById('pc-testes').value) || 0;
+    let pTrabInd = parseFloat(document.getElementById('pc-trabind').value) || 0;
+    let pTrabGrp = parseFloat(document.getElementById('pc-trabgrp').value) || 0;
+
+    if (pPresenca > 1 || pTestes > 1 || pTrabInd > 1 || pTrabGrp > 1) {
+        pPresenca /= 100; pTestes /= 100; pTrabInd /= 100; pTrabGrp /= 100;
+    }
+
+    pautaEstado.percentagens[chave] = {
+        presenca: pPresenca,
+        testes: pTestes,
+        trabInd: pTrabInd,
+        trabGrp: pTrabGrp
+    };
+
+    await salvarNaNuvem();
+    alert(`✅ Percentagens guardadas para "${ucSel}" (${anoSel})!`);
+    recarregarDadosDocente();
+}
+
+function carregarPercentagensPorUCSelecionada() {
+    const cursoSel = (document.getElementById('docente-curso-global')?.value || '').trim();
+    const anoSel = (document.getElementById('docente-ano-global')?.value || '').trim();
+    const ucSel = (document.getElementById('pauta3-select-uc-perc')?.value || '').trim();
+
+    const inputPresenca = document.getElementById('pc-presenca');
+    const inputTestes = document.getElementById('pc-testes');
+    const inputTrabInd = document.getElementById('pc-trabind');
+    const inputTrabGrp = document.getElementById('pc-trabgrp');
+
+    if (!cursoSel || !anoSel || !ucSel) {
+        if (inputPresenca) inputPresenca.value = "";
+        if (inputTestes) inputTestes.value = "";
+        if (inputTrabInd) inputTrabInd.value = "";
+        if (inputTrabGrp) inputTrabGrp.value = "";
+        return;
+    }
+
+    const cursoKey = cursoSel.toLowerCase();
+    const anoKey = anoSel.toLowerCase();
+    const cadeiraKey = ucSel.toLowerCase();
+    const chaveExata = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
+
+    let pesos = pautaEstado.percentagens && pautaEstado.percentagens[chaveExata];
+    if (!pesos && pautaEstado.percentagens) {
+        const alvoNorm = `${normalizarComparacaoPauta3(cursoSel)}_${normalizarComparacaoPauta3(anoSel)}_${normalizarComparacaoPauta3(ucSel)}`;
+        const chaveEncontrada = Object.keys(pautaEstado.percentagens).find(k => {
+            const p = String(k).split('_');
+            if (p.length < 3) return false;
+            const kNorm = `${normalizarComparacaoPauta3(p[0])}_${normalizarComparacaoPauta3(p[1])}_${normalizarComparacaoPauta3(p.slice(2).join('_'))}`;
+            return kNorm === alvoNorm;
+        });
+        if (chaveEncontrada) pesos = pautaEstado.percentagens[chaveEncontrada];
+    }
+
+    if (pesos) {
+        if (inputPresenca) inputPresenca.value = pesos.presenca > 0 ? pesos.presenca * 100 : "";
+        if (inputTestes) inputTestes.value = pesos.testes > 0 ? pesos.testes * 100 : "";
+        if (inputTrabInd) inputTrabInd.value = pesos.trabInd > 0 ? pesos.trabInd * 100 : "";
+        if (inputTrabGrp) inputTrabGrp.value = pesos.trabGrp > 0 ? pesos.trabGrp * 100 : "";
+    } else {
+        if (inputPresenca) inputPresenca.value = "";
+        if (inputTestes) inputTestes.value = "";
+        if (inputTrabInd) inputTrabInd.value = "";
+        if (inputTrabGrp) inputTrabGrp.value = "";
+    }
+}
+
+async function guardarPercentagensPorUCSelecionada() {
+    const cursoSel = (document.getElementById('docente-curso-global')?.value || '').trim();
+    const anoSel = (document.getElementById('docente-ano-global')?.value || '').trim();
+    const ucSel = (document.getElementById('pauta3-select-uc-perc')?.value || '').trim();
+
+    if (!cursoSel || !anoSel || !ucSel) {
+        alert("⚠️ Selecione o Curso, o Ano Letivo e a Unidade Curricular (U.C.).");
+        return;
+    }
+
+    const cursoKey = cursoSel.toLowerCase();
+    const anoKey = anoSel.toLowerCase();
+    const cadeiraKey = ucSel.toLowerCase();
+    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
+
+    let pPresenca = parseFloat(document.getElementById('pc-presenca').value) || 0;
+    let pTestes = parseFloat(document.getElementById('pc-testes').value) || 0;
+    let pTrabInd = parseFloat(document.getElementById('pc-trabind').value) || 0;
+    let pTrabGrp = parseFloat(document.getElementById('pc-trabgrp').value) || 0;
+
+    if (pPresenca > 1 || pTestes > 1 || pTrabInd > 1 || pTrabGrp > 1) {
+        pPresenca /= 100; pTestes /= 100; pTrabInd /= 100; pTrabGrp /= 100;
+    }
+
+    pautaEstado.percentagens[chave] = {
+        presenca: pPresenca,
+        testes: pTestes,
+        trabInd: pTrabInd,
+        trabGrp: pTrabGrp
+    };
+
+    await salvarNaNuvem();
+    alert(`✅ Percentagens guardadas para "${ucSel}" (${anoSel})!`);
+    recarregarDadosDocente();
+}
+
 // Auxiliar para montar uma única linha no <thead> mesclando as colunas do grupo sem duplicar nomes no topo
 function montarTheadSemDuplicacao(colunasFixas, tituloGrupo, totalSubcolunas) {
     const span = totalSubcolunas > 0 ? totalSubcolunas : 1;
@@ -2416,3 +2664,20 @@ function renderizarFichaEspelhoNoDocente(estudanteId) {
 }
 
 document.addEventListener('DOMContentLoaded', garantirOpcaoConsultaIndividualNoMenu);
+
+// Gancho não-invasivo para atualizar a U.C. ao abrir ou alterar Percentagens
+document.addEventListener("DOMContentLoaded", () => {
+    const acaoSelect = document.getElementById('docente-acao-select');
+    const cursoSelect = document.getElementById('docente-curso-global');
+    const anoSelect = document.getElementById('docente-ano-global');
+
+    const sincronizarUCPerc = () => {
+        if (acaoSelect && acaoSelect.value === "percentagens") {
+            setTimeout(atualizarSelectUCPonderacaoPauta3, 0);
+        }
+    };
+
+    if (acaoSelect) acaoSelect.addEventListener('change', sincronizarUCPerc);
+    if (cursoSelect) cursoSelect.addEventListener('change', sincronizarUCPerc);
+    if (anoSelect) anoSelect.addEventListener('change', sincronizarUCPerc);
+});
