@@ -127,7 +127,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-a",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -205,7 +205,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-a",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1076,7 +1076,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "P",
+        "pres_19/11/2026": "F",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1102,7 +1102,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1131,7 +1131,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3030",
@@ -1141,7 +1141,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1170,7 +1170,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3031",
@@ -1180,7 +1180,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1209,7 +1209,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3032",
@@ -1219,7 +1219,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1248,7 +1248,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3033",
@@ -1258,7 +1258,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1287,7 +1287,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3034",
@@ -1297,7 +1297,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1326,7 +1326,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3035",
@@ -1336,7 +1336,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1349,7 +1349,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "P",
+        "pres_19/11/2026": "F",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1365,7 +1365,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3036",
@@ -1375,7 +1375,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1388,7 +1388,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "P",
+        "pres_19/11/2026": "F",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1404,7 +1404,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3037",
@@ -1414,7 +1414,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1443,7 +1443,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3038",
@@ -1453,7 +1453,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1482,7 +1482,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3039",
@@ -1492,7 +1492,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1521,7 +1521,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3040",
@@ -1531,7 +1531,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1560,7 +1560,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3041",
@@ -1570,7 +1570,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1599,7 +1599,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3042",
@@ -1609,7 +1609,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1638,7 +1638,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3043",
@@ -1648,7 +1648,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1677,7 +1677,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3044",
@@ -1687,7 +1687,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1716,7 +1716,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3045",
@@ -1726,7 +1726,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1755,7 +1755,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3046",
@@ -1765,7 +1765,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1794,7 +1794,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3047",
@@ -1804,7 +1804,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1833,7 +1833,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3048",
@@ -1843,7 +1843,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1872,7 +1872,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3049",
@@ -1882,7 +1882,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1911,7 +1911,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3050",
@@ -1921,7 +1921,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1950,7 +1950,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3051",
@@ -1960,7 +1960,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1989,7 +1989,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3052",
@@ -1999,7 +1999,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2028,7 +2028,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3053",
@@ -2038,7 +2038,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2051,7 +2051,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "P",
+        "pres_19/11/2026": "F",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -2067,7 +2067,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3054",
@@ -2077,7 +2077,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2106,7 +2106,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3055",
@@ -2116,7 +2116,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2145,7 +2145,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3056",
@@ -2155,7 +2155,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2184,7 +2184,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3057",
@@ -2194,7 +2194,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2223,7 +2223,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3058",
@@ -2233,7 +2233,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2262,7 +2262,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ENF3059",
@@ -2272,7 +2272,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2301,7 +2301,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (2)"
     },
     {
       "id": "EB4CNS001",
