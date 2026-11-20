@@ -1,5 +1,5 @@
 /* ============================================================================
-   TRABALHOS (INDIVIDUAIS E DE GRUPO) - LEITURA DIRETA NO GITHUB (ISOLADO)
+   TRABALHOS (INDIVIDUAIS E DE GRUPO) - LEITURA DIRETA NO GITHUB (ISOLADO) 
    ============================================================================ */
 
 const TP_CONFIG = {
