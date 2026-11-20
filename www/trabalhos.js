@@ -1,496 +1,340 @@
-/* ============================================================================
-   TRABALHOS (INDIVIDUAIS E DE GRUPO) - LEITURA DIRETA NO GITHUB (ISOLADO) 
-   ============================================================================ */
+// =========================================================================
+// MÓDULO DE GESTÃO DE TRABALHOS (trabalhos.js) - NAVEGAÇÃO POR PASTAS
+// =========================================================================
 
-const TP_CONFIG = {
-  owner: 'cienciasexactas',
-  repo: 'cienciasexactas.github.io',
-  branch: 'main',
+let arvoreCompleta = null;
+let categoriaAtual = "Trabalhos Individuais";
+let caminhoNavegacao = []; // Ex: ["Economia", "2026-2027", "Trabalho_1"]
 
-  // Pasta raiz no mesmo diretório dos ficheiros do projeto principal
-  pastaRaiz: 'Trabalhos',
+const API_LISTAR_TRABALHOS = "https://api-cienciasexactas.vercel.app/api/trabalhos";
+const RAW_GITHUB_BASE = "https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/";
 
-  // Subpastas dentro de "Trabalhos"
-  categorias: [
-    { pasta: 'Trabalhos Individuais', titulo: 'Trabalhos Individuais' },
-    { pasta: 'Trabalhos de Grupo', titulo: 'Trabalhos de Grupo' }
-  ],
-
-  containerId: 'trabalhos-praticos-container',
-  ficheirosIgnorados: ['.gitkeep', '.keep', 'readme.md', 'index.html']
-};
-
-const TP_CODIGOS_CURSOS = {
-  'biologia': 'L2BIO2026',
-  'cienciasnaturais': 'CNA2026',
-  'matematica': 'MAT2026',
-  'economia': 'L5ECO2026',
-  'gestao-empresa': 'GES2026',
-  'gestao-iscgvsm': 'ISC2026',
-  'enfermagem-a': 'ENFA2026',
-  'enfermagem-b': 'CHEFEKATIA123',
-  'contabilidade': 'CONT2026',
-  'agronomia': 'AGR2026',
-  'turismo': 'TUR2026',
-  'geografia': 'GEO2026',
-  'educacao-infancia': 'EDU2026'
-};
-
-// Aceita o ID interno ou o nome da pasta no GitHub (ex.: "Economia", "Biologia", "Gestão de Empresas")
-const TP_CURSOS = [
-  { id: 'economia', pastasGitHub: ['Economia', 'economia'], nome: 'Economia' },
-  { id: 'biologia', pastasGitHub: ['Biologia', 'biologia'], nome: 'Biologia' },
-  { id: 'gestao-empresa', pastasGitHub: ['Gestão de Empresas', 'Gestao de Empresas', 'gestao-empresa'], nome: 'Gestão de Empresas' },
-  { id: 'cienciasnaturais', pastasGitHub: ['Ciências Naturais', 'cienciasnaturais'], nome: 'Ciências Naturais' },
-  { id: 'matematica', pastasGitHub: ['Matemática', 'Matematica', 'matematica'], nome: 'Matemática' },
-  { id: 'gestao-iscgvsm', pastasGitHub: ['Gestão - ISCSVSM', 'gestao-iscgvsm'], nome: 'Gestão - ISCSVSM' },
-  { id: 'enfermagem-a', pastasGitHub: ['Enfermagem - A', 'enfermagem-a'], nome: 'Enfermagem - A' },
-  { id: 'enfermagem-b', pastasGitHub: ['Enfermagem - B', 'enfermagem-b'], nome: 'Enfermagem - B' },
-  { id: 'contabilidade', pastasGitHub: ['Contabilidade', 'contabilidade'], nome: 'Contabilidade' },
-  { id: 'agronomia', pastasGitHub: ['Agronomia', 'agronomia'], nome: 'Agronomia' },
-  { id: 'turismo', pastasGitHub: ['Turismo', 'turismo'], nome: 'Turismo' },
-  { id: 'geografia', pastasGitHub: ['Geografia', 'geografia'], nome: 'Geografia' },
-  { id: 'educacao-infancia', pastasGitHub: ['Educação de Infância', 'Educacao de Infancia', 'educacao-infancia'], nome: 'Educação de Infância' }
+const CATEGORIAS_TRABALHOS = [
+  "Trabalhos Individuais",
+  "Trabalhos de Grupo"
 ];
 
-const TP_ANOS_LECTIVOS = ['2023-2024', '2024-2025', '2025-2026', '2026-2027'];
-
-let tpCacheArvore = null;
-
-function tpNormalizarChave(texto) {
-  return String(texto || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function tpEncontrarCurso(nomePastaCurso) {
-  const chave = tpNormalizarChave(nomePastaCurso);
-  const encontrado = TP_CURSOS.find(c =>
-    tpNormalizarChave(c.id) === chave ||
-    tpNormalizarChave(c.nome) === chave ||
-    (c.pastasGitHub || []).some(p => tpNormalizarChave(p) === chave)
+/**
+ * Devolve o contentor correto no DOM
+ */
+function obterContainerTrabalhos() {
+  return (
+    document.getElementById("trabalhos-praticos-container") ||
+    document.getElementById("lista-trabalhos-container") ||
+    document.getElementById("trabalhos-lista")
   );
-
-  if (encontrado) {
-    return {
-      id: encontrado.id,
-      nome: nomePastaCurso || encontrado.nome
-    };
-  }
-
-  return {
-    id: chave,
-    nome: nomePastaCurso
-  };
-}
-
-function tpFormatarTamanho(bytes) {
-  if (!bytes || bytes === 0) return '0 Bytes';
-  const k = 1024;
-  const unidades = ['Bytes', 'KB', 'MB', 'GB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + unidades[i];
-}
-
-function tpFormatarNomePasta(nomeBruto) {
-  return nomeBruto.replace(/_/g, ' ');
-}
-
-function tpEhFicheiroValido(nomeFicheiro) {
-  if (!nomeFicheiro) return false;
-  if (nomeFicheiro.startsWith('.')) return false;
-  return !TP_CONFIG.ficheirosIgnorados.includes(nomeFicheiro.toLowerCase());
-}
-
-function tpOrdenarFicheiros(lista) {
-  const prefixosModelo = ['Modelo_', 'Template_', 'Enunciado_', 'Ficha_', 'Lista_', 'Base_', 'Dados_'];
-  return [...lista].sort((a, b) => {
-    const aModelo = prefixosModelo.some(p => a.nomeSimples.startsWith(p));
-    const bModelo = prefixosModelo.some(p => b.nomeSimples.startsWith(p));
-    if (aModelo && !bModelo) return -1;
-    if (!aModelo && bModelo) return 1;
-    return a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' });
-  });
-}
-
-async function tpObterArvoreGitHub(forcarAtualizacao = false) {
-  if (tpCacheArvore && !forcarAtualizacao) {
-    return tpCacheArvore;
-  }
-
-  const { owner, repo, branch } = TP_CONFIG;
-  const url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(branch)}?recursive=1`;
-
-  const resposta = await fetch(url, {
-    headers: { Accept: 'application/vnd.github+json' }
-  });
-
-  if (!resposta.ok) {
-    throw new Error(`Falha ao consultar GitHub API (${resposta.status})`);
-  }
-
-  const dados = await resposta.json();
-  tpCacheArvore = Array.isArray(dados.tree) ? dados.tree : [];
-  return tpCacheArvore;
 }
 
 /**
- * Mapeia:
- * estrutura[categoriaPasta][cursoChave][anoLectivo][nomePastaTrabalho] = {
- *   cursoInfo: { id, nome },
- *   ficheiros: [ ... ]
- * }
- *
- * Caminho esperado no GitHub:
- * Trabalhos/<Trabalhos Individuais | Trabalhos de Grupo>/<Curso>/<Ano Lectivo>/<Nome da Pasta>/<ficheiro>
+ * Codifica cada segmento do caminho sem estragar as barras "/"
  */
-function tpExtrairEstrutura(arvore) {
-  const raiz = TP_CONFIG.pastaRaiz.replace(/^\/+|\/+$/g, '');
-  const estrutura = {};
-
-  for (const cat of TP_CONFIG.categorias) {
-    estrutura[cat.pasta] = {};
-  }
-
-  for (const no of arvore) {
-    if (!no.path.startsWith(raiz + '/')) continue;
-
-    const rel = no.path.slice(raiz.length + 1);
-    const partes = rel.split('/');
-
-    // partes[0] = Categoria ("Trabalhos Individuais" / "Trabalhos de Grupo")
-    // partes[1] = Curso ("Economia", "Biologia", "Gestão de Empresas", etc.)
-    // partes[2] = Ano Lectivo ("2026-2027", etc.)
-    // partes[3] = Nome da pasta criada manualmente dentro do Ano Lectivo
-    // partes[4+] = Ficheiro(s) dentro da pasta
-    if (partes.length < 4) continue;
-
-    const [categoriaPasta, nomeCursoPasta, anoLectivo, nomePastaTrabalho, ...restoCaminho] = partes;
-    if (!estrutura[categoriaPasta]) continue;
-
-    const cursoInfo = tpEncontrarCurso(nomeCursoPasta);
-    const cursoChave = cursoInfo.id;
-
-    if (!estrutura[categoriaPasta][cursoChave]) {
-      estrutura[categoriaPasta][cursoChave] = {
-        cursoInfo,
-        anos: {}
-      };
-    }
-
-    if (!estrutura[categoriaPasta][cursoChave].anos[anoLectivo]) {
-      estrutura[categoriaPasta][cursoChave].anos[anoLectivo] = {};
-    }
-
-    if (!estrutura[categoriaPasta][cursoChave].anos[anoLectivo][nomePastaTrabalho]) {
-      estrutura[categoriaPasta][cursoChave].anos[anoLectivo][nomePastaTrabalho] = [];
-    }
-
-    // Se for um ficheiro válido (blob), regista-o; se for apenas pasta vazia (tree), deixa array vazio para ficar bloqueada
-    if (no.type === 'blob' && restoCaminho.length >= 1) {
-      const nomeFicheiro = restoCaminho[restoCaminho.length - 1];
-      if (tpEhFicheiroValido(nomeFicheiro)) {
-        const urlDownload = `https://raw.githubusercontent.com/${TP_CONFIG.owner}/${TP_CONFIG.repo}/${TP_CONFIG.branch}/${encodeURI(no.path)}`;
-        estrutura[categoriaPasta][cursoChave].anos[anoLectivo][nomePastaTrabalho].push({
-          nome: restoCaminho.join('/'),
-          nomeSimples: nomeFicheiro,
-          caminho: no.path,
-          tamanho: no.size || 0,
-          url: urlDownload
-        });
-      }
-    }
-  }
-
-  return estrutura;
+function codificarCaminhoGitHub(caminho) {
+  return String(caminho || "")
+    .split("/")
+    .filter(Boolean)
+    .map(seg => encodeURIComponent(seg))
+    .join("/");
 }
 
-async function carregarTrabalhosPraticos(forcarAtualizacao = false) {
-  const container = document.getElementById(TP_CONFIG.containerId);
+/**
+ * Normaliza nós vindos da API (suporta árvore aninhada com children ou lista plana)
+ */
+function obterFilhosDiretos(arvore, caminhoAlvo) {
+  if (!arvore) return [];
+
+  // Caso 1: A API devolve árvore hierárquica com .children
+  if (Array.isArray(arvore) || (typeof arvore === "object" && Array.isArray(arvore.children))) {
+    const listaRaiz = Array.isArray(arvore) ? arvore : arvore.children;
+
+    function procurarNo(nos, alvo) {
+      for (const no of nos) {
+        const pathNo = (no.path || no.caminho || "").replace(/^\/+|\/+$/g, "");
+        if (pathNo === alvo) {
+          return no.children || [];
+        }
+        if (Array.isArray(no.children) && no.children.length > 0) {
+          const encontrado = procurarNo(no.children, alvo);
+          if (encontrado) return encontrado;
+        }
+      }
+      return null;
+    }
+
+    const filhos = procurarNo(listaRaiz, caminhoAlvo);
+    if (filhos !== null) {
+      return filhos
+        .filter(item => {
+          const nome = item.name || item.nome || "";
+          return nome && !nome.startsWith(".");
+        })
+        .map(item => ({
+          nome: item.name || item.nome,
+          path: (item.path || item.caminho || `${caminhoAlvo}/${item.name || item.nome}`).replace(/^\/+|\/+$/g, ""),
+          tipo: (item.type === "dir" || item.tipo === "dir" || Array.isArray(item.children)) ? "dir" : "file"
+        }));
+    }
+  }
+
+  // Caso 2: A API devolve uma lista plana de ficheiros/pastas (ex: { ficheiros: [...] } ou { tree: [...] })
+  const listaPlana = Array.isArray(arvore?.ficheiros)
+    ? arvore.ficheiros
+    : Array.isArray(arvore?.tree)
+      ? arvore.tree
+      : Array.isArray(arvore?.items)
+        ? arvore.items
+        : [];
+
+  if (listaPlana.length > 0) {
+    const prefixo = caminhoAlvo ? caminhoAlvo + "/" : "";
+    const mapaFilhos = new Map();
+
+    for (const item of listaPlana) {
+      const p = String(item.path || item.caminho || "").replace(/^\/+|\/+$/g, "");
+      if (!p.startsWith(prefixo)) continue;
+
+      const resto = p.slice(prefixo.length);
+      if (!resto) continue;
+
+      const partes = resto.split("/");
+      const nomeFilho = partes[0];
+      if (!nomeFilho || nomeFilho.startsWith(".")) continue;
+
+      const ehPasta = partes.length > 1 || item.type === "dir" || item.type === "tree";
+      const caminhoFilho = prefixo + nomeFilho;
+
+      if (!mapaFilhos.has(nomeFilho)) {
+        mapaFilhos.set(nomeFilho, {
+          nome: nomeFilho,
+          path: caminhoFilho,
+          tipo: ehPasta ? "dir" : "file"
+        });
+      } else if (ehPasta) {
+        mapaFilhos.get(nomeFilho).tipo = "dir";
+      }
+    }
+
+    return Array.from(mapaFilhos.values());
+  }
+
+  return [];
+}
+
+/**
+ * Obtém ícone adequado ao tipo de ficheiro
+ */
+function obterIconeFicheiro(nome) {
+  const ext = (nome.split(".").pop() || "").toLowerCase();
+  if (ext === "pdf") return "📄";
+  if (["doc", "docx", "odt"].includes(ext)) return "📝";
+  if (["xls", "xlsx", "csv"].includes(ext)) return "📊";
+  if (["ppt", "pptx"].includes(ext)) return "📽️";
+  if (["zip", "rar", "7z"].includes(ext)) return "🗜️";
+  if (["png", "jpg", "jpeg", "gif", "webp"].includes(ext)) return "🖼️";
+  return "📎";
+}
+
+/**
+ * Carrega a árvore da categoria selecionada a partir da API
+ */
+async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
+  const container = obterContainerTrabalhos();
   if (!container) return;
 
   container.innerHTML = `
-    <div class="tp-seccao">
-      <div class="tp-header">
-        <h2 class="tp-titulo">Trabalhos</h2>
-        <div class="tp-acoes-topo">
-          <button type="button" class="tp-btn tp-btn-secundario" id="tp-btn-atualizar">Atualizar Pastas</button>
-        </div>
-      </div>
-      <p class="tp-vazio">A carregar estrutura de "${TP_CONFIG.pastaRaiz}" no GitHub...</p>
+    <div class="tp-estado-carregamento">
+      <div class="tp-spinner"></div>
+      <p>A carregar pastas e ficheiros de <b>${categoriaAtual}</b>...</p>
     </div>
   `;
 
-  let estrutura;
   try {
-    const arvore = await tpObterArvoreGitHub(forcarAtualizacao);
-    estrutura = tpExtrairEstrutura(arvore);
+    const caminhoBase = `www/Trabalhos/${categoriaAtual}`;
+    const url = `${API_LISTAR_TRABALHOS}?caminho=${encodeURIComponent(caminhoBase)}${forcarAtualizacao ? "&refresh=1&t=" + Date.now() : ""}`;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`Erro HTTP ${resp.status}`);
+
+    const dados = await resp.json();
+    arvoreCompleta = dados;
+    renderizarExploradorTrabalhos();
   } catch (erro) {
-    console.error('Erro ao ler a pasta Trabalhos no GitHub:', erro);
+    console.error("Erro ao carregar trabalhos:", erro);
     container.innerHTML = `
-      <div class="tp-seccao">
-        <div class="tp-header">
-          <h2 class="tp-titulo">Trabalhos</h2>
-        </div>
-        <div class="tp-erro">
-          Não foi possível carregar os trabalhos a partir do GitHub. Verifique a ligação ou tente novamente.
-        </div>
+      <div class="tp-estado-vazio">
+        <p>⚠️ Não foi possível carregar os trabalhos neste momento.</p>
+        <button type="button" class="tp-btn-acao" onclick="carregarArvoreTrabalhos(true)">🔄 Tentar novamente</button>
       </div>
     `;
-    return;
   }
+}
 
-  const seccaoEl = document.createElement('div');
-  seccaoEl.className = 'tp-seccao';
+/**
+ * Renderiza o explorador de pastas e ficheiros do nível atual
+ */
+function renderizarExploradorTrabalhos() {
+  const container = obterContainerTrabalhos();
+  if (!container) return;
 
-  const headerEl = document.createElement('div');
-  headerEl.className = 'tp-header';
-  headerEl.innerHTML = `
-    <h2 class="tp-titulo">Trabalhos</h2>
-    <div class="tp-acoes-topo">
-      <button type="button" class="tp-btn tp-btn-secundario" id="tp-btn-atualizar">Atualizar Pastas</button>
+  const caminhoBase = `www/Trabalhos/${categoriaAtual}`;
+  const caminhoCompleto = caminhoNavegacao.length > 0
+    ? `${caminhoBase}/${caminhoNavegacao.join("/")}`
+    : caminhoBase;
+
+  const itens = obterFilhosDiretos(arvoreCompleta, caminhoCompleto);
+
+  // Ordenar: pastas primeiro (ordem alfabética), depois ficheiros (ordem alfabética)
+  itens.sort((a, b) => {
+    if (a.tipo !== b.tipo) return a.tipo === "dir" ? -1 : 1;
+    return a.nome.localeCompare(b.nome, "pt", { numeric: true });
+  });
+
+  // Barra superior de categorias + atualizar
+  let html = `
+    <div class="tp-barra-topo" style="display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <div class="tp-tabs" style="display:flex; flex-wrap:wrap; gap:8px;">
+        ${CATEGORIAS_TRABALHOS.map(cat => `
+          <button type="button"
+            class="tp-tab-btn ${cat === categoriaAtual ? "ativo" : ""}"
+            onclick="selecionarCategoriaTrabalho('${cat}')">
+            📁 ${cat}
+          </button>
+        `).join("")}
+      </div>
+      <button type="button" class="tp-btn-atualizar" onclick="carregarArvoreTrabalhos(true)" title="Atualizar lista">
+        🔄 Atualizar
+      </button>
     </div>
   `;
-  seccaoEl.appendChild(headerEl);
 
-  let totalPastas = 0;
+  // Breadcrumb / Caminho atual
+  html += `
+    <div class="tp-breadcrumb" style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:10px 12px; background:#f4f6f9; border-radius:8px; margin-bottom:14px; font-size:0.95rem;">
+      <button type="button" class="tp-crumb-link" onclick="irParaNivelTrabalho(-1)" style="background:none; border:none; color:#0b5ed7; font-weight:600; cursor:pointer; padding:0;">
+        🏠 ${categoriaAtual}
+      </button>
+      ${caminhoNavegacao.map((pasta, idx) => `
+        <span style="color:#6c757d;">/</span>
+        <button type="button" class="tp-crumb-link" onclick="irParaNivelTrabalho(${idx})" style="background:none; border:none; color:${idx === caminhoNavegacao.length - 1 ? "#212529" : "#0b5ed7"}; font-weight:${idx === caminhoNavegacao.length - 1 ? "700" : "600"}; cursor:pointer; padding:0;">
+          ${pasta.replace(/_/g, " ")}
+        </button>
+      `).join("")}
+    </div>
+  `;
 
-  for (const categoria of TP_CONFIG.categorias) {
-    const mapaCursosCat = estrutura[categoria.pasta] || {};
-    const chavesCursos = Object.keys(mapaCursosCat);
+  // Botão voltar se estiver dentro de alguma subpasta
+  if (caminhoNavegacao.length > 0) {
+    html += `
+      <div style="margin-bottom:12px;">
+        <button type="button" class="tp-btn-voltar" onclick="voltarPastaTrabalho()" style="padding:6px 12px; border-radius:6px; border:1px solid #ced4da; background:#fff; cursor:pointer; font-weight:600;">
+          ⬅️ Voltar
+        </button>
+      </div>
+    `;
+  }
 
-    const blocoCat = document.createElement('div');
-    blocoCat.className = 'tp-bloco-categoria';
+  // Lista de pastas e ficheiros
+  if (itens.length === 0) {
+    html += `
+      <div class="tp-estado-vazio" style="padding:24px; text-align:center; background:#fff; border:1px dashed #ced4da; border-radius:10px; color:#6c757d;">
+        <p style="margin:0;">📂 Esta pasta está vazia no momento.</p>
+      </div>
+    `;
+  } else {
+    html += `<div class="tp-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">`;
 
-    const h2Cat = document.createElement('h3');
-    h2Cat.className = 'tp-categoria-titulo';
-    h2Cat.textContent = categoria.titulo;
-    blocoCat.appendChild(h2Cat);
-
-    let catTemPastas = false;
-
-    for (const chaveCurso of chavesCursos.sort((a, b) => a.localeCompare(b, 'pt', { sensitivity: 'base' }))) {
-      const blocoCursoDados = mapaCursosCat[chaveCurso];
-      const cursoInfo = blocoCursoDados.cursoInfo;
-      const anosMap = blocoCursoDados.anos || {};
-      const anosOrdenados = Object.keys(anosMap).sort();
-
-      const divCurso = document.createElement('div');
-      divCurso.className = 'tp-bloco-curso';
-
-      const h4Curso = document.createElement('h4');
-      h4Curso.className = 'tp-curso-titulo';
-      h4Curso.textContent = `Curso: ${cursoInfo.nome}`;
-      divCurso.appendChild(h4Curso);
-
-      let cursoTemPastas = false;
-
-      for (const ano of anosOrdenados) {
-        const pastasDoAno = anosMap[ano] || {};
-        const nomesPastas = Object.keys(pastasDoAno).sort((a, b) =>
-          a.localeCompare(b, 'pt', { sensitivity: 'base' })
-        );
-
-        if (nomesPastas.length === 0) continue;
-
-        cursoTemPastas = true;
-        catTemPastas = true;
-        totalPastas += nomesPastas.length;
-
-        const divAno = document.createElement('div');
-        divAno.className = 'tp-bloco-ano';
-
-        const pAno = document.createElement('p');
-        pAno.className = 'tp-ano-label';
-        pAno.innerHTML = `<strong>Ano Lectivo:</strong> ${ano}`;
-        divAno.appendChild(pAno);
-
-        const gridPastas = document.createElement('div');
-        gridPastas.className = 'tp-grid-pastas';
-
-        for (const nomePasta of nomesPastas) {
-          const ficheiros = pastasDoAno[nomePasta] || [];
-          const temFicheiros = ficheiros.length > 0;
-
-          const card = document.createElement('div');
-          card.className = temFicheiros ? 'tp-card-pasta' : 'tp-card-pasta tp-bloqueada';
-          card.setAttribute('role', 'button');
-          card.setAttribute('tabindex', temFicheiros ? '0' : '-1');
-          card.setAttribute('aria-disabled', temFicheiros ? 'false' : 'true');
-
-          const icone = temFicheiros ? '📁' : '🔒';
-          const badgeEstado = temFicheiros
-            ? `<span class="tp-estado-pasta tp-estado-disponivel">${ficheiros.length} ficheiro(s)</span>`
-            : `<span class="tp-estado-pasta tp-estado-bloqueado">Bloqueada (sem ficheiros)</span>`;
-
-          const dica = temFicheiros
-            ? 'Aceder com código da Turma'
-            : 'Aguarda ficheiros no GitHub';
-
-          card.innerHTML = `
-            <div class="tp-icone-pasta">${icone}</div>
-            <div class="tp-nome-pasta">${tpFormatarNomePasta(nomePasta)}</div>
-            ${badgeEstado}
-            <span class="tp-meta-pasta">${dica}</span>
-          `;
-
-          if (temFicheiros) {
-            const abrirComCodigo = () => {
-              tpSolicitarCodigoEAbrirPasta(
-                categoria.titulo,
-                cursoInfo,
-                ano,
-                nomePasta,
-                tpOrdenarFicheiros(ficheiros),
-                seccaoEl
-              );
-            };
-
-            card.addEventListener('click', abrirComCodigo);
-            card.addEventListener('keydown', (e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                abrirComCodigo();
-              }
-            });
-          } else {
-            card.addEventListener('click', (e) => {
-              e.preventDefault();
-              alert(`A pasta "${tpFormatarNomePasta(nomePasta)}" encontra-se bloqueada enquanto não tiver ficheiros no GitHub.`);
-            });
-          }
-
-          gridPastas.appendChild(card);
-        }
-
-        divAno.appendChild(gridPastas);
-        divCurso.appendChild(divAno);
-      }
-
-      if (cursoTemPastas) {
-        blocoCat.appendChild(divCurso);
+    for (const item of itens) {
+      if (item.tipo === "dir") {
+        const nomeExibicao = item.nome.replace(/_/g, " ");
+        html += `
+          <div class="tp-card tp-card-pasta"
+               onclick="abrirPastaTrabalho('${item.nome.replace(/'/g, "\\'")}')"
+               style="display:flex; align-items:center; gap:12px; padding:14px; background:#fff; border:1px solid #dee2e6; border-left:4px solid #f59e0b; border-radius:10px; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.15s ease;">
+            <span style="font-size:1.7rem;">📁</span>
+            <div style="overflow:hidden;">
+              <div style="font-weight:700; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${nomeExibicao}</div>
+              <div style="font-size:0.82rem; color:#64748b;">Abrir pasta</div>
+            </div>
+          </div>
+        `;
+      } else {
+        const urlFicheiro = RAW_GITHUB_BASE + codificarCaminhoGitHub(item.path);
+        const icone = obterIconeFicheiro(item.nome);
+        html += `
+          <div class="tp-card tp-card-ficheiro"
+               style="display:flex; flex-direction:column; justify-content:space-between; gap:10px; padding:14px; background:#fff; border:1px solid #dee2e6; border-left:4px solid #0d6efd; border-radius:10px;">
+            <div style="display:flex; align-items:flex-start; gap:10px;">
+              <span style="font-size:1.6rem;">${icone}</span>
+              <div style="font-weight:600; color:#1e293b; word-break:break-word; font-size:0.95rem;">${item.nome}</div>
+            </div>
+            <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:4px;">
+              <a href="${urlFicheiro}" target="_blank" rel="noopener noreferrer"
+                 style="padding:6px 12px; background:#0d6efd; color:#fff; text-decoration:none; border-radius:6px; font-size:0.85rem; font-weight:600;">
+                👁️ Abrir / Baixar
+              </a>
+            </div>
+          </div>
+        `;
       }
     }
 
-    if (!catTemPastas) {
-      const pVazioCat = document.createElement('p');
-      pVazioCat.className = 'tp-vazio';
-      pVazioCat.textContent = `Sem pastas criadas em "${TP_CONFIG.pastaRaiz}/${categoria.pasta}" no GitHub.`;
-      blocoCat.appendChild(pVazioCat);
-    }
-
-    seccaoEl.appendChild(blocoCat);
+    html += `</div>`;
   }
 
-  if (totalPastas === 0) {
-    const avisoGeral = document.createElement('p');
-    avisoGeral.className = 'tp-vazio';
-    avisoGeral.textContent = `Nenhuma pasta encontrada dentro de "${TP_CONFIG.pastaRaiz}". Crie as pastas manualmente no GitHub seguindo: ${TP_CONFIG.pastaRaiz}/<Trabalhos Individuais | Trabalhos de Grupo>/<Curso>/<Ano Lectivo>/<Nome da Pasta>.`;
-    seccaoEl.appendChild(avisoGeral);
-  }
-
-  container.innerHTML = '';
-  container.appendChild(seccaoEl);
-
-  const btnAtualizar = document.getElementById('tp-btn-atualizar');
-  if (btnAtualizar) {
-    btnAtualizar.addEventListener('click', () => carregarTrabalhosPraticos(true));
-  }
+  container.innerHTML = html;
 }
 
-function tpSolicitarCodigoEAbrirPasta(categoriaTitulo, cursoInfo, anoLectivo, nomePasta, ficheiros, seccaoEl) {
-  const codigoEsperado = TP_CODIGOS_CURSOS[cursoInfo.id];
-  const nomeVisivelPasta = tpFormatarNomePasta(nomePasta);
-
-  if (!codigoEsperado) {
-    alert('Código de acesso não configurado para este curso.');
+// Funções de navegação expostas globalmente
+window.selecionarCategoriaTrabalho = function (categoria) {
+  if (categoriaAtual === categoria && arvoreCompleta) {
+    caminhoNavegacao = [];
+    renderizarExploradorTrabalhos();
     return;
   }
+  categoriaAtual = categoria;
+  caminhoNavegacao = [];
+  carregarArvoreTrabalhos(false);
+};
 
-  const codigoInformado = prompt(
-    `Introduza o código de acesso para visualizar "${nomeVisivelPasta}" (${categoriaTitulo} - ${cursoInfo.nome} - ${anoLectivo}):`
-  );
+window.abrirPastaTrabalho = function (nomePasta) {
+  caminhoNavegacao.push(nomePasta);
+  renderizarExploradorTrabalhos();
+};
 
-  if (codigoInformado === null) return;
-
-  if (codigoInformado.trim() !== codigoEsperado) {
-    alert('Código de acesso incorreto! Acesso negado.');
-    return;
+window.voltarPastaTrabalho = function () {
+  if (caminhoNavegacao.length > 0) {
+    caminhoNavegacao.pop();
+    renderizarExploradorTrabalhos();
   }
+};
 
-  tpRenderizarFicheirosPasta(categoriaTitulo, cursoInfo, anoLectivo, nomePasta, ficheiros, seccaoEl);
-}
-
-function tpRenderizarFicheirosPasta(categoriaTitulo, cursoInfo, anoLectivo, nomePasta, ficheiros, seccaoEl) {
-  const nomeVisivelPasta = tpFormatarNomePasta(nomePasta);
-  const prefixosModelo = ['Modelo_', 'Template_', 'Enunciado_', 'Ficha_', 'Lista_', 'Base_', 'Dados_'];
-
-  seccaoEl.innerHTML = `
-    <div class="tp-header">
-      <h2 class="tp-titulo">${categoriaTitulo} — ${nomeVisivelPasta}</h2>
-      <div class="tp-acoes-topo">
-        <button type="button" class="tp-btn tp-btn-secundario" id="tp-btn-voltar">← Voltar</button>
-      </div>
-    </div>
-    <p class="tp-ano-label">
-      <strong>Curso:</strong> ${cursoInfo.nome} |
-      <strong>Ano Lectivo:</strong> ${anoLectivo} |
-      <strong>Pasta:</strong> ${nomeVisivelPasta}
-    </p>
-  `;
-
-  const btnVoltar = document.getElementById('tp-btn-voltar');
-  if (btnVoltar) {
-    btnVoltar.addEventListener('click', () => carregarTrabalhosPraticos(false));
+window.irParaNivelTrabalho = function (indice) {
+  if (indice < 0) {
+    caminhoNavegacao = [];
+  } else {
+    caminhoNavegacao = caminhoNavegacao.slice(0, indice + 1);
   }
+  renderizarExploradorTrabalhos();
+};
 
-  const wrapper = document.createElement('div');
-  wrapper.className = 'tp-tabela-wrapper';
-
-  const tabela = document.createElement('table');
-  tabela.className = 'tp-tabela';
-  tabela.innerHTML = `
-    <thead>
-      <tr>
-        <th style="width: 65%;">Nome do Ficheiro</th>
-        <th style="width: 20%;">Tipo</th>
-        <th style="width: 15%;">Tamanho</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `;
-
-  const tbody = tabela.querySelector('tbody');
-
-  for (const arq of ficheiros) {
-    const isModelo = prefixosModelo.some(p => arq.nomeSimples.startsWith(p));
-    const tr = document.createElement('tr');
-    const badge = isModelo ? '<span class="tp-badge-modelo">Modelo / Apoio</span>' : '';
-    const tipoTexto = isModelo ? 'Material de Apoio' : 'Ficheiro da Pasta';
-
-    tr.innerHTML = `
-      <td>
-        ${badge}
-        <a class="tp-link-ficheiro" href="${arq.url}" target="_blank" rel="noopener noreferrer">
-          ${arq.nome}
-        </a>
-      </td>
-      <td>${tipoTexto}</td>
-      <td>${tpFormatarTamanho(arq.tamanho)}</td>
-    `;
-
-    tbody.appendChild(tr);
+window.carregarArvoreTrabalhos = carregarArvoreTrabalhos;
+window.inicializarTrabalhos = function (categoriaInicial) {
+  if (categoriaInicial && CATEGORIAS_TRABALHOS.includes(categoriaInicial)) {
+    const mudouCategoria = categoriaAtual !== categoriaInicial;
+    categoriaAtual = categoriaInicial;
+    if (mudouCategoria) caminhoNavegacao = [];
   }
+  if (!arvoreCompleta || (categoriaInicial && categoriaAtual !== categoriaInicial)) {
+    carregarArvoreTrabalhos(false);
+  } else {
+    renderizarExploradorTrabalhos();
+  }
+};
 
-  wrapper.appendChild(tabela);
-  seccaoEl.appendChild(wrapper);
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const secaoTrabalhosPraticos = document.getElementById("trabalhos-praticos");
+  const secaoTrabalhosIndividuais = document.getElementById("trabalhos-individuais");
+  const secaoTrabalhos = document.getElementById("trabalhos");
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById(TP_CONFIG.containerId)) {
-    carregarTrabalhosPraticos(false);
+  if (secaoTrabalhosPraticos || secaoTrabalhosIndividuais || secaoTrabalhos) {
+    carregarArvoreTrabalhos(false);
   }
 });
