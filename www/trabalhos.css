@@ -1,0 +1,279 @@
+/* ============================================================================
+   TRABALHOS (INDIVIDUAIS E DE GRUPO) - ESTILOS ISOLADOS
+   ============================================================================ */
+
+.tp-seccao {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937;
+}
+
+.tp-seccao *,
+.tp-seccao *::before,
+.tp-seccao *::after {
+  box-sizing: border-box;
+}
+
+.tp-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #0d3b66;
+}
+
+.tp-titulo {
+  margin: 0;
+  font-size: 1.45rem;
+  color: #0d3b66;
+}
+
+.tp-acoes-topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tp-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tp-btn-secundario {
+  background-color: #4b5563;
+  color: #ffffff;
+}
+
+.tp-btn-secundario:hover {
+  background-color: #374151;
+}
+
+/* Bloco de Categoria ("Trabalhos Individuais" / "Trabalhos de Grupo") */
+.tp-bloco-categoria {
+  margin-top: 24px;
+  margin-bottom: 36px;
+}
+
+.tp-categoria-titulo {
+  margin: 0 0 16px 0;
+  padding: 10px 14px;
+  font-size: 1.3rem;
+  color: #0d3b66;
+  background-color: #f1f5f9;
+  border-left: 5px solid #0d3b66;
+  border-radius: 4px;
+}
+
+/* Bloco de Curso */
+.tp-bloco-curso {
+  margin-top: 24px;
+  margin-bottom: 22px;
+  margin-left: 8px;
+  clear: both;
+}
+
+.tp-curso-titulo {
+  margin: 0 0 12px 0;
+  padding-bottom: 5px;
+  font-size: 1.18rem;
+  color: #0d3b66;
+  border-bottom: 2px solid #d90429;
+}
+
+/* Bloco de Ano Lectivo */
+.tp-bloco-ano {
+  margin-left: 16px;
+  margin-bottom: 20px;
+}
+
+.tp-ano-label {
+  margin: 8px 0;
+  font-size: 0.98rem;
+  color: #374151;
+}
+
+/* Grelha de Pastas */
+.tp-grid-pastas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+/* Pasta Desbloqueada (com ficheiros) */
+.tp-card-pasta {
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tp-card-pasta:hover {
+  background-color: #eef2f6;
+  border-color: #0d3b66;
+  transform: translateY(-2px);
+}
+
+/* Pasta Bloqueada (sem ficheiros) */
+.tp-card-pasta.tp-bloqueada {
+  background-color: #f3f4f6;
+  border: 1px dashed #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.tp-card-pasta.tp-bloqueada:hover {
+  transform: none;
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.tp-icone-pasta {
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+.tp-nome-pasta {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0d3b66;
+  word-break: break-word;
+}
+
+.tp-card-pasta.tp-bloqueada .tp-nome-pasta {
+  color: #4b5563;
+}
+
+.tp-estado-pasta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.tp-estado-disponivel {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.tp-estado-bloqueado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.tp-meta-pasta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Tabela de ficheiros dentro da pasta */
+.tp-tabela-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.tp-tabela {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.tp-tabela thead tr {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  text-align: left;
+}
+
+.tp-tabela th,
+.tp-tabela td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tp-tabela th {
+  font-size: 0.9rem;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.tp-tabela td {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.tp-link-ficheiro {
+  color: #0066cc;
+  font-weight: 600;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.tp-link-ficheiro:hover {
+  color: #004499;
+}
+
+.tp-badge-modelo {
+  background-color: #e2f0d9;
+  color: #385723;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.tp-vazio,
+.tp-erro {
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.tp-vazio {
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.tp-erro {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 768px) {
+  .tp-bloco-curso {
+    margin-left: 0;
+  }
+
+  .tp-bloco-ano {
+    margin-left: 8px;
+  }
+
+  .tp-grid-pastas {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
