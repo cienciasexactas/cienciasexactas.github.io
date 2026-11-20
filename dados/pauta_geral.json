@@ -127,7 +127,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-a",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -205,7 +205,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-a",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1063,7 +1063,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 18.82,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1076,7 +1076,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "F",
+        "pres_19/11/2026": "P",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1102,7 +1102,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1131,7 +1131,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3030",
@@ -1141,7 +1141,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1170,7 +1170,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3031",
@@ -1180,7 +1180,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1209,7 +1209,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3032",
@@ -1219,7 +1219,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1248,7 +1248,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3033",
@@ -1258,7 +1258,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1287,7 +1287,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3034",
@@ -1297,7 +1297,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1326,7 +1326,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3035",
@@ -1336,7 +1336,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 18.82,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1349,7 +1349,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "F",
+        "pres_19/11/2026": "P",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1365,7 +1365,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3036",
@@ -1375,7 +1375,7 @@
       "estatuto": "Repetente",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 18.82,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1388,7 +1388,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "F",
+        "pres_19/11/2026": "P",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -1404,7 +1404,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3037",
@@ -1414,7 +1414,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1443,7 +1443,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3038",
@@ -1453,7 +1453,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1482,7 +1482,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3039",
@@ -1492,7 +1492,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1521,7 +1521,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3040",
@@ -1531,7 +1531,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1560,7 +1560,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3041",
@@ -1570,7 +1570,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1599,7 +1599,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3042",
@@ -1609,7 +1609,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1638,7 +1638,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3043",
@@ -1648,7 +1648,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1677,7 +1677,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3044",
@@ -1687,7 +1687,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1716,7 +1716,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3045",
@@ -1726,7 +1726,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1755,7 +1755,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3046",
@@ -1765,7 +1765,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1794,7 +1794,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3047",
@@ -1804,7 +1804,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1833,7 +1833,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3048",
@@ -1843,7 +1843,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1872,7 +1872,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3049",
@@ -1882,7 +1882,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1911,7 +1911,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3050",
@@ -1921,7 +1921,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1950,7 +1950,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3051",
@@ -1960,7 +1960,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -1989,7 +1989,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3052",
@@ -1999,7 +1999,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2028,7 +2028,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3053",
@@ -2038,7 +2038,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 18.82,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2051,7 +2051,7 @@
         "pres_09/11/2026": "P",
         "pres_12/11/2026": "P",
         "pres_16/11/2026": "P",
-        "pres_19/11/2026": "F",
+        "pres_19/11/2026": "P",
         "pres_23/11/2026": "P",
         "pres_26/11/2026": "P",
         "pres_30/11/2026": "P",
@@ -2067,7 +2067,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3054",
@@ -2077,7 +2077,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2106,7 +2106,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3055",
@@ -2116,7 +2116,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2145,7 +2145,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3056",
@@ -2155,7 +2155,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2184,7 +2184,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3057",
@@ -2194,7 +2194,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2223,7 +2223,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3058",
@@ -2233,7 +2233,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2262,7 +2262,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "ENF3059",
@@ -2272,7 +2272,7 @@
       "estatuto": "Novo",
       "curso": "enfermagem-b",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -2301,7 +2301,7 @@
         "pres_18/01/2027": "P",
         "pres_21/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Pendente"
     },
     {
       "id": "EB4CNS001",
@@ -4456,7 +4456,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4468,7 +4468,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -4485,7 +4485,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD003",
@@ -4495,7 +4495,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4524,7 +4524,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD004",
@@ -4534,7 +4534,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4563,7 +4563,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD005",
@@ -4573,7 +4573,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4581,7 +4581,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -4602,7 +4602,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD006",
@@ -4612,7 +4612,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4641,7 +4641,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD007",
@@ -4651,7 +4651,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4663,7 +4663,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -4680,7 +4680,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD008",
@@ -4690,7 +4690,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4702,7 +4702,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -4719,7 +4719,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD009",
@@ -4729,7 +4729,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4758,7 +4758,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD010",
@@ -4768,7 +4768,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4797,7 +4797,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD011",
@@ -4807,7 +4807,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4815,7 +4815,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -4836,7 +4836,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD012",
@@ -4846,7 +4846,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4858,7 +4858,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -4875,7 +4875,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD013",
@@ -4885,7 +4885,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4914,7 +4914,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD014",
@@ -4924,7 +4924,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4936,7 +4936,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -4953,7 +4953,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD015",
@@ -4963,7 +4963,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4992,7 +4992,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD016",
@@ -5002,7 +5002,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5031,7 +5031,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD017",
@@ -5041,7 +5041,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5049,11 +5049,11 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5070,7 +5070,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD018",
@@ -5080,7 +5080,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5109,7 +5109,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD019",
@@ -5119,7 +5119,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5148,7 +5148,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD020",
@@ -5158,7 +5158,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5187,7 +5187,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD021",
@@ -5197,7 +5197,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5226,7 +5226,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD022",
@@ -5236,7 +5236,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5265,7 +5265,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD023",
@@ -5275,7 +5275,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5304,7 +5304,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD024",
@@ -5314,7 +5314,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5322,11 +5322,11 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5343,7 +5343,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD025",
@@ -5353,7 +5353,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5361,11 +5361,11 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5382,7 +5382,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD026",
@@ -5392,7 +5392,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5404,7 +5404,7 @@
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5421,7 +5421,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD027",
@@ -5431,7 +5431,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5439,11 +5439,11 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5460,7 +5460,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD028",
@@ -5470,7 +5470,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5478,11 +5478,11 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
-        "pres_17/11/2026": "F",
+        "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
         "pres_24/11/2026": "P",
         "pres_27/11/2026": "P",
@@ -5499,7 +5499,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2SAUD029",
@@ -5509,7 +5509,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5538,7 +5538,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "ECON2001",
@@ -5665,7 +5665,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5673,9 +5673,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -5704,7 +5704,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5712,9 +5712,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -5860,7 +5860,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 16.67,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5868,9 +5868,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "P",
         "pres_20/11/2026": "P",
@@ -5899,7 +5899,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5907,7 +5907,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -5938,7 +5938,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5946,9 +5946,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -5977,7 +5977,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5987,7 +5987,7 @@
       "subNotas": {
         "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
         "pres_18/11/2026": "P",
         "pres_20/11/2026": "P",
@@ -6016,7 +6016,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6024,9 +6024,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -6055,7 +6055,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6063,7 +6063,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -6135,7 +6135,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6143,7 +6143,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -6174,7 +6174,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 16.67,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6182,7 +6182,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -6213,7 +6213,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6223,7 +6223,7 @@
       "subNotas": {
         "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
         "pres_18/11/2026": "P",
         "pres_20/11/2026": "P",
@@ -6291,7 +6291,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6299,7 +6299,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -6330,7 +6330,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6338,7 +6338,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -6369,7 +6369,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6377,9 +6377,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -6408,7 +6408,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6416,9 +6416,9 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
-        "pres_11/11/2026": "F",
+        "pres_11/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_18/11/2026": "F",
         "pres_20/11/2026": "P",
@@ -6447,7 +6447,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6455,7 +6455,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -6486,7 +6486,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6494,7 +6494,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -6525,7 +6525,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6533,7 +6533,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_04/11/2026": "F",
+        "pres_04/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_11/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -6603,7 +6603,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6632,7 +6632,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP003",
@@ -6642,7 +6642,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6671,7 +6671,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP004",
@@ -6681,7 +6681,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6710,7 +6710,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP005",
@@ -6720,7 +6720,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6749,7 +6749,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP006",
@@ -6759,7 +6759,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6767,8 +6767,8 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
-        "pres_06/11/2026": "F",
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
@@ -6788,7 +6788,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP007",
@@ -6798,7 +6798,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6807,7 +6807,7 @@
       "notaProf": "",
       "subNotas": {
         "pres_03/11/2026": "P",
-        "pres_06/11/2026": "F",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
@@ -6827,7 +6827,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP008",
@@ -6837,7 +6837,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6866,7 +6866,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP009",
@@ -6876,7 +6876,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6905,7 +6905,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP010",
@@ -6915,7 +6915,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6944,7 +6944,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP011",
@@ -6954,7 +6954,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6963,7 +6963,7 @@
       "notaProf": "",
       "subNotas": {
         "pres_03/11/2026": "P",
-        "pres_06/11/2026": "F",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
@@ -6983,7 +6983,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP012",
@@ -6993,7 +6993,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 16.84,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7001,8 +7001,8 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
-        "pres_06/11/2026": "F",
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
@@ -7022,7 +7022,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP013",
@@ -7032,7 +7032,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7061,7 +7061,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP014",
@@ -7071,7 +7071,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7100,7 +7100,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP015",
@@ -7110,7 +7110,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7139,7 +7139,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP016",
@@ -7149,7 +7149,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7178,7 +7178,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP017",
@@ -7188,7 +7188,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7197,7 +7197,7 @@
       "notaProf": "",
       "subNotas": {
         "pres_03/11/2026": "P",
-        "pres_06/11/2026": "F",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
@@ -7217,7 +7217,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP018",
@@ -7227,7 +7227,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7235,8 +7235,8 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
-        "pres_06/11/2026": "F",
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
@@ -7256,7 +7256,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP019",
@@ -7266,7 +7266,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7295,7 +7295,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP020",
@@ -7305,7 +7305,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7334,7 +7334,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP021",
@@ -7344,7 +7344,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7352,7 +7352,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -7373,7 +7373,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP022",
@@ -7383,7 +7383,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7412,7 +7412,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP023",
@@ -7422,7 +7422,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7431,7 +7431,7 @@
       "notaProf": "",
       "subNotas": {
         "pres_03/11/2026": "P",
-        "pres_06/11/2026": "F",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
@@ -7451,7 +7451,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP024",
@@ -7461,7 +7461,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7490,7 +7490,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP025",
@@ -7500,7 +7500,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7529,7 +7529,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP026",
@@ -7539,7 +7539,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7547,7 +7547,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -7568,7 +7568,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP027",
@@ -7578,7 +7578,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7607,7 +7607,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP028",
@@ -7617,7 +7617,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7625,7 +7625,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -7646,7 +7646,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP029",
@@ -7656,7 +7656,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7685,7 +7685,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP030",
@@ -7695,7 +7695,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7703,7 +7703,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -7724,7 +7724,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP031",
@@ -7734,7 +7734,7 @@
       "estatuto": "Novo",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 16.84,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7742,8 +7742,8 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
-        "pres_06/11/2026": "F",
+        "pres_03/11/2026": "P",
+        "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
@@ -7763,7 +7763,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP032",
@@ -7773,7 +7773,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7802,7 +7802,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP033",
@@ -7812,7 +7812,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7841,7 +7841,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "GES2EMP034",
@@ -7851,7 +7851,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-empresa",
       "ano": "2026-2027",
-      "presenca": 17.89,
+      "presenca": "",
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7859,7 +7859,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "F",
@@ -7880,7 +7880,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (1)"
+      "situacao": "Pendente"
     },
     {
       "id": "BIO2001",
@@ -7968,7 +7968,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -7976,7 +7976,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8046,7 +8046,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8054,7 +8054,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8124,7 +8124,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8132,7 +8132,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8358,7 +8358,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8366,7 +8366,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8475,7 +8475,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8483,7 +8483,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8553,7 +8553,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8561,7 +8561,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8592,7 +8592,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8600,7 +8600,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8670,7 +8670,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -8678,7 +8678,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {
-        "pres_03/11/2026": "F",
+        "pres_03/11/2026": "P",
         "pres_06/11/2026": "P",
         "pres_10/11/2026": "P",
         "pres_13/11/2026": "P",
@@ -8776,7 +8776,7 @@
       "exame": "5",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (5)",
       "_valorNota": 8
     },
     {
@@ -8795,7 +8795,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (3)",
       "_valorNota": 8
     },
     {
@@ -8814,7 +8814,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (0)",
       "_valorNota": 8
     },
     {
@@ -8833,7 +8833,7 @@
       "exame": "4",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (4)",
       "_valorNota": 8
     },
     {
@@ -8852,7 +8852,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (0)",
       "_valorNota": 8
     },
     {
@@ -10088,7 +10088,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Exame (5)",
       "_valorNota": 8
     },
     {
@@ -10107,7 +10107,7 @@
       "exame": "5.5",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (6)",
       "_valorNota": 8
     },
     {
@@ -10126,7 +10126,7 @@
       "exame": "0",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (0)",
       "_valorNota": 8
     },
     {
@@ -10145,7 +10145,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Exame (5)",
       "_valorNota": 8
     },
     {
@@ -10567,6 +10567,16 @@
       ],
       "Trabalhos Individuais": [],
       "Trabalhos de Grupo": []
+    },
+    "biologia_2025-2026_probabilidade_&_estatística_i": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
+    },
+    "biologia_2025-2026_probabilidade_&_estatística_ii": {
+      "Presenças": [],
+      "Trabalhos Individuais": [],
+      "Trabalhos de Grupo": []
     }
   },
   "percentagens": {
@@ -10623,6 +10633,12 @@
       "testes": 1,
       "trabInd": 0,
       "trabGrp": 0
+    },
+    "biologia_2025-2026_probabilidade_&_estatística_i": {
+      "presenca": 0,
+      "testes": 0.8,
+      "trabInd": 0,
+      "trabGrp": 0.2
     }
   }
 }
