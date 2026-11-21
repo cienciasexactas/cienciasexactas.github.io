@@ -1,34 +1,100 @@
-// =========================================================================
-// MÓDULO DE GESTÃO DE TRABALHOS (trabalhos.js) - NAVEGAÇÃO POR PASTAS
-// =========================================================================
+// ============================================================================
+// MÓDULO DE GESTÃO DE TRABALHOS (trabalhos.js)
+// - Lê a árvore real do GitHub via API (?caminho=www/Trabalhos/...)
+// - Suporta apenas duas secções: "Trabalhos Individuais" e "Trabalhos de Grupo"
+// - Barra superior em grelha: "Trabalhos individuais", "Trabalhos de Grupo", "Limpar Filtros"
+// - Agrupa por Curso (#0d3b66 com sublinhado #d90429) e Ano Lectivo
+// - Solicita código da turma ao clicar na pasta e mostra tabela detalhada
+// ============================================================================
 
-let arvoreCompleta = null;
-let categoriaAtual = "Trabalhos Individuais";
-let caminhoNavegacao = []; // Ex: ["Economia", "2026-2027", "Trabalho_1"]
+// Estado em memória da navegação e dos dados carregados
+let arvoreCompleta = null;              // Guarda o objeto { path, type, children } devolvido pela API
+let categoriaAtual = null;              // null | "Trabalhos Individuais" | "Trabalhos de Grupo"
+let origemDadosAtual = "api";           // "api" | "cache"
+let pastasDesbloqueadas = new Set();    // Guarda as chaves das pastas já autorizadas na sessão
 
-const API_LISTAR_TRABALHOS = "https://api-cienciasexactas.vercel.app/api/trabalhos";
+// Endpoint da API (lê recursivamente o repositório cienciasexactas.github.io)
+const API_TRABALHOS_URL = "https://api-cienciasexactas.vercel.app/api/trabalhos";
 const RAW_GITHUB_BASE = "https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/";
 
-const CATEGORIAS_TRABALHOS = [
-  "Trabalhos Individuais",
-  "Trabalhos de Grupo"
-];
+// Códigos de acesso por curso (normalizados para comparação)
+const CODIGOS_CURSOS_TRABALHOS = {
+  "biologia": "L2BIO2026",
+  "cienciasnaturais": "CNA2026",
+  "matematica": "MAT2026",
+  "economia": "L5ECO2026",
+  "gestao-empresa": "GES2026",
+  "gestao-iscgvsm": "ISC2026",
+  "enfermagem-a": "ENFA2026",
+  "enfermagem-b": "CHEFEKATIA123",
+  "contabilidade": "CONT2026",
+  "agronomia": "AGR2026",
+  "turismo": "TUR2026",
+  "geografia": "GEO2026",
+  "educacao-infancia": "EDU2026"
+};
+
+// Nomes legíveis para pastas de curso caso o nome no GitHub venha em minúsculas ou com hífen
+const NOMES_CURSOS = {
+  "biologia": "Licenciatura em Biologia",
+  "cienciasnaturais": "Licenciatura em Ensino Básico - C. N. Sociais",
+  "matematica": "Licenciatura em Matemática",
+  "economia": "Licenciatura em Economia",
+  "gestao-empresa": "Licenciatura em Gestão de Empresa",
+  "gestao-iscgvsm": "Licenciatura em Gestão - ISCSVSM",
+  "enfermagem-a": "Licenciatura em Enfermagem - A",
+  "enfermagem-b": "Licenciatura em Enfermagem - B",
+  "contabilidade": "Licenciatura em Contabilidade",
+  "agronomia": "Licenciatura em Agronomia",
+  "turismo": "Licenciatura em Turismo",
+  "geografia": "Licenciatura em Geografia",
+  "educacao-infancia": "Licenciatura em Educação de Infância"
+};
+
+// Prefixos de ficheiros de apoio/modelo que ficam sempre no topo da tabela
+const PREFIXOS_MODELO = ["Modelo_", "Template_", "Enunciado_", "Ficha_", "Lista_", "Base_", "Dados_"];
 
 /**
- * Devolve o contentor correto no DOM
+ * Localiza o elemento HTML onde a interface de trabalhos será renderizada.
  */
 function obterContainerTrabalhos() {
   return (
     document.getElementById("trabalhos-praticos-container") ||
     document.getElementById("lista-trabalhos-container") ||
-    document.getElementById("trabalhos-lista")
+    document.getElementById("trabalhos-lista") ||
+    document.getElementById("lista-colaborativos-container") ||
+    document.getElementById("lista-grupo-container")
   );
 }
 
 /**
- * Codifica cada segmento do caminho sem estragar as barras "/"
+ * Normaliza chaves (ex: "Gestão de Empresa" -> "gestao-empresa") para cruzar com códigos e nomes.
  */
-function codificarCaminhoGitHub(caminho) {
+function normalizarChave(texto) {
+  return String(texto || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Formata o nome do curso mantendo o texto original se já vier formatado (ex: "Economia").
+ */
+function formatarNomeCurso(nomePastaCurso) {
+  const chave = normalizarChave(nomePastaCurso);
+  if (NOMES_CURSOS[chave] && nomePastaCurso === chave) {
+    return NOMES_CURSOS[chave];
+  }
+  return String(nomePastaCurso || "").replace(/_/g, " ");
+}
+
+/**
+ * Codifica cada segmento do caminho para URLs do raw.githubusercontent.com.
+ */
+function codificarCaminhoRaw(caminho) {
   return String(caminho || "")
     .split("/")
     .filter(Boolean)
@@ -37,243 +103,331 @@ function codificarCaminhoGitHub(caminho) {
 }
 
 /**
- * Normaliza nós vindos da API (suporta árvore aninhada com children ou lista plana)
+ * Formata bytes para KB, MB ou GB.
  */
-function obterFilhosDiretos(arvore, caminhoAlvo) {
-  if (!arvore) return [];
+function formatarTamanhoArquivo(bytes) {
+  if (typeof formatarTamanho === "function") return formatarTamanho(bytes);
+  const num = Number(bytes || 0);
+  if (!num) return "0 Bytes";
+  const k = 1024;
+  const unidades = ["Bytes", "KB", "MB", "GB"];
+  const idx = Math.floor(Math.log(num) / Math.log(k));
+  return parseFloat((num / Math.pow(k, idx)).toFixed(2)) + " " + unidades[idx];
+}
 
-  // Caso 1: A API devolve árvore hierárquica com .children
-  if (Array.isArray(arvore) || (typeof arvore === "object" && Array.isArray(arvore.children))) {
-    const listaRaiz = Array.isArray(arvore) ? arvore : arvore.children;
+/**
+ * Formata datas no padrão pt-PT.
+ */
+function formatarDataArquivo(dataStr) {
+  if (typeof formatarData === "function") return formatarData(dataStr);
+  if (!dataStr) return "N/A";
+  const d = new Date(dataStr);
+  if (isNaN(d.getTime())) return "N/A";
+  return d.toLocaleDateString("pt-PT", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+}
 
-    function procurarNo(nos, alvo) {
-      for (const no of nos) {
-        const pathNo = (no.path || no.caminho || "").replace(/^\/+|\/+$/g, "");
-        if (pathNo === alvo) {
-          return no.children || [];
-        }
-        if (Array.isArray(no.children) && no.children.length > 0) {
-          const encontrado = procurarNo(no.children, alvo);
-          if (encontrado) return encontrado;
-        }
-      }
-      return null;
-    }
+/**
+ * Ordena ficheiros: modelos/apoio primeiro e os restantes por data decrescente.
+ */
+function ordenarFicheirosTabela(lista) {
+  if (typeof ordenarFicheiros === "function") return ordenarFicheiros([...lista]);
+  return [...lista].sort((a, b) => {
+    const aMod = PREFIXOS_MODELO.some(p => a.name && a.name.startsWith(p));
+    const bMod = PREFIXOS_MODELO.some(p => b.name && b.name.startsWith(p));
+    if (aMod && !bMod) return -1;
+    if (!aMod && bMod) return 1;
+    const tA = a.data ? new Date(a.data).getTime() : 0;
+    const tB = b.data ? new Date(b.data).getTime() : 0;
+    return tB - tA;
+  });
+}
 
-    const filhos = procurarNo(listaRaiz, caminhoAlvo);
-    if (filhos !== null) {
-      return filhos
-        .filter(item => {
-          const nome = item.name || item.nome || "";
-          return nome && !nome.startsWith(".");
-        })
-        .map(item => ({
-          nome: item.name || item.nome,
-          path: (item.path || item.caminho || `${caminhoAlvo}/${item.name || item.nome}`).replace(/^\/+|\/+$/g, ""),
-          tipo: (item.type === "dir" || item.tipo === "dir" || Array.isArray(item.children)) ? "dir" : "file"
-        }));
+/**
+ * Persiste a árvore recebida da API em localStorage e sessionStorage.
+ */
+function guardarCacheCategoria(categoria, dados) {
+  const payload = JSON.stringify({ timestamp: Date.now(), dados });
+  try { localStorage.setItem(`trabalhos_cache_${categoria}`, payload); } catch (_) { }
+  try { sessionStorage.setItem(`trabalhos_sess_${categoria}`, payload); } catch (_) { }
+}
+
+/**
+ * Lê a árvore em cache caso exista.
+ */
+function lerCacheCategoria(categoria) {
+  for (const ler of [
+    () => { try { return localStorage.getItem(`trabalhos_cache_${categoria}`); } catch (_) { return null; } },
+    () => { try { return sessionStorage.getItem(`trabalhos_sess_${categoria}`); } catch (_) { return null; } }
+  ]) {
+    const raw = ler();
+    if (!raw) continue;
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.dados) return parsed.dados;
+    } catch (_) { }
+  }
+  return null;
+}
+
+/**
+ * Apaga o cache guardado da categoria.
+ */
+function limparCacheCategoria(categoria) {
+  try { localStorage.removeItem(`trabalhos_cache_${categoria}`); } catch (_) { }
+  try { sessionStorage.removeItem(`trabalhos_sess_${categoria}`); } catch (_) { }
+}
+
+/**
+ * Coleta todos os ficheiros de um nó de pasta recursivamente (ignorando .gitkeep e ficheiros ocultos).
+ */
+function coletarFicheirosRecursivos(no) {
+  const resultado = [];
+  if (!no || !Array.isArray(no.children)) return resultado;
+
+  for (const filho of no.children) {
+    if (!filho.name || filho.name.startsWith(".")) continue;
+    if (filho.type === "file") {
+      resultado.push(filho);
+    } else if (filho.type === "dir") {
+      resultado.push(...coletarFicheirosRecursivos(filho));
     }
   }
+  return resultado;
+}
 
-  // Caso 2: A API devolve uma lista plana de ficheiros/pastas (ex: { ficheiros: [...] } ou { tree: [...] })
-  const listaPlana = Array.isArray(arvore?.ficheiros)
-    ? arvore.ficheiros
-    : Array.isArray(arvore?.tree)
-      ? arvore.tree
-      : Array.isArray(arvore?.items)
-        ? arvore.items
-        : [];
+/**
+ * Transforma a árvore { children: [ <curso> -> [ <ano> -> [ <pastas/ficheiros> ] ] ] }
+ * em blocos estruturados por Curso, Ano Lectivo e Pastas clicáveis.
+ */
+function extrairBlocosCursoAnoPastas(arvore, categoria) {
+  const cursosNos = Array.isArray(arvore?.children)
+    ? arvore.children.filter(n => n.type === "dir" && n.name && !n.name.startsWith("."))
+    : [];
 
-  if (listaPlana.length > 0) {
-    const prefixo = caminhoAlvo ? caminhoAlvo + "/" : "";
-    const mapaFilhos = new Map();
+  const blocos = [];
 
-    for (const item of listaPlana) {
-      const p = String(item.path || item.caminho || "").replace(/^\/+|\/+$/g, "");
-      if (!p.startsWith(prefixo)) continue;
+  for (const noCurso of cursosNos) {
+    const anosNos = Array.isArray(noCurso.children)
+      ? noCurso.children.filter(n => n.type === "dir" && n.name && !n.name.startsWith("."))
+      : [];
 
-      const resto = p.slice(prefixo.length);
-      if (!resto) continue;
+    for (const noAno of anosNos) {
+      const pastas = [];
+      const ficheirosDiretosNoAno = [];
 
-      const partes = resto.split("/");
-      const nomeFilho = partes[0];
-      if (!nomeFilho || nomeFilho.startsWith(".")) continue;
+      for (const item of (noAno.children || [])) {
+        if (!item.name || item.name.startsWith(".")) continue;
 
-      const ehPasta = partes.length > 1 || item.type === "dir" || item.type === "tree";
-      const caminhoFilho = prefixo + nomeFilho;
+        if (item.type === "dir") {
+          // Cada subpasta dentro do ano letivo (ex: Trabalho_1) vira um cartão de pasta
+          pastas.push({
+            id: item.name,
+            nome: item.name.replace(/_/g, " "),
+            ficheiros: coletarFicheirosRecursivos(item)
+          });
+        } else if (item.type === "file") {
+          ficheirosDiretosNoAno.push(item);
+        }
+      }
 
-      if (!mapaFilhos.has(nomeFilho)) {
-        mapaFilhos.set(nomeFilho, {
-          nome: nomeFilho,
-          path: caminhoFilho,
-          tipo: ehPasta ? "dir" : "file"
+      // Se houver ficheiros soltos diretamente na pasta do ano letivo, agrupa num cartão próprio
+      if (ficheirosDiretosNoAno.length > 0) {
+        pastas.unshift({
+          id: "_ano_direto",
+          nome: categoria === "Trabalhos Individuais" ? "Trabalho Individual" : "Trabalho de Grupo",
+          ficheiros: ficheirosDiretosNoAno
         });
-      } else if (ehPasta) {
-        mapaFilhos.get(nomeFilho).tipo = "dir";
+      }
+
+      if (pastas.length > 0) {
+        blocos.push({
+          cursoRaw: noCurso.name,
+          cursoChave: normalizarChave(noCurso.name),
+          cursoNome: formatarNomeCurso(noCurso.name),
+          ano: noAno.name,
+          pastas
+        });
       }
     }
-
-    return Array.from(mapaFilhos.values());
   }
 
-  return [];
+  return blocos;
 }
 
 /**
- * Obtém ícone adequado ao tipo de ficheiro
+ * Renderiza a grelha superior com os três botões solicitados.
  */
-function obterIconeFicheiro(nome) {
-  const ext = (nome.split(".").pop() || "").toLowerCase();
-  if (ext === "pdf") return "📄";
-  if (["doc", "docx", "odt"].includes(ext)) return "📝";
-  if (["xls", "xlsx", "csv"].includes(ext)) return "📊";
-  if (["ppt", "pptx"].includes(ext)) return "📽️";
-  if (["zip", "rar", "7z"].includes(ext)) return "🗜️";
-  if (["png", "jpg", "jpeg", "gif", "webp"].includes(ext)) return "🖼️";
-  return "📎";
+function renderizarSeletorTopoHtml() {
+  const ativoIndividual = categoriaAtual === "Trabalhos Individuais";
+  const ativoGrupo = categoriaAtual === "Trabalhos de Grupo";
+
+  return `
+    <div id="seletor-tipo-trabalhos" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; margin-bottom:20px;">
+      <button type="button"
+              onclick="selecionarTipoTrabalho('Trabalhos Individuais')"
+              style="padding:12px 14px; border-radius:8px; font-weight:700; font-size:0.95rem; cursor:pointer; transition:all 0.2s ease; border:2px solid ${ativoIndividual ? "#0d3b66" : "#ced4da"}; background:${ativoIndividual ? "#0d3b66" : "#f8f9fa"}; color:${ativoIndividual ? "#ffffff" : "#0d3b66"};">
+        Trabalhos individuais
+      </button>
+
+      <button type="button"
+              onclick="selecionarTipoTrabalho('Trabalhos de Grupo')"
+              style="padding:12px 14px; border-radius:8px; font-weight:700; font-size:0.95rem; cursor:pointer; transition:all 0.2s ease; border:2px solid ${ativoGrupo ? "#0d3b66" : "#ced4da"}; background:${ativoGrupo ? "#0d3b66" : "#f8f9fa"}; color:${ativoGrupo ? "#ffffff" : "#0d3b66"};">
+        Trabalhos de Grupo
+      </button>
+
+      <button type="button"
+              onclick="limparFiltrosTrabalhos()"
+              style="padding:12px 14px; border-radius:8px; font-weight:700; font-size:0.95rem; cursor:pointer; transition:all 0.2s ease; border:2px solid #d90429; background:#ffffff; color:#d90429;">
+        Limpar Filtros
+      </button>
+    </div>
+  `;
 }
 
 /**
- * Carrega a árvore da categoria selecionada a partir da API
+ * Busca os dados reais no GitHub pela API passando ?caminho=www/Trabalhos/<categoria>.
  */
 async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
   const container = obterContainerTrabalhos();
   if (!container) return;
 
+  if (!categoriaAtual) {
+    renderizarExploradorTrabalhos();
+    return;
+  }
+
+  if (!forcarAtualizacao) {
+    const cache = lerCacheCategoria(categoriaAtual);
+    if (cache) {
+      arvoreCompleta = cache;
+      origemDadosAtual = "cache";
+      renderizarExploradorTrabalhos();
+      return;
+    }
+  }
+
   container.innerHTML = `
-    <div class="tp-estado-carregamento">
-      <div class="tp-spinner"></div>
-      <p>A carregar pastas e ficheiros de <b>${categoriaAtual}</b>...</p>
-    </div>
+    ${renderizarSeletorTopoHtml()}
+    <p style="color:#555; padding:12px 0;">A carregar pastas de <b>${categoriaAtual}</b> no GitHub...</p>
   `;
 
   try {
-    const caminhoBase = `www/Trabalhos/${categoriaAtual}`;
-    const url = `${API_LISTAR_TRABALHOS}?caminho=${encodeURIComponent(caminhoBase)}${forcarAtualizacao ? "&refresh=1&t=" + Date.now() : ""}`;
+    const caminhoApi = `www/Trabalhos/${categoriaAtual}`;
+    const url = `${API_TRABALHOS_URL}?caminho=${encodeURIComponent(caminhoApi)}${forcarAtualizacao ? "&t=" + Date.now() : ""}`;
     const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`Erro HTTP ${resp.status}`);
+    const dados = await resp.json().catch(() => ({}));
 
-    const dados = await resp.json();
+    if (!resp.ok) {
+      throw new Error(dados.error || `Erro HTTP ${resp.status}`);
+    }
+
     arvoreCompleta = dados;
+    origemDadosAtual = "api";
+    guardarCacheCategoria(categoriaAtual, dados);
     renderizarExploradorTrabalhos();
   } catch (erro) {
-    console.error("Erro ao carregar trabalhos:", erro);
-    container.innerHTML = `
-      <div class="tp-estado-vazio">
-        <p>⚠️ Não foi possível carregar os trabalhos neste momento.</p>
-        <button type="button" class="tp-btn-acao" onclick="carregarArvoreTrabalhos(true)">🔄 Tentar novamente</button>
-      </div>
-    `;
+    const cache = lerCacheCategoria(categoriaAtual);
+    if (cache) {
+      arvoreCompleta = cache;
+      origemDadosAtual = "cache";
+      renderizarExploradorTrabalhos(erro.message || "");
+      return;
+    }
+
+    arvoreCompleta = { path: `www/Trabalhos/${categoriaAtual}`, type: "dir", children: [] };
+    origemDadosAtual = "api";
+    renderizarExploradorTrabalhos(erro.message || "");
   }
 }
 
 /**
- * Renderiza o explorador de pastas e ficheiros do nível atual
+ * Renderiza a grelha agrupada por Curso, Ano Lectivo e Pastas clicáveis.
  */
-function renderizarExploradorTrabalhos() {
+function renderizarExploradorTrabalhos(avisoErro = "") {
   const container = obterContainerTrabalhos();
   if (!container) return;
 
-  const caminhoBase = `www/Trabalhos/${categoriaAtual}`;
-  const caminhoCompleto = caminhoNavegacao.length > 0
-    ? `${caminhoBase}/${caminhoNavegacao.join("/")}`
-    : caminhoBase;
+  let html = renderizarSeletorTopoHtml();
 
-  const itens = obterFilhosDiretos(arvoreCompleta, caminhoCompleto);
-
-  // Ordenar: pastas primeiro (ordem alfabética), depois ficheiros (ordem alfabética)
-  itens.sort((a, b) => {
-    if (a.tipo !== b.tipo) return a.tipo === "dir" ? -1 : 1;
-    return a.nome.localeCompare(b.nome, "pt", { numeric: true });
-  });
-
-  // Barra superior de categorias + atualizar
-  let html = `
-    <div class="tp-barra-topo" style="display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center; margin-bottom:14px;">
-      <div class="tp-tabs" style="display:flex; flex-wrap:wrap; gap:8px;">
-        ${CATEGORIAS_TRABALHOS.map(cat => `
-          <button type="button"
-            class="tp-tab-btn ${cat === categoriaAtual ? "ativo" : ""}"
-            onclick="selecionarCategoriaTrabalho('${cat}')">
-            📁 ${cat}
-          </button>
-        `).join("")}
-      </div>
-      <button type="button" class="tp-btn-atualizar" onclick="carregarArvoreTrabalhos(true)" title="Atualizar lista">
-        🔄 Atualizar
-      </button>
-    </div>
-  `;
-
-  // Breadcrumb / Caminho atual
-  html += `
-    <div class="tp-breadcrumb" style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:10px 12px; background:#f4f6f9; border-radius:8px; margin-bottom:14px; font-size:0.95rem;">
-      <button type="button" class="tp-crumb-link" onclick="irParaNivelTrabalho(-1)" style="background:none; border:none; color:#0b5ed7; font-weight:600; cursor:pointer; padding:0;">
-        🏠 ${categoriaAtual}
-      </button>
-      ${caminhoNavegacao.map((pasta, idx) => `
-        <span style="color:#6c757d;">/</span>
-        <button type="button" class="tp-crumb-link" onclick="irParaNivelTrabalho(${idx})" style="background:none; border:none; color:${idx === caminhoNavegacao.length - 1 ? "#212529" : "#0b5ed7"}; font-weight:${idx === caminhoNavegacao.length - 1 ? "700" : "600"}; cursor:pointer; padding:0;">
-          ${pasta.replace(/_/g, " ")}
-        </button>
-      `).join("")}
-    </div>
-  `;
-
-  // Botão voltar se estiver dentro de alguma subpasta
-  if (caminhoNavegacao.length > 0) {
+  if (!categoriaAtual) {
     html += `
-      <div style="margin-bottom:12px;">
-        <button type="button" class="tp-btn-voltar" onclick="voltarPastaTrabalho()" style="padding:6px 12px; border-radius:6px; border:1px solid #ced4da; background:#fff; cursor:pointer; font-weight:600;">
-          ⬅️ Voltar
-        </button>
+      <p style="color:#6c757d; font-style:italic; margin-top:10px;">
+        Selecione <strong>Trabalhos individuais</strong> ou <strong>Trabalhos de Grupo</strong> no topo para visualizar as pastas.
+      </p>
+    `;
+    container.innerHTML = html;
+    return;
+  }
+
+  if (origemDadosAtual === "cache") {
+    html += `
+      <div style="padding:8px 12px; margin-bottom:14px; background:#fffbeb; border:1px solid #fcd34d; color:#92400e; border-radius:6px; font-size:0.88rem;">
+        💾 <b>Cache ativa:</b> A mostrar a estrutura guardada do GitHub.${avisoErro ? ` (${avisoErro})` : ""}
+        <button type="button" onclick="forcarRecargaTrabalhos()" style="margin-left:8px; padding:3px 8px; cursor:pointer;">Atualizar</button>
+      </div>
+    `;
+  } else if (avisoErro) {
+    html += `
+      <div style="padding:8px 12px; margin-bottom:14px; background:#fef2f2; border:1px solid #fca5a5; color:#991b1b; border-radius:6px; font-size:0.88rem;">
+        ⚠️ ${avisoErro}
+        <button type="button" onclick="forcarRecargaTrabalhos()" style="margin-left:8px; padding:3px 8px; cursor:pointer;">Tentar novamente</button>
       </div>
     `;
   }
 
-  // Lista de pastas e ficheiros
-  if (itens.length === 0) {
-    html += `
-      <div class="tp-estado-vazio" style="padding:24px; text-align:center; background:#fff; border:1px dashed #ced4da; border-radius:10px; color:#6c757d;">
-        <p style="margin:0;">📂 Esta pasta está vazia no momento.</p>
-      </div>
-    `;
-  } else {
-    html += `<div class="tp-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;">`;
+  const blocos = extrairBlocosCursoAnoPastas(arvoreCompleta, categoriaAtual);
 
-    for (const item of itens) {
-      if (item.tipo === "dir") {
-        const nomeExibicao = item.nome.replace(/_/g, " ");
+  // Agrupa por curso mantendo a ordem encontrada no repositório
+  const mapaCursos = new Map();
+  for (const bloco of blocos) {
+    if (!mapaCursos.has(bloco.cursoRaw)) {
+      mapaCursos.set(bloco.cursoRaw, {
+        cursoRaw: bloco.cursoRaw,
+        cursoChave: bloco.cursoChave,
+        cursoNome: bloco.cursoNome,
+        anos: []
+      });
+    }
+    mapaCursos.get(bloco.cursoRaw).anos.push(bloco);
+  }
+
+  if (mapaCursos.size === 0) {
+    html += `<p style="color:#666; font-style:italic; margin-top:15px;">Nenhuma pasta encontrada em <strong>${categoriaAtual}</strong> no GitHub.</p>`;
+    container.innerHTML = html;
+    return;
+  }
+
+  for (const curso of mapaCursos.values()) {
+    html += `<div style="margin-top:32px; margin-bottom:20px; display:block; clear:both;">`;
+    html += `<h3 style="font-size:1.3rem; color:#0d3b66; margin-bottom:15px; display:block; border-bottom:2px solid #d90429; padding-bottom:5px;">Curso: ${curso.cursoNome}</h3>`;
+
+    for (const blocoAno of curso.anos) {
+      html += `<div style="margin-left:20px; margin-bottom:25px; display:block; clear:both;">`;
+      html += `<p style="font-size:1rem; color:#333; margin:10px 0;"><strong>Ano Lectivo:</strong> ${blocoAno.ano}</p>`;
+      html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-top:10px; margin-bottom:15px;">`;
+
+      for (const pasta of blocoAno.pastas) {
+        const chavePasta = `${categoriaAtual}|${curso.cursoRaw}|${blocoAno.ano}|${pasta.id}`;
         html += `
-          <div class="tp-card tp-card-pasta"
-               onclick="abrirPastaTrabalho('${item.nome.replace(/'/g, "\\'")}')"
-               style="display:flex; align-items:center; gap:12px; padding:14px; background:#fff; border:1px solid #dee2e6; border-left:4px solid #f59e0b; border-radius:10px; cursor:pointer; transition:transform 0.15s ease, box-shadow 0.15s ease;">
-            <span style="font-size:1.7rem;">📁</span>
-            <div style="overflow:hidden;">
-              <div style="font-weight:700; color:#1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${nomeExibicao}</div>
-              <div style="font-size:0.82rem; color:#64748b;">Abrir pasta</div>
-            </div>
-          </div>
-        `;
-      } else {
-        const urlFicheiro = RAW_GITHUB_BASE + codificarCaminhoGitHub(item.path);
-        const icone = obterIconeFicheiro(item.nome);
-        html += `
-          <div class="tp-card tp-card-ficheiro"
-               style="display:flex; flex-direction:column; justify-content:space-between; gap:10px; padding:14px; background:#fff; border:1px solid #dee2e6; border-left:4px solid #0d6efd; border-radius:10px;">
-            <div style="display:flex; align-items:flex-start; gap:10px;">
-              <span style="font-size:1.6rem;">${icone}</span>
-              <div style="font-weight:600; color:#1e293b; word-break:break-word; font-size:0.95rem;">${item.nome}</div>
-            </div>
-            <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:4px;">
-              <a href="${urlFicheiro}" target="_blank" rel="noopener noreferrer"
-                 style="padding:6px 12px; background:#0d6efd; color:#fff; text-decoration:none; border-radius:6px; font-size:0.85rem; font-weight:600;">
-                👁️ Abrir / Baixar
-              </a>
-            </div>
+          <div onclick="solicitarCodigoEAbrirPasta('${chavePasta.replace(/'/g, "\\'")}')"
+               onmouseover="this.style.background='#e2e6ea'"
+               onmouseout="this.style.background='#f8f9fa'"
+               style="background:#f8f9fa; border:1px solid #ced4da; padding:15px; border-radius:8px; cursor:pointer; text-align:center; transition:background 0.2s; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="font-size:1.8rem; margin-bottom:8px; line-height:1;">📁</div>
+            <div style="color:#0d3b66; margin:0 0 5px 0; font-size:1rem; font-weight:bold;">${pasta.nome}</div>
+            <span style="font-size:0.75rem; color:#6c757d;">Aceder com código da Turma</span>
           </div>
         `;
       }
+
+      html += `</div></div>`;
     }
 
     html += `</div>`;
@@ -282,47 +436,125 @@ function renderizarExploradorTrabalhos() {
   container.innerHTML = html;
 }
 
-// Funções de navegação expostas globalmente
-window.selecionarCategoriaTrabalho = function (categoria) {
-  if (categoriaAtual === categoria && arvoreCompleta) {
-    caminhoNavegacao = [];
-    renderizarExploradorTrabalhos();
+/**
+ * Renderiza a tabela de ficheiros de uma pasta após validação do código.
+ */
+function renderizarTabelaPastaAberta(chavePasta) {
+  const container = obterContainerTrabalhos();
+  if (!container) return;
+
+  const [cat, cursoRaw, ano, pastaId] = chavePasta.split("|");
+  const blocos = extrairBlocosCursoAnoPastas(arvoreCompleta, cat);
+  const blocoAno = blocos.find(b => b.cursoRaw === cursoRaw && b.ano === ano);
+  const pasta = blocoAno?.pastas?.find(p => p.id === pastaId);
+  const cursoNome = blocoAno?.cursoNome || formatarNomeCurso(cursoRaw);
+  const nomePasta = pasta?.nome || pastaId;
+  const ficheiros = ordenarFicheirosTabela(pasta?.ficheiros || []);
+
+  let html = renderizarSeletorTopoHtml();
+
+  html += `
+    <button type="button" onclick="voltarParaGrelhaPastas()"
+            style="margin-bottom:15px; padding:8px 12px; background:#6c757d; color:white; border:none; border-radius:4px; cursor:pointer;">
+      ← Voltar às Pastas
+    </button>
+    <h3 style="color:#0d3b66; font-size:1.3rem; margin-bottom:15px; border-bottom:2px solid #d90429; padding-bottom:5px;">Curso: ${cursoNome}</h3>
+    <p style="font-size:1rem; color:#333; margin:10px 0;"><strong>Ano Lectivo:</strong> ${ano} | <strong>Pasta:</strong> ${nomePasta}</p>
+  `;
+
+  if (ficheiros.length === 0) {
+    html += `<p style="color:#666; font-style:italic; margin-top:15px;">Nenhum ficheiro encontrado nesta pasta.</p>`;
+    container.innerHTML = html;
     return;
   }
-  categoriaAtual = categoria;
-  caminhoNavegacao = [];
+
+  html += `
+    <div style="width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; margin-top:5px;">
+      <table style="width:100%; min-width:500px; border-collapse:collapse; display:table !important;">
+        <thead>
+          <tr style="background-color:#f8f9fa; border-bottom:2px solid #dee2e6; text-align:left;">
+            <th style="padding:10px; width:60%; white-space:nowrap;">Nome / Referência</th>
+            <th style="padding:10px; width:20%; white-space:nowrap;">Data de Envio</th>
+            <th style="padding:10px; width:20%; white-space:nowrap;">Tamanho</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  for (const item of ficheiros) {
+    const isModelo = PREFIXOS_MODELO.some(p => item.name && item.name.startsWith(p));
+    const urlItem = item.url || (RAW_GITHUB_BASE + codificarCaminhoRaw(item.path));
+
+    const colNome = isModelo
+      ? `<span style="background:#e2f0d9; color:#385723; padding:2px 6px; border-radius:4px; font-size:0.85em; font-weight:bold; margin-right:6px;">Modelo</span> <a href="${urlItem}" target="_blank" rel="noopener noreferrer" style="color:#0066cc; font-weight:bold; text-decoration:underline;">${item.name}</a>`
+      : `<a href="${urlItem}" target="_blank" rel="noopener noreferrer" style="color:#0066cc; text-decoration:underline;">${item.name}</a>`;
+
+    html += `
+      <tr style="border-bottom:1px solid #e9ecef;">
+        <td style="padding:10px; word-break:break-word;">${colNome}</td>
+        <td style="padding:10px; color:#555; white-space:nowrap;">${isModelo ? "Ficheiro de Apoio" : formatarDataArquivo(item.data)}</td>
+        <td style="padding:10px; color:#555; white-space:nowrap;">${formatarTamanhoArquivo(item.size)}</td>
+      </tr>
+    `;
+  }
+
+  html += `</tbody></table></div>`;
+  container.innerHTML = html;
+}
+
+// Seleciona uma das duas secções ("Trabalhos Individuais" ou "Trabalhos de Grupo")
+window.selecionarTipoTrabalho = function (tipo) {
+  if (tipo !== "Trabalhos Individuais" && tipo !== "Trabalhos de Grupo") return;
+  categoriaAtual = tipo;
   carregarArvoreTrabalhos(false);
 };
 
-window.abrirPastaTrabalho = function (nomePasta) {
-  caminhoNavegacao.push(nomePasta);
+// Limpa o filtro ativo e regressa ao estado inicial do seletor
+window.limparFiltrosTrabalhos = function () {
+  categoriaAtual = null;
+  arvoreCompleta = null;
   renderizarExploradorTrabalhos();
 };
 
-window.voltarPastaTrabalho = function () {
-  if (caminhoNavegacao.length > 0) {
-    caminhoNavegacao.pop();
-    renderizarExploradorTrabalhos();
+// Solicita o código da turma antes de abrir o conteúdo da pasta
+window.solicitarCodigoEAbrirPasta = function (chavePasta) {
+  const [, cursoRaw, ano, pastaId] = chavePasta.split("|");
+  const chaveCurso = normalizarChave(cursoRaw);
+  const codigoEsperado = CODIGOS_CURSOS_TRABALHOS[chaveCurso];
+
+  if (!pastasDesbloqueadas.has(chavePasta) && codigoEsperado) {
+    const codigoInformado = prompt(`Introduza o código de acesso para visualizar (${formatarNomeCurso(cursoRaw)} - ${ano}):`);
+    if (codigoInformado === null) return;
+    if (codigoInformado.trim() !== codigoEsperado) {
+      return alert("Código de acesso incorreto! Acesso negado.");
+    }
+    pastasDesbloqueadas.add(chavePasta);
   }
+
+  renderizarTabelaPastaAberta(chavePasta);
 };
 
-window.irParaNivelTrabalho = function (indice) {
-  if (indice < 0) {
-    caminhoNavegacao = [];
-  } else {
-    caminhoNavegacao = caminhoNavegacao.slice(0, indice + 1);
-  }
+// Volta da tabela de ficheiros para a grelha de pastas da secção atual
+window.voltarParaGrelhaPastas = function () {
   renderizarExploradorTrabalhos();
 };
 
-window.carregarArvoreTrabalhos = carregarArvoreTrabalhos;
-window.inicializarTrabalhos = function (categoriaInicial) {
-  if (categoriaInicial && CATEGORIAS_TRABALHOS.includes(categoriaInicial)) {
-    const mudouCategoria = categoriaAtual !== categoriaInicial;
-    categoriaAtual = categoriaInicial;
-    if (mudouCategoria) caminhoNavegacao = [];
-  }
-  if (!arvoreCompleta || (categoriaInicial && categoriaAtual !== categoriaInicial)) {
+// Limpa o cache da secção ativa e força nova consulta à API
+window.forcarRecargaTrabalhos = function () {
+  if (!categoriaAtual) return;
+  limparCacheCategoria(categoriaAtual);
+  carregarArvoreTrabalhos(true);
+};
+
+// Ponto de entrada externo com as duas chaves exatas
+window.inicializarTrabalhos = function (catInicial) {
+  const mapa = {
+    "Trabalhos individuais": "Trabalhos Individuais",
+    "Trabalhos de Grupo": "Trabalhos de Grupo"
+  };
+
+  if (catInicial && mapa[catInicial]) {
+    categoriaAtual = mapa[catInicial];
     carregarArvoreTrabalhos(false);
   } else {
     renderizarExploradorTrabalhos();
@@ -330,11 +562,7 @@ window.inicializarTrabalhos = function (categoriaInicial) {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const secaoTrabalhosPraticos = document.getElementById("trabalhos-praticos");
-  const secaoTrabalhosIndividuais = document.getElementById("trabalhos-individuais");
-  const secaoTrabalhos = document.getElementById("trabalhos");
-
-  if (secaoTrabalhosPraticos || secaoTrabalhosIndividuais || secaoTrabalhos) {
-    carregarArvoreTrabalhos(false);
+  if (obterContainerTrabalhos()) {
+    renderizarExploradorTrabalhos();
   }
 });
