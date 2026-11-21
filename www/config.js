@@ -8,7 +8,8 @@ const PERIODOS_SUBMISSAO = {
     economia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-empresa': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-iscgvsm': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-    enfermagem: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-a': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-b': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     contabilidade: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     agronomia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     turismo: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
@@ -24,7 +25,8 @@ const PERIODOS_SUBMISSAO = {
     economia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-empresa': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-iscgvsm': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-    enfermagem: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-a': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-b': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     contabilidade: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     agronomia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     turismo: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
@@ -40,7 +42,8 @@ const PERIODOS_SUBMISSAO = {
     economia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-empresa': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     'gestao-iscgvsm': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
-    enfermagem: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-a': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+    'enfermagem-b': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     contabilidade: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     agronomia: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
     turismo: { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
@@ -175,3 +178,20 @@ const PERIODOS_SUBMISSAO = {
     }
   }
 };
+
+function obterPeriodoSubmissao(seccao, curso, actividadeId = null) {
+  const sec = PERIODOS_SUBMISSAO[seccao];
+  if (!sec || !sec[curso]) return null;
+  if (seccao === 'actividades') {
+    return actividadeId ? (sec[curso][actividadeId] || null) : null;
+  }
+  return sec[curso];
+}
+
+function submissaoAberta(seccao, curso, actividadeId = null, agora = new Date()) {
+  const periodo = obterPeriodoSubmissao(seccao, curso, actividadeId);
+  if (!periodo || !(periodo.inicio instanceof Date) || !(periodo.fim instanceof Date)) {
+    return false;
+  }
+  return agora >= periodo.inicio && agora <= periodo.fim;
+}

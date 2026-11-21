@@ -1,20 +1,25 @@
 {
   "short_name": "Exactas - Prof. Wadiley",
-  "name": "Curso de Estatística - USTP",
+  "name": "Exactas - Prof. Wadiley",
+  "description": "Plataforma académica de Estatística e Matemática — USTP",
   "icons": [
     {
       "src": "FotoPerfil.jpg",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any"
     },
     {
       "src": "FotoPerfil.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
+  "scope": "./",
   "background_color": "#ffffff",
   "theme_color": "#0056b3",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary"
 }

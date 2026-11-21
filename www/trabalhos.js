@@ -17,6 +17,16 @@ let pastasDesbloqueadas = new Set();    // Guarda as chaves das pastas já autor
 const API_TRABALHOS_URL = "https://api-cienciasexactas.vercel.app/api/trabalhos";
 const RAW_GITHUB_BASE = "https://raw.githubusercontent.com/cienciasexactas/cienciasexactas.github.io/main/";
 
+// Índices JSON estáticos gerados pelo GitHub Actions
+const INDICE_ESTATICO_TRABALHOS = {
+  "Trabalhos Individuais": "dados/trabalhos-individuais.json",
+  "Trabalhos de Grupo": "dados/trabalhos-grupo.json"
+};
+
+// Configurações de cache com TTL e timeout de rede
+const TTL_TRABALHOS_MS = 3 * 60 * 1000; // 3 minutos de validade do cache
+const TIMEOUT_TRABALHOS_MS = 8000;     // 8 segundos de timeout para o fetch
+
 // Códigos de acesso por curso (normalizados para comparação)
 const CODIGOS_CURSOS_TRABALHOS = {
   "biologia": "L2BIO2026",
@@ -53,6 +63,22 @@ const NOMES_CURSOS = {
 
 // Prefixos de ficheiros de apoio/modelo que ficam sempre no topo da tabela
 const PREFIXOS_MODELO = ["Modelo_", "Template_", "Enunciado_", "Ficha_", "Lista_", "Base_", "Dados_"];
+
+/**
+ * Executa fetch com AbortController e timeout para evitar esperas infinitas.
+ */
+async function fetchTrabalhosComTimeout(url, options = {}, timeoutMs = TIMEOUT_TRABALHOS_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 /**
  * Localiza o elemento HTML onde a interface de trabalhos será renderizada.
@@ -159,9 +185,9 @@ function guardarCacheCategoria(categoria, dados) {
 }
 
 /**
- * Lê a árvore em cache caso exista.
+ * Lê a árvore em cache caso exista. Se `apenasValidos` for true, respeita o TTL.
  */
-function lerCacheCategoria(categoria) {
+function lerCacheCategoria(categoria, apenasValidos = false, ttlMs = TTL_TRABALHOS_MS) {
   for (const ler of [
     () => { try { return localStorage.getItem(`trabalhos_cache_${categoria}`); } catch (_) { return null; } },
     () => { try { return sessionStorage.getItem(`trabalhos_sess_${categoria}`); } catch (_) { return null; } }
@@ -170,7 +196,12 @@ function lerCacheCategoria(categoria) {
     if (!raw) continue;
     try {
       const parsed = JSON.parse(raw);
-      if (parsed && parsed.dados) return parsed.dados;
+      if (!parsed || !parsed.dados) continue;
+      if (apenasValidos) {
+        const ts = Number(parsed.timestamp || 0);
+        if (!ts || (Date.now() - ts) > ttlMs) continue;
+      }
+      return parsed.dados;
     } catch (_) { }
   }
   return null;
@@ -292,7 +323,8 @@ function renderizarSeletorTopoHtml() {
 }
 
 /**
- * Busca os dados reais no GitHub pela API passando ?caminho=www/Trabalhos/<categoria>.
+ * Busca os dados reais no GitHub pela API passando ?caminho=www/Trabalhos/<categoria>
+ * com cache TTL, timeout via AbortController e fallback seguro.
  */
 async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
   const container = obterContainerTrabalhos();
@@ -304,9 +336,9 @@ async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
   }
 
   if (!forcarAtualizacao) {
-    const cache = lerCacheCategoria(categoriaAtual);
-    if (cache) {
-      arvoreCompleta = cache;
+    const cacheValido = lerCacheCategoria(categoriaAtual, true, TTL_TRABALHOS_MS);
+    if (cacheValido) {
+      arvoreCompleta = cacheValido;
       origemDadosAtual = "cache";
       renderizarExploradorTrabalhos();
       return;
@@ -321,7 +353,7 @@ async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
   try {
     const caminhoApi = `www/Trabalhos/${categoriaAtual}`;
     const url = `${API_TRABALHOS_URL}?caminho=${encodeURIComponent(caminhoApi)}${forcarAtualizacao ? "&t=" + Date.now() : ""}`;
-    const resp = await fetch(url);
+    const resp = await fetchTrabalhosComTimeout(url, {}, TIMEOUT_TRABALHOS_MS);
     const dados = await resp.json().catch(() => ({}));
 
     if (!resp.ok) {
@@ -333,17 +365,22 @@ async function carregarArvoreTrabalhos(forcarAtualizacao = false) {
     guardarCacheCategoria(categoriaAtual, dados);
     renderizarExploradorTrabalhos();
   } catch (erro) {
-    const cache = lerCacheCategoria(categoriaAtual);
-    if (cache) {
-      arvoreCompleta = cache;
+    const detalheErro = erro && erro.name === "AbortError"
+      ? "Tempo limite excedido (timeout) ao contactar o servidor."
+      : (erro.message || "Falha na ligação.");
+
+    // Fallback: usa qualquer cache disponível (mesmo que tenha expirado o TTL)
+    const cacheFallback = lerCacheCategoria(categoriaAtual, false);
+    if (cacheFallback) {
+      arvoreCompleta = cacheFallback;
       origemDadosAtual = "cache";
-      renderizarExploradorTrabalhos(erro.message || "");
+      renderizarExploradorTrabalhos(`Fallback de cache: ${detalheErro}`);
       return;
     }
 
     arvoreCompleta = { path: `www/Trabalhos/${categoriaAtual}`, type: "dir", children: [] };
     origemDadosAtual = "api";
-    renderizarExploradorTrabalhos(erro.message || "");
+    renderizarExploradorTrabalhos(detalheErro);
   }
 }
 

@@ -1,6 +1,131 @@
 // ============================================================================
-// 1. UTILITÁRIOS & OTIMIZAÇÕES DE DESEMPENHO
+// 1. UTILITÁRIOS & OTIMIZAÇÕES DE DESEMPENHO (COM CACHE TTL, TIMEOUT E FALLBACK)
 // ============================================================================
+
+const TTL_SCRIPT_LISTAR_MS = 3 * 60 * 1000; // 3 minutos de validade em cache para listagens
+const TIMEOUT_SCRIPT_FETCH_MS = 8000;     // 8 segundos de timeout por pedido
+
+function lerCacheScript(chave, ttlMs = TTL_SCRIPT_LISTAR_MS) {
+  try {
+    const raw = localStorage.getItem(chave) || sessionStorage.getItem(chave);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || !('dados' in parsed)) return null;
+    const ts = Number(parsed.ts || 0);
+    return {
+      dados: parsed.dados,
+      ts,
+      valido: ts > 0 && (Date.now() - ts) <= ttlMs
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+function guardarCacheScript(chave, dados) {
+  const envelope = JSON.stringify({ ts: Date.now(), dados });
+  try { localStorage.setItem(chave, envelope); } catch (e) {}
+  try { sessionStorage.setItem(chave, envelope); } catch (e) {}
+}
+
+function invalidarCacheListarScript() {
+  try {
+    const prefixo = 'script_listar_ttl_';
+    [localStorage, sessionStorage].forEach(store => {
+      const chaves = [];
+      for (let i = 0; i < store.length; i++) {
+        const k = store.key(i);
+        if (k && k.startsWith(prefixo)) chaves.push(k);
+      }
+      chaves.forEach(k => store.removeItem(k));
+    });
+  } catch (e) {}
+}
+
+async function fetchScriptComTimeout(url, options = {}, timeoutMs = TIMEOUT_SCRIPT_FETCH_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function listarComCacheEFallback(cursoParam, forcarRede = false) {
+  const chave = `script_listar_ttl_${encodeURIComponent(cursoParam)}`;
+  const cached = lerCacheScript(chave, TTL_SCRIPT_LISTAR_MS);
+
+  if (!forcarRede && cached && cached.valido && cached.dados) {
+    return { dados: cached.dados, deCache: true, erro: null };
+  }
+
+  // Tenta primeiro o índice JSON estático quando não é forçada a rede
+  if (!forcarRede) {
+    try {
+      const respIndice = await fetchScriptComTimeout('dados/indice-conteudos.json', {}, TIMEOUT_SCRIPT_FETCH_MS);
+      if (respIndice.ok) {
+        const indice = await respIndice.json();
+        const dadosDoIndice = extrairDadosCursoDoIndice(indice, cursoParam);
+        if (dadosDoIndice) {
+          guardarCacheScript(chave, dadosDoIndice);
+          return { dados: dadosDoIndice, deCache: false, erro: null };
+        }
+      }
+    } catch (_) {}
+  }
+
+  const url = `https://backend-upload-sooty.vercel.app/api/listar?curso=${encodeURIComponent(cursoParam)}`;
+  try {
+    const resposta = await fetchScriptComTimeout(url, {}, TIMEOUT_SCRIPT_FETCH_MS);
+    if (!resposta.ok) {
+      throw new Error(`HTTP ${resposta.status}`);
+    }
+    const dados = await resposta.json();
+    guardarCacheScript(chave, dados);
+    return { dados, deCache: false, erro: null };
+  } catch (erro) {
+    if (cached && cached.dados) {
+      return { dados: cached.dados, deCache: true, erro };
+    }
+    return { dados: null, deCache: false, erro };
+  }
+}
+
+function exibirAvisoFallbackScript(container, mensagem = '') {
+  if (!container) return;
+  let aviso = container.querySelector('.aviso-fallback-script');
+  if (!mensagem) {
+    if (aviso) aviso.remove();
+    return;
+  }
+  if (!aviso) {
+    aviso = document.createElement('div');
+    aviso.className = 'aviso-fallback-script';
+    aviso.style.cssText = 'margin:10px 0;padding:8px 12px;border-radius:6px;background:#fff8e1;color:#664d03;border:1px solid #ffecb5;font-size:0.9rem;';
+    container.prepend(aviso);
+  }
+  aviso.textContent = mensagem;
+}
+
+async function mapLimitScript(items, limite, fn) {
+  const resultados = new Array(items.length);
+  let indiceAtual = 0;
+
+  async function worker() {
+    while (indiceAtual < items.length) {
+      const idx = indiceAtual++;
+      resultados[idx] = await fn(items[idx], idx);
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(limite, items.length) }, worker);
+  await Promise.all(workers);
+  return resultados;
+}
 
 /**
  * Função de Debounce para limitar a frequência de execução de funções de alto custo (ex: resize).
@@ -481,9 +606,6 @@ window.trocarIdioma = function (codigoIdioma) {
  * @param {string} docUrl URL do documento.
  * @param {string} titulo Título do documento.
  */
-// ============================================================================
-// 5. MODAL DE VISUALIZAÇÃO DE DOCUMENTOS (PDF / PREVIEW) - ISOLADO
-// ============================================================================
 function abrirPreviewModal(docUrl, titulo) {
   // 1. Resolve a URL corretamente baseada no diretório atual (compatível com GitHub Pages)
   let urlReal = docUrl;
@@ -547,7 +669,7 @@ function abrirPreviewModal(docUrl, titulo) {
       novoBtn.disabled = true;
 
       try {
-        const response = await fetch(urlReal);
+        const response = await fetchScriptComTimeout(urlReal, {}, 12000);
         if (!response.ok) throw new Error('Falha na rede');
         const blob = await response.blob();
         const blobUrl = window.URL.createObjectURL(blob);
@@ -557,8 +679,8 @@ function abrirPreviewModal(docUrl, titulo) {
 
         // Extrai a extensão real do ficheiro e define o nome corretamente
         const extensaoReal = urlReal.split('.').pop().toLowerCase().split('?')[0];
-        let nomeFicheiro = titulo 
-          ? (titulo.toLowerCase().endsWith('.' + extensaoReal) ? titulo : `${titulo}.${extensaoReal}`) 
+        let nomeFicheiro = titulo
+          ? (titulo.toLowerCase().endsWith('.' + extensaoReal) ? titulo : `${titulo}.${extensaoReal}`)
           : urlReal.split('/').pop().split('?')[0];
 
         a.download = nomeFicheiro;
@@ -1262,11 +1384,11 @@ async function enviarPayloadParaVercel(payload, btnEnviar) {
   }
 
   try {
-    const resposta = await fetch(URL_DA_VERCEL, {
+    const resposta = await fetchScriptComTimeout(URL_DA_VERCEL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
-    });
+    }, 12000);
 
     const dados = await resposta.json();
 
@@ -1285,16 +1407,20 @@ async function enviarPayloadParaVercel(payload, btnEnviar) {
 
       alternarTipoEnvio();
       controlarVisibilidadeActividade();
+      invalidarCacheListarScript();
 
       if (typeof carregarFicheirosExistentes === 'function') {
-        await carregarFicheirosExistentes();
+        await carregarFicheirosExistentes(true);
       }
     } else {
       alert('Erro no envio: ' + (dados.error || JSON.stringify(dados)));
     }
   } catch (erro) {
     console.error('Erro ao conectar com a API:', erro);
-    alert('Falha na comunicação com o servidor.');
+    const msg = erro && erro.name === 'AbortError'
+      ? 'Tempo limite excedido (timeout) ao comunicar com o servidor.'
+      : 'Falha na comunicação com o servidor.';
+    alert(msg);
   } finally {
     isUploading = false;
     if (btnEnviar) {
@@ -1471,7 +1597,7 @@ function inicializarSelectsFormulario() {
 // ----------------------------------------------------------------------------
 // 8.1. CARREGAR FICHEIROS PADRÃO (Trabalhos Individuais, Grupo, Produção)
 // ----------------------------------------------------------------------------
-async function carregarFicheirosPorSeccao(tipoSeccao, containerId) {
+async function carregarFicheirosPorSeccao(tipoSeccao, containerId, forcarRede = false) {
   const containerGeral = document.getElementById(containerId);
   if (!containerGeral) return;
 
@@ -1494,134 +1620,135 @@ async function carregarFicheirosPorSeccao(tipoSeccao, containerId) {
   ];
 
   const agora = new Date();
+  let houveFalhaComFallback = false;
 
-  for (const curso of cursos) {
-    try {
-      const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=${tipoSeccao}/${curso.id}`);
-      const dados = await resposta.json();
+  const blocosCursos = await mapLimitScript(cursos, 4, async (curso) => {
+    const { dados, deCache, erro } = await listarComCacheEFallback(`${tipoSeccao}/${curso.id}`, forcarRede);
+    if (erro && deCache) houveFalhaComFallback = true;
+    if (!dados || !dados.estrutura) return null;
 
-      if (!resposta.ok || !dados.estrutura) continue;
+    const estruturaComFicheiros = dados.estrutura.filter(
+      blocoAno => blocoAno.ficheiros && blocoAno.ficheiros.length > 0
+    );
+    if (estruturaComFicheiros.length === 0) return null;
 
-      const estruturaComFicheiros = dados.estrutura.filter(
-        blocoAno => blocoAno.ficheiros && blocoAno.ficheiros.length > 0
-      );
+    const divCurso = document.createElement('div');
+    divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
 
-      if (estruturaComFicheiros.length === 0) continue;
+    const h3 = document.createElement('h3');
+    h3.textContent = `Curso: ${curso.nome}`;
+    h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
+    divCurso.appendChild(h3);
 
-      const divCurso = document.createElement('div');
-      divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both; position: relative !important;';
+    for (const blocoAno of estruturaComFicheiros) {
+      const divAno = document.createElement('div');
+      divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both;';
 
-      const h3 = document.createElement('h3');
-      h3.textContent = `Curso: ${curso.nome}`;
-      h3.style.cssText = 'font-size: 1.3rem; color: #0d3b66; margin-bottom: 15px; display: block; border-bottom: 2px solid #d90429; padding-bottom: 5px;';
-      divCurso.appendChild(h3);
+      const h4 = document.createElement('p');
+      h4.innerHTML = `<strong>Ano Lectivo:</strong> ${blocoAno.ano}`;
+      h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0;';
+      divAno.appendChild(h4);
 
-      for (const blocoAno of estruturaComFicheiros) {
-        const divAno = document.createElement('div');
-        divAno.style.cssText = 'margin-left: 20px; margin-bottom: 25px; display: block; clear: both;';
+      const divTabelaWrapper = document.createElement('div');
+      divTabelaWrapper.style.cssText = 'width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 5px;';
 
-        const h4 = document.createElement('p');
-        h4.innerHTML = `<strong>Ano Lectivo:</strong> ${blocoAno.ano}`;
-        h4.style.cssText = 'font-size: 1rem; color: #333; margin: 10px 0;';
-        divAno.appendChild(h4);
+      const tabela = document.createElement('table');
+      tabela.style.cssText = 'width: 100%; min-width: 500px; border-collapse: collapse; display: table !important;';
 
-        const divTabelaWrapper = document.createElement('div');
-        divTabelaWrapper.style.cssText = 'width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 5px;';
+      tabela.innerHTML = `
+        <thead>
+          <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left;">
+            <th style="padding: 10px; width: 60%; white-space: nowrap;">Nome / Referência</th>
+            <th style="padding: 10px; width: 20%; white-space: nowrap;">Data de Envio</th>
+            <th style="padding: 10px; width: 20%; white-space: nowrap;">Tamanho / Tipo</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
 
-        const tabela = document.createElement('table');
-        tabela.style.cssText = 'width: 100%; min-width: 500px; border-collapse: collapse; display: table !important;';
+      const tbody = tabela.querySelector('tbody');
+      const ficheirosOrdenados = ordenarFicheiros(blocoAno.ficheiros);
 
-        tabela.innerHTML = `
-          <thead>
-            <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left;">
-              <th style="padding: 10px; width: 60%; white-space: nowrap;">Nome / Referência</th>
-              <th style="padding: 10px; width: 20%; white-space: nowrap;">Data de Envio</th>
-              <th style="padding: 10px; width: 20%; white-space: nowrap;">Tamanho / Tipo</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        `;
+      for (const item of ficheirosOrdenados) {
+        const tr = document.createElement('tr');
+        tr.style.cssText = 'border-bottom: 1px solid #e9ecef;';
 
-        const tbody = tabela.querySelector('tbody');
+        const prefixosPermitidos = ['Modelo_', 'Template_', 'Enunciado_', 'Ficha_', 'Lista_', 'Base_', 'Dados_'];
+        const isModelo = prefixosPermitidos.some(prefixo => item.nome && item.nome.startsWith(prefixo));
+        const isLink = item.tipo === 'link' || item.isLink || item.nome?.startsWith('link_') || item.nome?.endsWith('.txt');
 
-        // APLICA A ORDENAÇÃO: Modelos em cima, restantes por data decrescente
-        const ficheirosOrdenados = ordenarFicheiros(blocoAno.ficheiros);
+        let textoReferencia = item.referencia || item.nome;
+        let urlDestino = item.url;
 
-        for (const item of ficheirosOrdenados) {
-          const tr = document.createElement('tr');
-          tr.style.cssText = 'border-bottom: 1px solid #e9ecef;';
-
-          const prefixosPermitidos = ['Modelo_', 'Template_', 'Enunciado_', 'Ficha_', 'Lista_', 'Base_', 'Dados_'];
-          const isModelo = prefixosPermitidos.some(prefixo => item.nome && item.nome.startsWith(prefixo));
-          const isLink = item.tipo === 'link' || item.isLink || item.nome?.startsWith('link_') || item.nome?.endsWith('.txt');
-
-          let textoReferencia = item.referencia || item.nome;
-          let urlDestino = item.url;
-
-          if (isLink && item.url) {
-            try {
-              const resFicheiro = await fetch(item.url);
-              if (resFicheiro.ok) {
-                const conteudoTexto = await resFicheiro.text();
-                const matchRef = conteudoTexto.match(/Referência:\s*(.*)/i);
-                const matchUrl = conteudoTexto.match(/URL:\s*(.*)/i);
-                if (matchRef && matchRef[1].trim()) textoReferencia = matchRef[1].trim();
-                if (matchUrl && matchUrl[1].trim()) urlDestino = matchUrl[1].trim();
-              }
-            } catch (errLink) {
-              console.warn('Erro ao ler o conteúdo do link:', errLink);
+        if (isLink && item.url) {
+          try {
+            const resFicheiro = await fetchScriptComTimeout(item.url, {}, 5000);
+            if (resFicheiro.ok) {
+              const conteudoTexto = await resFicheiro.text();
+              const matchRef = conteudoTexto.match(/Referência:\s*(.*)/i);
+              const matchUrl = conteudoTexto.match(/URL:\s*(.*)/i);
+              if (matchRef && matchRef[1].trim()) textoReferencia = matchRef[1].trim();
+              if (matchUrl && matchUrl[1].trim()) urlDestino = matchUrl[1].trim();
             }
+          } catch (errLink) {
+            console.warn('Erro ao ler o conteúdo do link:', errLink);
           }
-
-          let linkBloqueado = false;
-
-          if (!isModelo) {
-            if (typeof PERIODOS_SUBMISSAO !== 'undefined' && PERIODOS_SUBMISSAO[tipoSeccao]?.[curso.id]) {
-              const prazo = PERIODOS_SUBMISSAO[tipoSeccao][curso.id];
-              // Bloqueia se a data atual AINDA NÃO ULTRAPASSOU o prazo limite (fim)
-              if (prazo && prazo.fim && agora <= new Date(prazo.fim)) {
-                linkBloqueado = true;
-              }
-            }
-          }
-
-          let conteudoColunaNome = '';
-          const comandoPopup = `window.open(this.href, 'janelaPopup', 'width=900,height=700,scrollbars=yes,resizable=yes'); return false;`;
-
-          if (linkBloqueado) {
-            conteudoColunaNome = `<span style="color: #6c757d; cursor: not-allowed;">${isLink ? textoReferencia : item.nome} 🔒 <em style="font-size: 0.85em; color: #d93025; font-style: normal;">(Pendente - Prazo a decorrer)</em></span>`;
-          } else if (isModelo) {
-            conteudoColunaNome = `<span style="background: #e2f0d9; color: #385723; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 6px;">Modelo</span> <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; font-weight: bold; text-decoration: underline;">${item.nome}</a>`;
-          } else if (isLink) {
-            conteudoColunaNome = `<span>${textoReferencia}</span> <a href="${urlDestino}" onclick="${comandoPopup}" style="color: #0066cc; font-weight: bold; text-decoration: underline; margin-left: 4px;">(Aceder)</a>`;
-          } else {
-            conteudoColunaNome = `<a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">${item.nome}</a>`;
-          }
-
-          tr.innerHTML = `
-            <td style="padding: 10px; word-break: break-word;">${conteudoColunaNome}</td>
-            <td style="padding: 10px; color: #555; white-space: nowrap;">${isModelo ? 'Ficheiro de Apoio' : formatarData(item.data)}</td>
-            <td style="padding: 10px; color: #555; white-space: nowrap;">${isLink ? 'Link Externo' : formatarTamanho(item.tamanho)}</td>
-          `;
-          tbody.appendChild(tr);
         }
 
-        divTabelaWrapper.appendChild(tabela);
-        divAno.appendChild(divTabelaWrapper);
-        divCurso.appendChild(divAno);
+        let linkBloqueado = false;
+
+        if (!isModelo) {
+          if (typeof PERIODOS_SUBMISSAO !== 'undefined' && PERIODOS_SUBMISSAO[tipoSeccao]?.[curso.id]) {
+            const prazo = PERIODOS_SUBMISSAO[tipoSeccao][curso.id];
+            if (prazo && prazo.fim && agora <= new Date(prazo.fim)) {
+              linkBloqueado = true;
+            }
+          }
+        }
+
+        let conteudoColunaNome = '';
+        const comandoPopup = `window.open(this.href, 'janelaPopup', 'width=900,height=700,scrollbars=yes,resizable=yes'); return false;`;
+
+        if (linkBloqueado) {
+          conteudoColunaNome = `<span style="color: #6c757d; cursor: not-allowed;">${isLink ? textoReferencia : item.nome} 🔒 <em style="font-size: 0.85em; color: #d93025; font-style: normal;">(Pendente - Prazo a decorrer)</em></span>`;
+        } else if (isModelo) {
+          conteudoColunaNome = `<span style="background: #e2f0d9; color: #385723; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 6px;">Modelo</span> <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; font-weight: bold; text-decoration: underline;">${item.nome}</a>`;
+        } else if (isLink) {
+          conteudoColunaNome = `<span>${textoReferencia}</span> <a href="${urlDestino}" onclick="${comandoPopup}" style="color: #0066cc; font-weight: bold; text-decoration: underline; margin-left: 4px;">(Aceder)</a>`;
+        } else {
+          conteudoColunaNome = `<a href="${item.url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">${item.nome}</a>`;
+        }
+
+        tr.innerHTML = `
+          <td style="padding: 10px; word-break: break-word;">${conteudoColunaNome}</td>
+          <td style="padding: 10px; color: #555; white-space: nowrap;">${isModelo ? 'Ficheiro de Apoio' : formatarData(item.data)}</td>
+          <td style="padding: 10px; color: #555; white-space: nowrap;">${isLink ? 'Link Externo' : formatarTamanho(item.tamanho)}</td>
+        `;
+        tbody.appendChild(tr);
       }
 
-      containerGeral.appendChild(divCurso);
-    } catch (erro) {
-      console.warn(`Erro ao consultar a secção ${tipoSeccao} para o curso ${curso.id}:`, erro);
+      divTabelaWrapper.appendChild(tabela);
+      divAno.appendChild(divTabelaWrapper);
+      divCurso.appendChild(divAno);
     }
-  }
+
+    return divCurso;
+  });
+
+  blocosCursos.forEach(divCurso => {
+    if (divCurso) containerGeral.appendChild(divCurso);
+  });
+
+  exibirAvisoFallbackScript(
+    containerGeral,
+    houveFalhaComFallback ? 'Ligação lenta ou indisponível: a mostrar listagem em cache.' : ''
+  );
 }
 
 // ----------------------------------------------------------------------------
 // 8.2. RENDERIZAR SECÇÃO ACTIVIDADES (POR CURSO/ANO E ATIVIDADE)
 // ----------------------------------------------------------------------------
-async function carregarFicheirosActividades(containerId) {
+async function carregarFicheirosActividades(containerId, forcarRede = false) {
   const containerGeral = document.getElementById(containerId);
   if (!containerGeral) return;
 
@@ -1655,8 +1782,9 @@ async function carregarFicheirosActividades(containerId) {
   ];
 
   const anosLectivos = ['2023-2024', '2024-2025', '2025-2026', '2026-2027'];
+  let houveFalhaComFallback = false;
 
-  for (const curso of cursos) {
+  const blocosCursos = await mapLimitScript(cursos, 3, async (curso) => {
     const divCurso = document.createElement('div');
     divCurso.style.cssText = 'margin-top: 40px; margin-bottom: 20px; display: block; clear: both;';
 
@@ -1666,6 +1794,12 @@ async function carregarFicheirosActividades(containerId) {
     divCurso.appendChild(h3);
 
     let temConteudoCurso = false;
+
+    const resultadosAtividades = await mapLimitScript(actividadesDisponiveis, 4, async (act) => {
+      const { dados, deCache, erro } = await listarComCacheEFallback(`actividades/${act.id}/${curso.id}`, forcarRede);
+      if (erro && deCache) houveFalhaComFallback = true;
+      return { act, dados };
+    });
 
     for (const ano of anosLectivos) {
       const divAno = document.createElement('div');
@@ -1681,34 +1815,27 @@ async function carregarFicheirosActividades(containerId) {
 
       let temAtividadesNoAno = false;
 
-      for (const act of actividadesDisponiveis) {
-        try {
-          const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=actividades/${act.id}/${curso.id}`);
-          const dados = await resposta.json();
+      for (const { act, dados } of resultadosAtividades) {
+        if (dados && dados.estrutura) {
+          const blocoDoAno = dados.estrutura.find(b => b.ano === ano);
+          if (blocoDoAno && blocoDoAno.ficheiros && blocoDoAno.ficheiros.length > 0) {
+            temAtividadesNoAno = true;
+            temConteudoCurso = true;
 
-          if (resposta.ok && dados.estrutura) {
-            const blocoDoAno = dados.estrutura.find(b => b.ano === ano);
-            if (blocoDoAno && blocoDoAno.ficheiros && blocoDoAno.ficheiros.length > 0) {
-              temAtividadesNoAno = true;
-              temConteudoCurso = true;
+            const card = document.createElement('div');
+            card.style.cssText = 'background: #f8f9fa; border: 1px solid #ced4da; padding: 15px; border-radius: 8px; cursor: pointer; text-align: center; transition: background 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center;';
+            card.innerHTML = `
+                  <div style="font-size: 1.8rem; margin-bottom: 8px; line-height: 1;">📁</div>
+                  <div style="color: #0d3b66; margin: 0 0 5px 0; font-size: 1rem; font-weight: bold;">${act.nome}</div>
+                  <span style="font-size: 0.75rem; color: #6c757d;">Aceder com código da Turma</span>
+              `;
 
-              const card = document.createElement('div');
-              card.style.cssText = 'background: #f8f9fa; border: 1px solid #ced4da; padding: 15px; border-radius: 8px; cursor: pointer; text-align: center; transition: background 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center;';
-              card.innerHTML = `
-                    <div style="font-size: 1.8rem; margin-bottom: 8px; line-height: 1;">📁</div>
-                    <div style="color: #0d3b66; margin: 0 0 5px 0; font-size: 1rem; font-weight: bold;">${act.nome}</div>
-                    <span style="font-size: 0.75rem; color: #6c757d;">Aceder com código da Turma</span>
-                `;
+            card.onmouseover = () => card.style.background = '#e2e6ea';
+            card.onmouseout = () => card.style.background = '#f8f9fa';
+            card.onclick = () => solicitarCodigoEAbrirActividadeTurma(act.id, act.nome, curso.id, curso.nome, ano, containerGeral);
 
-              card.onmouseover = () => card.style.background = '#e2e6ea';
-              card.onmouseout = () => card.style.background = '#f8f9fa';
-              card.onclick = () => solicitarCodigoEAbrirActividadeTurma(act.id, act.nome, curso.id, curso.nome, ano, containerGeral);
-
-              divGrid.appendChild(card);
-            }
+            divGrid.appendChild(card);
           }
-        } catch (e) {
-          // Ignora erros individuais de fetch
         }
       }
 
@@ -1718,10 +1845,17 @@ async function carregarFicheirosActividades(containerId) {
       }
     }
 
-    if (temConteudoCurso) {
-      containerGeral.appendChild(divCurso);
-    }
-  }
+    return temConteudoCurso ? divCurso : null;
+  });
+
+  blocosCursos.forEach(divCurso => {
+    if (divCurso) containerGeral.appendChild(divCurso);
+  });
+
+  exibirAvisoFallbackScript(
+    containerGeral,
+    houveFalhaComFallback ? 'Ligação lenta ou indisponível: a mostrar atividades em cache.' : ''
+  );
 }
 
 // ----------------------------------------------------------------------------
@@ -1753,10 +1887,13 @@ async function abrirTabelaDetalhadaActividade(actId, actNome, cursoId, cursoNome
   `;
 
   try {
-    const resposta = await fetch(`https://backend-upload-sooty.vercel.app/api/listar?curso=actividades/${actId}/${cursoId}`);
-    const dados = await resposta.json();
+    const { dados, deCache, erro } = await listarComCacheEFallback(`actividades/${actId}/${cursoId}`, false);
 
-    if (resposta.ok && dados.estrutura) {
+    if (dados && dados.estrutura) {
+      if (erro && deCache) {
+        exibirAvisoFallbackScript(containerPai, 'Ligação falhou ou demorou: a mostrar dados em cache.');
+      }
+
       const blocoDoAno = dados.estrutura.find(b => b.ano === anoLectivo);
 
       if (blocoDoAno && blocoDoAno.ficheiros && blocoDoAno.ficheiros.length > 0) {
@@ -1830,23 +1967,26 @@ async function abrirTabelaDetalhadaActividade(actId, actNome, cursoId, cursoNome
       } else {
         containerPai.innerHTML += '<p style="color: #666; font-style: italic; margin-top: 15px;">Nenhum ficheiro encontrado nesta atividade.</p>';
       }
+    } else {
+      containerPai.innerHTML += '<p style="color: #666; font-style: italic; margin-top: 15px;">Não foi possível carregar os ficheiros desta atividade no momento.</p>';
     }
   } catch (e) {
     console.warn('Erro ao carregar detalhes da atividade:', e);
+    containerPai.innerHTML += '<p style="color: #666; font-style: italic; margin-top: 15px;">Erro de ligação ao carregar os detalhes da atividade.</p>';
   }
 }
 
 // ----------------------------------------------------------------------------
 // 8.5. CARREGAMENTO GERAL AO ABRIR A PÁGINA
 // ----------------------------------------------------------------------------
-async function carregarFicheirosExistentes() {
+async function carregarFicheirosExistentes(forcarRede = false) {
   inicializarSelectsFormulario();
 
   await Promise.all([
-    carregarFicheirosPorSeccao('colaborativos', 'lista-colaborativos-container'),
-    carregarFicheirosPorSeccao('grupo', 'lista-grupo-container'),
-    carregarFicheirosPorSeccao('publicacoes', 'lista-publicacoes-container'),
-    carregarFicheirosActividades('lista-actividades-container')
+    carregarFicheirosPorSeccao('colaborativos', 'lista-colaborativos-container', forcarRede),
+    carregarFicheirosPorSeccao('grupo', 'lista-grupo-container', forcarRede),
+    carregarFicheirosPorSeccao('publicacoes', 'lista-publicacoes-container', forcarRede),
+    carregarFicheirosActividades('lista-actividades-container', forcarRede)
   ]);
 }
 

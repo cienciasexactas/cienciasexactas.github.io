@@ -1,5 +1,62 @@
 // ================= SCRIPT COMPLETO, INTEGRADO E CORRIGIDO (pauta.js) =================
 
+// --- Integração de Cache com TTL e Fetch com Timeout (AbortController) ---
+const PAUTA_API_URL_INTEGRADA = 'https://api-cienciasexactas.vercel.app/api/pauta';
+const TTL_PAUTA_INTEGRADO_MS = 3 * 60 * 1000; // 3 minutos de validade em cache
+const TIMEOUT_PAUTA_INTEGRADO_MS = 8000;      // 8 segundos de timeout por pedido
+
+function lerCachePautaIntegrado(chave, ttlMs = TTL_PAUTA_INTEGRADO_MS) {
+    try {
+        const raw = localStorage.getItem(chave) || sessionStorage.getItem(chave);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || !('dados' in parsed)) return null;
+        const ts = Number(parsed.ts || 0);
+        return {
+            dados: parsed.dados,
+            ts,
+            valido: ts > 0 && (Date.now() - ts) <= ttlMs
+        };
+    } catch (e) {
+        return null;
+    }
+}
+
+function guardarCachePautaIntegrado(chave, dados) {
+    const envelope = JSON.stringify({ ts: Date.now(), dados });
+    try { localStorage.setItem(chave, envelope); } catch (e) { }
+    try { sessionStorage.setItem(chave, envelope); } catch (e) { }
+}
+
+async function fetchPautaIntegradoComTimeout(url, options = {}, timeoutMs = TIMEOUT_PAUTA_INTEGRADO_MS) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+        return await fetch(url, {
+            ...options,
+            signal: controller.signal
+        });
+    } finally {
+        clearTimeout(timer);
+    }
+}
+
+function exibirAvisoFallbackPautaIntegrado(mensagem = '') {
+    const alvo = document.getElementById('vista-docente') || document.body;
+    let banner = document.getElementById('aviso-fallback-pauta-integrado');
+    if (!mensagem) {
+        if (banner) banner.remove();
+        return;
+    }
+    if (!banner) {
+        banner = document.createElement('div');
+        banner.id = 'aviso-fallback-pauta-integrado';
+        banner.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:6px;background:#fff8e1;color:#664d03;border:1px solid #ffecb5;font-size:0.9rem;';
+        alvo.prepend(banner);
+    }
+    banner.textContent = mensagem;
+}
+
 let pautaEstado = {
     utilizadorAtual: null,
     estudantes: [],
@@ -190,22 +247,50 @@ function calcularSituacaoEstudante(est, cursoOverride = null) {
     return { texto: `Reprovado (${notaReprovadoArred})`, valor: notaReprovadoArred };
 }
 
-// Carregar dados da nuvem ao iniciar
-async function inicializarSistemaPauta() {
+// Carregar dados da nuvem ao iniciar (com TTL, AbortController e fallback)
+async function inicializarSistemaPauta(forcarRede = false) {
+    const chaveCacheTTL = 'pauta_estado_ttl_v1';
+    const cachedTTL = lerCachePautaIntegrado(chaveCacheTTL, TTL_PAUTA_INTEGRADO_MS);
+
+    // Se houver cache TTL válida e não for forçado, aplica imediatamente para poupar CPU/rede
+    if (!forcarRede && cachedTTL && cachedTTL.valido && cachedTTL.dados && cachedTTL.dados.estudantes && cachedTTL.dados.estudantes.length > 0) {
+        pautaEstado.estudantes = cachedTTL.dados.estudantes;
+        pautaEstado.planilhasColunasPorCadeira = cachedTTL.dados.planilhasColunasPorCadeira || cachedTTL.dados.planilhasColunas || {};
+        pautaEstado.percentagens = cachedTTL.dados.percentagens || {};
+        configurarEventosAutopreenchimento();
+        return;
+    }
+
     try {
-        const resposta = await fetch('https://api-cienciasexactas.vercel.app/api/pauta');
+        const resposta = await fetchPautaIntegradoComTimeout(PAUTA_API_URL_INTEGRADA, {}, TIMEOUT_PAUTA_INTEGRADO_MS);
         if (resposta.ok) {
             const dados = await resposta.json();
             if (dados && dados.estudantes && dados.estudantes.length > 0) {
                 pautaEstado.estudantes = dados.estudantes;
                 pautaEstado.planilhasColunasPorCadeira = dados.planilhasColunasPorCadeira || dados.planilhasColunas || {};
                 pautaEstado.percentagens = dados.percentagens || {};
+                guardarCachePautaIntegrado(chaveCacheTTL, dados);
+                try { localStorage.setItem('pautaEstadoGlobal', JSON.stringify(dados)); } catch (e) { }
+                exibirAvisoFallbackPautaIntegrado(dados.fallback ? (dados.aviso || 'A mostrar dados em cache do servidor.') : '');
                 configurarEventosAutopreenchimento();
                 return;
             }
+        } else {
+            throw new Error(`HTTP ${resposta.status}`);
         }
     } catch (erro) {
         console.warn("Aviso ao carregar da API:", erro);
+        const motivo = erro && erro.name === 'AbortError' ? 'timeout' : (erro.message || 'erro de ligação');
+        exibirAvisoFallbackPautaIntegrado(`Ligação à nuvem demorou ou falhou (${motivo}). A usar cache local.`);
+    }
+
+    // Fallback para cache TTL (mesmo expirada) ou localStorage original
+    if (cachedTTL && cachedTTL.dados && Array.isArray(cachedTTL.dados.estudantes)) {
+        pautaEstado.estudantes = cachedTTL.dados.estudantes;
+        pautaEstado.planilhasColunasPorCadeira = cachedTTL.dados.planilhasColunasPorCadeira || cachedTTL.dados.planilhasColunas || {};
+        pautaEstado.percentagens = cachedTTL.dados.percentagens || {};
+        configurarEventosAutopreenchimento();
+        return;
     }
 
     const localSalvo = localStorage.getItem('pautaEstadoGlobal');
@@ -222,13 +307,15 @@ async function inicializarSistemaPauta() {
     configurarEventosAutopreenchimento();
 }
 
-// Sincronização com a nuvem
+// Sincronização com a nuvem (com AbortController e atualização de cache TTL)
 async function salvarNaNuvem() {
     const dadosParaSalvar = {
         estudantes: pautaEstado.estudantes,
         planilhasColunasPorCadeira: pautaEstado.planilhasColunasPorCadeira,
         percentagens: pautaEstado.percentagens
     };
+
+    guardarCachePautaIntegrado('pauta_estado_ttl_v1', dadosParaSalvar);
 
     try {
         localStorage.setItem('pautaEstadoGlobal', JSON.stringify(dadosParaSalvar));
@@ -237,11 +324,11 @@ async function salvarNaNuvem() {
     }
 
     try {
-        const resposta = await fetch('https://api-cienciasexactas.vercel.app/api/pauta', {
+        const resposta = await fetchPautaIntegradoComTimeout(PAUTA_API_URL_INTEGRADA, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dadosParaSalvar)
-        });
+        }, 9000);
 
         if (!resposta.ok) {
             const erroJson = await resposta.json().catch(() => ({}));
@@ -249,10 +336,12 @@ async function salvarNaNuvem() {
             alert("⚠️ AVISO: As alterações foram guardadas neste computador, mas FALHARAM ao sincronizar com a nuvem: " + (erroJson.error || "Erro desconhecido."));
             return false;
         }
+        exibirAvisoFallbackPautaIntegrado('');
         return true;
     } catch (erro) {
         console.error("Erro de rede ao sincronizar com a nuvem:", erro);
-        alert("⚠️ AVISO: Sem ligação à internet. Os dados foram salvos apenas localmente.");
+        const detalhe = erro && erro.name === 'AbortError' ? 'Tempo limite excedido (timeout).' : 'Sem ligação à internet.';
+        alert(`⚠️ AVISO: ${detalhe} Os dados foram salvos apenas localmente.`);
         return false;
     }
 }
@@ -605,7 +694,6 @@ async function guardarPercentagensCurso() {
 }
 
 // ================= SELEÇÃO E GUARDA DE PERCENTAGENS POR UNIDADE CURRICULAR (U.C.) =================
-// ================= SELEÇÃO E GUARDA DE PERCENTAGENS POR UNIDADE CURRICULAR (U.C.) =================
 function atualizarSelectUCPonderacaoPauta3() {
     const subSec = document.getElementById('subseccao-percentagens');
     const cursoSel = document.getElementById('docente-curso-global')?.value;
@@ -695,80 +783,6 @@ function atualizarSelectUCPonderacaoPauta3() {
 }
 
 function carregarPercentagensPorUCSelecionada() {
-    const cursoSel = document.getElementById('docente-curso-global')?.value;
-    const anoSel = document.getElementById('docente-ano-global')?.value;
-    const ucSel = document.getElementById('pauta3-select-uc-perc')?.value;
-
-    const inputPresenca = document.getElementById('pc-presenca');
-    const inputTestes = document.getElementById('pc-testes');
-    const inputTrabInd = document.getElementById('pc-trabind');
-    const inputTrabGrp = document.getElementById('pc-trabgrp');
-
-    const limparCampos = () => {
-        if (inputPresenca) inputPresenca.value = "";
-        if (inputTestes) inputTestes.value = "";
-        if (inputTrabInd) inputTrabInd.value = "";
-        if (inputTrabGrp) inputTrabGrp.value = "";
-    };
-
-    if (!cursoSel || !anoSel || !ucSel) {
-        limparCampos();
-        return;
-    }
-
-    const cursoKey = cursoSel.trim().toLowerCase();
-    const anoKey = anoSel.trim().toLowerCase();
-    const cadeiraKey = ucSel.trim().toLowerCase();
-    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
-
-    const pesos = pautaEstado.percentagens && pautaEstado.percentagens[chave];
-    if (pesos) {
-        if (inputPresenca) inputPresenca.value = pesos.presenca > 0 ? pesos.presenca * 100 : "";
-        if (inputTestes) inputTestes.value = pesos.testes > 0 ? pesos.testes * 100 : "";
-        if (inputTrabInd) inputTrabInd.value = pesos.trabInd > 0 ? pesos.trabInd * 100 : "";
-        if (inputTrabGrp) inputTrabGrp.value = pesos.trabGrp > 0 ? pesos.trabGrp * 100 : "";
-    } else {
-        limparCampos();
-    }
-}
-
-async function guardarPercentagensPorUCSelecionada() {
-    const cursoSel = document.getElementById('docente-curso-global')?.value;
-    const anoSel = document.getElementById('docente-ano-global')?.value;
-    const ucSel = document.getElementById('pauta3-select-uc-perc')?.value;
-
-    if (!cursoSel || !anoSel || !ucSel) {
-        alert("⚠️ Selecione o Curso, o Ano Letivo e a Unidade Curricular (U.C.).");
-        return;
-    }
-
-    const cursoKey = cursoSel.trim().toLowerCase();
-    const anoKey = anoSel.trim().toLowerCase();
-    const cadeiraKey = ucSel.trim().toLowerCase();
-    const chave = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
-
-    let pPresenca = parseFloat(document.getElementById('pc-presenca').value) || 0;
-    let pTestes = parseFloat(document.getElementById('pc-testes').value) || 0;
-    let pTrabInd = parseFloat(document.getElementById('pc-trabind').value) || 0;
-    let pTrabGrp = parseFloat(document.getElementById('pc-trabgrp').value) || 0;
-
-    if (pPresenca > 1 || pTestes > 1 || pTrabInd > 1 || pTrabGrp > 1) {
-        pPresenca /= 100; pTestes /= 100; pTrabInd /= 100; pTrabGrp /= 100;
-    }
-
-    pautaEstado.percentagens[chave] = {
-        presenca: pPresenca,
-        testes: pTestes,
-        trabInd: pTrabInd,
-        trabGrp: pTrabGrp
-    };
-
-    await salvarNaNuvem();
-    alert(`✅ Percentagens guardadas para "${ucSel}" (${anoSel})!`);
-    recarregarDadosDocente();
-}
-
-function carregarPercentagensPorUCSelecionada() {
     const cursoSel = (document.getElementById('docente-curso-global')?.value || '').trim();
     const anoSel = (document.getElementById('docente-ano-global')?.value || '').trim();
     const ucSel = (document.getElementById('pauta3-select-uc-perc')?.value || '').trim();
@@ -792,7 +806,7 @@ function carregarPercentagensPorUCSelecionada() {
     const chaveExata = `${cursoKey}_${anoKey}_${cadeiraKey}`.replace(/\s+/g, '_');
 
     let pesos = pautaEstado.percentagens && pautaEstado.percentagens[chaveExata];
-    if (!pesos && pautaEstado.percentagens) {
+    if (!pesos && pautaEstado.percentagens && typeof normalizarComparacaoPauta3 === 'function') {
         const alvoNorm = `${normalizarComparacaoPauta3(cursoSel)}_${normalizarComparacaoPauta3(anoSel)}_${normalizarComparacaoPauta3(ucSel)}`;
         const chaveEncontrada = Object.keys(pautaEstado.percentagens).find(k => {
             const p = String(k).split('_');
@@ -859,7 +873,7 @@ function montarTheadSemDuplicacao(colunasFixas, tituloGrupo, totalSubcolunas) {
     return `<tr>${thFixas}<th colspan="${span}" style="text-align:center;">${tituloGrupo}</th></tr>`;
 }
 
-// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS
+// RECARREGAR DADOS DOCENTE E TABELAS INDIVIDUAIS (com acumulação em array para evitar re-parsing de DOM em loop)
 function recarregarDadosDocente() {
     const cursoSel = document.getElementById('docente-curso-global').value;
     const anoSel = document.getElementById('docente-ano-global').value;
@@ -911,11 +925,11 @@ function recarregarDadosDocente() {
         theadTrabGrp.innerHTML = montarTheadSemDuplicacao(["ID", "Nome", "U.C."], "Trabalhos de Grupo", todasColsTrabGrp.length);
     }
 
-    if (tbodyResumo) tbodyResumo.innerHTML = "";
-    if (tbodyPresenca) tbodyPresenca.innerHTML = "";
-    if (tbodyTrabInd) tbodyTrabInd.innerHTML = "";
-    if (tbodyTrabGrp) tbodyTrabGrp.innerHTML = "";
-    if (selectApagar) selectApagar.innerHTML = "";
+    const htmlResumoArr = [];
+    const htmlPresencaArr = [];
+    const htmlTrabIndArr = [];
+    const htmlTrabGrpArr = [];
+    const opcoesApagarArr = [];
 
     filtrados.forEach((est) => {
         est.trabInd = calcularMediaTrabalhos(est, "Trabalhos Individuais", cursoSel);
@@ -928,11 +942,11 @@ function recarregarDadosDocente() {
         est.situacao = avaliacao.texto;
 
         if (tbodyResumo) {
-            tbodyResumo.innerHTML += `<tr>
+            htmlResumoArr.push(`<tr>
                 <td>${est.id}</td><td>${est.nome}</td><td>${est.curso}</td><td>${est.cadeira || '-'}</td><td>${est.estatuto}</td><td>${est.ano || anoSel}</td>
                 <td>${formatarNota(est.presenca)}</td><td>${formatarNota(est.trabInd)}</td><td>${formatarNota(est.trabGrp)}</td>
                 <td>${formatarNota(est.teste1)}</td><td>${formatarNota(est.teste2)}</td><td>${formatarNota(est.exame)}</td><td>${formatarNota(est.notaProf)}</td><td><strong>${est.situacao}</strong></td>
-            </tr>`;
+            </tr>`);
         }
 
         const anoEstudante = est.ano || anoSel;
@@ -973,7 +987,7 @@ function recarregarDadosDocente() {
             }
             rowPresenca += `</tr>`;
 
-            tbodyPresenca.innerHTML += linhaDatasP + rowPresenca;
+            htmlPresencaArr.push(linhaDatasP + rowPresenca);
         }
 
         // 2. Trabalhos Individuais
@@ -1009,7 +1023,7 @@ function recarregarDadosDocente() {
             }
             rowTrabInd += `</tr>`;
 
-            tbodyTrabInd.innerHTML += linhaDatasTI + rowTrabInd;
+            htmlTrabIndArr.push(linhaDatasTI + rowTrabInd);
         }
 
         // 3. Trabalhos de Grupo
@@ -1045,17 +1059,25 @@ function recarregarDadosDocente() {
             }
             rowTrabGrp += `</tr>`;
 
-            tbodyTrabGrp.innerHTML += linhaDatasTG + rowTrabGrp;
+            htmlTrabGrpArr.push(linhaDatasTG + rowTrabGrp);
         }
 
         if (selectApagar) {
-            selectApagar.innerHTML += `<option value="${est.id}">${est.id} - ${est.nome} (${est.cadeira || 'Geral'})</option>`;
+            opcoesApagarArr.push(`<option value="${est.id}">${est.id} - ${est.nome} (${est.cadeira || 'Geral'})</option>`);
         }
     });
 
+    if (tbodyResumo) tbodyResumo.innerHTML = htmlResumoArr.join('');
+    if (tbodyPresenca) tbodyPresenca.innerHTML = htmlPresencaArr.join('');
+    if (tbodyTrabInd) tbodyTrabInd.innerHTML = htmlTrabIndArr.join('');
+    if (tbodyTrabGrp) tbodyTrabGrp.innerHTML = htmlTrabGrpArr.join('');
+    if (selectApagar) selectApagar.innerHTML = opcoesApagarArr.join('');
+
     renderizarGraficoTurma(filtrados);
 
-    inicializarPesquisaIndividualDocente();
+    if (typeof inicializarPesquisaIndividualDocente === 'function') {
+        inicializarPesquisaIndividualDocente();
+    }
 }
 
 // ================= AUTO-PREENCHIMENTO INTELIGENTE (CHAVE MESTRA ID / NOME) =================
