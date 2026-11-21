@@ -1,0 +1,458 @@
+/* ================= CSS DO SISTEMA DE PAUTAS (pauta.css) ================= */
+.pauta-container {
+    font-family: 'Figtree', sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.pauta-hidden {
+    display: none !important;
+}
+
+.pauta-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.pauta-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    flex: 1;
+}
+
+.pauta-form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: #475569;
+}
+
+.pauta-form-group input,
+.pauta-form-group select {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.pauta-form-group input:focus,
+.pauta-form-group select:focus {
+    border-color: #2563eb;
+}
+
+.pauta-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.pauta-btn:active {
+    transform: scale(0.98);
+}
+
+.pauta-btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.pauta-btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.pauta-btn-secondary {
+    background-color: #64748b;
+    color: #ffffff;
+}
+
+.pauta-btn-secondary:hover {
+    background-color: #475569;
+}
+
+.pauta-btn-success {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+
+.pauta-btn-success:hover {
+    background-color: #15803d;
+}
+
+.pauta-btn-danger {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+.pauta-btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+.pauta-btn-warning {
+    background-color: #d97706;
+    color: #ffffff;
+}
+
+.pauta-btn-warning:hover {
+    background-color: #b45309;
+}
+
+.pauta-error {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.pauta-table-wrapper {
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.pauta-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.pauta-table th,
+.pauta-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pauta-table th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #334155;
+}
+
+.pauta-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.pauta-chart-box {
+    position: relative;
+    height: 320px;
+    margin-top: 20px;
+}
+
+/* =========================================================
+   ESTRUTURA GERAL DO FORMULÁRIO (3 COLUNAS x 2 LINHAS)
+   ========================================================= */
+
+.pauta-form-row,
+#grupo-dados-gerais,
+.pauta-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 24px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f7f7f8;
+
+}
+
+.pauta-form-row {
+    align-items: end;
+    background-color: #f7f7f8;
+    padding: 20px;
+}
+
+#grupo-dados-gerais {
+    margin-top: 20px;
+}
+
+.pauta-form-group {
+    width: 100%;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   CAMPOS DE ENTRADA E SELETORES (LARGURA TOTAL FLUIDA)
+   ========================================================= */
+
+/* Todos os inputs, selects e botões passam a ocupar 100% da sua coluna no grid */
+.pauta-form-group input,
+.pauta-form-group select,
+.pauta-form-group button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    height: 35px;
+}
+
+/* Alturas consistentes */
+#ce-id,
+#ce-senha,
+#ce-nome,
+#ce-cadeira,
+#ce-estatuto,
+#select-apagar-estudante,
+#act-novo-valor {
+    height: 35px;
+}
+
+/* =========================================================
+   CABEÇALHO MODERNO DO PORTAL DO ESTUDANTE
+   ========================================================= */
+.est-header-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px 16px 28px;
+}
+
+.est-header-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.est-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Coluna Esquerda */
+.est-sec-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.est-perfil-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.est-avatar {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 50%;
+    background-color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.est-dados-pessoais {
+    display: flex;
+    flex-direction: column;
+}
+
+.est-campo-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.est-nome-valor {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.est-meta-linha {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.est-meta-valor {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+/* Coluna Direita - Histórico Académico */
+.est-hist-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 14px;
+}
+
+.est-curso-bloco {
+    margin-bottom: 16px;
+}
+
+.est-curso-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.est-curso-sublabel {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.est-cadeira-linha {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+.est-cadeira-nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.est-cadeira-ano {
+    font-size: 14px;
+    color: #475569;
+}
+
+.est-badges-grupo {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Badges de Estado */
+.est-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.est-badge-atual {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.est-badge-curso {
+    background-color: #0369a1;
+    color: #ffffff;
+}
+
+.est-badge-exame {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.est-badge-aprovado {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.est-badge-reprovado {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.est-nota-final {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.est-header-rodape {
+    text-align: right;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+@media (max-width: 768px) {
+    .est-header-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.est-avatar-wrapper {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    min-width: 88px;
+    margin-top: 4px;
+}
+
+.est-avatar {
+    width: 88px;
+    height: 88px;
+    min-width: 88px;
+    border-radius: 50%;
+    background-color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+}
+
+.est-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.est-avatar-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+.est-avatar-btn:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.06);
+}

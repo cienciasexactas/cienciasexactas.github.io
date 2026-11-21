@@ -1,0 +1,112 @@
+{
+  "name": "Trabalhos de Grupo",
+  "type": "dir",
+  "path": "www/Trabalhos/Trabalhos de Grupo",
+  "children": [
+    {
+      "name": "cienciasnaturais",
+      "type": "dir",
+      "path": "www/Trabalhos/Trabalhos de Grupo/cienciasnaturais",
+      "children": [
+        {
+          "name": "2026-2027",
+          "type": "dir",
+          "path": "www/Trabalhos/Trabalhos de Grupo/cienciasnaturais/2026-2027",
+          "children": [
+            {
+              "name": "Base_ de Dados I.xlsx",
+              "type": "file",
+              "path": "www/Trabalhos/Trabalhos de Grupo/cienciasnaturais/2026-2027/Base_ de Dados I.xlsx",
+              "size": 166849,
+              "data": "2026-11-21T13:14:12.822Z"
+            },
+            {
+              "name": "Modelo_ Constituição dos Grupos.docx",
+              "type": "file",
+              "path": "www/Trabalhos/Trabalhos de Grupo/cienciasnaturais/2026-2027/Modelo_ Constituição dos Grupos.docx",
+              "size": 16713,
+              "data": "2026-11-21T13:14:12.822Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enfermagem-a",
+      "type": "dir",
+      "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-a",
+      "children": [
+        {
+          "name": "2026-2027",
+          "type": "dir",
+          "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-a/2026-2027",
+          "children": [
+            {
+              "name": "Trabalho 1",
+              "type": "dir",
+              "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-a/2026-2027/Trabalho 1",
+              "children": [
+                {
+                  "name": "Lista_ Vieira, S. (2011) - Capítulo 2.8.pdf",
+                  "type": "file",
+                  "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-a/2026-2027/Trabalho 1/Lista_ Vieira, S. (2011) - Capítulo 2.8.pdf",
+                  "size": 578387,
+                  "data": "2026-11-21T13:14:12.823Z"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enfermagem-b",
+      "type": "dir",
+      "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-b",
+      "children": [
+        {
+          "name": "2026-2027",
+          "type": "dir",
+          "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-b/2026-2027",
+          "children": [
+            {
+              "name": "Trabalho 1",
+              "type": "dir",
+              "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-b/2026-2027/Trabalho 1",
+              "children": [
+                {
+                  "name": "Lista_ Vieira, S. (2011) - Capítulo 2.8.pdf",
+                  "type": "file",
+                  "path": "www/Trabalhos/Trabalhos de Grupo/enfermagem-b/2026-2027/Trabalho 1/Lista_ Vieira, S. (2011) - Capítulo 2.8.pdf",
+                  "size": 578387,
+                  "data": "2026-11-21T13:14:12.825Z"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gestao-iscgvsm",
+      "type": "dir",
+      "path": "www/Trabalhos/Trabalhos de Grupo/gestao-iscgvsm",
+      "children": [
+        {
+          "name": "2026-2027",
+          "type": "dir",
+          "path": "www/Trabalhos/Trabalhos de Grupo/gestao-iscgvsm/2026-2027",
+          "children": [
+            {
+              "name": "Modelo_ Trabalho Prático - Gestão.pdf",
+              "type": "file",
+              "path": "www/Trabalhos/Trabalhos de Grupo/gestao-iscgvsm/2026-2027/Modelo_ Trabalho Prático - Gestão.pdf",
+              "size": 152318,
+              "data": "2026-11-21T13:14:12.827Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
