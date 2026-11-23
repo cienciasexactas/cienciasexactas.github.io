@@ -8873,7 +8873,7 @@
       "exame": "1",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (1)",
       "_valorNota": 8
     },
     {
@@ -8892,7 +8892,7 @@
       "exame": "4",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (4)",
       "_valorNota": 8
     },
     {
@@ -8911,7 +8911,7 @@
       "exame": "1",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (3)",
       "_valorNota": 8
     },
     {
@@ -8949,7 +8949,7 @@
       "exame": "5.34",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (5)",
       "_valorNota": 8
     },
     {
@@ -8968,7 +8968,7 @@
       "exame": "3",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (6)",
       "_valorNota": 8
     },
     {
@@ -10167,7 +10167,7 @@
       "exame": "4",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (4)",
       "_valorNota": 8
     },
     {
@@ -10186,7 +10186,7 @@
       "exame": "5.5",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (6)",
       "_valorNota": 8
     },
     {
@@ -10205,7 +10205,7 @@
       "exame": "2",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Reprovado (2)",
       "_valorNota": 8
     },
     {
@@ -10243,7 +10243,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Exame (2)",
       "_valorNota": 8
     },
     {
@@ -10262,7 +10262,7 @@
       "exame": "",
       "notaProf": "",
       "subNotas": {},
-      "situacao": "Reprovado (8)",
+      "situacao": "Exame (3)",
       "_valorNota": 8
     }
   ],
@@ -10649,6 +10649,12 @@
       "trabGrp": 0.2
     },
     "biologia_2025-2026_probabilidade_&_estatística_ii": {
+      "presenca": 0,
+      "testes": 1,
+      "trabInd": 0,
+      "trabGrp": 0
+    },
+    "economia_2025-2026_estatística_ii": {
       "presenca": 0,
       "testes": 1,
       "trabInd": 0,
