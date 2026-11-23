@@ -3171,7 +3171,7 @@
       "estatuto": "Novo",
       "curso": "cienciasnaturais",
       "ano": "2026-2027",
-      "presenca": 16.47,
+      "presenca": 15.29,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3181,7 +3181,7 @@
       "subNotas": {
         "pres_02/11/2026": "F",
         "pres_05/11/2026": "F",
-        "pres_09/11/2026": "P",
+        "pres_09/11/2026": "F",
         "pres_12/11/2026": "F",
         "pres_16/11/2026": "P",
         "pres_19/11/2026": "P",
