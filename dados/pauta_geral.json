@@ -4485,7 +4485,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4499,7 +4499,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4514,7 +4514,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD003",
@@ -4524,7 +4524,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4553,7 +4553,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD004",
@@ -4563,7 +4563,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4592,7 +4592,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD005",
@@ -4602,7 +4602,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4616,7 +4616,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4631,7 +4631,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD006",
@@ -4641,7 +4641,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4655,7 +4655,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4670,7 +4670,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD007",
@@ -4680,7 +4680,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4694,7 +4694,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4709,7 +4709,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD008",
@@ -4719,7 +4719,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4733,7 +4733,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4748,7 +4748,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD009",
@@ -4758,7 +4758,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4787,7 +4787,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD010",
@@ -4797,7 +4797,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4826,7 +4826,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD011",
@@ -4836,7 +4836,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4850,7 +4850,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4865,7 +4865,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD012",
@@ -4875,7 +4875,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4889,7 +4889,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4904,7 +4904,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD013",
@@ -4914,7 +4914,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4928,7 +4928,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4943,7 +4943,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD014",
@@ -4953,7 +4953,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4967,7 +4967,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -4982,7 +4982,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD015",
@@ -4992,7 +4992,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5021,7 +5021,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD016",
@@ -5031,7 +5031,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5060,7 +5060,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD017",
@@ -5070,7 +5070,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5084,7 +5084,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5099,7 +5099,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD018",
@@ -5109,7 +5109,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5138,7 +5138,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD019",
@@ -5148,7 +5148,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5177,7 +5177,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD020",
@@ -5187,7 +5187,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5201,7 +5201,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5216,7 +5216,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD021",
@@ -5226,7 +5226,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5255,7 +5255,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD022",
@@ -5265,7 +5265,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5294,7 +5294,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD023",
@@ -5304,7 +5304,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5318,7 +5318,7 @@
         "pres_13/11/2026": "P",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5333,7 +5333,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD024",
@@ -5343,7 +5343,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5357,7 +5357,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5372,7 +5372,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD025",
@@ -5382,7 +5382,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5396,7 +5396,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5411,7 +5411,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD026",
@@ -5421,7 +5421,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5450,7 +5450,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD027",
@@ -5460,7 +5460,7 @@
       "estatuto": "Novo",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5474,7 +5474,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5489,7 +5489,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD028",
@@ -5499,7 +5499,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5513,7 +5513,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5528,7 +5528,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "GES2SAUD029",
@@ -5538,7 +5538,7 @@
       "estatuto": "Repetente",
       "curso": "gestao-iscgvsm",
       "ano": "2026-2027",
-      "presenca": "",
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5552,7 +5552,7 @@
         "pres_13/11/2026": "F",
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "P",
-        "pres_24/11/2026": "P",
+        "pres_24/11/2026": "F",
         "pres_27/11/2026": "P",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
@@ -5567,7 +5567,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Pendente"
+      "situacao": "Exame (1)"
     },
     {
       "id": "ECON2001",
