@@ -3366,7 +3366,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3393,7 +3393,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3405,7 +3406,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3432,7 +3433,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3471,7 +3473,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "17"
       },
       "situacao": "Exame (2)"
     },
@@ -3510,7 +3513,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "15"
       },
       "situacao": "Exame (2)"
     },
@@ -3522,7 +3526,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3549,7 +3553,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3561,7 +3566,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3588,7 +3593,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3627,7 +3633,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -3666,7 +3673,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "15"
       },
       "situacao": "Exame (2)"
     },
@@ -3705,7 +3713,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "14"
       },
       "situacao": "Exame (2)"
     },
@@ -3717,7 +3726,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3744,7 +3753,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3783,7 +3793,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "13"
       },
       "situacao": "Exame (2)"
     },
@@ -3822,7 +3833,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -3861,7 +3873,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -3873,7 +3886,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -3900,7 +3913,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -3939,7 +3953,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "12"
       },
       "situacao": "Exame (2)"
     },
@@ -3978,7 +3993,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "12"
       },
       "situacao": "Exame (2)"
     },
@@ -3990,7 +4006,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4017,7 +4033,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -4056,7 +4073,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -4095,7 +4113,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -4134,7 +4153,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -4146,7 +4166,7 @@
       "estatuto": "Novo",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4173,7 +4193,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -4212,7 +4233,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -4251,7 +4273,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "14"
       },
       "situacao": "Exame (2)"
     },
@@ -4290,7 +4313,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "16"
       },
       "situacao": "Exame (2)"
     },
@@ -4302,7 +4326,7 @@
       "estatuto": "Repetente",
       "curso": "educacao-infancia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -4329,7 +4353,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "0"
       },
       "situacao": "Exame (2)"
     },
@@ -4368,7 +4393,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": ""
       },
       "situacao": "Exame (2)"
     },
@@ -4407,7 +4433,8 @@
         "pres_11/01/2027": "P",
         "pres_13/01/2027": "P",
         "pres_18/01/2027": "P",
-        "pres_20/01/2027": "P"
+        "pres_20/01/2027": "P",
+        "grp_Trabalho I": "12"
       },
       "situacao": "Exame (2)"
     },
