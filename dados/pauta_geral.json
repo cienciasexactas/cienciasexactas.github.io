@@ -3368,7 +3368,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3408,7 +3408,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3448,7 +3448,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 17,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3476,7 +3476,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "17"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF004",
@@ -3488,7 +3488,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 15,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3516,7 +3516,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "15"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF005",
@@ -3528,7 +3528,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3568,7 +3568,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3608,7 +3608,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3636,7 +3636,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF008",
@@ -3648,7 +3648,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 15,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3676,7 +3676,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "15"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF009",
@@ -3688,7 +3688,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 14,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3716,7 +3716,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "14"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF010",
@@ -3728,7 +3728,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3768,7 +3768,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 13,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3796,7 +3796,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "13"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF012",
@@ -3808,7 +3808,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3836,7 +3836,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF013",
@@ -3848,7 +3848,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3876,7 +3876,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF014",
@@ -3888,7 +3888,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3928,7 +3928,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 12,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3956,7 +3956,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "12"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF016",
@@ -3968,7 +3968,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 12,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -3996,7 +3996,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "12"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF017",
@@ -4008,7 +4008,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4048,7 +4048,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4076,7 +4076,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF019",
@@ -4088,7 +4088,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4116,7 +4116,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF020",
@@ -4128,7 +4128,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4156,7 +4156,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF021",
@@ -4168,7 +4168,7 @@
       "ano": "2026-2027",
       "presenca": 17.78,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4208,7 +4208,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4236,7 +4236,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF023",
@@ -4248,7 +4248,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 14,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4276,7 +4276,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "14"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF024",
@@ -4288,7 +4288,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 16,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4316,7 +4316,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "16"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "ED1INF025",
@@ -4328,7 +4328,7 @@
       "ano": "2026-2027",
       "presenca": 18.89,
       "trabInd": null,
-      "trabGrp": 0,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4408,7 +4408,7 @@
       "ano": "2026-2027",
       "presenca": 20,
       "trabInd": null,
-      "trabGrp": 12,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -4436,7 +4436,7 @@
         "pres_20/01/2027": "P",
         "grp_Trabalho I": "12"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "GES2SAUD001",
