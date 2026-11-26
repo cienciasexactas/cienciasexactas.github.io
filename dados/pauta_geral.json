@@ -10190,7 +10190,7 @@
       "exame": "",
       "notaProf": "2",
       "subNotas": {},
-      "situacao": "Aprovado(a) (10)",
+      "situacao": "Aprovado(a) (12)",
       "_valorNota": 8
     },
     {
@@ -10315,9 +10315,9 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
+      "presenca": 0,
+      "trabInd": null,
+      "trabGrp": null,
       "teste1": "",
       "teste2": "",
       "exame": "",
@@ -10356,6 +10356,25 @@
         "grp_Trabalho II": "",
         "grp_Trabalho III": ""
       },
+      "dataCriacao": 1795651200000,
+      "situacao": "Exame (0)"
+    },
+    {
+      "id": "BIO2023",
+      "senha": "O1B0",
+      "nome": "Claudia Leite de Sousa",
+      "cadeira": "Probabilidade & Estatística I",
+      "estatuto": "Novo",
+      "curso": "biologia",
+      "ano": "2025-2026",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {},
       "dataCriacao": 1795651200000,
       "situacao": "Pendente"
     }
