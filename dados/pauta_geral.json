@@ -7987,7 +7987,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2003",
@@ -8104,7 +8104,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2006",
@@ -8182,7 +8182,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2008",
@@ -8221,7 +8221,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2009",
@@ -8260,7 +8260,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2010",
@@ -8572,7 +8572,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2018",
@@ -8728,7 +8728,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2022",
@@ -10306,6 +10306,58 @@
       "subNotas": {},
       "situacao": "Aprovado(a) (11)",
       "_valorNota": 8
+    },
+    {
+      "id": "BIO2023",
+      "senha": "O1B0",
+      "nome": "Claudia Leite de Sousa",
+      "cadeira": "Probabilidade & Estatística I",
+      "estatuto": "Repetente",
+      "curso": "biologia",
+      "ano": "2026-2027",
+      "presenca": "",
+      "trabInd": "",
+      "trabGrp": "",
+      "teste1": "",
+      "teste2": "",
+      "exame": "",
+      "notaProf": "",
+      "subNotas": {
+        "pres_03/11/2026": "F",
+        "pres_06/11/2026": "F",
+        "pres_10/11/2026": "F",
+        "pres_13/11/2026": "F",
+        "pres_17/11/2026": "F",
+        "pres_20/11/2026": "F",
+        "pres_24/11/2026": "F",
+        "pres_27/11/2026": "",
+        "pres_01/12/2026": "",
+        "pres_04/12/2026": "",
+        "pres_08/12/2026": "",
+        "pres_11/12/2026": "",
+        "pres_15/12/2026": "",
+        "pres_18/12/2026": "",
+        "pres_05/01/2027": "",
+        "pres_08/01/2027": "",
+        "pres_12/01/2027": "",
+        "pres_15/01/2027": "",
+        "pres_19/01/2027": "",
+        "indiv_Trabalho I": "",
+        "indiv_Trabalho II": "",
+        "indiv_Trabalho III": "",
+        "indiv_Trabalho IV": "",
+        "indiv_Trabalho V": "",
+        "indiv_Trabalho VI": "",
+        "indiv_Trabalho VII": "",
+        "indiv_Trabalho VIII": "",
+        "indiv_Trabalho IX": "",
+        "indiv_Trabalho X": "",
+        "grp_Trabalho I": "",
+        "grp_Trabalho II": "",
+        "grp_Trabalho III": ""
+      },
+      "dataCriacao": 1795651200000,
+      "situacao": "Pendente"
     }
   ],
   "planilhasColunasPorCadeira": {
