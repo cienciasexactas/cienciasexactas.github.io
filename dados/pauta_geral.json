@@ -7948,7 +7948,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2002",
@@ -7961,7 +7961,7 @@
       "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "6.5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8000,7 +8000,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "0",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8065,7 +8065,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2005",
@@ -8078,7 +8078,7 @@
       "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "6.5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8143,7 +8143,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2007",
@@ -8156,7 +8156,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8195,7 +8195,7 @@
       "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "12.5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8234,7 +8234,7 @@
       "presenca": 20,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "5.5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8299,7 +8299,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2011",
@@ -8338,7 +8338,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2012",
@@ -8377,7 +8377,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2013",
@@ -8416,7 +8416,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2014",
@@ -8429,7 +8429,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "0",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8494,7 +8494,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2016",
@@ -8507,7 +8507,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "0",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8546,7 +8546,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "8.25",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8689,7 +8689,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2021",
@@ -8702,7 +8702,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "7",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8767,7 +8767,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "ECON2014",
