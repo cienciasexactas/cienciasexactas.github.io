@@ -10318,7 +10318,7 @@
       "presenca": 0,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "",
+      "teste1": "8.25",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -10405,10 +10405,10 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": "",
-      "trabInd": "",
-      "trabGrp": "",
-      "teste1": "",
+      "presenca": 0,
+      "trabInd": null,
+      "trabGrp": null,
+      "teste1": "5",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -10447,7 +10447,7 @@
         "grp_Trabalho III": ""
       },
       "dataCriacao": 1795651200000,
-      "situacao": "Pendente"
+      "situacao": "Exame (0)"
     }
   ],
   "planilhasColunasPorCadeira": {
