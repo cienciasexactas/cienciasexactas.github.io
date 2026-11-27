@@ -8573,7 +8573,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2018",
@@ -10794,10 +10794,10 @@
       "trabGrp": 0.35
     },
     "biologia_2026-2027_probabilidade_&_estatística_i": {
-      "presenca": 0.1,
-      "testes": 0.6,
-      "trabInd": 0.3,
-      "trabGrp": 0
+      "presenca": 0.15,
+      "testes": 0.55,
+      "trabInd": 0.15,
+      "trabGrp": 0.15
     },
     "cienciasnaturais_2026-2027_estatística_mqq": {
       "presenca": 0.2,
