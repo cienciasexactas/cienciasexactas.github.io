@@ -84,10 +84,17 @@ const PERIODOS_SUBMISSAO = {
       'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
     },
     economia: {
-      'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
+      'actividade-1': { inicio: new Date('2026-11-27T00:00:00Z'), fim: new Date('2026-12-06T23:59:59Z') },
+      'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-5': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-6': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-7': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
     },
     'gestao-empresa': {
-      'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-1': { inicio: new Date('2026-11-27T00:00:00Z'), fim: new Date('2026-12-06T23:59:59Z') },
       'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
@@ -97,7 +104,7 @@ const PERIODOS_SUBMISSAO = {
       'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
     },
     'gestao-iscgvsm': {
-      'actividade-1': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
+      'actividade-1': { inicio: new Date('2026-11-27T00:00:00Z'), fim: new Date('2026-11-30T23:59:59Z') },
       'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
