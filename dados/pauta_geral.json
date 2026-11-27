@@ -7987,7 +7987,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2003",
@@ -8026,7 +8026,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2004",
@@ -8065,7 +8065,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2005",
@@ -8104,7 +8104,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2006",
@@ -8143,7 +8143,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2007",
@@ -8182,7 +8182,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2008",
@@ -8260,7 +8260,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2010",
@@ -8299,7 +8299,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2011",
@@ -8378,7 +8378,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2013",
@@ -8456,7 +8456,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2015",
@@ -8495,7 +8495,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2016",
@@ -8534,12 +8534,12 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2017",
       "senha": "O2B0",
-      "nome": "Wiwalde das Neves Domingos",
+      "nome": "Wywalde das Neves Domingos",
       "cadeira": "Probabilidade & Estatística I",
       "estatuto": "Novo",
       "curso": "biologia",
@@ -8573,7 +8573,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2018",
@@ -8612,7 +8612,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2019",
@@ -8651,7 +8651,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2020",
@@ -8690,7 +8690,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2021",
@@ -8729,7 +8729,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2022",
@@ -8768,7 +8768,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "ECON2014",
@@ -10448,7 +10448,7 @@
         "grp_Trabalho III": ""
       },
       "dataCriacao": 1795651200000,
-      "situacao": "Exame (2)"
+      "situacao": "Exame (1)"
     }
   ],
   "planilhasColunasPorCadeira": {
