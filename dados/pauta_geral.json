@@ -5577,7 +5577,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5694,7 +5694,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 16.67,
+      "presenca": 15.56,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5733,7 +5733,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 14.44,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5762,7 +5762,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (1)"
     },
     {
       "id": "ECON2006",
@@ -5811,7 +5811,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5889,7 +5889,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 16.67,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5967,7 +5967,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 14.44,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -5996,7 +5996,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (1)"
     },
     {
       "id": "ECON2012",
@@ -6045,7 +6045,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 16.67,
+      "presenca": 15.56,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6084,7 +6084,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 16.67,
+      "presenca": 15.56,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6164,7 +6164,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 20,
+      "presenca": 18.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6203,7 +6203,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 14.44,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6232,7 +6232,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (1)"
     },
     {
       "id": "ECON2018",
@@ -6320,7 +6320,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 16.67,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6398,7 +6398,7 @@
       "estatuto": "Repetente",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 17.78,
+      "presenca": 16.67,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6437,7 +6437,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 15.56,
+      "presenca": 14.44,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6466,7 +6466,7 @@
         "pres_20/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (1)"
     },
     {
       "id": "ECON2024",
@@ -6476,7 +6476,7 @@
       "estatuto": "Novo",
       "curso": "economia",
       "ano": "2026-2027",
-      "presenca": 18.89,
+      "presenca": 17.78,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "",
@@ -6491,7 +6491,7 @@
         "pres_18/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_25/11/2026": "P",
-        "pres_27/11/2026": "F",
+        "pres_27/11/2026": "P",
         "pres_02/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_09/12/2026": "P",
