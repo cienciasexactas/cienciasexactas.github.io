@@ -7919,7 +7919,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "9.5",
@@ -7934,7 +7934,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -7987,7 +7987,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2003",
@@ -7997,7 +7997,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "0",
@@ -8012,7 +8012,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8026,7 +8026,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2004",
@@ -8065,7 +8065,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (5)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2005",
@@ -8104,7 +8104,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2006",
@@ -8114,7 +8114,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "5",
@@ -8129,7 +8129,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8143,7 +8143,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2007",
@@ -8153,7 +8153,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "5",
@@ -8168,7 +8168,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8182,7 +8182,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (3)"
+      "situacao": "Exame (4)"
     },
     {
       "id": "BIO2008",
@@ -8260,7 +8260,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2010",
@@ -8299,7 +8299,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2011",
@@ -8338,7 +8338,8 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (6)"
+      "situacao": "Exame (6)",
+      "_valorNota": 6
     },
     {
       "id": "BIO2012",
@@ -8377,7 +8378,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2013",
@@ -8426,7 +8427,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "0",
@@ -8441,7 +8442,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8455,7 +8456,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2015",
@@ -8494,7 +8495,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2016",
@@ -8504,7 +8505,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "0",
@@ -8519,7 +8520,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8533,12 +8534,12 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2017",
       "senha": "O2B0",
-      "nome": "Wiwalde das Neves Domingos",
+      "nome": "Wywalde das Neves Domingos",
       "cadeira": "Probabilidade & Estatística I",
       "estatuto": "Novo",
       "curso": "biologia",
@@ -8546,7 +8547,7 @@
       "presenca": 18.95,
       "trabInd": null,
       "trabGrp": null,
-      "teste1": "8.25",
+      "teste1": "11.25",
       "teste2": "",
       "exame": "",
       "notaProf": "",
@@ -8572,7 +8573,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (6)"
     },
     {
       "id": "BIO2018",
@@ -8611,7 +8612,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2019",
@@ -8621,7 +8622,7 @@
       "estatuto": "Novo",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "0",
@@ -8636,7 +8637,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8650,7 +8651,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (2)"
+      "situacao": "Exame (3)"
     },
     {
       "id": "BIO2020",
@@ -8660,7 +8661,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "7",
@@ -8675,7 +8676,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8689,7 +8690,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2021",
@@ -8699,7 +8700,7 @@
       "estatuto": "Repetente",
       "curso": "biologia",
       "ano": "2026-2027",
-      "presenca": 18.95,
+      "presenca": 17.89,
       "trabInd": null,
       "trabGrp": null,
       "teste1": "7",
@@ -8714,7 +8715,7 @@
         "pres_17/11/2026": "P",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "P",
-        "pres_27/11/2026": "P",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "P",
         "pres_04/12/2026": "P",
         "pres_08/12/2026": "P",
@@ -8728,7 +8729,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "BIO2022",
@@ -8767,7 +8768,7 @@
         "pres_19/01/2027": "P",
         "pres_22/01/2027": "P"
       },
-      "situacao": "Exame (4)"
+      "situacao": "Exame (5)"
     },
     {
       "id": "ECON2014",
@@ -10330,7 +10331,7 @@
         "pres_17/11/2026": "F",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "F",
-        "pres_27/11/2026": "",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "",
         "pres_04/12/2026": "",
         "pres_08/12/2026": "",
@@ -10357,7 +10358,7 @@
         "grp_Trabalho III": ""
       },
       "dataCriacao": 1795651200000,
-      "situacao": "Exame (0)"
+      "situacao": "Exame (2)"
     },
     {
       "id": "BIO2023",
@@ -10420,7 +10421,7 @@
         "pres_17/11/2026": "F",
         "pres_20/11/2026": "F",
         "pres_24/11/2026": "F",
-        "pres_27/11/2026": "",
+        "pres_27/11/2026": "F",
         "pres_01/12/2026": "",
         "pres_04/12/2026": "",
         "pres_08/12/2026": "",
@@ -10447,7 +10448,7 @@
         "grp_Trabalho III": ""
       },
       "dataCriacao": 1795651200000,
-      "situacao": "Exame (0)"
+      "situacao": "Exame (1)"
     }
   ],
   "planilhasColunasPorCadeira": {
@@ -10793,10 +10794,10 @@
       "trabGrp": 0.35
     },
     "biologia_2026-2027_probabilidade_&_estatística_i": {
-      "presenca": 0.1,
-      "testes": 0.6,
-      "trabInd": 0.3,
-      "trabGrp": 0
+      "presenca": 0.15,
+      "testes": 0.55,
+      "trabInd": 0.15,
+      "trabGrp": 0.15
     },
     "cienciasnaturais_2026-2027_estatística_mqq": {
       "presenca": 0.2,
