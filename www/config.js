@@ -94,7 +94,7 @@ const PERIODOS_SUBMISSAO = {
       'actividade-8': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') }
     },
     'gestao-empresa': {
-      'actividade-1': { inicio: new Date('2026-11-27T00:00:00Z'), fim: new Date('2026-12-06T23:59:59Z') },
+      'actividade-1': { inicio: new Date('2026-11-27T00:00:00Z'), fim: new Date('2026-12-08T23:59:59Z') },
       'actividade-2': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-3': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
       'actividade-4': { inicio: new Date('2026-10-01T00:00:00Z'), fim: new Date('2026-10-01T23:59:59Z') },
